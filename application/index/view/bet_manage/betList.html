@@ -1,0 +1,115 @@
+{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 下注管理 <span class="c-gray en">&gt;</span> 下注列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-soso" action="/bet/list" method="get">
+        <div class="text-c"> 日期范围：
+            <input type="text" value="{$parama['begin_time']}" id="begin_time" name="begin_time" class="input-text Wdate" style="width:170px;">
+            -
+            <input type="text" value="{$parama['end_time']}"  id="end_time" name="end_time" class="input-text Wdate" style="width:170px;">
+            用户ID：
+            <input type="text" value="{$parama['uid']}"  id="uid" name="uid" class="input-text" style="width:120px;">
+            牌局ID：
+            <input type="text" value="{$parama['card_game_id']}"  id="card_game_id" name="card_game_id" class="input-text" style="width:120px;">
+            靴号：
+            <input type="text" value="{$parama['boots_number']}"  id="boots_number" name="boots_number" class="input-text" style="width:120px;">
+            局数：
+            <input type="text" value="{$parama['ju']}"  id="ju" name="ju" class="input-text" style="width:120px;">
+            <br>
+            开牌结果：
+            <input type="text" value="{$parama['game_result']}"  id="game_result" name="game_result" placeholder="例：庄+幸运六" class="input-text" style="width:170px;margin-top: 10px">
+            下注类型：
+            <input type="text" value="{$parama['odds_type']}"  id="odds_type" name="odds_type" placeholder="例：庄+幸运六" class="input-text" style="width:170px;margin-top: 10px">
+            <button type="submit" style="margin-top: 10px"  class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜 索</button>
+        </div>
+    </form>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="50">用户ID</th>
+                <th width="90">昵称</th>
+                <th width="50">牌局ID</th>
+                <th width="90">局数</th>
+                <th width="250">下注</th>
+                <th width="50">下注前余分</th>
+                <th width="50">输赢</th>
+                <th width="50">下注后余分</th>
+                <th width="50">开牌结果</th>
+                <th width="50">状态</th>
+                <th width="130">时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name='datas' id='data'}
+            <tr class="text-c">
+                <td>{$data['uid']}</td>
+                <td>{$data['nickname']}</td>
+                <td>{$data['card_game_id']}</td>
+                <td>{$data['room_id']}桌{$data['boots_number']}-{$data['ju']}局</td>
+                <td>{$data['odds_text']}</td>
+                <td>{$data['score_before']}</td>
+                <td>{$data['win']}</td>
+                <td>
+                    {if condition="$data['score_after'] lt 1 "}
+                        {$data['score_after']|substr=0,5}
+                    {else /}
+                    {$data['score_after']}
+                    {/if}
+                </td>
+                <td>
+                    {if condition="$data.game_zhuang eq 1"} <span style="color: red">庄</span>
+                    {elseif condition="$data.game_zhuang eq 2"/}<span style="color: blue">闲</span>
+                    {elseif condition="$data.game_zhuang eq 3"/}<span style="color: limegreen">和</span>
+                    {/if}
+                    {if condition="$data.game_zhuang_dui eq 4"} 庄对{/if}
+                    {if condition="$data.game_xian_dui eq 5"} 闲对{/if}
+                    {if condition="$data.game_lucky_six gt 0"} 幸运六{/if}
+                </td>
+                <td>
+                    {if condition="$data.state eq 0"}
+                    <span  style="color: black">未结算</span>
+                    {elseif condition="$data.state eq 1" /}
+                    <span  style="color: blue">已结算</span>
+                    {elseif condition="$data.state eq 2" /}
+                    <span  style="color: red">取消此局</span>
+                    {/if}
+                </td>
+                <td>{$data['mktime']||date="Y-m-d H:i:s",###}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="height:80px;padding:20px 0px;overflow: hidden">
+    {$datas->render()}
+</div>
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+    $(function(){
+        $('.table-sort').dataTable({
+            "aaSorting": [[ 1, "desc" ]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable":false,"aTargets":[2,3,4,7]}// 制定列不参与排序
+            ],
+            "paging": false, //打开分页设置
+            "info": true,
+        });
+
+    });
+</script>
+<script  type="text/javascript">
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#begin_time' //指定元素
+        ,type: 'datetime'
+    });
+    laydate.render({
+        elem: '#end_time' //指定元素
+        ,type: 'datetime'
+    });
+</script>
+{/block}

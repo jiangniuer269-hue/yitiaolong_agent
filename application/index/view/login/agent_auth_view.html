@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>loading...</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="{$domain}/front/images/salon/group.png" type="image/x-icon"/>
+</head>
+</html>
+<script>
+    var r = Math.floor(Math.random() * 1000 + 1);
+    var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri={$domain}/redirect.php?rd={$redirectdomain}%26agent_id={$agent_id}%26qcode={$qcode}&response_type=code&scope=snsapi_userinfo";
+    location.href = url;
+</script>
+
+

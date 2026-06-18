@@ -1,0 +1,128 @@
+{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 牌局管理 <span
+        class="c-gray en">&gt;</span> 牌局列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+                                              href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-soso" action="/game/list" method="get">
+        <div class="text-c"> 日期范围：
+            <input type="text" value="{$parama['begin_time']}" id="begin_time" name="begin_time"
+                   class="input-text Wdate" style="width:170px;">
+            -
+            <input type="text" value="{$parama['end_time']}" id="end_time" name="end_time" class="input-text Wdate"
+                   style="width:170px;">
+            靴号：
+            <input type="text" value="{$parama['boots_number']}" id="boots_number" name="boots_number"
+                   class="input-text" style="width:100px;">
+            局数：
+            <input type="text" value="{$parama['ju']}" id="ju" name="ju" class="input-text" style="width:100px;">
+            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜 索
+            </button>
+        </div>
+    </form>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort" id="example">
+            <thead>
+            <tr class="text-c">
+                <th width="50">ID</th>
+                <th width="80">局数</th>
+                <th width="80">开牌结果</th>
+                <th width="50">时间</th>
+                <th width="200">当局报表</th>
+                <th width="200">当局自营报表</th>
+                <th width="50">代理洗码</th>
+                <th width="50">推码盈亏</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="games" id="vo"}
+            <tr class="text-c">
+                <td>{$vo.id}</td>
+                <td>{$vo.room_id}桌{$vo.boots_number}-{$vo.ju}局</td>
+                <td>
+                    {if condition="$vo.state eq 1"}
+                    {if condition="$vo.zhuang eq 1"} <span style="color: red">庄</span>
+                    {elseif condition="$vo.zhuang eq 2"/}<span style="color: blue">闲</span>
+                    {elseif condition="$vo.zhuang eq 3"/}<span style="color: limegreen">和</span>
+                    {/if}
+                    {if condition="$vo.zhuang_dui eq 1"} 庄对{/if}
+                    {if condition="$vo.xian_dui eq 1"} 闲对{/if}
+                    {if condition="$vo.lucky_six eq 6"} 幸运六12倍{/if}
+                    {if condition="$vo.lucky_six eq 7"} 幸运六20倍{/if}
+                    {elseif condition="$vo.state eq 0"/}<span style="color: black">未开牌</span>
+                    {elseif condition="$vo.state eq 2"/}<span style="color: red">牌局取消</span>
+                    {/if}
+
+                </td>
+                <td>{$vo.mktime|date="Y-m-d H:i:s",###}</td>
+                <td>
+                    庄注<b> {$vo->zhuang_total}</b> |
+                    闲注<b> {$vo->xian_total}</b> |
+                    和注<b> {$vo->he_total}</b> |
+                    庄对<b> {$vo->zd_total}</b> |
+                    闲对<b> {$vo->xd_total}</b> |
+                    幸运六<b> {$vo->lucky_six_total}</b> |
+                    <br>
+                    四宝<b> {$vo->sb_total}</b> |
+                    推码<b> {$vo->tm_total}</b> |
+                    对冲<b> {$vo->dc_total}</b> |
+                    尾数<b> {$vo->ws_total}</b>
+                </td>
+                <td>
+                    台面本金<b> {$vo->tmbj}</b> |
+                    尾数盈亏<b> {$vo->wsyk}</b> |
+                    四宝盈亏<b> {$vo->sbyk}</b> |
+                    对冲盈亏<b> {$vo->dcyk}</b>
+                    <br>
+                    代理总赢<b> {$vo->dlzy}</b> |
+                    庄闲洗码<b> {$vo->zxxm}</b> |
+                    四宝洗码<b> {$vo->sbxm}</b> |
+                    客户盈亏<b> {$vo->khyk}</b> |
+                    推码盈亏<b><span {if condition="$vo->zhuang_total gt $vo->xian_total" }style="color:red" {elseif
+                                 condition="$vo->zhuang_total lt $vo->xian_total"/} style="color:blue" {else /} {/if}>
+                    {$vo->tmyk}</span></b>
+                </td>
+                <td>
+                    {if condition="$vo->tmyk gt 0"}{$vo->tmyk}
+                    {else /}0
+                    {/if}
+                </td>
+                <td>{$vo->tmyk}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="height:80px;padding:20px 0px;overflow: hidden">
+    {$games->render()}
+</div>
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+    $(function () {
+        $('.table-sort').dataTable({
+            "aaSorting": [[0, "desc"]],//默认第几个排序
+            "bStateSave": false,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable": false, "aTargets": [1, 2]}// 制定列不参与排序
+            ],
+            "paging": false, //打开分页设置
+            "info": true,
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#begin_time' //指定元素
+        , type: 'datetime'
+    });
+    laydate.render({
+        elem: '#end_time' //指定元素
+        , type: 'datetime'
+    });
+</script>
+{/block}

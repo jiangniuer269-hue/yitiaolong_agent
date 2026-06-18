@@ -1,0 +1,280 @@
+{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 运营管理 <span class="c-gray en">&gt;</span> 运营统计 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-soso" action="/mba/bigdata" method="get">
+        <div class="text-c"> 日期范围：
+            <input type="text"  id="begin_time" name="begin_time" value="{$parama['begin_time']}" class="input-text Wdate" style="width:170px;">
+            -
+            <input type="text"  id="end_time" name="end_time" value="{$parama['end_time']}" class="input-text Wdate" style="width:170px;">
+            用户ID：
+            <input type="text"  id="uid" name="uid" value="{$parama['uid']}" class="input-text" style="width:170px;">
+            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜 索</button>
+            <button type="button" class="btn btn-success radius" id="doexcel" name="" onclick="doexcel11()"><i
+                    class="Hui-iconfont">
+                &#xe641;</i> 导出报表
+            </button>
+        </div>
+    </form>
+    <div class="mt-20">
+        <span class="l" style="margin-right: 20px">共有数据：<strong>{:count($data)}</strong> 条</span>
+
+        <table class="table table-border table-bordered table-hover table-bg table-sort" id="example">
+            <thead>
+            <tr class="text-c">
+                <th width="50">用户ID</th>
+                <th width="100">用户名</th>
+                <th width="90">庄注</th>
+                <th width="90">和注</th>
+                <th width="90">闲注</th>
+                <th width="90">庄对</th>
+                <th width="90">闲对</th>
+                <th width="90">幸运六</th>
+                <th width="90">输赢</th>
+                <th width="90">积分</th>
+                <th width="90">时间</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th colspan="1" style="text-align:right">总合:</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </tfoot>
+            <tbody>
+            {volist name="data" id="data"}
+            <tr class="text-c">
+                <td>{$data.uid}</td>
+                <td><u style="cursor:pointer" class="text-primary" onclick="member_show('会员详情','/user/detail',{$data.uid},'1000','600')">{$data.name}</u></td>
+                <td>{$data.odds_z}</td>
+                <td>{$data.odds_x}</td>
+                <td>{$data.odds_h}</td>
+                <td>{$data.odds_zd}</td>
+                <td>{$data.odds_xd}</td>
+                <td>{$data.odds_xy}</td>
+                <td>{$data.win_lose}</td>
+                <td>{$data.integral}</td>
+                <td>{$data.date_time}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+    $(function(){
+
+        $('.table-sort').dataTable({
+            "aaSorting": [[ 0, "desc" ]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable":false,"aTargets":[1]}// 制定列不参与排序
+            ],
+            lengthMenu: [ //自定义分页长度
+                [ 20, 50, 100,500],
+                [ '20', '50', '100','500' ]
+            ],
+            "footerCallback": function ( row, data, start, end, display ) {
+                var api = this.api(), data;
+
+                // Remove the formatting to get integer data for summation
+                var intVal = function ( i ) {
+                    return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                            typeof i === 'number' ?
+                                    i : 0;
+                };
+
+                // Total over all pages
+                odds_z_total = api
+                        .column(2, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(2).footer()).html(odds_z_total);
+
+                odds_x_total = api
+                        .column(3, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(3).footer()).html(odds_x_total);
+
+                odds_h_total = api
+                        .column(4, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(4).footer()).html(odds_h_total);
+
+                odds_zd_total = api
+                        .column(5, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(5).footer()).html(odds_zd_total);
+
+                odds_xd_total = api
+                        .column(6, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(6).footer()).html(odds_xd_total);
+
+                odds_xy_total = api
+                        .column(7, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(7).footer()).html(odds_xy_total);
+
+                odds_win_total = api
+                        .column(8, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(8).footer()).html(odds_win_total);
+
+                odds_integral_total = api
+                        .column(9, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(9).footer()).html(odds_integral_total);
+
+//                odds_score_total = api
+//                        .column(10, {page: 'current'})
+//                        .data()
+//                        .reduce(function (a, b) {
+//                            return intVal(a) + intVal(b);
+//                        }, 0);
+//                $(api.column(10).footer()).html(odds_score_total);
+                // Total over this page
+//			pageTotal = api
+//					.column( 4, { page: 'current'} )
+//					.data()
+//					.reduce( function (a, b) {
+//						return intVal(a) + intVal(b);
+//					}, 0 );
+
+                // Update footer
+            }
+        } );
+
+    });
+    /*用户-添加*/
+    function member_add(title,url,w,h){
+        layer_show(title,url,w,h);
+    }
+    /*用户-查看*/
+    function member_show(title,url,id,w,h){
+        var detail_url = url+'?uid='+id;
+        layer_show(title,detail_url,w,h);
+    }
+    /*用户-停用*/
+    function member_stop(obj,id){
+        layer.confirm('确认要停用吗？',function(index){
+            $.ajax({
+                type: 'POST',
+                url: '',
+                dataType: 'json',
+                success: function(data){
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+                    $(obj).remove();
+                    layer.msg('已停用!',{icon: 5,time:1000});
+                },
+                error:function(data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+
+    /*用户-启用*/
+    function member_start(obj,id){
+        layer.confirm('确认要启用吗？',function(index){
+            $.ajax({
+                type: 'POST',
+                url: '',
+                dataType: 'json',
+                success: function(data){
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+                    $(obj).remove();
+                    layer.msg('已启用!',{icon: 6,time:1000});
+                },
+                error:function(data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+    /*用户-编辑*/
+    function member_edit(title,url,id,w,h){
+        layer_show(title,url,w,h);
+    }
+    /*密码-修改*/
+    function change_password(title,url,id,w,h){
+        layer_show(title,url,w,h);
+    }
+    /*用户-删除*/
+    function member_del(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            $.ajax({
+                type: 'POST',
+                url: '',
+                dataType: 'json',
+                success: function(data){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                },
+                error:function(data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+</script>
+<script  type="text/javascript">
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#begin_time' //指定元素
+        ,type: 'datetime'
+    });
+    laydate.render({
+        elem: '#end_time' //指定元素
+        ,type: 'datetime'
+    });
+
+    /*下载报表*/
+    function doexcel11() {
+        var begin_time = $('#begin_time').val();
+        var end_time = $('#end_time').val();
+        var uid = $('#uid').val();
+        var url = '/mba/doExcelDate?begin_time=' + begin_time + '&end_time=' + end_time + '&uid=' + uid;
+        window.location.href = url;
+        return false;
+    }
+</script>
+{/block}

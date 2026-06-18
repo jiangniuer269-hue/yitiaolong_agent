@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="./js/jquery.min.js"></script>
+		<script src="NodePlayer.v3.min.js"></script>
+		<script language="JavaScript" type="text/JavaScript">
+			/**
+	弹出iframe页面(iframe后面会添加灰色蒙版)
+	**/
+	function showIframe(url){
+	    $("<div id='showMobilePreview'>" +
+	            "<div class='mobile_preview_header'><i class='mobile_preview_header_icon'></i></div>" +
+	            "<div class='mobile_preview_frame'><iframe id='YuFrameMobilePreview' name='YuFrameMobilePreview' ></iframe></div>" +
+	            "<div class='mobile_preview_footer'><i class='mobile_preview_footer_icon'></i></div>" +
+	        "</div>").prependTo('body');  
+	   
+	     $("#YuFrameMobilePreview").attr("src", url);  
+	  //添加背景遮罩
+	   $("<div id='YuFrameMobilePreviewBg' style='cursor:pointer;width:100%;height:100%;background-color: Gray;display:block;z-index:9998;position:absolute;left:0px;top:0px;filter:Alpha(Opacity=30);/* IE */-moz-opacity:0.4;/* Moz + FF */opacity: 0.4; '/>").prependTo('body'); 
+	 
+	    //点击背景遮罩移除iframe和背景
+	  /*  $("#YuFrameMobilePreviewBg").click(function() {
+	        $("#showMobilePreview").remove();
+	        $("#YuFrameMobilePreviewBg").remove();
+	    });*/
+	} 
+	
+
+
+	//播放flv格式视频
+	function showFlv(url){
+	    console.log(url);
+	    $("<div id='showMobilePreview'>" +
+	            "<div class='mobile_preview_header'><i class='mobile_preview_header_icon'></i></div>" +
+	            "<div class='mobile_preview_frame'><canvas  id='videoCanvas' name='videoCanvas' ></canvas></div>" +
+	            "<div class='mobile_preview_footer'><i class='mobile_preview_footer_icon'></i></div>" +
+	        "</div>").prependTo('body');  
+	   
+	  //添加背景遮罩
+	   $("<div id='YuFrameMobilePreviewBg' style='cursor:pointer;width:100%;height:100%;background-color: Gray;display:block;z-index:9998;position:absolute;left:0px;top:0px;filter:Alpha(Opacity=30);/* IE */-moz-opacity:0.4;/* Moz + FF */opacity: 0.4; '/>").prependTo('body'); 
+    $(function(){
+        var canvas = document.getElementById("videoCanvas");
+        var player1=null;
+        var startFunc = function (url) {
+            player1.start(url);
+        }
+        var stopFunc = function () {
+            player1.stop();
+        }
+        initNodeplayer(url);
+    });
+	}
+//获取url请求参数
+function getQueryVariable(variable){
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+
+
+function initNodeplayer(url){
+    try {
+        player1 = new NodePlayer();
+        player1.start(url);
+        player1.setView('videoCanvas');
+        player1.setScaleMode(0);
+        player1.setBufferTime(1000);
+        player1.skipLoopFilter(32);
+        player1.on('start', () => {
+        });
+        player1.on('error', (e) => {
+        });
+        player1.on('stop', () => {
+        });
+    }
+    catch (e) {
+        console.log('catch');
+    }
+}
+	</script>
+	<style type="text/css">
+			#showMobilePreview {
+				z-index: 9999;
+				width: 1920px;
+				height: 1080px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				opacity: 1;
+				text-align: center;
+			}
+ 
+			.mobile_preview_header {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 40px;
+				width: 387px;
+				background: #eeeff2;
+				text-align: center;
+				line-height: 40px;
+				border-top-right-radius: 50px;
+				border-top-left-radius: 50px;
+			}
+ 
+			.mobile_preview_header_icon {
+				display: inline-block;
+				width: 65px;
+				height: 10px;
+				background: #c8c9cc;
+				border-radius: 9px;
+				vertical-align: middle;
+				margin-top: 18px;
+			}
+ 
+			.mobile_preview_frame {
+				width: 1920px;
+				min-height: 294px;
+				height: 1080px;
+				max-height: calc(100vh - 166px);
+				top: 40px;
+				left: 0;
+				border: 6px solid #eeeff2;
+				position: relative;
+				background-color: #fff;
+				display: block;
+			}
+ 
+			#YuFrameMobilePreview {
+				border: none;
+				width: 100%;
+				height: 100%;
+			}
+         	#videoCanvas {
+        				border: none;
+        				width:1920px;
+        				height: 1080px;
+        			}
+			.mobile_preview_footer {
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				height: 52px;
+				width: 387px;
+				background: #eeeff2;
+				text-align: center;
+				line-height: 45px;
+				border-bottom-right-radius: 50px;
+				border-bottom-left-radius: 50px;
+			}
+ 
+			.mobile_preview_footer_icon {
+				display: inline-block;
+				width: 43px;
+				height: 43px;
+				background: #c8c9cc;
+				border-radius: 50%;
+				vertical-align: middle;
+			}
+	</style>
+</head>
+<body>
+
+<script language="JavaScript" type="text/JavaScript">
+	var videoUrl = getQueryVariable('link');
+	   if(videoUrl){
+                  if(videoUrl.indexOf('flv')==-1){
+                      	showIframe(videoUrl);
+                      //this.canvaOrIframe =  1;
+                  }else{
+                      showFlv(videoUrl);
+                      //this.canvaOrIframe =  0;
+                  }
+                }
+	console.log(videoUrl);
+</script>
+</body>
+</html>

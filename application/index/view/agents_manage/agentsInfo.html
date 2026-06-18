@@ -1,0 +1,45 @@
+{extend name="base" /}
+{block name="content"}
+<article class="page-container">
+    <form class="form form-horizontal" id="form-admin-add">
+        <input type="hidden" value="{$agents.agents_id}" name="agents_id" id="agents_id">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>代理名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$agents.name}" placeholder="" id="name" name="name"  readonly="readonly">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>登录账号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$agents.account}" placeholder="" id="account" name="account"  readonly="readonly">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$agents.phone}" placeholder="" id="phone" name="phone"  readonly="readonly">
+            </div>
+        </div>
+        <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>绑定的用户ID：</label>
+        <div class="formControls col-xs-8 col-sm-9">
+           <input type="text" class="input-text" placeholder="" value="{$agents.uid}" name="uid" id="uid" readonly="readonly">
+        </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                  <input type="text" class="input-text" placeholder="" value="{$group.group_name}" name="group_name" id="group_name" readonly="readonly">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">备注：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea name="agents_desc" cols="" rows="" class="textarea"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="$.Huitextarealength(this,100)">{$agents.agents_desc}</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            </div>
+        </div>
+    </form>
+</article>
+{/block}

@@ -1,0 +1,497 @@
+{extend name="base" /}
+{block name="content"}
+<div class="cl pd-20" style=" background-color:#5bacb6">
+	<img class="avatar size-XL l" src="{$user.head}">
+	<dl style="margin-left:80px; color:#fff">
+		<dt>
+			<span class="f-18">{$user.name}</span>
+			<span class="pl-10 f-12">ID：{$user.uid}</span>
+			<span class="pl-10 f-12">余额：{$user.score}</span>
+			<span class="pl-10 f-12">积分：{$user.integral}</span>
+		</dt>
+		<dd class="pt-10 f-12" style="margin-left:0">这家伙很懒，什么也没有留下</dd>
+	</dl>
+</div>
+<div class="pd-20">
+	<table class="table">
+		<tbody>
+		<tr>
+			<th class="text-r">上级ID</th>
+			<th class="text-r">直推人数</th>
+			<th class="text-r">团队人数</th>
+			<th class="text-r">上分总额</th>
+			<th class="text-r">下分总额</th>
+			<th class="text-r">输赢总额</th>
+			<th class="text-r">下注总额</th>
+		</tr>
+		<tr>
+			<th class="text-r">{$user.agent_id}</th>
+			<th class="text-r">{$tongji['fans']}</th>
+			<th class="text-r">{$tongji['teams']}</th>
+			<th class="text-r">{$tongji['upfen']}</th>
+			<th class="text-r">{$tongji['dowfen']}</th>
+			<th class="text-r">{$tongji['win']}</th>
+			<th class="text-r">{$tongji['bets']}</th>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<input type="hidden" id="current_bar_id"  name="current_bar_id" value="{$current_bar}" class="input-text">
+
+<div class="page-container">
+	<form class="form form-horizontal" id="form-article-add">
+		<div id="tab-system" class="HuiTab">
+			<div class="tabBar cl">
+				<span  id="current_bar1">最近战绩</span>
+				<span  id="current_bar2">上下分记录</span>
+				<span  id="current_bar3">直属下级</span>
+				<span  id="current_bar4">积分记录</span>
+				<span  id="current_bar5">团队洗码</span>
+			</div>
+			<!--最近战绩开始-->
+			<div class="tabCon">
+				<div class="page-container">
+
+					<form class="form form-horizontal" id="form-soso" action="/user/detail" method="get">
+						<input type="hidden"  name="current_bar" value="1" class="input-text" style="width:170px;">
+						<input type="hidden"  id="uid" name="uid" value="{$user.uid}" class="input-text Wdate " style="width:170px;">
+						<div class="text-c"> 日期范围：
+							<input type="text"  id="begin_time_zj" name="begin_time_zj" class="input-text Wdate " style="width:170px;">
+							-
+							<input type="text"  id="end_time_zj" name="end_time_zj" class="input-text Wdate " style="width:170px;">
+							<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+						</div>
+					</form>
+					<div class="mt-20">
+						<span class="l" style="margin-right: 20px">共有数据：<strong>{:count($betsLogAll)}</strong> 条</span>
+
+						<table class="table table-border table-bordered table-hover table-bg table-sort">
+							<thead>
+							<tr class="text-c">
+								<th width="80">牌局ID</th>
+								<th width="100">牌局</th>
+								<th width="90">下注</th>
+								<th width="150">开牌结果</th>
+								<th width="130">输赢</th>
+								<th width="130">庄闲洗码</th>
+								<th width="70">三宝洗码</th>
+								<th width="70">时间</th>
+							</tr>
+							</thead>
+							<tbody>
+							{volist name="betsLogAll" id="vo"}
+							<tr class="text-c">
+								<td>{$vo.id}</td>
+								<td>{$vo.room_id}桌{$vo.boots_number}-{$vo.ju}局</td>
+								<td>
+									{if condition="$vo.type eq 1"} 庄
+									{elseif condition="$vo.type eq 2"/}闲
+									{elseif condition="$vo.type eq 3"/}和
+									{elseif condition="$vo.type eq 4"/}庄对
+									{elseif condition="$vo.type eq 2"/}闲对
+									{/if}
+									{$vo.odds}
+								</td>
+								<td>
+									{if condition="$vo.zhuang eq 1"} <span style="color: red">庄</span>
+									{elseif condition="$vo.zhuang eq 2"/}<span style="color: blue">闲</span>
+									{elseif condition="$vo.zhuang eq 3"/}<span style="color: limegreen">和</span>
+									{/if}
+									{if condition="$vo.zhuang_dui eq 1"} 庄对{/if}
+									{if condition="$vo.xian_dui eq 1"} 闲对{/if}
+								</td>
+								<td>{$vo.win}</td>
+								<td>{in name="$vo.type" value="1,2"}{$vo.xm}{else/}0{/in}</td>
+								<td>{in name="$vo.type" value="3,4,5"}{$vo.xm}{else/}0{/in}</td>
+								<td>{$vo.time}</td>
+							</tr>
+							{/volist}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--最近战绩结束-->
+			<!--上下分记录开始-->
+			<div class="tabCon">
+				<div class="page-container">
+					<form class="form form-horizontal" id="form-soso-fen" action="/user/detail" method="get">
+						<input type="hidden"  name="current_bar" value="2" class="input-text" style="width:170px;">
+						<input type="hidden"  name="uid" value="{$user.uid}" class="input-text Wdate " style="width:170px;">
+						<div class="text-c"> 日期范围：
+							<input type="text"  id="begin_time_fen" name="begin_time_fen" class="input-text Wdate" style="width:170px;">
+							-
+							<input type="text"  id="end_time_fen" name="end_time_fen" class="input-text Wdate" style="width:170px;">
+							<button type="submit" class="btn btn-success radius" ><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+						</div>
+					</form>
+					<div class="mt-20">
+						<span class="l" style="margin-right: 20px">共有数据：<strong>{:count($moneys)}</strong> 条</span>
+
+						<table class="table table-border table-bordered table-hover table-bg table-sort-fen">
+							<thead>
+							<tr class="text-c">
+								<th width="80">ID</th>
+								<th width="90">分值</th>
+								<th width="150">渠道</th>
+								<th width="130">状态</th>
+								<th width="130">时间</th>
+							</tr>
+							</thead>
+							<tbody>
+							{volist name="moneys" id="moneys"}
+							<tr class="text-c">
+								<td>{$moneys.id}</td>
+								<td>{$moneys.money_change}</td>
+								<td>
+									{if condition="$moneys.type eq 11"}
+										{if condition="$moneys.money_type eq 0"}<span style="color: green">微信</span>
+										{elseif condition="$moneys.money_type eq 1"/} <span style="color: blue">支付宝</span>
+										{elseif condition="$moneys.money_type eq 2"/} <span style="color: black">银行卡</span>
+										{elseif condition="$moneys.money_type eq 20"/} <span style="color: purple">人工上分</span>
+										{else /}未知
+										{/if}
+									{elseif condition="$moneys.type eq 12"/}
+										{if condition="$moneys.money_type eq 0"}<span style="color: blue">支付宝</span>
+										{elseif condition="$moneys.money_type eq 1"/} <span style="color: black">银行卡</span>
+										{else /}未知
+										{/if}
+									{else/}未知
+									{/if}
+								</td>
+								<td>
+									{if condition="$moneys.state eq 0"}<span style="color: black">未处理</span>
+									{elseif condition="$moneys.state eq 1"/} <span style="color: green">已通过</span>
+									{elseif condition="$moneys.state eq 2"/} <span style="color: red" >已删除</span>
+									{/if}
+								</td>
+								<td>{$moneys.time}</td>
+							</tr>
+							{/volist}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--上下分记录结束-->
+			<!--直属下级开始-->
+			<div class="tabCon">
+				<div class="page-container">
+					<form class="form form-horizontal" id="form-soso-fan" action="/user/detail" method="get">
+						<input type="hidden"  name="current_bar" value="3" class="input-text" style="width:170px;">
+						<input type="hidden" name="uid" value="{$user.uid}" class="input-text Wdate " style="width:170px;">
+						<div class="text-c"> 日期范围：
+							<input type="text"  id="begin_time_fan" name="begin_time_fan" class="input-text Wdate" style="width:170px;">
+							-
+							<input type="text"  id="end_time_fan" name="end_time_fan" class="input-text Wdate" style="width:170px;">
+							<button type="submit" class="btn btn-success radius" ><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+						</div>
+					</form>
+					<div class="mt-20">
+						<span class="l" style="margin-right: 20px">共有数据：<strong>{:count($fans)}</strong> 条</span>
+
+						<table class="table table-border table-bordered table-hover table-bg table-sort-fan">
+							<thead>
+							<tr class="text-c">
+								<th width="80">ID</th>
+								<th width="90">昵称</th>
+								<th width="150">头像</th>
+								<th width="150">手机号</th>
+								<th width="150">余分</th>
+								<th width="130">最近上线</th>
+								<th width="130">注册时间</th>
+							</tr>
+							</thead>
+							<tbody>
+							{volist name="fans" id="fans"}
+							<tr class="text-c">
+								<td>{$fans.uid}</td>
+								<td>{$fans.name}</td>
+								<td><img style="width: 50px;height: 50px" src="{$fans.head}"/></td>
+								<td>{$fans.phone_num}</td>
+								<td>{$fans.score}</td>
+								<td>{$fans.last_time}</td>
+								<td>{$fans.reg_time}</td>
+							</tr>
+							{/volist}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--直属下级结束-->
+			<!--积分记录开始-->
+			<div class="tabCon">
+				<div class="page-container">
+					<form class="form form-horizontal" id="form-soso-inte" action="/user/detail" method="get">
+						<input type="hidden"  name="current_bar" value="4" class="input-text" style="width:170px;">
+						<input type="hidden" name="uid" value="{$user.uid}" class="input-text Wdate " style="width:170px;">
+						<div class="text-c"> 日期范围：
+							<input type="text"  id="begin_time_inte" name="begin_time_inte" class="input-text Wdate" style="width:170px;">
+							-
+							<input type="text"  id="end_time_inte" name="end_time_inte" class="input-text Wdate" style="width:170px;">
+							<button type="submit" class="btn btn-success radius" ><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+						</div>
+					</form>
+					<div class="mt-20">
+						<span class="l" style="margin-right: 20px">共有数据：<strong>{:count($integralData)}</strong> 条</span>
+
+						<table class="table table-border table-bordered table-hover table-bg table-sort-integral">
+							<thead>
+							<tr class="text-c">
+								<th width="80">ID</th>
+								<th width="150">可提积分</th>
+								<th width="150">每日积分</th>
+								<th width="150">提取积分</th>
+								<th width="150">时间</th>
+							</tr>
+							</thead>
+							<tfoot>
+							<tr>
+								<th colspan="1" style="text-align:center">总合:</th>
+								<th colspan="1" style="text-align:center"></th>
+								<th colspan="1" style="text-align:center"></th>
+								<th colspan="1" style="text-align:center"></th>
+								<th colspan="1" style="text-align:center"></th>
+							</tr>
+							</tfoot>
+							<tbody>
+							{volist name="integralData" id="integralData"}
+							<tr class="text-c">
+								<td>{$integralData.id}</td>
+								<td>{$integralData.integral_total}</td>
+								<td>{$integralData.integral}</td>
+								<td>{$integralData.integral_exchange}</td>
+								<td>{$integralData.date_time}</td>
+							</tr>
+							{/volist}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--积分记录结束-->
+			<!--团队数据开始-->
+			<div class="tabCon">
+				<div class="page-container">
+					<form class="form form-horizontal" id="form-soso-team" action="/user/detail" method="get">
+						<input type="hidden"  name="current_bar" value="5" class="input-text" style="width:170px;">
+						<input type="hidden" name="uid" value="{$user.uid}" class="input-text Wdate " style="width:170px;">
+						<div class="text-c"> 日期范围：
+							<input type="text"  id="begin_time_team" name="begin_time_team" value="{$search_time['begin_time_team']}" class="input-text Wdate" style="width:170px;">
+							-
+							<input type="text"  id="end_time_team" name="end_time_team" value="{$search_time['end_time_team']}" class="input-text Wdate" style="width:170px;">
+							<button type="submit" class="btn btn-success radius" ><i class="Hui-iconfont">&#xe665;</i> 搜 索</button>
+						</div>
+					</form>
+					<div class="mt-20">
+						<table class="table table-border table-bordered table-hover table-bg">
+							<thead>
+							<tr class="text-c">
+								<th width="80">团队庄闲输赢</th>
+								<th width="90">团队三宝输赢</th>
+								<th width="150">团队庄闲洗码</th>
+								<th width="150">团队三宝洗码</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr class="text-c">
+								<td>{$tongji['zxsy_team']}</td>
+								<td>{$tongji['sbsy_team']}</td>
+								<td>{$tongji['zxxm_team']}</td>
+								<td>{$tongji['sbxm_team']}</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--团队数据结束-->
+			<div class="tabCon">
+			</div>
+		</div>
+		<!--<div class="row cl">-->
+			<!--<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">-->
+				<!--<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存</button>-->
+				<!--<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>-->
+			<!--</div>-->
+		<!--</div>-->
+	</form>
+</div>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+
+	//四舍五入
+	function xiaoshu(fei, weis) {
+		if (weis > 0) {
+			var lengs = 10;
+			weis = weis ? weis : 2
+			for (var i = 1; i < weis; i++) {
+				lengs *= 10;
+			}
+			return (Math.round(fei * lengs)) / lengs;
+		} else {
+			return Math.round(fei);
+		}
+	}
+
+	$(function(){
+		$('.skin-minimal input').iCheck({
+			checkboxClass: 'icheckbox-blue',
+			radioClass: 'iradio-blue',
+			increaseArea: '20%'
+		});
+		$("#tab-system").Huitab({
+			index:0
+		});
+		var current_bar_id = $('#current_bar_id').val();
+		if (current_bar_id > 1){
+			$('#current_bar1').removeClass('current');
+		}
+		$('#current_bar'+current_bar_id).click();
+	});
+
+	//最近战绩
+	$(function(){
+		$('.table-sort').dataTable({
+			"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+			"bStateSave": true,//状态保存
+			"aoColumnDefs": [
+				//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+				{"orderable":false,"aTargets":[1,2,3,7]}// 制定列不参与排序
+			]
+		});
+
+	});
+	//上下分记录
+	$(function(){
+		$('.table-sort-fen').dataTable({
+			"aaSorting": [[ 0, "desc" ]],//默认第几个排序
+			"bStateSave": true,//状态保存
+			"aoColumnDefs": [
+				//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+				{"orderable":false,"aTargets":[4]}// 制定列不参与排序
+			]
+		});
+
+	});
+	//积分记录
+	$(function(){
+		$('.table-sort-integral').dataTable({
+			"aaSorting": [[ 0, "desc" ]],//默认第几个排序
+			"bStateSave": true,//状态保存
+			"aoColumnDefs": [
+				//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+				{"orderable":false,"aTargets":[4]}// 制定列不参与排序
+			],
+			"footerCallback": function (row, data, start, end, display) {
+				var api = this.api(), data;
+
+				// Remove the formatting to get integer data for summation
+				var intVal = function (i) {
+					return typeof i === 'string' ?
+					i.replace(/[\$,]/g, '') * 1 :
+							typeof i === 'number' ?
+									i : 0;
+				};
+
+				// Total over all pages
+				integral_total = api
+						.column(1, {page: 'current'})
+						.data()
+						.reduce(function (a, b) {
+							return intVal(a) + intVal(b);
+						}, 0);
+				$(api.column(1).footer()).html(xiaoshu(integral_total, 2));
+				integral = api
+						.column(2, {page: 'current'})
+						.data()
+						.reduce(function (a, b) {
+							return intVal(a) + intVal(b);
+						}, 0);
+				$(api.column(2).footer()).html(xiaoshu(integral, 2));
+				integral_exchange = api
+						.column(3, {page: 'current'})
+						.data()
+						.reduce(function (a, b) {
+							return intVal(a) + intVal(b);
+						}, 0);
+				$(api.column(3).footer()).html(xiaoshu(integral_exchange, 2));
+
+				// Total over this page
+//			pageTotal = api
+//					.column( 4, { page: 'current'} )
+//					.data()
+//					.reduce( function (a, b) {
+//						return intVal(a) + intVal(b);
+//					}, 0 );
+
+				// Update footer
+			}
+		});
+	});
+
+    //直属下级
+	$(function(){
+		$('.table-sort-fan').dataTable({
+			"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+			"bStateSave": true,//状态保存
+			"aoColumnDefs": [
+				//{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+				{"orderable":false,"aTargets":[1,2,3]}// 制定列不参与排序
+			]
+		});
+	});
+
+
+</script>
+<script  type="text/javascript">
+	//执行一个laydate实例
+	//最近战绩
+	laydate.render({
+		elem: '#begin_time_zj' //指定元素
+		,type: 'datetime'
+	});
+	laydate.render({
+		elem: '#end_time_zj' //指定元素
+		,type: 'datetime'
+	});
+	//余分流水
+	laydate.render({
+		elem: '#begin_time_fen' //指定元素
+		,type: 'datetime'
+	});
+	laydate.render({
+		elem: '#end_time_fen' //指定元素
+		,type: 'datetime'
+	});
+	//粉丝列表
+	laydate.render({
+		elem: '#begin_time_fan' //指定元素
+		,type: 'datetime'
+	});
+	laydate.render({
+		elem: '#end_time_fan' //指定元素
+		,type: 'datetime'
+	});
+	//积分列表
+	laydate.render({
+		elem: '#begin_time_inte' //指定元素
+		,type: 'datetime'
+	});
+	laydate.render({
+		elem: '#end_time_inte' //指定元素
+		,type: 'datetime'
+	});
+	//团队洗码
+	laydate.render({
+		elem: '#begin_time_team' //指定元素
+		,type: 'datetime'
+	});
+	laydate.render({
+		elem: '#end_time_team' //指定元素
+		,type: 'datetime'
+	});
+</script>
+{/block}

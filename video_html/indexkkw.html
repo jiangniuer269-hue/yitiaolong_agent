@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="referer">
+    <title>视频</title>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <style type="text/css">
+        html, body {
+            background-color: white;
+            text-align: center;
+            font-family:"Microsoft Yahei", Georgia,Serif;
+            font-size: 24px;
+        }
+        .box{
+            background-color:white;
+            width:100vw;
+            height: 100vh;
+            overflow:hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <iframe    id="videoCanvas" src="http://zb2.kkw888.live:30020/?code=zhc&desk=11&iframe#/login" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" style="width: 400px; height: 225px;"></iframe>
+    <div style="align:center "><img style="width:80%;height:500px;margin-top:90px" src="photo_xtd.jpg" ></div>
+
+</div>
+
+
+
+
+<script src="./../js/jquery.min.js"></script>
+<script src="ws4.js?t=111223324"></script>
+<script>
+//获取url请求参数
+function getQueryVariable(variable){
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+        var canvas = document.getElementById("videoCanvas");
+        var roomNumber = getQueryVariable('app');
+        canvas.src = 'http://wt.wt56789.live/xtd2/index2.html?p='+roomNumber
+        
+</script>
+</body>
+</html>

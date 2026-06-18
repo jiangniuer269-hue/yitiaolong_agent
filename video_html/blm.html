@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="referer">
+    <title>视频</title>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <style type="text/css">
+        html, body {
+            background-color: #111;
+            text-align: center;
+            font-family:"Microsoft Yahei", Georgia,Serif;
+            font-size: 24px;
+        }
+        .box{
+            background-color:#111;
+            width:100vw;
+            height: 100vh;
+            overflow:hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+  
+      <!--播放flv格式视频-->
+       <!-- <canvas v-if="canvaOrIframe==0"  @click="closeVideo" id="videoCanvas" width="1920" height="1080"></canvas>-->
+       <!--播放网页视频-->
+      <iframe    id="videoCanvas" src="http://kw.wt556677.live:30008/?code=huojian&desk=11#/login" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" style="width: 400px; height: 225px;"></iframe>
+ 
+</div>
+
+
+<script src="./../js/jquery.min.js"></script>
+<script src="NodePlayer.v3.min.js"></script>
+<script src="ws4.js?t=113322232"></script>
+</body>
+</html>

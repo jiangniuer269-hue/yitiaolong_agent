@@ -1,0 +1,182 @@
+{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 积分管理 <span class="c-gray en">&gt;</span> 积分列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-soso" action="/integral/integralDate" method="get">
+        <div class="text-c"> 日期范围：
+            <input type="text" value="{$parama['begin_time']}" id="begin_time" name="begin_time"
+                   class="input-text Wdate" style="width:170px;">
+            -
+            <input type="text" value="{$parama['end_time']}" id="end_time" name="end_time" class="input-text Wdate"
+                   style="width:170px;">
+            用户ID:
+            <input type="text" value="{$parama['userId']}" id="userId" name="userId" class="input-text" style="width:100px;">
+            数据类型：
+           <span class="select-box inline">
+                <select name="data_type" class="select" id="data_type">
+                    <option value="0">全部分类</option>
+                    <option {if condition="$parama['data_type'] eq 1"}selected="selected"{/if} value="1">真分</option>
+                    <option {if condition="$parama['data_type'] eq 2"}selected="selected"{/if} value="2">假分</option>
+                </select>
+           </span>
+            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜 索</button>
+            <button type="button" class="btn btn-success radius" id="doexcel" name="" onclick="doexcel11()"><i
+                    class="Hui-iconfont">
+                &#xe641;</i> 导出报表
+            </button>
+        </div>
+    </form>
+    <!--<div class="cl pd-5 bg-1 bk-gray mt-20">-->
+		<!--<span class="l">-->
+			<!--<a href="javascript:;" id="integral_total"  class="btn btn-danger radius">累计剩余积分：0</a>-->
+			<!--<a href="javascript:;" id="date_integral_total" class="btn btn-primary radius">累计每日积分:  0</a>-->
+            <!--<a href="javascript:;" id="exchange_integral_total" class="btn btn-primary radius">累计提取积分:  0</a>-->
+		<!--</span>-->
+    <!--</div>-->
+    <div class="mt-20">
+        <span class="l" style="margin-right: 20px">共有数据：<strong>{:count($datas)}</strong> 条</span>
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="80">ID</th>
+                <th width="90">用户ID</th>
+                <th width="90">昵称</th>
+                <th width="90">剩余积分</th>
+                <th width="90">每日积分</th>
+                <th width="90">提取积分</th>
+                <th width="130">时间</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th colspan="1" style="text-align:center">总合:</th>
+                <th colspan="1" style="text-align:center"></th>
+                <th colspan="1" style="text-align:center"></th>
+                <th colspan="1" style="text-align:center"></th>
+                <th colspan="1" style="text-align:center"></th>
+                <th colspan="1" style="text-align:center"></th>
+                <th colspan="1" style="text-align:center"></th>
+            </tr>
+            </tfoot>
+            <tbody>
+            {volist name="$datas" id="data"}
+            <tr class="text-c">
+                <td>{$data.id}</td>
+                <td>{$data.uid}</td>
+                <td><u style="cursor:pointer" class="text-primary" onclick="member_show('会员详情','/user/detail',{$data.uid},'1000','600')">{$data.name}</u></td>
+                <td>{$data.integral_total}</td>
+                <td>{$data.integral}</td>
+                <td>{$data.integral_exchange}</td>
+                <td>{$data.date_time}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+    $(function () {
+        $('.table-sort').dataTable({
+            "aaSorting": [[0, "desc"]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable": false, "aTargets": [2]}// 制定列不参与排序
+            ],
+            lengthMenu: [ //自定义分页长度
+                [30, 100, 500, 1000],
+                ['30', '100', '500', '1000']
+            ],
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(), data;
+
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '') * 1 :
+                            typeof i === 'number' ?
+                                    i : 0;
+                };
+
+                // Total over all pages
+                integral_total = api
+                        .column(3, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(3).footer()).html(xiaoshu(integral_total, 2));
+                integral_date_total = api
+                        .column(4, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(4).footer()).html(xiaoshu(integral_date_total, 2));
+                integral_exchange_total = api
+                        .column(5, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(5).footer()).html(xiaoshu(integral_exchange_total, 2));
+
+                // Total over this page
+//			pageTotal = api
+//					.column( 4, { page: 'current'} )
+//					.data()
+//					.reduce( function (a, b) {
+//						return intVal(a) + intVal(b);
+//					}, 0 );
+
+                // Update footer
+            }
+        });
+
+    });
+
+    /*下载报表*/
+    function doexcel11() {
+        var begin_time = $('#begin_time').val();
+        var end_time = $('#end_time').val();
+        var userId = $('#userId').val();
+        var data_type = $('#data_type').val();
+        var url = '/integral/doExcel?begin_time=' + begin_time + '&end_time=' + end_time + '&userId=' + userId +'&data_type='+data_type;
+        window.location.href = url;
+        return false;
+    }
+
+    //四舍五入
+    function xiaoshu(fei, weis) {
+        if (weis > 0) {
+            var lengs = 10;
+            weis = weis ? weis : 2
+            for (var i = 1; i < weis; i++) {
+                lengs *= 10;
+            }
+            return (Math.round(fei * lengs)) / lengs;
+        } else {
+            return Math.round(fei);
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#begin_time' //指定元素
+        , type: 'datetime'
+    });
+    laydate.render({
+        elem: '#end_time' //指定元素
+        , type: 'datetime'
+    });
+    /*用户-查看*/
+    function member_show(title,url,id,w,h){
+        var detail_url = url+'?uid='+id;
+        layer_show(title,detail_url,w,h);
+    }
+</script>
+{/block}

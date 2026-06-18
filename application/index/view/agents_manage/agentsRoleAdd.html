@@ -1,0 +1,147 @@
+﻿{extend name="base" /}
+{block name="content"}
+<article class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form-admin-role-add">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色名称：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="group_name" name="group_name">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色等级：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="数字越小，级别越高" id="group_level" name="group_level" oninput="value=value.replace(/[^\d]/g,'')">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">备注：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="group_desc" name="group_desc">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">角色权限：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				{volist name="menu" id="menu"}
+				{if condition="count($menu.child) gt 0" }
+				<dl class="permission-list">
+					<dt>
+						<label>
+							<input type="checkbox" value="{$menu.menu_id}" name="menu_id[]" id="user-Character-0">{$menu.menu_name}</label>
+					</dt>
+
+					<dd>
+
+
+								<dl class="cl permission-list2">
+									<dd>
+										{volist name="menu['child']" id="child" }
+											<label class="">
+												<input type="checkbox" value="{$child.menu_id}" name="menu_id[]" id="user-Character-0-0">{$child.menu_name}
+											</label>
+										{/volist}
+									</dd>
+									<!--<dd>-->
+										<!--<label class="">-->
+											<!--<input type="checkbox" value="" name="user-Character-0-0-0" id="user-Character-0-0-0">-->
+											<!--添加</label>-->
+										<!--<label class="">-->
+											<!--<input type="checkbox" value="" name="user-Character-0-0-0" id="user-Character-0-0-1">-->
+											<!--修改</label>-->
+										<!--<label class="">-->
+											<!--<input type="checkbox" value="" name="user-Character-0-0-0" id="user-Character-0-0-2">-->
+											<!--删除</label>-->
+										<!--<label class="">-->
+											<!--<input type="checkbox" value="" name="user-Character-0-0-0" id="user-Character-0-0-3">-->
+											<!--查看</label>-->
+										<!--<label class="">-->
+											<!--<input type="checkbox" value="" name="user-Character-0-0-0" id="user-Character-0-0-4">-->
+											<!--审核</label>-->
+										<!--<label class="c-orange"><input type="checkbox" value="" name="user-Character-0-0-0" id="user-Character-0-0-5"> 只能操作自己发布的</label>-->
+									<!--</dd>-->
+								</dl>
+					</dd>
+				</dl>
+				{/if}
+				{/volist}
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<button type="button" class="btn btn-success radius" id="admin-role-save"><i class="icon-ok"></i> 确定</button>
+			</div>
+		</div>
+	</form>
+</article>
+
+<!--请在下方写此页面业务相关的脚本-->
+
+<script type="text/javascript">
+$(function(){
+	$(".permission-list dt input:checkbox").click(function(){
+		$(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
+	});
+	$(".permission-list2 dd input:checkbox").click(function(){
+		var l =$(this).parent().parent().find("input:checked").length;
+		var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;
+		if($(this).prop("checked")){
+			$(this).closest("dl").find("dt input:checkbox").prop("checked",true);
+			$(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",true);
+		}
+		else{
+			if(l==0){
+				$(this).closest("dl").find("dt input:checkbox").prop("checked",false);
+			}
+			if(l2==0){
+				$(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",false);
+			}
+		}
+	});
+
+	//表单验证
+	$("#form-admin-role-add").validate({
+		rules:{
+			group_name:{
+				required:true,
+			},
+		},
+		debug:false,
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+	});
+
+	$("#admin-role-save").click(function () {
+		if ($("#form-admin-role-add").valid()){
+			var object= {
+				url:"/do/role/add",　　　　　　//form提交数据的地址
+				type:"post",　　　  //form提交的方式(method:post/get)
+				target:"returns",　　//服务器返回的响应数据显示的元素(Id)号
+				beforeSerialize:function(){}, //序列化提交数据之前的回调函数
+				beforeSubmit:function(){},　　//提交前执行的回调函数
+				success:function(returns){
+					if (returns.code == 200){
+						layer.msg(returns.msg,{icon: 1,time: 1000},function () {
+							window.parent.location.reload(); //刷新父页面
+							var index = parent.layer.getFrameIndex(window.name);
+							parent.layer.close(index);
+							return false;
+						});
+					}
+				},　　　　   //提交成功后执行的回调函数
+				error:function(){},             //提交失败执行的函数
+				dataType:"json",　　　　　　　//服务器返回数据类型
+				clearForm:true,　　　　　　 //提交成功后是否清空表单中的字段值
+				restForm:true,　　　　　　  //提交成功后是否重置表单中的字段值，即恢复到页面加载时的状态
+				timeout:6000 　　　　　 　 //设置请求时间，超过该时间后，自动退出请求，单位(毫秒)。　　
+			};
+			$("#form-admin-role-add").ajaxSubmit(object);
+		}
+	})
+
+
+});
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+{/block}

@@ -1,0 +1,251 @@
+{extend name="base" /}
+{block name="content"}
+<div class="cl pd-20" style=" background-color:#5bacb6">
+	<img class="avatar size-XL l" src="{$user.head}">
+	<dl style="margin-left:80px; color:#fff">
+		<dt>
+			<span class="f-18">{$user.name}</span>
+			<span class="pl-10 f-12">ID：{$user.uid}</span>
+			<span class="pl-10 f-12">余额：{$user.score}</span>
+			<span class="pl-10 f-12" >积分：<span id="user_integral">{$user.integral}</span></span>
+			<span class="pl-10 f-12" >积分兑换比例：<span id="user_inte_rate">{$user.inte_rate}</span></span>
+		</dt>
+	</dl>
+</div>
+<input type="hidden"  id="uid" name="uid" value="{$user.uid}" class="input-text" style="width:170px;">
+<div class="page-container">
+	<form class="form form-horizontal" id="form-article-add">
+		<div id="tab-system" class="HuiTab">
+			<div class="tabBar cl">
+				<span>手动上下积分</span>
+				<span>提前结算积分</span>
+			</div>
+			<!--手动上下积分-->
+			<div class="tabCon">
+				<div class="page-container">
+					<form class="form form-horizontal" id="form-soso" >
+						<div class="text-c">
+							<input type="text"  id="integral_exchange" name="integral_exchange" class="input-text" value="0" placeholder="" style="width:200px;float: left">
+							<span style="color: red">* 上分为正，下分为负</span>
+							<button  onclick="integral_hand()"  type="button" class="btn btn-primary radius" style="display: block;margin-top: 20px;" > 提 交</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--手动上下积分-->
+			<!--提前结算积分-->
+			<div class="tabCon">
+				<div class="page-container">
+					<form class="form form-horizontal" id="form-soso-advance" >
+						<div class="text-c">
+							<input type="hidden"  id="advance" name="advance" class="input-text" value="1">
+							<input type="text"  id="integral_advance" name="integral_advance" class="input-text" value="0" placeholder="" style="width:200px;float: left">
+							<span style="color: red">* 提前结算积分，积分比例减一</span>
+							<button  onclick="integral_adv()"  type="button" class="btn btn-primary radius" style="display: block;margin-top: 20px;"  name=""> 提 交</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--提前结算积分-->
+		</div>
+	</form>
+</div>
+
+<div class="page-container">
+	<form class="form form-horizontal" >
+		<div class="HuiTab">
+			<div class="tabBar cl">
+				<span>积分兑换比例</span>
+			</div>
+			<!--积分兑换比例-->
+				<div class="page-container">
+					<form class="form form-horizontal">
+						<div class="text-c">
+							<input type="text"  id="inte_rate" name="inte_rate" class="input-text" value="{$user.inte_rate}" placeholder="" style="width:200px;float: left">
+							<span style="color: red">* 积分x比例=人民币</span>
+							<button  onclick="integral_rate()"  type="button" class="btn btn-primary radius" style="display: block;margin-top: 20px;"  name=""> 提 交</button>
+						</div>
+					</form>
+				</div>
+			<!--积分兑换比例-->
+			<div class="tabCon">
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="page-container">
+	<form class="form form-horizontal" >
+		<div class="HuiTab">
+			<div class="tabBar cl">
+				<span>修改密码</span>
+			</div>
+			<!--修改密码-->
+			<div class="page-container">
+				<form class="form form-horizontal">
+					<div class="text-c">
+						<input type="text"  id="update_pwd" name="update_pwd" class="input-text" value="" placeholder="" style="width:200px;float: left"></br>
+						<button  onclick="update_password()"  type="button" class="btn btn-primary radius" style="display: block;margin-top: 20px;"  name=""> 提 交</button>
+					</div>
+				</form>
+			</div>
+			<!--修改密码-->
+			<div class="tabCon">
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+
+	//四舍五入
+	function xiaoshu(fei, weis) {
+		if (weis > 0) {
+			var lengs = 10;
+			weis = weis ? weis : 2
+			for (var i = 1; i < weis; i++) {
+				lengs *= 10;
+			}
+			return (Math.round(fei * lengs)) / lengs;
+		} else {
+			return Math.round(fei);
+		}
+	}
+
+	//手动上下积分
+	function integral_hand(){
+		var integral_exchange = $('#integral_exchange').val();
+		if(integral_exchange == 0){
+			layer.msg('积分不能为零',{icon:2,time:1000});
+			return;
+		}
+		$.ajax({
+			type: "POST",
+			url: "/user/integral_hand",
+			contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+			data: {
+				integral_exchange:integral_exchange,
+				uid:$("#uid").val(),
+
+			},
+			dataType: "json",
+			success: function(data){
+			  if (data.code == 200){
+                  $('#user_integral').html(data.integral);
+				  layer.msg(data.msg,{icon:1,time:1000});
+				  return;
+			  }else {
+				  layer.msg(data.msg,{icon:2,time:1000});
+				  return;
+			  }
+			},
+			error:function(e){
+				 console.log(e);
+			}
+	    })
+	}
+
+	//提前结算积分
+	function integral_adv(){
+		var integral_advance = $('#integral_advance').val();
+		if(integral_advance == 0){
+			layer.msg('积分不能为零',{icon:2,time:1000});
+			return;
+		}
+		$.ajax({
+			type: "POST",
+			url: "/user/integral_hand",
+			contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+			data: {
+				integral_exchange:integral_advance,
+				uid:$("#uid").val(),
+				advance:$('#advance').val()
+			},
+			dataType: "json",
+			success: function(data){
+				if (data.code == 200){
+					$('#user_integral').html(data.integral);
+					layer.msg(data.msg,{icon:1,time:1000});
+					return;
+				}else {
+					layer.msg(data.msg,{icon:2,time:1000});
+					return;
+				}
+			},
+			error:function(e){
+				console.log(e);
+			}
+		})
+	}
+
+	//积分兑换比例
+	function integral_rate(){
+		var inte_rate = $('#inte_rate').val();
+		$.ajax({
+			type: "POST",
+			url: "/user/inte_rate",
+			contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+			data: {
+				inte_rate:inte_rate,
+				uid:$("#uid").val()
+			},
+			dataType: "json",
+			success: function(data){
+				if (data.code == 200){
+					$('#user_inte_rate').html(data.inte_rate);
+					layer.msg(data.msg,{icon:1,time:1000});
+					return;
+				}else {
+					layer.msg(data.msg,{icon:2,time:1000});
+					return;
+				}
+			},
+			error:function(e){
+				console.log(e);
+			}
+		})
+	}
+
+	//修改密码
+	function update_password(){
+		var update_pwd = $('#update_pwd').val();
+		$.ajax({
+			type: "POST",
+			url: "/user/update_pwd",
+			contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+			data: {
+				password:update_pwd,
+				uid:$("#uid").val()
+			},
+			dataType: "json",
+			success: function(data){
+				if (data.code == 200){
+					layer.msg(data.msg,{icon:1,time:1000});
+					return;
+				}else {
+					layer.msg(data.msg,{icon:2,time:1000});
+					return;
+				}
+			},
+			error:function(e){
+				console.log(e);
+			}
+		})
+	}
+
+	$(function(){
+		$('.skin-minimal input').iCheck({
+			checkboxClass: 'icheckbox-blue',
+			radioClass: 'iradio-blue',
+			increaseArea: '20%'
+		});
+		$("#tab-system").Huitab({
+			index:0
+		});
+	});
+
+
+</script>
+
+{/block}

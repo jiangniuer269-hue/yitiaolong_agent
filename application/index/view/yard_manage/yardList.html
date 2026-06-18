@@ -1,0 +1,184 @@
+﻿{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 码粮管理 <span
+        class="c-gray en">&gt;</span> 结算列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"  href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-soso" action="/yard/list" method="get">
+        <div class="text-c"> 日期范围：
+            <input type="text" id="begin_time" name="begin_time" value="{$parama['begin_time']}" class="input-text Wdate" style="width:190px;">
+            -
+            <input type="text" id="end_time" name="end_time" value="{$parama['end_time']}" class="input-text Wdate" style="width:190px;">
+            用户ID：
+            <input type="text" id="uid" name="uid" value="{$parama['uid']}" class="input-text" style="width:190px;">
+
+            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜 索
+            </button>
+            <button type="button" class="btn btn-success radius" id="doexcel" name="" onclick="doexcel11()"><i
+            class="Hui-iconfont">&#xe641;</i> 导出报表
+            </button>
+        </div>
+    </form>
+    <!--<button type="button" class="btn btn-danger radius"  style="margin-top: 20px" onclick="check_password('验证密码','/yard/pwd',800,400)"><i-->
+            <!--class="Hui-iconfont">&#xe6b8;</i> 一键清积分-->
+    <!--</button>-->
+    <button type="button" class="btn btn-success radius"  style="margin-top: 20px;margin-left: 20px;width: 180px;height: 40px" onclick="check_password('验证密码','/yard/pwd',800,400)">
+       结算前总余分:{$sumData['score_before_all']}
+    </button>
+    <button type="button" class="btn btn-success radius"  style="margin-top: 20px;margin-left: 20px;width: 180px;height: 40px" onclick="check_password('验证密码','/yard/pwd',800,400)">
+        兑换总额度:{$sumData['exchange_score']}
+    </button>
+    <button type="button" class="btn btn-success radius"  style="margin-top: 20px;margin-left: 20px;width: 180px;height: 40px" onclick="check_password('验证密码','/yard/pwd',800,400)">
+        结算后总余分:{$sumData['score_after_all']}
+    </button>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort" id="example">
+            <thead>
+            <tr class="text-c">
+                <th width="50">序号</th>
+                <th width="100">用户ID</th>
+                <th width="90">昵称</th>
+                <th width="110">结算前余分</th>
+                <th width="110">提取的积分</th>
+                <th width="90">积分兑换比例</th>
+                <th width="90">兑换额度</th>
+                <th width="110">结算后余分</th>
+                <th width="110">结算后积分</th>
+                <th width="60">操作时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="datas" id="data"}
+            <tr class="text-c">
+                <td>{$data.id}</td>
+                <td>{$data.uid}</td>
+                <td><u style="cursor:pointer" class="text-primary" onclick="member_show('会员详情','/user/detail',{$data.uid},'1000','720')">{$data.nickname}</u></td>
+                <td>{$data.score_before}</td>
+                <td>{$data.integral_before}</td>
+                <td>{$data.integral_rate}</td>
+                <td>{$data.exchange_score}</td>
+                <td>{$data.score_after}</td>
+                <td>{$data.integral_after}</td>
+                <td>{$data.mktime||date="Y-m-d H:i:s",###}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="height:80px;padding:20px 0px;overflow: hidden">
+    {$datas->render()}
+</div>
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+    $(function () {
+
+        $('.table-sort').dataTable({
+            "aaSorting": [[0, "desc"]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable": false, "aTargets": [1]}// 制定列不参与排序
+            ],
+            "paging": false, //打开分页设置
+            "info": true,
+        });
+
+    });
+    /*用户-添加*/
+    function member_add(title, url, w, h) {
+        layer_show(title, url, w, h);
+    }
+    /*用户-查看*/
+    function member_show(title, url, id, w, h) {
+        var detail_url = url + '?uid=' + id;
+        layer_show(title, detail_url, w, h);
+    }
+    /*用户-停用*/
+    function member_stop(obj, id) {
+        layer.confirm('确认要停用吗？', function (index) {
+            $.ajax({
+                type: 'POST',
+                url: '',
+                dataType: 'json',
+                success: function (data) {
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+                    $(obj).remove();
+                    layer.msg('已停用!', {icon: 5, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+
+    /*用户-启用*/
+    function member_start(obj, id) {
+        layer.confirm('确认要启用吗？', function (index) {
+            $.ajax({
+                type: 'POST',
+                url: '',
+                dataType: 'json',
+                success: function (data) {
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+                    $(obj).remove();
+                    layer.msg('已启用!', {icon: 6, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+    /*用户-编辑*/
+    function member_edit(title, url, id, w, h) {
+        url = url +'?uid='+id;
+        layer_show(title, url, w, h);
+    }
+    /*密码-修改*/
+    function check_password(title, url, w, h) {
+        layer_show(title, url, w, h);
+    }
+    /*用户-删除*/
+    function member_del(obj, id) {
+        layer.confirm('确认要删除吗？', function (index) {
+            $.ajax({
+                type: 'POST',
+                url: '',
+                dataType: 'json',
+                success: function (data) {
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!', {icon: 1, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+</script>
+<script type="text/javascript">
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#begin_time' //指定元素
+        , type: 'datetime'
+    });
+    laydate.render({
+        elem: '#end_time' //指定元素
+        , type: 'datetime'
+    });
+
+    /*下载报表*/
+    function doexcel11() {
+        var begin_time = $('#begin_time').val();
+        var end_time = $('#end_time').val();
+        var uid = $('#uid').val();
+        var url = '/yard/doExcel?begin_time=' + begin_time + '&end_time=' + end_time + '&uid=' + uid;
+        window.location.href = url;
+        return false;
+    }
+</script>
+{/block}

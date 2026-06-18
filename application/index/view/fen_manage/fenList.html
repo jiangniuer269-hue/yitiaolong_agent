@@ -1,0 +1,172 @@
+{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 上下分管理 <span
+        class="c-gray en">&gt;</span> 上下分列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+                                               href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-soso" action="/fen/list" method="get">
+        <div class="text-c"> 日期范围：
+            <input type="text" value="{$parama['begin_time']}" id="begin_time" name="begin_time"
+                   class="input-text Wdate" style="width:170px;">
+            -
+            <input type="text" value="{$parama['end_time']}" id="end_time" name="end_time" class="input-text Wdate"
+                   style="width:170px;">
+            用户ID:
+            <input type="text" value="{$parama['userId']}" id="userId" name="userId" class="input-text"
+                   style="width:100px;">
+            数据类型：
+           <span class="select-box inline">
+                <select name="data_type_query" class="select">
+                    <option value="0">全部分类</option>
+                    {foreach name="$dataType" item="vo" key="k" }
+                    <option {if condition="$parama['data_type_query'] eq $k" }selected="selected" {
+                    /if} value="{$k}">{$vo}</option>
+                    {/foreach}
+                </select>
+           </span>
+            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜 索
+            </button>
+            <button type="button" class="btn btn-success radius" id="doexcel" name="" onclick="doexcel11()"><i
+                    class="Hui-iconfont">
+                &#xe641;</i> 导出报表
+            </button>
+        </div>
+    </form>
+
+    <button class="btn btn-primary radius" id="integral_all">积分兑换总额：<span>{$integral_all}</span></button>
+    <button class="btn btn-success radius" onclick="integral_guiling({$integral_id},{$integral_all})">清零</button>
+
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="80">ID</th>
+                <th width="90">用户ID</th>
+                <th width="90">昵称</th>
+                <th width="90">变化前</th>
+                <th width="90">分值</th>
+                <th width="90">变化后</th>
+                <th width="150">渠道</th>
+                <th width="130">状态</th>
+                <th width="130">时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="$datas" id="moneys"}
+            <tr class="text-c">
+                <td>{$moneys.id}</td>
+                <td>{$moneys.uid}</td>
+                <td><u style="cursor:pointer" class="text-primary"
+                       onclick="member_show('会员详情','/user/detail',{$moneys.uid},'1000','720')">{$moneys.name}</u></td>
+                <td>
+                    {if condition="$moneys.money_before gt 1"}
+                    {$moneys.money_before}
+                    {else/}
+                    {$moneys.money_before|substr=0,4}
+                    {/if}
+                </td>
+                <td>{$moneys.money_change}</td>
+                <td>{$moneys.money}</td>
+                <td>
+                    {if condition="$moneys.type eq 11"}
+                    {if condition="$moneys.money_type eq 0"}<span style="color: green">微信</span>
+                    {elseif condition="$moneys.money_type eq 1"/} <span style="color: blue">支付宝</span>
+                    {elseif condition="$moneys.money_type eq 2"/} <span style="color: black">银行卡</span>
+                    {elseif condition="$moneys.money_type eq 20"/} <span style="color: purple">后台上分</span>
+                    {elseif condition="$moneys.money_type eq 100"/} <span style="color: red">积分兑换</span>
+                    {else /}未知
+                    {/if}
+                    {elseif condition="$moneys.type eq 12"/}
+                    {if condition="$moneys.money_type eq 0"}<span style="color: blue">支付宝</span>
+                    {elseif condition="$moneys.money_type eq 1"/} <span style="color: black">银行卡</span>
+                    {else /}未知
+                    {/if}
+                    {else/}未知
+                    {/if}
+                </td>
+                <td>
+                    {if condition="$moneys.state eq 0"}<span style="color: black">未处理</span>
+                    {elseif condition="$moneys.state eq 1"/} <span style="color: green">已通过</span>
+                    {elseif condition="$moneys.state eq 2"/} <span style="color: red">已删除</span>
+                    {/if}
+                </td>
+                <td>{$moneys.time}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="height:80px;padding:20px 0px;overflow: hidden">
+    {$datas->render()}
+</div>
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+    $(function () {
+        $('.table-sort').dataTable({
+            "ordering": false,
+            "aaSorting": [[8, "desc"]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable": false, "aTargets": [0, 1, 2, 3, 4, 5, 6, 7, 8]}// 制定列不参与排序
+            ],
+            "paging": false, //打开分页设置
+            "info": true,
+        });
+
+    });
+
+    /*下载报表*/
+    function doexcel11() {
+        var begin_time = $('#begin_time').val();
+        var end_time = $('#end_time').val();
+        var userId = $('#userId').val();
+        var url = '/fen/doExcel?begin_time=' + begin_time + '&end_time=' + end_time + '&userId=' + userId;
+        window.location.href = url;
+        return false;
+    }
+
+    /*用户-查看*/
+    function member_show(title, url, id, w, h) {
+        var detail_url = url + '?uid=' + id;
+        layer_show(title, detail_url, w, h);
+    }
+
+    //积分清零
+    function integral_guiling(id, integral_all) {
+        layer.confirm('确认要清零吗？', function (index) {
+            $.ajax({
+                type: 'GET',
+                url: '/fen/integral_guiling?id=' + id + '&integral_all=' + integral_all,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.code == 200) {
+                        $('#integral_all').find('span').html(0);
+                        layer.msg('已清零!', {icon: 1, time: 1000});
+                        return false;
+                    } else {
+                        layer.msg('清零失败，请重新操作', {icon: 2, time: 2000});
+                        return false;
+                    }
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+</script>
+<script type="text/javascript">
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#begin_time' //指定元素
+        , type: 'datetime'
+    });
+    laydate.render({
+        elem: '#end_time' //指定元素
+        , type: 'datetime'
+    });
+</script>
+{/block}

@@ -1,0 +1,104 @@
+{extend name="base" /}
+{block name="content"}
+<article class="page-container">
+	<form class="form form-horizontal" id="form-admin-add">
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户昵称：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<input type="text" class="input-text" value=""  placeholder="昵称" id="name" name="name">
+		</div>
+	</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>登录账号：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$account['username']}" placeholder="账号"  id="username" name="username">
+			</div>
+		</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>初始密码：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<input type="text" class="input-text" autocomplete="off" value="{$account['password']}" placeholder="密码" id="password" name="password">
+		</div>
+	</div>
+
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3">备注：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<textarea name="user_desc" cols="" rows="" class="textarea"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="$.Huitextarealength(this,100)"></textarea>
+			<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+		</div>
+	</div>
+	<div class="row cl">
+		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+			<input class="btn btn-primary radius" type="button"  id ="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+		</div>
+	</div>
+	</form>
+</article>
+
+<!--请在下方写此页面业务相关的脚本-->
+
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-admin-add").validate({
+		rules:{
+			name:{
+				required:true,
+			},
+			username:{
+				required:true,
+			},
+			password:{
+				required:true,
+			},
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid"
+	});
+
+	$("#button").click(function () {
+		if ($("#form-admin-add").valid()){
+			var object= {
+				url:"/do/user/add",　　　　　　//form提交数据的地址
+				type:"post",　　　  //form提交的方式(method:post/get)
+				target:"returns",　　//服务器返回的响应数据显示的元素(Id)号
+				beforeSerialize:function(){}, //序列化提交数据之前的回调函数
+				beforeSubmit:function(){},　　//提交前执行的回调函数
+				success:function(returns){
+					if (returns.code == 200){
+						layer.msg(returns.msg,{icon: 1,time: 1000},function () {
+							window.parent.location.reload(); //刷新父页面
+							var index = parent.layer.getFrameIndex(window.name);
+							parent.layer.close(index);
+							return false;
+						});
+					}else if(returns.code == 500){
+						layer.msg(returns.msg,{icon: 2,time: 1000},function () {
+							window.parent.location.reload(); //刷新父页面
+							var index = parent.layer.getFrameIndex(window.name);
+							parent.layer.close(index);
+							return false;
+						});
+					}
+				},　　　　   //提交成功后执行的回调函数
+				error:function(){},             //提交失败执行的函数
+				dataType:"json",　　　　　　　//服务器返回数据类型
+				clearForm:true,　　　　　　 //提交成功后是否清空表单中的字段值
+				restForm:true,　　　　　　  //提交成功后是否重置表单中的字段值，即恢复到页面加载时的状态
+				timeout:6000 　　　　　 　 //设置请求时间，超过该时间后，自动退出请求，单位(毫秒)。　　
+			};
+			$("#form-admin-add").ajaxSubmit(object);
+		}
+	})
+});
+
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+{/block}

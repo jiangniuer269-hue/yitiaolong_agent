@@ -1,0 +1,108 @@
+{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 积分管理 <span class="c-gray en">&gt;</span> 积分列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-soso" action="/integral/integralLog" method="get">
+        <div class="text-c"> 日期范围：
+            <input type="text" value="{$parama['begin_time']}" id="begin_time" name="begin_time"
+                   class="input-text Wdate" style="width:170px;">
+            -
+            <input type="text" value="{$parama['end_time']}" id="end_time" name="end_time" class="input-text Wdate"
+                   style="width:170px;">
+            用户ID:
+            <input type="text" value="{$parama['userId']}" id="userId" name="userId" class="input-text" style="width:100px;">
+            数据类型：
+           <span class="select-box inline">
+                <select name="data_type" class="select">
+                    <option value="0">全部分类</option>
+                    <option {if condition="$parama['data_type'] eq 1"}selected="selected"{/if} value="1">增加积分</option>
+                    <option {if condition="$parama['data_type'] eq 2"}selected="selected"{/if} value="2">提取积分</option>
+                </select>
+           </span>
+            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜 索
+            </button>
+            <!--<button type="button" class="btn btn-success radius" id="doexcel" name="" onclick="doexcel11()"><i-->
+                    <!--class="Hui-iconfont">-->
+                <!--&#xe641;</i> 导出报表-->
+            <!--</button>-->
+        </div>
+    </form>
+    <div class="mt-20">
+        <span class="l" style="margin-right: 20px">共有数据：<strong>{:count($datas)}</strong> 条</span>
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="80">ID</th>
+                <th width="90">用户ID</th>
+                <th width="90">昵称</th>
+                <th width="90">下注金额</th>
+                <th width="90">兑换比例</th>
+                <th width="90">产生的积分</th>
+                <th width="130">牌局ID</th>
+                <th width="130">时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="$datas" id="data"}
+            <tr class="text-c">
+                <td>{$data.id}</td>
+                <td>{$data.uid}</td>
+                <td><u style="cursor:pointer" class="text-primary" onclick="member_show('会员详情','/user/detail',{$data.uid},'1000','600')">{$data.name}</u></td>
+                <td>{$data.score}</td>
+                <td>{$data.inte_rate}</td>
+                <td>{$data.integral}</td>
+                <td>{$data.card_game_id}</td>
+                <td>{$data.mktime|date="Y-m-d H:i:s",###}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="height:80px;padding:20px 0px;overflow: hidden">
+    {$datas->render()}
+</div>
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+    $(function () {
+        $('.table-sort').dataTable({
+            "aaSorting": [[0, "desc"]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable": false, "aTargets": [2]}// 制定列不参与排序
+            ],
+            "paging": false, //打开分页设置
+            "info": true,
+        });
+
+    });
+
+    /*下载报表*/
+    function doexcel11() {
+        var begin_time = $('#begin_time').val();
+        var end_time = $('#end_time').val();
+        var userId = $('#userId').val();
+        var url = '/integralDate/doExcel?begin_time=' + begin_time + '&end_time=' + end_time + '&userId=' + userId;
+        window.location.href = url;
+        return false;
+    }
+
+</script>
+<script type="text/javascript">
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#begin_time' //指定元素
+        , type: 'datetime'
+    });
+    laydate.render({
+        elem: '#end_time' //指定元素
+        , type: 'datetime'
+    });
+    /*用户-查看*/
+    function member_show(title,url,id,w,h){
+        var detail_url = url+'?uid='+id;
+        layer_show(title,detail_url,w,h);
+    }
+</script>
+{/block}

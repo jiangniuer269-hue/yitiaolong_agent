@@ -1,0 +1,233 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
+<meta name='apple-mobile-web-app-capable' content='yes' />
+<meta name='full-screen' content='true' />
+<meta name='screen-orientation' content='portrait' />
+<meta name='x5-fullscreen' content='true' />
+<meta name='360-fullscreen' content='true' />
+<title>二维码</title>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<script type="text/javascript">
+    var imInfo = {};
+    var playid = localStorage.getItem("playid");
+        $(function () {
+            var url = "{$url}";
+            url = url.replace(/&amp;/, "&");
+            console.log(url);
+            $('#code').qrcode(url);
+            let canvas = $('#code canvas').get(0);
+            $('.xiazai').click(()=>{
+                let href = canvas.toDataURL() // 获取canvas对应的base64编码
+                let a = document.createElement('a') // 创建a标签
+                a.download = "游戏二维码" // 设置图片名字
+                a.href = href
+                a.dispatchEvent(new MouseEvent('click'))
+            })
+
+            $(".clickme").click(()=>{
+                $(".imchatwrapper").show();
+                if(!$("iframe").attr("src")){
+                    $.ajax({
+                    type: "POST",
+                    url: "/v1/qrcode/im_login_auth",
+                    data: {
+                        playid:playid
+                    },
+                    dataType: "json",
+                    success: function(res){
+                        imInfo = res.data;
+                        imInfo.imdomain = res.imdomain;
+                        imInfo.playid = res.playid;
+                        imInfo.toid = res.toid;
+                        localStorage.setItem('playid',imInfo.playid);
+                        $("iframe").attr("src",()=>{
+                            return imInfo.imdomain+"?"+Object.keys(imInfo).map((key)=> {
+                                // body...
+                                return encodeURIComponent(key) + "=" + encodeURIComponent(imInfo[key]);
+                            }).join("&")+'/#/gm_messages/messageChat/'+imInfo.channelId
+                        })
+                    }
+                });
+                }
+            })
+            $(".imchatwrapper").click((e)=>{
+                if(e.target.className == "imchatwrapper"){
+                    $(".imchatwrapper").hide();
+                }
+            })
+        })
+</script>
+</head>
+
+<body>
+    <div  class="imchatwrapper">
+        <div class="imchat">
+          <iframe  width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
+        </div>
+      </div>
+
+    <div id="main">
+        <div class="demo">
+        <p>请保存图片使用浏览器或者微信打开进入游戏。</p>
+        <div id="code"></div>
+        <div class="contact"><span class="clickme">联系客服</span></div>    
+        </div>
+</body>
+<style>
+    .contact{
+        text-align: center;
+        font-size: 24px;
+        margin-top: 20px;
+    }
+    .contact span{
+        background-color: #6397EC;
+        color: #fff;
+        width: 100px;
+        margin: 0 auto;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 10px;
+        border: 1px solid #D3DEED;
+        border-radius: 4px;
+        padding: 5px 20px;
+    }
+    .demo p{
+        line-height: 50px;
+        font-size: 16px;
+        text-align: center;
+    }
+    .imchatwrapper {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background: none;
+    border-top: 1px solid #ccc;
+    z-index: 1;
+    display: none;
+}
+.imchat {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 80%;
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+}
+    #code canvas{
+        position: relative;
+        left:50%;
+        margin-left: -125px;
+    }
+    /* 
+html5doctor.com Reset Stylesheet
+v1.4.1 
+2010-03-01
+Author: Richard Clark - http://richclarkdesign.com
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    box-sizing:border-box;
+}
+body {
+    line-height:1;
+}
+
+:focus {
+    outline: 1;
+}
+
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary { 
+    display:block;
+}
+
+ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted #000;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+</style>
+</html>

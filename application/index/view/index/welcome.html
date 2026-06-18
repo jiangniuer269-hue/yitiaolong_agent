@@ -1,0 +1,342 @@
+﻿{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i>我的桌面 <span class="c-gray en">&gt;</span> 数据中心 <span
+        class="c-gray en">&gt;</span> 自营报表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+                                              href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-soso" action="/index/welcome" method="get">
+        <div class="text-c"> 日期范围：
+            <input type="text" id="begin_time" name="begin_time" value="{$parama['begin_time']}"
+                   class="input-text Wdate" style="width:180px;">
+            -
+            <input type="text" id="end_time" name="end_time" value="{$parama['end_time']}" class="input-text Wdate"
+                   style="width:180px;">
+            <!--<input type="text" class="input-text" style="width:250px" placeholder="输入会员ID" id="soso" name="soso">-->
+            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索
+            </button>
+            <button type="button" class="btn btn-success radius" id="doexcel" name="" onclick="doexcel11()"><i
+                    class="Hui-iconfont">
+                &#xe641;</i> 导出报表
+            </button>
+        </div>
+    </form>
+
+    <div class="mt-20">
+        <span class="l" style="margin-right: 20px">共有数据：<strong>{:count($tongji)}</strong> 条</span>
+
+        <table class="table table-border table-bordered table-hover table-bg table-sort" id="example">
+            <thead>
+            <tr class="text-c">
+                <th width="70">ID</th>
+                <th width="270">时间</th>
+                <th width="120">台面本金</th>
+                <th width="130">台面筹码</th>
+                <th width="130">尾数盈亏</th>
+                <th width="130">三宝盈亏</th>
+                <th width="130">对冲盈亏</th>
+                <th width="130">代理总赢</th>
+                <th width="130">庄闲洗码</th>
+                <th width="120">三宝洗码</th>
+                <th width="120">客户盈亏</th>
+                <th width="100">总上分</th>
+                <th width="100">总下分</th>
+                <th width="100">用户总余额</th>
+                <!--<th width="100">用户总初始分</th>-->
+                <!--<th width="100">机器人总余额</th>-->
+                <!--<th width="100">游客总余额</th>-->
+                <th width="50">操作</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th colspan="1" style="text-align:right">总合:</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </tfoot>
+            <tbody>
+            {volist name="tongji" id="tongji"}
+            <tr class="text-c">
+                <td>{$tongji.id}</td>
+                <td>{$tongji.mktime}</td>
+                <td>{$tongji.tmbj}</td>
+                <td>{$tongji.tmcm}</td>
+                <td>{$tongji.wsyk}</td>
+                <td>{$tongji.sbyk}</td>
+                <td>{$tongji.dcyk}</td>
+                <td>{$tongji.dlzy}</td>
+                <td>{$tongji.zxxm}</td>
+                <td>{$tongji.sbxm}</td>
+                <td>{$tongji.khyk}</td>
+                <td>{$tongji.upfen_all}</td>
+                <td>{$tongji.dowfen_all}</td>
+                <td>{$tongji.score_all}</td>
+                <!--<td>{$tongji.score_old_all}</td>-->
+                <!--<td>{$tongji.ai_score_all}</td>-->
+                <!--<td>{$tongji.tourist_score_all}</td>-->
+                <td class="td-manage">
+                    <a title="删除" href="javascript:;" onclick="member_del(this,{$tongji.id})" class="ml-5"
+                       style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+
+    //四舍五入
+    function xiaoshu(fei, weis) {
+        if (weis > 0) {
+            var lengs = 10;
+            weis = weis ? weis : 2
+            for (var i = 1; i < weis; i++) {
+                lengs *= 10;
+            }
+            return (Math.round(fei * lengs)) / lengs;
+        } else {
+            return Math.round(fei);
+        }
+    }
+
+    $(function () {
+        $('.table-sort').dataTable({
+            "aaSorting": [[0, "desc"]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable": false, "aTargets": [14]}// 制定列不参与排序
+            ],
+            lengthMenu: [ //自定义分页长度
+                [7, 30, 60, 100],
+                ['7', '30', '60', '100']
+            ],
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(), data;
+
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '') * 1 :
+                            typeof i === 'number' ?
+                                    i : 0;
+                };
+
+                // Total over all pages
+                tmbj_total = api
+                        .column(2, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(2).footer()).html(xiaoshu(tmbj_total, 2));
+                tmcm_total = api
+                        .column(3, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(3).footer()).html(xiaoshu(tmcm_total, 2));
+                wsyk_total = api
+                        .column(4, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(4).footer()).html(xiaoshu(wsyk_total, 2));
+                sbyk_total = api
+                        .column(5, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(5).footer()).html(xiaoshu(sbyk_total, 2));
+
+                dcyk_total = api
+                        .column(6, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(6).footer()).html(xiaoshu(dcyk_total, 2));
+
+                dlzy_total = api
+                        .column(7, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(7).footer()).html(xiaoshu(dlzy_total, 2));
+
+                zxxm_total = api
+                        .column(8, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(8).footer()).html(xiaoshu(zxxm_total, 2));
+
+                sbxm_total = api
+                        .column(9, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(9).footer()).html(xiaoshu(sbxm_total, 2));
+
+                khyk_total = api
+                        .column(10, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(10).footer()).html(xiaoshu(khyk_total, 2));
+
+                upfen_total = api
+                        .column(11, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(11).footer()).html(xiaoshu(upfen_total, 2));
+
+                dowfen_total = api
+                        .column(12, {page: 'current'})
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                $(api.column(12).footer()).html(xiaoshu(dowfen_total, 2));
+
+                // Total over this page
+//			pageTotal = api
+//					.column( 4, { page: 'current'} )
+//					.data()
+//					.reduce( function (a, b) {
+//						return intVal(a) + intVal(b);
+//					}, 0 );
+
+                // Update footer
+            }
+        });
+
+    });
+
+    /*用户-添加*/
+    function member_add(title, url, w, h) {
+        layer_show(title, url, w, h);
+    }
+
+    /*用户-查看*/
+    function member_show(title, url, id, w, h) {
+        var detail_url = url + '?uid=' + id;
+        layer_show(title, detail_url, w, h);
+    }
+
+    /*用户-停用*/
+    function member_stop(obj, id) {
+        layer.confirm('确认要停用吗？', function (index) {
+            $.ajax({
+                type: 'POST',
+                url: '',
+                dataType: 'json',
+                success: function (data) {
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+                    $(obj).remove();
+                    layer.msg('已停用!', {icon: 5, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+
+    /*用户-启用*/
+    function member_start(obj, id) {
+        layer.confirm('确认要启用吗？', function (index) {
+            $.ajax({
+                type: 'POST',
+                url: '',
+                dataType: 'json',
+                success: function (data) {
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+                    $(obj).remove();
+                    layer.msg('已启用!', {icon: 6, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+
+    /*用户-编辑*/
+    function member_edit(title, url, id, w, h) {
+        layer_show(title, url, w, h);
+    }
+
+    /*密码-修改*/
+    function change_password(title, url, id, w, h) {
+        layer_show(title, url, w, h);
+    }
+
+    /*用户-删除*/
+    function member_del(obj, id) {
+        var url = '/index/deleted_zy_tongji?id=' + id;
+        layer.confirm('确认要删除吗？', function (index) {
+            $.ajax({
+                type: 'get',
+                url: url,
+                dataType: 'json',
+                success: function (data) {
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!', {icon: 1, time: 1000});
+                },
+                error: function (data) {
+                    console.log(data.msg);
+                },
+            });
+        });
+    }
+
+    /*下载报表*/
+    function doexcel11() {
+        var begin_time = $('#begin_time').val();
+        var end_time = $('#end_time').val();
+        var url = '/index/doExcel?begin_time=' + begin_time + '&end_time=' + end_time;
+        window.location.href = url;
+        return false;
+    }
+
+</script>
+<script type="text/javascript">
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#begin_time' //指定元素
+        , type: 'datetime'
+    });
+    laydate.render({
+        elem: '#end_time' //指定元素
+        , type: 'datetime'
+    });
+</script>
+{/block}

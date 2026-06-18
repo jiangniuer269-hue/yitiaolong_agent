@@ -1,0 +1,102 @@
+{extend name="base" /}
+{block name="content"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span
+        class="c-gray en">&gt;</span> 牌局密码设置 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+                                              href="javascript:location.replace(location.href);" title="刷新"><i
+        class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="pd-20">
+        <form class="Huiform" id="systemform" method="post">
+            <table class="table table-border table-bordered table-bg">
+                <thead>
+                <tr>
+                    <th colspan="2">牌局密码设置</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr>-->
+                <!--<th class="text-r" width="30%">旧密码：</th>-->
+                <!--<td>-->
+                <!--<input name="oldpassword" id="oldpassword" class="input-text" type="password" autocomplete="off" placeholder="密码" tabindex="1" datatype="*6-16" nullmsg="请输入旧密码！" errormsg="4~16个字符，区分大小写！">-->
+                <!--</td>-->
+                <!--</tr>-->
+                <tr>
+                    <th class="text-r">新密码：</th>
+                    <td><input name="newpassword" id="newpassword" class="input-text" type="password" autocomplete="off"
+                               placeholder="设置密码" tabindex="2" datatype="*6-16" nullmsg="请输入您的新密码！"
+                               errormsg="4~16个字符，区分大小写！">
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-r">再次输入新密码：</th>
+                    <td><input name="newpassword2" id="newpassword2" class="input-text" type="password"
+                               autocomplete="off" placeholder="确认新密码" tabindex="3" datatype="*" recheck="newpassword"
+                               nullmsg="请再输入一次新密码！" errormsg="您两次输入的新密码不一致！">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <button type="button" class="btn btn-success radius" id="system-password-save"
+                                name="system-password-save"><i class="icon-ok"></i> 确定
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //表单验证
+    $("#systemform").validate({
+        rules: {
+//      oldpassword:{
+//        required:true,
+//      },
+            newpassword: {
+                required: true,
+            },
+            newpassword2: {
+                required: true,
+                equalTo: "#newpassword"
+            }
+        },
+        debug: true,
+        onkeyup: false,
+        focusCleanup: true,
+        success: "valid",
+    });
+
+    $("#system-password-save").click(function () {
+        if ($("#systemform").valid()) {
+            var object = {
+                url: "/system/updateGamePwd",　　　　　　//form提交数据的地址
+                type: "post",　　　  //form提交的方式(method:post/get)
+                target: "returns",　　//服务器返回的响应数据显示的元素(Id)号
+                beforeSerialize: function () {
+                }, //序列化提交数据之前的回调函数
+                beforeSubmit: function () {
+                },　　//提交前执行的回调函数
+                success: function (returns) {
+                    if (returns.code == 200) {
+                        layer.msg(returns.msg, {icon: 1, time: 1000});
+                        return false;
+                    } else {
+                        layer.msg(returns.msg, {icon: 2, time: 1000});
+                        return false;
+                    }
+                },　　　　   //提交成功后执行的回调函数
+                error: function () {
+                },             //提交失败执行的函数
+                dataType: "json",　　　　　　　//服务器返回数据类型
+                clearForm: true,　　　　　　 //提交成功后是否清空表单中的字段值
+                restForm: true,　　　　　　  //提交成功后是否重置表单中的字段值，即恢复到页面加载时的状态
+                timeout: 6000 　　　　　 　 //设置请求时间，超过该时间后，自动退出请求，单位(毫秒)。　　
+            };
+            $("#systemform").ajaxSubmit(object);
+        }
+    })
+</script>
+{/block}
