@@ -121,7 +121,7 @@ class RobotBets
         }elseif ($tid == 569){
             $WSURL = 'ws://'.$_SERVER['REMOTE_ADDR'].':9654';
         }elseif ($tid == 563){
-            $WSURL = 'ws://47.100.28.255:9605';
+            $WSURL = 'ws://47.109.25.25:7808';
         }elseif ($tid == 492){
             $WSURL = 'ws://'.$_SERVER['REMOTE_ADDR'].':9602';
         }elseif ($tid == 5678){
@@ -269,7 +269,7 @@ class RobotBets
      * @function 9605执行机器人下注
      */
     public function todorobot9605() {
-        $data = json_decode(file_get_contents('http://47.100.28.255:9205/v1/robotBets/doRobots?tid=563&room_id=25'));
+        $data = json_decode(file_get_contents('http://47.86.246.4:7899/v1/robotBets/doRobots?tid=563&room_id=25'));
         echo $data->msg;
         echo PHP_EOL;
         echo '9605-success';exit();
