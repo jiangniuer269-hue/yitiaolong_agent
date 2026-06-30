@@ -585,10 +585,10 @@ class UserManage
             $agents_id = $loginData['data']['agents_id'];
             $tid = $loginData['data']['tid'];
         }
-        $agent = Agents::where('agents_id', $agents_id)->field('auth_type,agents_id,agent_type')->find();
+       /* $agent = Agents::where('agents_id', $agents_id)->field('auth_type,agents_id,agent_type')->find();
         if (!($agent['agent_type'] == 2 || $agent['agent_type'] == 3)) {
             return ['code' => 500, 'msg' => '没有操作权限'] ;
-        }
+        }*/
         $request = Request::instance();
         $agents_id = common::changeAgentId($agents_id);
         $name = $request->post('name');
