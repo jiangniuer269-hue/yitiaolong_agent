@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: tei
- * Date: 2020/1/14
- * Time: 12:45 AM
- */
-
 namespace app\index\controller;
 
 use app\index\model\TeamRoom;

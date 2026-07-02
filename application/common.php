@@ -927,7 +927,7 @@ echo $resp ['Body'];
      * @function 端口对应的tid
      */
     public static function GetPortTid(){
-        return  ['7192'=>191,'7899'=>563];
+        return  ['7192'=>191,'7899'=>563,'7293'=>802];
     }
     
 
