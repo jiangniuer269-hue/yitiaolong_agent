@@ -36,7 +36,7 @@ class RoomManage
                         $sql->where('id',$agent['group_id']);
                     }
                   
-                  $teamRoom =  $sql->order('room_sort', 'asc')->select();
+                  $teamRoom =  $sql->order('room_sort', 'desc')->select();
                  /*   foreach ($teamRoom as $key=>$temp){
                         if (strpos($temp['video_link'], 'blm') !== false) {
                             $teamRoom[$key]['video_link'] = '';
