@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tei
- * Date: 2020/10/5
- * Time: 10:12 PM
- */
+
 
 namespace app\index\controller;
 

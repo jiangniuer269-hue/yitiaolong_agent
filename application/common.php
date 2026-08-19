@@ -806,10 +806,10 @@ class common
      */
     public static function moveOss($object, $content)
     {
-        $accessKeyId = 'LTAI5tQpyMk78F4MP1uRjyxi';
-        $accessKeySecret = 'VNp2ZNO7NB5KVV1nvNFkmtIcSlU0uJ';
-        $endpoint = 'oss-cn-beijing.aliyuncs.com';
-        $bucket = 'shangshui-image-168';
+        $accessKeyId = 'LTAI5tE7wWZZZrWfJUFeUeMY';
+        $accessKeySecret = 'FPRSVDZXQtNDtRUFCDizh4tVwZzOEC';
+        $endpoint = 'oss-cn-qingdao.aliyuncs.com';
+        $bucket = 'hahaimage';
         $options = array(
             //可以参看https://help.aliyun.com/document_detail/31859.html?spm=a2c4g.11186623.2.10.481e2b72ggLS4F#concept-lkf-swy-5db
             OssClient::OSS_CONTENT_TYPE => 'image/jpg',  // 简单的举例使用 要根据实际的图片类型 可以看下MimeTypes::getMimetype()里的
