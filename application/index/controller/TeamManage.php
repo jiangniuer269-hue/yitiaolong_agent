@@ -287,9 +287,10 @@ class TeamManage
         if (!empty($data)) {
             $domainData =  Domain::whereIn('type',[10,16])->field('id,domain,type,status,note')->select();
             if (!empty($domainData)) {
-                $return_data['wsData']['wsDataArr']=$domainData;
+               
                 foreach ($domainData as $domainDataItem) {  
-                    if ($domainDataItem['type'] == 10) {                
+                    if ($domainDataItem['type'] == 10) {         
+                        $return_data['wsData']['wsDataArr'][]=$domainDataItem;
                         if ($domainDataItem['status'] == 1) {
                             $return_data['wsData']['currentWsId'] = $domainDataItem['id'];
                         }                            
