@@ -1,0 +1,1 @@
+游戏授权站点 其中login.php中redirect_uri和appid写死的,部署需要更改
