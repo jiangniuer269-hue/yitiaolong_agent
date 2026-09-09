@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Agentsistrator
- * Date: 2018/12/2
- * Time: 15:12
- */
-
 namespace app\index\controller;
 
 use app\index\common;
