@@ -3538,6 +3538,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -3573,11 +3574,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       checked: true
     };
   },
-  watch: {
-    "ruleForm2.account": {
-      handler() {}
-    }
-  },
+  watch: {},
   created() {
     /* getQunTitle().then(response => {
        console.log('data111',response);
@@ -3628,9 +3625,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
         return;
       }
+      var account = $("#account").val();
+      if (account == "") {
+        this.$message({
+          message: '请输入账号!',
+          type: 'error'
+        });
+        return;
+      }
       if (this.ruleForm2.checkPass == "") {
         this.$message({
           message: '请输入密码',
+          type: 'error'
+        });
+        return;
+      }
+      var pwd = $("#pwd").val();
+      if (pwd == "") {
+        this.$message({
+          message: '请输入密码!',
           type: 'error'
         });
         return;
@@ -3642,7 +3655,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         password: __WEBPACK_IMPORTED_MODULE_1__utils_encrypto__["a" /* default */].encryptfunc(this.ruleForm2.checkPass, 'changlong@#$%qwe', 'jz,nvkwpqpo2-')
       };
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_8" /* requestEmployeeLogin */])(loginParams).then(data => {
-        console.log('data', data);
+        console.log('data1222', data);
         this.logining = false;
         if (data.code !== 200) {
           this.$message({
@@ -52223,16 +52236,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "inset": "0px"
     }
   }, [_c('div', {
-    staticClass: "boxClass"
-  }, [_c('el-form', {
-    ref: "ruleForm2",
-    staticClass: "demo-ruleForm login-container",
-    attrs: {
-      "model": _vm.ruleForm2,
-      "rules": _vm.rules2,
-      "label-position": "left",
-      "label-width": "0px"
-    }
+    staticClass: "demo-ruleForm login-container"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -52243,6 +52247,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "accountClass",
     attrs: {
       "name": "account",
+      "id": "account",
       "type": "text",
       "placeholder": "请输入账号",
       "auto-complete": "off"
@@ -52267,6 +52272,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "name": "pwd",
       "type": "password",
+      "id": "pwd",
       "placeholder": "请输入密码",
       "auto-complete": "off"
     },
@@ -52286,7 +52292,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return _vm.handleSubmit2()
       }
     }
-  })])], 1)])
+  })])])
 },staticRenderFns: []}
 
 /***/ }),
