@@ -930,6 +930,37 @@ echo $resp ['Body'];
         return  ['7192'=>191,'7899'=>563,'7293'=>802];
     }
     
+    /**
+     * @param $data
+     * @param $key
+     * @param $iv
+     * @return false|string
+     */
+    public static function decrypt($data, $key, $iv)
+    {
+        $data = base64_decode($data);
+        $key = md5($key);
+        $iv = substr(md5($iv), 0, 8);        //取前8位
+        
+        $decrypted = openssl_decrypt($data, 'des-ede3-cbc', $key, OPENSSL_RAW_DATA, $iv);
+        return $decrypted;
+    }
+    
+    /**
+     * @param $str
+     * @param $key
+     * @param $iv
+     * @return string
+     */
+    public static function encrypt($str, $key, $iv)
+    {
+        $key = md5($key);
+        $iv = substr(md5($iv), 0, 8);        //取前8位
+        
+        $data = base64_encode(openssl_encrypt($str, 'des-ede3-cbc', $key, OPENSSL_RAW_DATA, $iv));
+        return $data;
+    }
+    
 
 
 

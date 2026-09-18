@@ -146,7 +146,10 @@ class Login extends Controller
         if (empty($account) || empty($password)) {
             return ['code' => 500, 'msg' => '参数错误'];
         }
-     
+        $username_dec =  common::decrypt($account, 'bqoksdjf#$&190ajf', 'nfjdsj29i#$');
+        $account = substr($username_dec,1,strlen($username_dec)-2);
+        $password_dec =  common::decrypt($password, 'changlong@#$%qwe', 'jz,nvkwpqpo2-');
+        $password = substr($password_dec,1,strlen($password_dec)-2);
         $agents = Agents::getByAccount($account);
         if (!empty($agents)) {
             $real_ip = empty($_SERVER['HTTP_X_REAL_IP']) ? $request->ip() : $_SERVER['HTTP_X_REAL_IP'];
