@@ -1,0 +1,5 @@
+C:\Users\Administrator>npm -v
+6.14.16
+
+C:\Users\Administrator>node -v
+v12.22.12

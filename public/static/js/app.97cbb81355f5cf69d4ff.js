@@ -12,7 +12,7 @@ webpackJsonp([1],[
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_modules_es_promise_js__ = __webpack_require__(840);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_modules_es_promise_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_core_js_modules_es_promise_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(1332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(1331);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_qs__ = __webpack_require__(1212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_qs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_qs__);
@@ -55,9 +55,8 @@ __WEBPACK_IMPORTED_MODULE_1_axios___default.a.interceptors.response.use(response
   }
 });
 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-
-//let base = 'http://27.124.44.146:9208/v1';
-let base = 'v1';
+let base = 'http://47.86.246.4:7192/v1/';
+//let base = 'v1';
 //取消此局回调验证
 const cancelGame = params => {
   return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(`${base}/game/cancelGame`, params).then(res => res.data);
@@ -341,6 +340,11 @@ const getDanXmListPage = params => {
   return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(`${base}/bet/danXm`, params).then(res => res.data);
 };
 /* harmony export (immutable) */ __webpack_exports__["C"] = getDanXmListPage;
+
+const getDanXmDataListPage = params => {
+  return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(`${base}/bet/danXmData`, params).then(res => res.data);
+};
+/* unused harmony export getDanXmDataListPage */
 
 
 //会员上线下
@@ -931,15 +935,15 @@ module.exports = __webpack_require__.p + "static/img/red2.8935d23.png";
 
 
 /* styles */
-__webpack_require__(1154)
+__webpack_require__(1152)
 
 var Component = __webpack_require__(5)(
   /* script */
   __webpack_require__(730),
   /* template */
-  __webpack_require__(1285),
+  __webpack_require__(1282),
   /* scopeId */
-  "data-v-16e5c9aa",
+  "data-v-162e76c3",
   /* cssModules */
   null
 )
@@ -1225,7 +1229,7 @@ class IMClient {
       start: () => {
         this.heartCheckObj = setInterval(() => {
           if (this.conn && this.conn.readyState === 1) {
-            this.conn.send('{"cmd":5}');
+            this.conn.send('{"cmd":7002}');
           }
         }, this.heartChecknterval);
       },
@@ -1507,6 +1511,12 @@ class IMClient {
         if (this.handleClearGroupMsg) {
           this.handleClearGroupMsg(message);
         }
+        break;
+      case 7002:
+        if (this.handleDjs) {
+          this.handleDjs(message);
+        }
+        break;
     }
   }
   bindCancalGame(callback) {
@@ -1629,6 +1639,9 @@ class IMClient {
   }
   bindClearGroupMsg(callback) {
     this.handleClearGroupMsg = callback;
+  }
+  bindDjs(callback) {
+    this.handleDjs = callback;
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = IMClient;
@@ -1955,15 +1968,15 @@ module.exports = __webpack_require__.p + "static/img/zhuang.03743f9.png";
 
 
 /* styles */
-__webpack_require__(1182)
+__webpack_require__(1159)
 
 var Component = __webpack_require__(5)(
   /* script */
   __webpack_require__(733),
   /* template */
-  __webpack_require__(1313),
+  __webpack_require__(1289),
   /* scopeId */
-  "data-v-7c918000",
+  "data-v-2ee09187",
   /* cssModules */
   null
 )
@@ -2223,15 +2236,15 @@ jQuery.extend({
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(1230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(1229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui__ = __webpack_require__(1331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui__ = __webpack_require__(1330);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_element_ui__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_chalk_index_css__ = __webpack_require__(1143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_chalk_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_chalk_index_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__assets_theme_style_scss__ = __webpack_require__(1145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__assets_theme_style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__assets_theme_style_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_router__ = __webpack_require__(1326);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_router__ = __webpack_require__(1325);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store__ = __webpack_require__(780);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__routes__ = __webpack_require__(777);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_font_awesome_css_font_awesome_min_css__ = __webpack_require__(1144);
@@ -3280,7 +3293,7 @@ window.$ = window.jQuery = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a;
       // }else{
       // 	wsUrl = localStorage.getItem("wsurl");
       // }
-      const imClient = new __WEBPACK_IMPORTED_MODULE_4__client_im_client__["a" /* IMClient */](wsUrl, 5 * 1000);
+      const imClient = new __WEBPACK_IMPORTED_MODULE_4__client_im_client__["a" /* IMClient */](wsUrl, 1000);
       this.$store.dispatch('setIMClient', imClient);
       imClient.connect(() => {
         imClient.send(JSON.stringify({
@@ -3505,6 +3518,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 //import { QRCanvas } from 'qrcanvas-vue';
@@ -3585,46 +3606,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     handleSubmit2(ev) {
       //this.deleteCookie();
       var _this = this;
-      this.$refs.ruleForm2.validate(valid => {
-        if (valid) {
-          this.logining = true;
-          var loginParams = {
-            account: this.ruleForm2.account,
-            password: this.ruleForm2.checkPass
-          };
-          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_9" /* requestEmployeeLogin */])(loginParams).then(data => {
-            console.log('data', data);
-            this.logining = false;
-            if (data.code !== 200) {
-              this.$message({
-                message: data.msg,
-                type: 'error'
-              });
-            } else {
-              localStorage.setItem('end_time_near', data.data.end_time_near);
-              localStorage.setItem('head_domain', data.data.head_domain);
-              sessionStorage.setItem('user', JSON.stringify(data.data));
-              sessionStorage.setItem('setOtherLoginFlag', 0);
-              this.$message({
-                message: data.msg,
-                type: 'success'
-              });
-              if (data.data.agent_type == 0) {
-                this.$router.push({
-                  path: '/menu_member'
-                });
-              } else if (data.data.agent_type == 2 || data.data.agent_type == 3) {
-                this.$router.push({
-                  path: '/room-controller'
-                });
-              }
-            }
+      // this.$refs.ruleForm2.validate((valid) => {
+      //  if (valid) {
+      if (this.ruleForm2.account == "") {
+        this.$message({
+          message: '请输入账号',
+          type: 'error'
+        });
+        return;
+      }
+      if (this.ruleForm2.checkPass == "") {
+        this.$message({
+          message: '请输入密码',
+          type: 'error'
+        });
+        return;
+      }
+      this.logining = true;
+      var loginParams = {
+        account: this.ruleForm2.account,
+        password: this.ruleForm2.checkPass
+      };
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__api_api__["_9" /* requestEmployeeLogin */])(loginParams).then(data => {
+        console.log('data', data);
+        this.logining = false;
+        if (data.code !== 200) {
+          this.$message({
+            message: data.msg,
+            type: 'error'
           });
         } else {
-          console.log('error submit!!');
-          return false;
+          localStorage.setItem('end_time_near', data.data.end_time_near);
+          localStorage.setItem('head_domain', data.data.head_domain);
+          sessionStorage.setItem('user', JSON.stringify(data.data));
+          sessionStorage.setItem('setOtherLoginFlag', 0);
+          this.$message({
+            message: data.msg,
+            type: 'success'
+          });
+          if (data.data.agent_type == 0) {
+            this.$router.push({
+              path: '/menu_member'
+            });
+          } else if (data.data.agent_type == 2 || data.data.agent_type == 3) {
+            this.$router.push({
+              path: '/room-controller'
+            });
+          }
         }
       });
+      /*} else {
+        console.log('error submit!!');
+        return false;
+      }
+      });*/
     }
   }
 });
@@ -4201,7 +4236,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_js_plugin__ = __webpack_require__(206);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_relation__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_relation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_relation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__memberListscomp__ = __webpack_require__(1257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__memberListscomp__ = __webpack_require__(1256);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__memberListscomp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__memberListscomp__);
 //
 //
@@ -5365,7 +5400,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_api__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_relation__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_relation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_relation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__memberWincomp__ = __webpack_require__(1260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__memberWincomp__ = __webpack_require__(1259);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__memberWincomp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__memberWincomp__);
 //
 //
@@ -7200,16 +7235,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__client_im_client__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_xgrid__ = __webpack_require__(537);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_xgrid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_xgrid__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_winscroll__ = __webpack_require__(1232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_winscroll__ = __webpack_require__(1231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_winscroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_winscroll__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_api__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__static_js_NodePlayer_v3_min__ = __webpack_require__(1330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__static_js_NodePlayer_v3_min__ = __webpack_require__(1329);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__static_js_NodePlayer_v3_min___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__static_js_NodePlayer_v3_min__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_ue_vue__ = __webpack_require__(1231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_ue_vue__ = __webpack_require__(1230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_ue_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_ue_vue__);
 //
 //
@@ -8645,7 +8680,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       resultXyVisible: false,
       updateXueJuVisible: false,
       daojishi_second: 0,
+      //倒计时变化秒数
       daojishi_counttime: 0,
+      //倒计时总秒杀数
       daojishiIntval: false,
       gameControllerLock: false,
       buLudanLock: false,
@@ -9088,6 +9125,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       },
       player: "",
       rooms: [],
+      roomsDjs: [],
+      //房间倒计时信息
       currentRoom: 0,
       ludan: {
         data: {},
@@ -9138,10 +9177,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           "createtime": 0,
           "groupid": 0,
           "room_info": {
-            "odds_last_time": 1583854918,
+            "odds_last_time": 0,
             "room_id": 0,
             "boots_number": 0,
-            "admin_id": 1,
+            "admin_id": 0,
             "card_game_id": 0,
             "ju": 0,
             "counttime": 0,
@@ -9151,16 +9190,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           "msg_id": 0,
           "group": {
             "video_link": "",
-            "admin_id": 1,
-            "groupid": 71,
+            "admin_id": 0,
+            "groupid": 0,
             "headimgurl": "",
-            "xstate": 1,
+            "xstate": 0,
             "admin_headimg": "",
-            "admin_name": "71桌管理员71",
+            "admin_name": "",
             "game_type": 0,
             "state": 0,
-            "groupname": "百家乐•V1号桌",
-            "mark": "V1"
+            "groupname": "",
+            "mark": ""
           }
         },
         paidian: {
@@ -9604,7 +9643,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     //修改靴局
     updateXueJu() {
-      console.log('this.paiControll.roomInfo.room_info.room_status', this.paiControll.roomInfo.room_info);
+      // console.log('this.paiControll.roomInfo.room_info.room_status',this.paiControll.roomInfo.room_info);
       if (this.paiControll.roomInfo.room_info.room_status != 0 && this.paiControll.roomInfo.room_info.room_status != -1) {
         this.$message({
           message: '开局中，禁止操作',
@@ -10562,14 +10601,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           //更改当前房间信息
           this.currentGroup = JSON.parse(JSON.stringify(this.$store.getters.groups[i]));
           //获取倒计时
-          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__api_api__["g" /* roomConfig */])({
-            groupid: this.currentGroup.group.groupid
-          }).then(res => {
-            if (res.code == 200) {
-              this.daojishi_second = res.data.list.counttime;
-              this.daojishi_counttime = res.data.list.counttime;
-            }
-          });
+          /* roomConfig({ groupid: this.currentGroup.group.groupid })
+           .then(res => {
+             if (res.code == 200) {          
+               this.daojishi_second = res.data.list.counttime;
+               this.daojishi_counttime = res.data.list.counttime;
+             } 
+           })*/
           // console.log("当前房间信息",this.currentGroup);
           // this.daojishi_second =   this.currentGroup.counttime
           this.isFirstGetHis = true;
@@ -10903,6 +10941,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           this.desktops = {};
           this.videopower = {};
           for (var i = 0; i < this.rooms.length; i++) {
+            this.roomsDjs['group' + this.rooms[i].groupid] = this.rooms[i];
             if (this.rooms[i].desktop) {
               this.desktops[this.rooms[i].groupid] = 1;
             } else {
@@ -10914,7 +10953,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               this.videopower[this.rooms[i].groupid] = 0; //kaiqi
             }
           }
-
+          console.log('this.roomsthis.rooms', this.roomsDjs);
           /* this.hasGroupinit = setInterval(() => {
              if (this.$store.getters.groups.length) {
                clearInterval(this.hasGroupinit);
@@ -10995,11 +11034,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$store.getters.imClient.bindDaojishiSecond(this.onDaojishiSecond); //倒计时
       this.$store.getters.imClient.bindBuLudan(this.onBuLudan); //快捷补路单
       this.$store.getters.imClient.bindCancalGame(this.onCancalGame); //取消此局
+      this.$store.getters.imClient.bindDjs(this.onDjs); //房间倒计时
+    },
+    onDaojishiSecond(data) {
+      if (data.groupid == this.currentGroup.groupid) {
+        if (data.cmd == 3087) {
+          this.daojishi_second = data.room_info.counttime;
+        }
+        this.$store.getters.imClient.heartCheckUtil.start();
+        /*  clearInterval(this.daojishiIntval);
+          this.daojishiIntval =  setInterval(() => {
+                this.daojishi_second--;
+                if(this.daojishi_second <=0 || this.paiControll.roomInfo.room_info.room_status == 0 || this.paiControll.roomInfo.room_info.room_status == 2 || this.paiControll.roomInfo.room_info.room_status == -1 ){
+                  clearInterval(this.daojishiIntval);
+                  this.daojishiIntval = false;
+                  this.daojishi_second = this.daojishi_counttime;
+                }
+             }, 1000);*/
+      }
+    },
+    //倒计时
+    onDjs(data) {
+      if (data) {
+        var counttime = data.counttime;
+        var closeHeartCheckUtil = true;
+        for (var key in counttime) {
+          this.roomsDjs['group' + key] && (this.roomsDjs['group' + key].counttime = counttime[key]);
+          if (counttime[key] > 0) {
+            closeHeartCheckUtil = false;
+          }
+        }
+        if (this.roomsDjs['group' + this.currentGroup.groupid].counttime > 0) {
+          this.daojishi_second = this.roomsDjs['group' + this.currentGroup.groupid].counttime;
+        } else {
+          this.daojishi_second = this.daojishi_counttime;
+        }
+        if (closeHeartCheckUtil) {
+          this.$store.getters.imClient.heartCheckUtil.stop();
+        }
+        this.$forceUpdate();
+        // console.log('counttimecounttimecounttimecounttime',this.roomsDjs)
+      }
     },
     onRoomInfo(data) {
       if (data.groupid == this.currentGroup.groupid) {
         this.paiControll.roomInfo = data;
-        this.onDaojishiSecond(data);
+        this.daojishi_counttime = data.group.counttime;
+        this.daojishi_second = data.group.counttime;
+        //console.log("onRoomInfoonRoomInfo",data);
+        // this.onDaojishiSecond(data);
       }
     },
     onShowHistory(data) {
@@ -11052,22 +11135,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.loadChatText = "消息加载成功";
         setTimeout(() => {
           this.loadChatText = "";
-        }, 1000);
-      }
-    },
-    onDaojishiSecond(data) {
-      if (data.groupid == this.currentGroup.groupid) {
-        if (data.cmd == 3087) {
-          this.daojishi_second = data.room_info.counttime;
-        }
-        clearInterval(this.daojishiIntval);
-        this.daojishiIntval = setInterval(() => {
-          this.daojishi_second--;
-          if (this.daojishi_second <= 0 || this.paiControll.roomInfo.room_info.room_status == 0 || this.paiControll.roomInfo.room_info.room_status == 2 || this.paiControll.roomInfo.room_info.room_status == -1) {
-            clearInterval(this.daojishiIntval);
-            this.daojishiIntval = false;
-            this.daojishi_second = this.daojishi_counttime;
-          }
         }, 1000);
       }
     },
@@ -25837,6 +25904,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 //import NProgress from 'nprogress'
@@ -25857,6 +25961,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         end_time: null,
         agents_account: null
       },
+      detailSearchParam: {
+        begin_time: null,
+        end_time: null,
+        uid: ''
+      },
       dcs: [],
       dc: [],
       tableHeight: "500",
@@ -25866,8 +25975,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       tsdetails: [],
       listLoading: false,
       listDetailLoading: false,
+      detailLoading: false,
       detailVisible: false,
       pagination: {
+        current: 1,
+        size: 50,
+        total: 0
+      },
+      detailFilters: {
+        user: '',
+        begin_time: null,
+        end_time: null
+      },
+      detailSearchParam: {
+        begin_time: null,
+        end_time: null,
+        uid: ''
+      },
+      detailPagination: {
         current: 1,
         size: 50,
         total: 0
@@ -25875,6 +26000,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   methods: {
+    getDetail() {
+      let para = {
+        uid: this.detailSearchParam.uid,
+        begin_time: this.detailSearchParam.begin_time == null ? "" : __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.detailSearchParam.begin_time).format("YYYY-MM-DD HH:mm:ss"),
+        end_time: this.detailSearchParam.end_time == null ? "" : __WEBPACK_IMPORTED_MODULE_2_moment___default()(this.detailSearchParam.end_time).format("YYYY-MM-DD HH:mm:ss"),
+        pageNumber: this.detailPagination.current,
+        pageSize: this.detailPagination.size,
+        doSearchDetail: 1
+      };
+      this.detailLoading = true;
+      //NProgress.start();
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__api_api__["C" /* getDanXmListPage */])(para).then(res => {
+        if (res.code == 200) {
+          this.detailLoading = false;
+          this.detaillogs = res.data;
+          this.detailPagination.total = this.detaillogs.length;
+        } else {
+          this.$message({
+            message: res.msg,
+            type: 'info'
+          });
+          return;
+        }
+      }).catch(res => {
+        this.$message({
+          message: res.msg,
+          type: 'error'
+        });
+        return;
+      });
+    },
     //导出报表
     exportExcel() {
       this.$nextTick(() => {
@@ -25933,13 +26089,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.searchParam = this.filters;
       this.getTsLists();
     },
-    handleSizeChange(val) {
-      this.pagination.size = val;
-      this.getTLists();
+    handleDetail(row) {
+      // console.log('rowrow',row);
+      this.detailVisible = true;
+      this.detailPagination.current = 1;
+      this.detailFilters.user = row;
+      if (this.searchParam.begin_time) {
+        this.detailSearchParam.begin_time = this.searchParam.begin_time;
+      } else {
+        this.detailSearchParam.begin_time = row.begin_time;
+      }
+      if (this.searchParam.end_time) {
+        this.detailSearchParam.end_time = this.searchParam.end_time;
+      } else {
+        this.detailSearchParam.end_time = row.end_time;
+      }
+      this.detailSearchParam.uid = row.uid;
+      this.getDetail();
     },
-    handleCurrentChange(val) {
-      this.pagination.current = val;
-      this.getTLists();
+    handleSizeChangeDetail(val) {
+      this.detailPagination.size = val;
+      this.getDetail();
+    },
+    handleCurrentChangeDetail(val) {
+      this.detailPagination.current = val;
+      this.getDetail();
     },
     getTLists() {
       this.dc = [];
@@ -25951,6 +26125,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (this.dc.length) {
         this.dc.push(this.plugin.columnFilterFunc(this.dc, "agents_account"));
       }
+    },
+    handleSizeChange(val) {
+      this.pagination.size = val;
+      this.getTLists();
+    },
+    handleCurrentChange(val) {
+      this.pagination.current = val;
+      this.getTLists();
     },
     getLowerList(row) {
       if (!row) {
@@ -26999,90 +27181,90 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Login_vue__ = __webpack_require__(1235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Login_vue__ = __webpack_require__(1234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_Login_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_404_vue__ = __webpack_require__(1233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_404_vue__ = __webpack_require__(1232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_404_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_404_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Home_vue__ = __webpack_require__(1234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Home_vue__ = __webpack_require__(1233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_Home_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_js_util__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_pages_memberLists_vue__ = __webpack_require__(1256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_pages_memberLists_vue__ = __webpack_require__(1255);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_pages_memberLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_pages_memberLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_pages_gameLists_vue__ = __webpack_require__(1250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_pages_gameLists_vue__ = __webpack_require__(1249);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_pages_gameLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_pages_gameLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_pages_userScoreLog_vue__ = __webpack_require__(1272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_pages_userScoreLog_vue__ = __webpack_require__(1271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_pages_userScoreLog_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__views_pages_userScoreLog_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_pages_fenLists_vue__ = __webpack_require__(1249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_pages_fenLists_vue__ = __webpack_require__(1248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_pages_fenLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__views_pages_fenLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_pages_betLists_vue__ = __webpack_require__(1242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_pages_betLists_vue__ = __webpack_require__(1241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_pages_betLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__views_pages_betLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_pages_agentsWin_vue__ = __webpack_require__(1239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_pages_agentsWin_vue__ = __webpack_require__(1238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_pages_agentsWin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__views_pages_agentsWin_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__views_pages_AgentsIntegral_vue__ = __webpack_require__(1237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__views_pages_AgentsIntegral_vue__ = __webpack_require__(1236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__views_pages_AgentsIntegral_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__views_pages_AgentsIntegral_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__views_pages_memberWin_vue__ = __webpack_require__(1259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__views_pages_memberWin_vue__ = __webpack_require__(1258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__views_pages_memberWin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__views_pages_memberWin_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__views_pages_zhuangts_vue__ = __webpack_require__(1275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__views_pages_zhuangts_vue__ = __webpack_require__(1274);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__views_pages_zhuangts_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__views_pages_zhuangts_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__views_pages_xmLog_vue__ = __webpack_require__(1273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__views_pages_xmLog_vue__ = __webpack_require__(1272);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__views_pages_xmLog_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__views_pages_xmLog_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__views_pages_memberOnline_vue__ = __webpack_require__(1258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__views_pages_memberOnline_vue__ = __webpack_require__(1257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__views_pages_memberOnline_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__views_pages_memberOnline_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__views_pages_hongbao_vue__ = __webpack_require__(1252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__views_pages_hongbao_vue__ = __webpack_require__(1251);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__views_pages_hongbao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__views_pages_hongbao_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__views_pages_hongbaoy_vue__ = __webpack_require__(1254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__views_pages_hongbaoy_vue__ = __webpack_require__(1253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__views_pages_hongbaoy_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__views_pages_hongbaoy_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__views_pages_hongbaohis_vue__ = __webpack_require__(1253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__views_pages_hongbaohis_vue__ = __webpack_require__(1252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__views_pages_hongbaohis_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__views_pages_hongbaohis_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__views_pages_agentshare_vue__ = __webpack_require__(1240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__views_pages_agentshare_vue__ = __webpack_require__(1239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__views_pages_agentshare_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__views_pages_agentshare_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__views_pages_agentLists_vue__ = __webpack_require__(1238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__views_pages_agentLists_vue__ = __webpack_require__(1237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__views_pages_agentLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__views_pages_agentLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__views_pages_gamePwd_vue__ = __webpack_require__(1251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__views_pages_gamePwd_vue__ = __webpack_require__(1250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__views_pages_gamePwd_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__views_pages_gamePwd_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__views_pages_operationLog_vue__ = __webpack_require__(1264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__views_pages_operationLog_vue__ = __webpack_require__(1263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__views_pages_operationLog_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21__views_pages_operationLog_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__views_pages_domain_vue__ = __webpack_require__(1246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__views_pages_domain_vue__ = __webpack_require__(1245);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__views_pages_domain_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22__views_pages_domain_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__views_pages_domains_vue__ = __webpack_require__(1247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__views_pages_domains_vue__ = __webpack_require__(1246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__views_pages_domains_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23__views_pages_domains_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__views_pages_boss_vue__ = __webpack_require__(1243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__views_pages_boss_vue__ = __webpack_require__(1242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__views_pages_boss_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_24__views_pages_boss_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__views_pages_scoreLog_vue__ = __webpack_require__(1269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__views_pages_scoreLog_vue__ = __webpack_require__(1268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__views_pages_scoreLog_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_25__views_pages_scoreLog_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__views_pages_agentsscorelog_vue__ = __webpack_require__(1241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__views_pages_agentsscorelog_vue__ = __webpack_require__(1240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__views_pages_agentsscorelog_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26__views_pages_agentsscorelog_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__views_pages_myInfo_vue__ = __webpack_require__(1261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__views_pages_myInfo_vue__ = __webpack_require__(1260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__views_pages_myInfo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__views_pages_myInfo_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__views_pages_changeMyPwd_vue__ = __webpack_require__(1244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__views_pages_changeMyPwd_vue__ = __webpack_require__(1243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__views_pages_changeMyPwd_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28__views_pages_changeMyPwd_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__views_pages_operateLists_vue__ = __webpack_require__(1262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__views_pages_operateLists_vue__ = __webpack_require__(1261);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__views_pages_operateLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29__views_pages_operateLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__views_pages_operateListsTotal_vue__ = __webpack_require__(1263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__views_pages_operateListsTotal_vue__ = __webpack_require__(1262);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__views_pages_operateListsTotal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_30__views_pages_operateListsTotal_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__views_pages_pointLists_vue__ = __webpack_require__(1266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__views_pages_pointLists_vue__ = __webpack_require__(1265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__views_pages_pointLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_31__views_pages_pointLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__views_pages_pointFlow_vue__ = __webpack_require__(1265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__views_pages_pointFlow_vue__ = __webpack_require__(1264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__views_pages_pointFlow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_32__views_pages_pointFlow_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__views_pages_roleLists_vue__ = __webpack_require__(1267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__views_pages_roleLists_vue__ = __webpack_require__(1266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__views_pages_roleLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_33__views_pages_roleLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__views_pages_socreLists_vue__ = __webpack_require__(1271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__views_pages_socreLists_vue__ = __webpack_require__(1270);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__views_pages_socreLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_34__views_pages_socreLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__views_grid_vue__ = __webpack_require__(1236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__views_grid_vue__ = __webpack_require__(1235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__views_grid_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_35__views_grid_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__views_pages_roomLists_vue__ = __webpack_require__(1268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__views_pages_roomLists_vue__ = __webpack_require__(1267);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__views_pages_roomLists_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36__views_pages_roomLists_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__views_pages_employee_vue__ = __webpack_require__(1248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__views_pages_employee_vue__ = __webpack_require__(1247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__views_pages_employee_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_37__views_pages_employee_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__views_pages_integral_vue__ = __webpack_require__(1255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__views_pages_integral_vue__ = __webpack_require__(1254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__views_pages_integral_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_38__views_pages_integral_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__views_pages_ziying_vue__ = __webpack_require__(1276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__views_pages_ziying_vue__ = __webpack_require__(1275);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__views_pages_ziying_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_39__views_pages_ziying_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__views_pages_controller_vue__ = __webpack_require__(1245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__views_pages_controller_vue__ = __webpack_require__(1244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__views_pages_controller_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_40__views_pages_controller_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__views_pages_yard_vue__ = __webpack_require__(1274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__views_pages_yard_vue__ = __webpack_require__(1273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__views_pages_yard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_41__views_pages_yard_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__views_pages_settlement_vue__ = __webpack_require__(1270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__views_pages_settlement_vue__ = __webpack_require__(1269);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__views_pages_settlement_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_42__views_pages_settlement_vue__);
 
 
@@ -27477,7 +27659,7 @@ const getters = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(1328);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(1327);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mutations__ = __webpack_require__(781);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions__ = __webpack_require__(778);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__getters__ = __webpack_require__(779);
@@ -28617,7 +28799,23 @@ module.exports = __webpack_require__.p + "static/img/zjhl.68f02bb.png";
 /* 1229 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/img/logo.e734e6c.png";
+
+/* styles */
+__webpack_require__(1154)
+
+var Component = __webpack_require__(5)(
+  /* script */
+  __webpack_require__(729),
+  /* template */
+  __webpack_require__(1284),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
 
 /***/ }),
 /* 1230 */
@@ -28625,13 +28823,13 @@ module.exports = __webpack_require__.p + "static/img/logo.e734e6c.png";
 
 
 /* styles */
-__webpack_require__(1148)
+__webpack_require__(1183)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(729),
+  __webpack_require__(731),
   /* template */
-  __webpack_require__(1279),
+  __webpack_require__(1313),
   /* scopeId */
   null,
   /* cssModules */
@@ -28647,15 +28845,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1186)
+__webpack_require__(1191)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(731),
+  __webpack_require__(732),
   /* template */
-  __webpack_require__(1317),
+  __webpack_require__(1321),
   /* scopeId */
-  null,
+  "data-v-c7b01d1c",
   /* cssModules */
   null
 )
@@ -28673,11 +28871,11 @@ __webpack_require__(1184)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(732),
+  null,
   /* template */
-  __webpack_require__(1315),
+  __webpack_require__(1314),
   /* scopeId */
-  "data-v-9b4a092a",
+  "data-v-7bf7a285",
   /* cssModules */
   null
 )
@@ -28691,15 +28889,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1151)
+__webpack_require__(1194)
 
 var Component = __webpack_require__(5)(
   /* script */
-  null,
+  __webpack_require__(734),
   /* template */
-  __webpack_require__(1282),
+  __webpack_require__(1324),
   /* scopeId */
-  "data-v-09b1cba8",
+  "data-v-ed314ffc",
   /* cssModules */
   null
 )
@@ -28713,15 +28911,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1160)
+__webpack_require__(1186)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(734),
+  __webpack_require__(735),
   /* template */
-  __webpack_require__(1291),
+  __webpack_require__(1316),
   /* scopeId */
-  "data-v-1fb2558a",
+  "data-v-7d2ee254",
   /* cssModules */
   null
 )
@@ -28735,15 +28933,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1167)
+__webpack_require__(1187)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(735),
+  __webpack_require__(736),
   /* template */
-  __webpack_require__(1298),
+  __webpack_require__(1317),
   /* scopeId */
-  "data-v-3298b8bd",
+  "data-v-9506026e",
   /* cssModules */
   null
 )
@@ -28757,15 +28955,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1157)
+__webpack_require__(1190)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(736),
+  __webpack_require__(737),
   /* template */
-  __webpack_require__(1288),
+  __webpack_require__(1320),
   /* scopeId */
-  "data-v-1c3c7c02",
+  "data-v-c4dc84b0",
   /* cssModules */
   null
 )
@@ -28779,15 +28977,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1191)
+__webpack_require__(1164)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(737),
+  __webpack_require__(738),
   /* template */
-  __webpack_require__(1322),
+  __webpack_require__(1294),
   /* scopeId */
-  "data-v-e4ecae3e",
+  "data-v-3e10d984",
   /* cssModules */
   null
 )
@@ -28801,15 +28999,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1170)
+__webpack_require__(1165)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(738),
+  __webpack_require__(739),
   /* template */
-  __webpack_require__(1301),
+  __webpack_require__(1295),
   /* scopeId */
-  "data-v-369002f7",
+  "data-v-426886b0",
   /* cssModules */
   null
 )
@@ -28823,15 +29021,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1155)
+__webpack_require__(1171)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(739),
+  __webpack_require__(740),
   /* template */
-  __webpack_require__(1286),
+  __webpack_require__(1301),
   /* scopeId */
-  "data-v-1ad28852",
+  "data-v-53242aa8",
   /* cssModules */
   null
 )
@@ -28845,15 +29043,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1185)
+__webpack_require__(1168)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(740),
+  __webpack_require__(741),
   /* template */
-  __webpack_require__(1316),
+  __webpack_require__(1298),
   /* scopeId */
-  "data-v-ae86cb3e",
+  "data-v-4cc0efa4",
   /* cssModules */
   null
 )
@@ -28867,15 +29065,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1180)
+__webpack_require__(1147)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(741),
+  __webpack_require__(742),
   /* template */
-  __webpack_require__(1311),
+  __webpack_require__(1277),
   /* scopeId */
-  "data-v-6cd11932",
+  "data-v-08f7a4b2",
   /* cssModules */
   null
 )
@@ -28889,15 +29087,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1159)
+__webpack_require__(1153)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(742),
+  __webpack_require__(743),
   /* template */
-  __webpack_require__(1290),
+  __webpack_require__(1283),
   /* scopeId */
-  "data-v-1f2aaeab",
+  "data-v-1e66551b",
   /* cssModules */
   null
 )
@@ -28911,15 +29109,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1179)
+__webpack_require__(1161)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(743),
+  __webpack_require__(744),
   /* template */
-  __webpack_require__(1310),
+  __webpack_require__(1291),
   /* scopeId */
-  "data-v-6c174394",
+  "data-v-362887e3",
   /* cssModules */
   null
 )
@@ -28933,15 +29131,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1190)
+__webpack_require__(1162)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(744),
+  __webpack_require__(745),
   /* template */
-  __webpack_require__(1321),
+  __webpack_require__(1292),
   /* scopeId */
-  "data-v-d8c3e16c",
+  "data-v-3840756c",
   /* cssModules */
   null
 )
@@ -28955,15 +29153,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1171)
+__webpack_require__(1166)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(745),
+  __webpack_require__(746),
   /* template */
-  __webpack_require__(1302),
+  __webpack_require__(1296),
   /* scopeId */
-  "data-v-39783503",
+  "data-v-435e5d72",
   /* cssModules */
   null
 )
@@ -28977,15 +29175,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1165)
+__webpack_require__(1158)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(746),
+  __webpack_require__(747),
   /* template */
-  __webpack_require__(1296),
+  __webpack_require__(1288),
   /* scopeId */
-  "data-v-2ee4dcaa",
+  "data-v-2c18f1f1",
   /* cssModules */
   null
 )
@@ -28999,15 +29197,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1163)
+__webpack_require__(1150)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(747),
+  __webpack_require__(748),
   /* template */
-  __webpack_require__(1294),
+  __webpack_require__(1280),
   /* scopeId */
-  "data-v-2cd044d8",
+  "data-v-10e8bcdc",
   /* cssModules */
   null
 )
@@ -29021,15 +29219,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1162)
+__webpack_require__(1179)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(748),
+  __webpack_require__(749),
   /* template */
-  __webpack_require__(1293),
+  __webpack_require__(1309),
   /* scopeId */
-  "data-v-271bc6d5",
+  "data-v-6e059374",
   /* cssModules */
   null
 )
@@ -29043,15 +29241,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1193)
+__webpack_require__(1175)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(749),
+  __webpack_require__(750),
   /* template */
-  __webpack_require__(1324),
+  __webpack_require__(1305),
   /* scopeId */
-  "data-v-f78ec526",
+  "data-v-5e9e9005",
   /* cssModules */
   null
 )
@@ -29065,15 +29263,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1152)
+__webpack_require__(1151)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(750),
+  __webpack_require__(751),
   /* template */
-  __webpack_require__(1283),
+  __webpack_require__(1281),
   /* scopeId */
-  "data-v-0eccc52c",
+  "data-v-125401ad",
   /* cssModules */
   null
 )
@@ -29087,15 +29285,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1153)
+__webpack_require__(1149)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(751),
+  __webpack_require__(752),
   /* template */
-  __webpack_require__(1284),
+  __webpack_require__(1279),
   /* scopeId */
-  "data-v-130b5494",
+  "data-v-0af7875c",
   /* cssModules */
   null
 )
@@ -29109,15 +29307,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1149)
+__webpack_require__(1180)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(752),
+  __webpack_require__(753),
   /* template */
-  __webpack_require__(1280),
+  __webpack_require__(1310),
   /* scopeId */
-  "data-v-0988e18e",
+  "data-v-6fa2dda0",
   /* cssModules */
   null
 )
@@ -29131,15 +29329,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1158)
+__webpack_require__(1174)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(753),
+  __webpack_require__(754),
   /* template */
-  __webpack_require__(1289),
+  __webpack_require__(1304),
   /* scopeId */
-  "data-v-1dc700e9",
+  "data-v-5a037c17",
   /* cssModules */
   null
 )
@@ -29153,15 +29351,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1181)
+__webpack_require__(1177)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(754),
+  __webpack_require__(755),
   /* template */
-  __webpack_require__(1312),
+  __webpack_require__(1307),
   /* scopeId */
-  "data-v-70368610",
+  "data-v-5fd6064c",
   /* cssModules */
   null
 )
@@ -29175,15 +29373,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1169)
+__webpack_require__(1167)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(755),
+  __webpack_require__(756),
   /* template */
-  __webpack_require__(1300),
+  __webpack_require__(1297),
   /* scopeId */
-  "data-v-336ff25a",
+  null,
   /* cssModules */
   null
 )
@@ -29197,13 +29395,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1187)
+__webpack_require__(1169)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(756),
+  __webpack_require__(757),
   /* template */
-  __webpack_require__(1318),
+  __webpack_require__(1299),
   /* scopeId */
   null,
   /* cssModules */
@@ -29219,15 +29417,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1166)
+__webpack_require__(1170)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(757),
+  __webpack_require__(758),
   /* template */
-  __webpack_require__(1297),
+  __webpack_require__(1300),
   /* scopeId */
-  null,
+  "data-v-4f26653b",
   /* cssModules */
   null
 )
@@ -29241,15 +29439,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1188)
+__webpack_require__(1185)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(758),
+  __webpack_require__(759),
   /* template */
-  __webpack_require__(1319),
+  __webpack_require__(1315),
   /* scopeId */
-  "data-v-bf3c6a98",
+  "data-v-7cfa24a4",
   /* cssModules */
   null
 )
@@ -29263,15 +29461,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1164)
+__webpack_require__(1182)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(759),
+  __webpack_require__(760),
   /* template */
-  __webpack_require__(1295),
+  __webpack_require__(1312),
   /* scopeId */
-  "data-v-2d2859cb",
+  "data-v-76acce33",
   /* cssModules */
   null
 )
@@ -29285,15 +29483,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1174)
+__webpack_require__(1188)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(760),
+  __webpack_require__(761),
   /* template */
-  __webpack_require__(1305),
+  __webpack_require__(1318),
   /* scopeId */
-  "data-v-4cde17da",
+  "data-v-98d423b0",
   /* cssModules */
   null
 )
@@ -29307,15 +29505,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1176)
+__webpack_require__(1146)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(761),
+  __webpack_require__(762),
   /* template */
-  __webpack_require__(1307),
+  __webpack_require__(1276),
   /* scopeId */
-  "data-v-58c52261",
+  "data-v-0492be1f",
   /* cssModules */
   null
 )
@@ -29329,15 +29527,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1175)
+__webpack_require__(1178)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(762),
+  __webpack_require__(763),
   /* template */
-  __webpack_require__(1306),
+  __webpack_require__(1308),
   /* scopeId */
-  "data-v-55ce2398",
+  "data-v-69a97c95",
   /* cssModules */
   null
 )
@@ -29351,15 +29549,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1178)
+__webpack_require__(1148)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(763),
+  __webpack_require__(764),
   /* template */
-  __webpack_require__(1309),
+  __webpack_require__(1278),
   /* scopeId */
-  "data-v-6580ca88",
+  "data-v-0a35340b",
   /* cssModules */
   null
 )
@@ -29373,15 +29571,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1177)
+__webpack_require__(1155)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(764),
+  __webpack_require__(765),
   /* template */
-  __webpack_require__(1308),
+  __webpack_require__(1285),
   /* scopeId */
-  "data-v-5b709984",
+  "data-v-278082c0",
   /* cssModules */
   null
 )
@@ -29399,11 +29597,11 @@ __webpack_require__(1189)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(765),
+  __webpack_require__(766),
   /* template */
-  __webpack_require__(1320),
+  __webpack_require__(1319),
   /* scopeId */
-  "data-v-c7241872",
+  "data-v-a055a5da",
   /* cssModules */
   null
 )
@@ -29417,15 +29615,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1146)
+__webpack_require__(1181)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(766),
+  __webpack_require__(767),
   /* template */
-  __webpack_require__(1277),
+  __webpack_require__(1311),
   /* scopeId */
-  "data-v-056d9ccc",
+  "data-v-75123001",
   /* cssModules */
   null
 )
@@ -29439,15 +29637,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1161)
+__webpack_require__(1172)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(767),
+  __webpack_require__(768),
   /* template */
-  __webpack_require__(1292),
+  __webpack_require__(1302),
   /* scopeId */
-  "data-v-25406528",
+  "data-v-53e85d88",
   /* cssModules */
   null
 )
@@ -29461,15 +29659,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1192)
+__webpack_require__(1160)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(768),
+  __webpack_require__(769),
   /* template */
-  __webpack_require__(1323),
+  __webpack_require__(1290),
   /* scopeId */
-  "data-v-f38bf33a",
+  "data-v-322b2100",
   /* cssModules */
   null
 )
@@ -29483,15 +29681,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1147)
+__webpack_require__(1176)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(769),
+  __webpack_require__(770),
   /* template */
-  __webpack_require__(1278),
+  __webpack_require__(1306),
   /* scopeId */
-  "data-v-05c50d0e",
+  "data-v-5f705c57",
   /* cssModules */
   null
 )
@@ -29505,15 +29703,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1183)
+__webpack_require__(1156)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(770),
+  __webpack_require__(771),
   /* template */
-  __webpack_require__(1314),
+  __webpack_require__(1286),
   /* scopeId */
-  "data-v-95ee67e0",
+  "data-v-2a89d3e9",
   /* cssModules */
   null
 )
@@ -29527,15 +29725,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1194)
+__webpack_require__(1163)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(771),
+  __webpack_require__(772),
   /* template */
-  __webpack_require__(1325),
+  __webpack_require__(1293),
   /* scopeId */
-  "data-v-ffbb78bc",
+  "data-v-3c31c82a",
   /* cssModules */
   null
 )
@@ -29549,15 +29747,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1168)
+__webpack_require__(1193)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(772),
+  __webpack_require__(773),
   /* template */
-  __webpack_require__(1299),
+  __webpack_require__(1323),
   /* scopeId */
-  "data-v-33228164",
+  "data-v-ecc0c75e",
   /* cssModules */
   null
 )
@@ -29571,15 +29769,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1156)
+__webpack_require__(1192)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(773),
+  __webpack_require__(774),
   /* template */
-  __webpack_require__(1287),
+  __webpack_require__(1322),
   /* scopeId */
-  "data-v-1be70610",
+  "data-v-e6fc3330",
   /* cssModules */
   null
 )
@@ -29593,15 +29791,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1173)
+__webpack_require__(1157)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(774),
+  __webpack_require__(775),
   /* template */
-  __webpack_require__(1304),
+  __webpack_require__(1287),
   /* scopeId */
-  "data-v-4b9a563e",
+  "data-v-2acee360",
   /* cssModules */
   null
 )
@@ -29615,15 +29813,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(1172)
+__webpack_require__(1173)
 
 var Component = __webpack_require__(5)(
   /* script */
-  __webpack_require__(775),
+  __webpack_require__(776),
   /* template */
   __webpack_require__(1303),
   /* scopeId */
-  "data-v-4101ed59",
+  "data-v-55f90726",
   /* cssModules */
   null
 )
@@ -29633,28 +29831,6 @@ module.exports = Component.exports
 
 /***/ }),
 /* 1276 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(1150)
-
-var Component = __webpack_require__(5)(
-  /* script */
-  __webpack_require__(776),
-  /* template */
-  __webpack_require__(1281),
-  /* scopeId */
-  "data-v-09af8942",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 1277 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29687,36 +29863,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "filters.uid"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "数据类型"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.dataType),
-      callback: function($$v) {
-        _vm.dataType = $$v
-      },
-      expression: "dataType"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部分类",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "真分",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "假分",
-      "value": "2"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
       "width": "260px"
     },
@@ -29801,27 +29947,62 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "sex",
-      "label": "昵称",
+      "label": "用户名",
       "width": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "age",
-      "label": "剩余积分",
+      "label": "庄注",
       "width": "",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "birth",
-      "label": "每日积分",
+      "label": "和注",
       "width": "",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "addr",
-      "label": "提取积分",
+      "label": "闲注",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "庄对",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "闲对",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "幸运六",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "输赢",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "积分",
       "min-width": "100",
       "sortable": ""
     }
@@ -29853,7 +30034,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1278 */
+/* 1277 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29861,6 +30042,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "toolbar toptoolbar",
     staticStyle: {
       "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
     }
   }, [_c('el-form', {
     attrs: {
@@ -29870,6 +30054,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
+      "label": "代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "代理账号"
+    },
+    model: {
+      value: (_vm.filters.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "agents_account", $$v)
+      },
+      expression: "filters.agents_account"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
       "label": "会员ID"
     }
   }, [_c('el-input', {
@@ -29877,13 +30076,64 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "会员ID"
     },
     model: {
-      value: (_vm.filters.uid),
+      value: (_vm.filters.username),
       callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
+        _vm.$set(_vm.filters, "username", $$v)
       },
-      expression: "filters.uid"
+      expression: "filters.username"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "房间ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "房间ID"
+    },
+    model: {
+      value: (_vm.filters.room_id),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "room_id", $$v)
+      },
+      expression: "filters.room_id"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "靴号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "靴号"
+    },
+    model: {
+      value: (_vm.filters.boots_number),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "boots_number", $$v)
+      },
+      expression: "filters.boots_number"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "局数"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "局数"
+    },
+    model: {
+      value: (_vm.filters.ju),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "ju", $$v)
+      },
+      expression: "filters.ju"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
     staticStyle: {
       "width": "200px"
     },
@@ -29922,56 +30172,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "filters.end_time"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "200px",
-      "margin-left": "100px"
-    },
-    attrs: {
-      "label": "数据类型"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.filters.dataType),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "dataType", $$v)
-      },
-      expression: "filters.dataType"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "上分",
-      "value": "11"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "下分",
-      "value": "12"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "码粮结算",
-      "value": "100"
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-form', {
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
     attrs: {
       "size": "small",
-      "inline": true
+      "inline": true,
+      "model": _vm.filters
     }
   }, [_c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
-      "click": _vm.searchScoreLog
+      "click": _vm.searchBet
     }
   }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
@@ -30027,7 +30239,36 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return _vm.searchWinQuickly(4)
       }
     }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "4px",
+      "margin": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n            当页输赢: " + _vm._s(_vm.current_total_win) + "\n            ")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n            当页积分: " + _vm._s(_vm.current_total_jifen) + "\n            ")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n            总输赢: " + _vm._s(_vm.total_win) + "\n            ")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n            总积分: " + _vm._s(_vm.total_jifen) + "\n            ")])], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
     staticClass: "lowList"
   }, [_c('span', [_c('a', {
     on: {
@@ -30060,64 +30301,263 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "row-class-name": _vm.plugin.tableRowClassName,
       "size": "mini",
       "border": "",
-      "data": _vm.logs,
+      "data": _vm.bets,
       "highlight-current-row": ""
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "account",
+      "prop": "uid",
       "label": "会员ID",
-      "min-width": "60"
+      "min-width": "80",
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "name",
+      "prop": "nickname",
       "label": "会员名称",
       "min-width": "130"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "score",
-      "label": "调整前余分",
-      "min-width": "80"
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "100"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "score_change",
-      "label": "调整金额",
-      "min-width": "90",
-      "sortable": ""
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "ju",
+      "label": "局数",
+      "min-width": "150"
     },
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(scope) {
-        return [(scope.row.score_change >= 0) ? _c('a', {
+        return (!scope.row.countt) ? [_c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])] : undefined
+      }
+    }], null, true)
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "odds_text",
+      "label": "下注类别",
+      "min-width": "250"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "game_result_text",
+      "label": "开牌结果",
+      "min-width": "130"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_before",
+      "label": "下注前余分",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "win",
+      "label": "输赢",
+      "min-width": "60"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.win >= 0) ? _c('a', {
           staticStyle: {
             "color": "#FF9900"
           }
-        }, [_vm._v(_vm._s(scope.row.score_change))]) : _vm._e(), _vm._v(" "), (scope.row.score_change < 0) ? _c('a', {
+        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e(), _vm._v(" "), (scope.row.win < 0) ? _c('a', {
           staticStyle: {
             "color": "red"
           }
-        }, [_vm._v(_vm._s(scope.row.score_change))]) : _vm._e()]
+        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e()]
       }
     }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "score_after",
-      "label": "调整后余分",
-      "min-width": "80"
+      "label": "结算后余分",
+      "min-width": "90"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "note",
-      "label": "操作内容",
-      "min-width": "100"
+      "prop": "xm",
+      "label": "积分",
+      "min-width": "60"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "mktime",
-      "label": "操作时间",
+      "label": "时间",
+      "min-width": "120"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1278 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "操作人账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "操作人账号"
+    },
+    model: {
+      value: (_vm.filters.deal_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "deal_account", $$v)
+      },
+      expression: "filters.deal_account"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "被操作人账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "被操作人账号"
+    },
+    model: {
+      value: (_vm.filters.be_deal_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "be_deal_account", $$v)
+      },
+      expression: "filters.be_deal_account"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "类型"
+    }
+  }, [_c('el-select', {
+    staticStyle: {
+      "width": "135px"
+    },
+    attrs: {
+      "placeholder": "全部"
+    },
+    model: {
+      value: (_vm.filters.type),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "type", $$v)
+      },
+      expression: "filters.type"
+    }
+  }, _vm._l((_vm.options), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }), 1)], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "margin-left": "15px"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchLog
+    }
+  }, [_vm._v("查询")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.logs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "deal_account",
+      "label": "操作人账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "be_deal_account",
+      "label": "被操作人账号",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "type",
+      "label": "类型",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "note",
+      "label": "日志",
+      "min-width": "240"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
       "min-width": "120"
     }
   })], 1), _vm._v(" "), _c('el-col', {
@@ -30145,23 +30585,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 /* 1279 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "app"
-    }
-  }, [_c('transition', {
-    attrs: {
-      "name": "fade",
-      "mode": "out-in"
-    }
-  }, [_c('router-view')], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31098,4083 +31521,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 1281 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "200px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "200px",
-      "margin-left": "100px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchShare
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.goShare(0)
-      }
-    }
-  }, [_vm._v("今日报表")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.goShare(1)
-      }
-    }
-  }, [_vm._v("历史报表")])], 1), _vm._v(" "), (_vm.agent_type == 3) ? _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "warning"
-    },
-    on: {
-      "click": _vm.guiling
-    }
-  }, [_vm._v("归零")])], 1) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.logs,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "begin_date",
-      "label": "开始时间",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "end_date",
-      "label": "结束时间",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "upfen_total",
-      "label": "上分总额",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "dowfen_total",
-      "label": "下分总额",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_exchange_total",
-      "label": "积分兑换总额"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_win_lose",
-      "label": "用户输赢数",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_original_score",
-      "label": "用户初始分",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_integral",
-      "label": "用户剩余积分",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_score_total",
-      "label": "会员余分",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "all_score_total",
-      "label": "总余分",
-      "min-width": "80"
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1282 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', {
-    staticClass: "page-container"
-  }, [_vm._v("404 page not found")])
-},staticRenderFns: []}
-
-/***/ }),
-/* 1283 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "桌子ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "桌子ID"
-    },
-    model: {
-      value: (_vm.filters.room_id),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "room_id", $$v)
-      },
-      expression: "filters.room_id"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "靴号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "靴号"
-    },
-    model: {
-      value: (_vm.filters.boots_number),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "boots_number", $$v)
-      },
-      expression: "filters.boots_number"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "局数"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "局数"
-    },
-    model: {
-      value: (_vm.filters.ju),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "ju", $$v)
-      },
-      expression: "filters.ju"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px",
-      "margin-left": "50px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchGame
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "4px",
-      "margin": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n            客户总输赢: " + _vm._s(_vm.total_khyk) + "\n            ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n            庄闲占成总输赢: " + _vm._s(_vm.total_zxyk_zc) + "\n            ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n            推码总数: " + _vm._s(_vm.total_tm) + "\n            ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n             推码盈亏总数: " + _vm._s(_vm.total_tmyk) + "\n            ")])], 1), _vm._v(" "), (_vm.type == 0) ? _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.gamelist,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "card_game_id",
-      "label": "牌局ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "room_id",
-      "label": "桌子ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "局数",
-      "min-width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v(_vm._s(scope.row.mark) + "-" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])]
-      }
-    }], null, false, 1954120005)
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "game_result",
-      "label": "开牌结果",
-      "min-width": "140"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.state == 2) ? _c('a', {
-          staticStyle: {
-            "color": "black"
-          }
-        }, [_vm._v(_vm._s(scope.row.game_result))]) : _vm._e(), _vm._v(" "), (scope.row.state < 2) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.game_result))]) : _vm._e(), _vm._v(" "), (scope.row.state == 3) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.game_result))]) : _vm._e()]
-      }
-    }], null, false, 3201769917)
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "khyk",
-      "label": "客户总盈亏",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zxyk_zc",
-      "label": "庄闲占成盈亏",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "tm",
-      "label": "推码",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "tmyk",
-      "label": "推码盈亏",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "sb_total",
-      "label": "四宝总额",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "sbyk",
-      "label": "四宝盈亏",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "220"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(_vm.auth_type == 1) ? _c('a', {
-          staticClass: "qiyong",
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.editGame(scope.row)
-            }
-          }
-        }, [_vm._v("修改")]) : _vm._e(), _vm._v(" "), _c('a', {
-          staticClass: "xiangqing",
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleChat(scope.row)
-            }
-          }
-        }, [_vm._v("聊天记录")])]
-      }
-    }], null, false, 3062318633)
-  })], 1) : _vm._e(), _vm._v(" "), (_vm.type == 1) ? _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.gamelist,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "label": "局数",
-      "min-width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])]
-      }
-    }], null, false, 2254433884)
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "game_result",
-      "label": "开牌结果",
-      "min-width": "140"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuang_dian",
-      "label": "龙家点",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xian_dian",
-      "label": "虎家点",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "player",
-      "label": "龙家牌型",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "banker",
-      "label": "虎家牌型",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(_vm.auth_type == 1) ? _c('a', {
-          staticStyle: {
-            "color": "green",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.editGame(scope.row)
-            }
-          }
-        }, [_vm._v("修改")]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('a', {
-          staticStyle: {
-            "color": "red",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.deleteGame(scope.row)
-            }
-          }
-        }, [_vm._v("删除")]) : _vm._e(), _vm._v(" "), _c('a', {
-          staticStyle: {
-            "color": "#20a0ff",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleChat(scope.row)
-            }
-          }
-        }, [_vm._v("聊天记录")])]
-      }
-    }], null, false, 3074835106)
-  })], 1) : _vm._e(), _vm._v(" "), (_vm.type == 2) ? _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.gamelist,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "label": "局数",
-      "min-width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])]
-      }
-    }], null, false, 2254433884)
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "game_result",
-      "label": "开牌结果",
-      "min-width": "140"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuang_dian",
-      "label": "龙家点",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xian_dian",
-      "label": "凤家点",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "player",
-      "label": "龙家牌型",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "banker",
-      "label": "凤家牌型",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(_vm.auth_type == 1) ? _c('a', {
-          staticStyle: {
-            "color": "green",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.editGame(scope.row)
-            }
-          }
-        }, [_vm._v("修改")]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('a', {
-          staticStyle: {
-            "color": "red",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.deleteGame(scope.row)
-            }
-          }
-        }, [_vm._v("删除")]) : _vm._e(), _vm._v(" "), _c('a', {
-          staticStyle: {
-            "color": "#20a0ff",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleChat(scope.row)
-            }
-          }
-        }, [_vm._v("聊天记录")])]
-      }
-    }], null, false, 3074835106)
-  })], 1) : _vm._e(), _vm._v(" "), (_vm.type == 3) ? _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.gamelist,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "label": "局数",
-      "min-width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])]
-      }
-    }], null, false, 2254433884)
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "game_result",
-      "label": "开牌结果",
-      "min-width": "140"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuang_dian",
-      "label": "红牛点",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xian_dian",
-      "label": "黑牛点",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "player",
-      "label": "红牛牌型",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "banker",
-      "label": "黑牛牌型",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(_vm.auth_type == 1) ? _c('a', {
-          staticStyle: {
-            "color": "green",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.editGame(scope.row)
-            }
-          }
-        }, [_vm._v("修改")]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('a', {
-          staticStyle: {
-            "color": "red",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.deleteGame(scope.row)
-            }
-          }
-        }, [_vm._v("删除")]) : _vm._e(), _vm._v(" "), _c('a', {
-          staticStyle: {
-            "color": "#20a0ff",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleChat(scope.row)
-            }
-          }
-        }, [_vm._v("聊天记录")])]
-      }
-    }], null, false, 3074835106)
-  })], 1) : _vm._e(), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.chatTitle,
-      "visible": _vm.chatVisible,
-      "close-on-click-modal": false,
-      "width": "1200px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.chatVisible = $event
-      }
-    }
-  }, [_c('div', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.chatlistLoading),
-      expression: "chatlistLoading"
-    }],
-    staticStyle: {
-      "height": "500px",
-      "border": "1px solid #ccc",
-      "padding": "10px",
-      "border-radius": "10px",
-      "overflow-y": "scroll"
-    }
-  }, [(!_vm.gameChat.length) ? _c('div', {
-    staticClass: "noChat"
-  }, [_vm._v("无聊天记录")]) : _vm._e(), _vm._v(" "), _vm._l((_vm.gameChat), function(item, index) {
-    return _c('div', {
-      key: index,
-      staticClass: "chat-item"
-    }, [(item.msgtype == 0 || item.msgtype == 5) ? _c('div', [(!item.fromuser.headimage) ? _c('div', {
-      staticClass: "touxaing",
-      style: ({
-        'background-color': _vm.transColor(item.fromuser.nickname)
-      })
-    }, [_vm._v(_vm._s(_vm._f("transTx")(item.fromuser.nickname)))]) : _vm._e(), _vm._v(" "), (item.fromuser.headimage) ? _c('div', {
-      staticClass: "touxaing"
-    }, [_c('img', {
-      attrs: {
-        "src": item.fromuser.headimage,
-        "width": "40px",
-        "height": "40px"
-      }
-    })]) : _vm._e(), _vm._v(" "), _c('div', {
-      staticClass: "msgcon"
-    }, [_c('p', {
-      staticClass: "info"
-    }, [_vm._v(_vm._s(item.fromuser.nickname) + " " + _vm._s(item.createtime))]), _vm._v(" "), _c('div', {
-      staticClass: "msgText"
-    }, [_vm._v(_vm._s(item.msg))])])]) : _vm._e(), _vm._v(" "), (item.msgtype == 1) ? _c('div', [(!item.fromuser.headimage) ? _c('div', {
-      staticClass: "touxaing",
-      style: ({
-        'background-color': _vm.transColor(item.fromuser.nickname)
-      })
-    }, [_vm._v(_vm._s(_vm._f("transTx")(item.fromuser.nickname)))]) : _vm._e(), _vm._v(" "), (item.fromuser.headimage) ? _c('div', {
-      staticClass: "touxaing"
-    }, [_c('img', {
-      attrs: {
-        "src": item.fromuser.headimage,
-        "width": "40px",
-        "height": "40px"
-      }
-    })]) : _vm._e(), _vm._v(" "), _c('div', {
-      staticClass: "msgcon"
-    }, [_c('p', {
-      staticClass: "info"
-    }, [_vm._v(_vm._s(item.fromuser.nickname) + " " + _vm._s(item.createtime))]), _vm._v(" "), _c('div', {
-      staticClass: "msgText"
-    }, [_c('img', {
-      staticStyle: {
-        "width": "200px!important"
-      },
-      attrs: {
-        "src": item.msg
-      }
-    })])])]) : _vm._e(), _vm._v(" "), (item.msgtype == 2) ? _c('div', [(!item.fromuser.headimage) ? _c('div', {
-      staticClass: "touxaing",
-      style: ({
-        'background-color': _vm.transColor(item.fromuser.nickname)
-      })
-    }, [_vm._v(_vm._s(_vm._f("transTx")(item.fromuser.nickname)))]) : _vm._e(), _vm._v(" "), (item.fromuser.headimage) ? _c('div', {
-      staticClass: "touxaing"
-    }, [_c('img', {
-      attrs: {
-        "src": item.fromuser.headimage,
-        "width": "40px",
-        "height": "40px"
-      }
-    })]) : _vm._e(), _vm._v(" "), _c('div', {
-      staticClass: "msgcon"
-    }, [_c('p', {
-      staticClass: "info"
-    }, [_vm._v(_vm._s(item.fromuser.nickname) + " " + _vm._s(item.createtime))]), _vm._v(" "), _c('div', {
-      staticClass: "msgText",
-      staticStyle: {
-        "color": "red",
-        "font-weight": "bold",
-        "font-size": "22px"
-      }
-    }, [_vm._v(_vm._s(item.msg))])])]) : _vm._e(), _vm._v(" "), (item.msgtype == 3) ? _c('div', [_c('div', {
-      staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-    }, [(_vm.type == 0) ? _c('table', {
-      staticClass: "el-table__body tzb",
-      attrs: {
-        "cellspacing": "0",
-        "cellpadding": "0",
-        "border": "0",
-        "width": "100%"
-      }
-    }, [_c('tr', {
-      staticClass: "el-table__row"
-    }, [_c('td', {
-      attrs: {
-        "colspan": "7"
-      }
-    }, [_vm._v("投注表")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("昵称")]), _vm._v(" "), _c('td', [_vm._v("闲")]), _vm._v(" "), _c('td', [_vm._v("庄")]), _vm._v(" "), _c('td', [_vm._v("闲对")]), _vm._v(" "), _c('td', [_vm._v("庄对")]), _vm._v(" "), _c('td', [_vm._v("和")]), _vm._v(" "), _c('td', [_vm._v("幸运6")])]), _vm._v(" "), _vm._l((_vm.parseStrJson(item.msg)), function(tz) {
-      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name || '总计'))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.x))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.z))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.xd))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.zd))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.h))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.xy))])])
-    })], 2) : _vm._e(), _vm._v(" "), (_vm.type == 1) ? _c('table', {
-      staticClass: "el-table__body tzb",
-      attrs: {
-        "cellspacing": "0",
-        "cellpadding": "0",
-        "border": "0",
-        "width": "100%"
-      }
-    }, [_c('tr', {
-      staticClass: "el-table__row"
-    }, [_c('td', {
-      attrs: {
-        "colspan": "4"
-      }
-    }, [_vm._v("投注表")])]), _vm._v(" "), _c('tr', [_c('td', {
-      staticClass: "odds_nickname",
-      attrs: {
-        "width": "22%"
-      }
-    }, [_vm._v("昵称")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_z",
-      attrs: {
-        "width": "10%"
-      }
-    }, [_vm._v("龙")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_x",
-      attrs: {
-        "width": "10%"
-      }
-    }, [_vm._v("虎")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_h",
-      attrs: {
-        "width": "10%"
-      }
-    }, [_vm._v("和")])]), _vm._v(" "), _vm._l((_vm.parseStrJson(item.msg)), function(tz) {
-      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name || '总计'))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_z",
-        attrs: {
-          "width": "10%"
-        }
-      }, [_vm._v(_vm._s(tz.z))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_x",
-        attrs: {
-          "width": "10%"
-        }
-      }, [_vm._v(_vm._s(tz.x))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_h",
-        attrs: {
-          "width": "10%"
-        }
-      }, [_vm._v(_vm._s(tz.h))])])
-    })], 2) : _vm._e(), _vm._v(" "), (_vm.type == 2) ? _c('table', {
-      staticClass: "el-table__body tzb",
-      attrs: {
-        "cellspacing": "0",
-        "cellpadding": "0",
-        "border": "0",
-        "width": "100%"
-      }
-    }, [_c('tr', {
-      staticClass: "el-table__row"
-    }, [_c('td', {
-      attrs: {
-        "colspan": "8"
-      }
-    }, [_vm._v("投注表")])]), _vm._v(" "), _c('tr', [_c('td', {
-      staticClass: "odds_nickname",
-      attrs: {
-        "width": "22%"
-      }
-    }, [_vm._v("昵称")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_z",
-      attrs: {
-        "width": "9%"
-      }
-    }, [_vm._v("龙")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_x",
-      attrs: {
-        "width": "9%"
-      }
-    }, [_vm._v("凤")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_d8",
-      attrs: {
-        "width": "16%"
-      }
-    }, [_vm._v("幸运一击")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_xd",
-      attrs: {
-        "width": "10%"
-      }
-    }, [_vm._v("顺子")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_zd",
-      attrs: {
-        "width": "10%"
-      }
-    }, [_vm._v("同花")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_ths",
-      attrs: {
-        "width": "16%"
-      }
-    }, [_vm._v("同花顺")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_xy",
-      attrs: {
-        "width": "10%"
-      }
-    }, [_vm._v("豹子")])]), _vm._v(" "), _vm._l((_vm.parseStrJson(item.msg)), function(tz) {
-      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name || '总计'))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_z",
-        attrs: {
-          "width": "9%"
-        }
-      }, [_vm._v(_vm._s(tz.z))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_x",
-        attrs: {
-          "width": "9%"
-        }
-      }, [_vm._v(_vm._s(tz.x))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_zd",
-        attrs: {
-          "width": "16%"
-        }
-      }, [_vm._v(_vm._s(tz.d8))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_zd",
-        attrs: {
-          "width": "10%"
-        }
-      }, [_vm._v(_vm._s(tz.zd))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_xd",
-        attrs: {
-          "width": "10%"
-        }
-      }, [_vm._v(_vm._s(tz.xd))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_zd",
-        attrs: {
-          "width": "16%"
-        }
-      }, [_vm._v(_vm._s(tz.ths))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_xy",
-        attrs: {
-          "width": "10%"
-        }
-      }, [_vm._v(_vm._s(tz.xy))])])
-    })], 2) : _vm._e(), _vm._v(" "), (_vm.type == 3) ? _c('table', {
-      staticClass: "el-table__body tzb",
-      attrs: {
-        "cellspacing": "0",
-        "cellpadding": "0",
-        "border": "0",
-        "width": "100%"
-      }
-    }, [_c('tr', {
-      staticClass: "el-table__row"
-    }, [_c('td', {
-      attrs: {
-        "colspan": "2"
-      }
-    }, [_vm._v("投注表")])]), _vm._v(" "), _c('tr', [_c('td', {
-      staticClass: "odds_nickname",
-      attrs: {
-        "width": "22%"
-      }
-    }, [_vm._v("昵称")]), _vm._v(" "), _c('td', {
-      staticClass: "odds_nickname",
-      attrs: {
-        "width": "80%"
-      }
-    }, [_vm._v("下注明细")])]), _vm._v(" "), _vm._l((_vm.parseStrJson(item.msg)), function(tz) {
-      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name || '总计'))]), _vm._v(" "), _c('td', {
-        staticClass: "odds_nickname",
-        attrs: {
-          "width": "80%"
-        }
-      }, [_vm._v(_vm._s(_vm.readerTZbiao(tz)))])])
-    })], 2) : _vm._e()])]) : _vm._e(), _vm._v(" "), (item.msgtype == 4) ? _c('div', [(!item.fromuser.headimage) ? _c('div', {
-      staticClass: "touxaing",
-      style: ({
-        'background-color': _vm.transColor(item.fromuser.nickname)
-      })
-    }, [_vm._v(_vm._s(_vm._f("transTx")(item.fromuser.nickname)))]) : _vm._e(), _vm._v(" "), (item.fromuser.headimage) ? _c('div', {
-      staticClass: "touxaing"
-    }, [_c('img', {
-      attrs: {
-        "src": item.fromuser.headimage,
-        "width": "40px",
-        "height": "40px"
-      }
-    })]) : _vm._e(), _vm._v(" "), _c('div', {
-      staticClass: "msgcon"
-    }, [_c('p', {
-      staticClass: "info"
-    }, [_vm._v(_vm._s(item.fromuser.nickname) + " " + _vm._s(item.createtime))]), _vm._v(" "), _c('div', {
-      staticClass: "msgText",
-      domProps: {
-        "innerHTML": _vm._s(_vm.strToRes(item))
-      }
-    })]), _vm._v(" "), _c('div', {
-      staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition",
-      staticStyle: {
-        "margin-top": "5px"
-      }
-    }, [_c('table', {
-      staticClass: "el-table__body tzb",
-      attrs: {
-        "cellspacing": "0",
-        "cellpadding": "0",
-        "border": "0",
-        "width": "100%"
-      }
-    }, [_c('tr', {
-      staticClass: "el-table__row"
-    }, [_c('td', {
-      attrs: {
-        "colspan": "4"
-      }
-    }, [_vm._v("余分表")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("昵称")]), _vm._v(" "), _c('td', [_vm._v("本局得分")]), _vm._v(" "), _c('td', [_vm._v("剩余分")]), _vm._v(" "), _c('td', [_vm._v("初始分")])]), _vm._v(" "), _vm._l((_vm.parseStrJsonData(item.msg)), function(tz) {
-      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.win))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.score))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.score_old))])])
-    })], 2)])]) : _vm._e()])
-  })], 2), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.chatVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)]), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.editFlag ? '修改牌局' : '新增牌局',
-      "visible": _vm.addVisible,
-      "close-on-click-modal": false,
-      "width": "1200px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.addVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "size": "mini",
-      "model": _vm.addForm,
-      "label-width": "50px",
-      "labelWidth": "50px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "10px 0px"
-    },
-    attrs: {
-      "label": "桌号",
-      "prop": "room_id"
-    }
-  }, [(!_vm.editFlag) ? _c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.addForm.room_id),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "room_id", $$v)
-      },
-      expression: "addForm.room_id"
-    }
-  }, _vm._l((_vm.rooms), function(item, index) {
-    return (item.game_type != -1) ? _c('el-option', {
-      key: index,
-      attrs: {
-        "label": item.mark,
-        "value": item.groupid
-      }
-    }) : _vm._e()
-  }), 1) : _vm._e(), _vm._v(" "), (_vm.editFlag) ? _c('el-select', {
-    attrs: {
-      "disabled": "",
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.addForm.room_id),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "room_id", $$v)
-      },
-      expression: "addForm.room_id"
-    }
-  }, _vm._l((_vm.rooms), function(item, index) {
-    return _c('el-option', {
-      key: index,
-      attrs: {
-        "label": item.mark,
-        "value": item.groupid
-      }
-    })
-  }), 1) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "margin": "10px 0px"
-    },
-    attrs: {
-      "label": "靴号",
-      "prop": "boots_number"
-    }
-  }, [(!_vm.editFlag) ? _c('el-input', {
-    attrs: {
-      "placeholder": "靴号"
-    },
-    model: {
-      value: (_vm.addForm.boots_number),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "boots_number", $$v)
-      },
-      expression: "addForm.boots_number"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.editFlag) ? _c('el-input', {
-    attrs: {
-      "disabled": "",
-      "placeholder": "靴号"
-    },
-    model: {
-      value: (_vm.addForm.boots_number),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "boots_number", $$v)
-      },
-      expression: "addForm.boots_number"
-    }
-  }) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "margin": "10px 0px"
-    },
-    attrs: {
-      "label": "局号",
-      "prop": "ju"
-    }
-  }, [(!_vm.editFlag) ? _c('el-input', {
-    attrs: {
-      "placeholder": "局号"
-    },
-    model: {
-      value: (_vm.addForm.ju),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "ju", $$v)
-      },
-      expression: "addForm.ju"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.editFlag) ? _c('el-input', {
-    attrs: {
-      "disabled": "",
-      "placeholder": "局号"
-    },
-    model: {
-      value: (_vm.addForm.ju),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "ju", $$v)
-      },
-      expression: "addForm.ju"
-    }
-  }) : _vm._e()], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-top": "15px",
-      "margin-bottom": "15px"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": "101",
-      "border": ""
-    },
-    model: {
-      value: (_vm.radio1),
-      callback: function($$v) {
-        _vm.radio1 = $$v
-      },
-      expression: "radio1"
-    }
-  }, [_vm._v("修改路单")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": "100",
-      "border": ""
-    },
-    model: {
-      value: (_vm.radio1),
-      callback: function($$v) {
-        _vm.radio1 = $$v
-      },
-      expression: "radio1"
-    }
-  }, [_vm._v("重新结算")])], 1), _vm._v(" "), _c('el-button-group', [_c('el-button', {
-    attrs: {
-      "type": _vm.addPai.zhuang == 1 ? 'primary' : 'info'
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeAddPai('zhuang', 1)
-      }
-    }
-  }, [_vm._v("庄")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": _vm.addPai.zhuang == 2 ? 'primary' : 'info'
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeAddPai('zhuang', 2)
-      }
-    }
-  }, [_vm._v("闲")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": _vm.addPai.zhuang == 3 ? 'primary' : 'info'
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeAddPai('zhuang', 3)
-      }
-    }
-  }, [_vm._v("和")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": _vm.addPai.zhuang_dui == 1 ? 'primary' : 'info'
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeAddPai('zhuang_dui', 1)
-      }
-    }
-  }, [_vm._v("庄对")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": _vm.addPai.xian_dui == 1 ? 'primary' : 'info'
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeAddPai('xian_dui', 1)
-      }
-    }
-  }, [_vm._v("闲对")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": _vm.addPai.lucky_six == 6 ? 'primary' : 'info'
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeAddPai('lucky_six', 6)
-      }
-    }
-  }, [_vm._v("幸运六12倍")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": _vm.addPai.lucky_six == 7 ? 'primary' : 'info'
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeAddPai('lucky_six', 7)
-      }
-    }
-  }, [_vm._v("幸运六20倍")])], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1284 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "新密码"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "新密码"
-    },
-    model: {
-      value: (_vm.filters.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
-      },
-      expression: "filters.uid"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "确认新密码"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "确认新密码"
-    },
-    model: {
-      value: (_vm.filters.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
-      },
-      expression: "filters.uid"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    }
-  }, [_vm._v("确定")])], 1)], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1285 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.relaFix)
-    },
-    on: {
-      "click": _vm.dosearch
-    }
-  })
-},staticRenderFns: []}
-
-/***/ }),
-/* 1286 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理账号"
-    },
-    model: {
-      value: (_vm.filters.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "agents_account", $$v)
-      },
-      expression: "filters.agents_account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "层级"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "125px"
-    },
-    attrs: {
-      "placeholder": "请输入层级数字"
-    },
-    on: {
-      "change": function($event) {
-        return _vm.levelChange(_vm.filters)
-      }
-    },
-    model: {
-      value: (_vm.filters.level),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "level", $$v)
-      },
-      expression: "filters.level"
-    }
-  })], 1), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-form-item', {
-    attrs: {
-      "label": "代理身份"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.filters.dep),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "dep", $$v)
-      },
-      expression: "filters.dep"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "普通代理",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "业务部门",
-      "value": "2"
-    }
-  })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-form-item', {
-    attrs: {
-      "label": "在职状态"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.filters.active),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "active", $$v)
-      },
-      expression: "filters.active"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "离职",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "在职",
-      "value": "2"
-    }
-  })], 1)], 1) : _vm._e(), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchWin
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.exportExcel()
-      }
-    }
-  }, [_vm._v("导出报表")]), _vm._v(" "), _c('iframe', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "name": "baseExport"
-    }
-  }), _vm._v(" "), _c('form', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "id": "baseForm",
-      "name": "baseForm",
-      "method": "post",
-      "action": "",
-      "target": "baseExport"
-    }
-  }, [_c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "agents_account"
-    },
-    domProps: {
-      "value": _vm.searchParam.agents_account
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "level"
-    },
-    domProps: {
-      "value": _vm.searchParam.level
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "begin_time"
-    },
-    domProps: {
-      "value": _vm.searchParam.begin_time
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "end_time"
-    },
-    domProps: {
-      "value": _vm.searchParam.end_time
-    }
-  })])], 1)], 1)], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
-    staticClass: "lowList"
-  }, [_c('span', [_c('a', {
-    on: {
-      "click": function($event) {
-        return _vm.getLowerList()
-      }
-    }
-  }, [(_vm.auth_type != 1) ? _c('span', [_vm._v(_vm._s(_vm.plugin.getSessionItem("user", "name")))]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('span', [_vm._v("总代理")]) : _vm._e()])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
-    return _c('span', {
-      key: index
-    }, [_vm._v(" > "), _c('a', {
-      on: {
-        "click": function($event) {
-          return _vm.getLowerList(item)
-        }
-      }
-    }, [_vm._v(_vm._s(item.name))])])
-  })], 2) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "tabag"
-  }, [_c('span', {
-    staticClass: "ag",
-    class: {
-      'current': _vm.tabag == 1
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeTab(1)
-      }
-    }
-  }, [_vm._v("直属代理")]), _vm._v(" "), _c('span', {
-    staticClass: "user",
-    class: {
-      'current': _vm.tabag == 2
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeTab(2)
-      }
-    }
-  }, [_vm._v("直属会员")])]), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 1),
-      expression: "tabag == 1"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.win,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "80",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('input', {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: (scope.row.agents_id),
-            expression: "scope.row.agents_id"
-          }],
-          attrs: {
-            "type": "hidden"
-          },
-          domProps: {
-            "value": (scope.row.agents_id)
-          },
-          on: {
-            "input": function($event) {
-              if ($event.target.composing) { return; }
-              _vm.$set(scope.row, "agents_id", $event.target.value)
-            }
-          }
-        }), _vm._v(" "), _c('a', {
-          staticStyle: {
-            "text-decoration": "underline",
-            "cursor": "pointer"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.getLowerList(scope.row)
-            }
-          }
-        }, [_vm._v(_vm._s(scope.row.agents_name))])]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "lower_total",
-      "label": "有效代理数",
-      "min-width": "90"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('span', [_vm._v(_vm._s(scope.row.lower_total))])]
-      }
-    }])
-  }, [_c('template', {
-    slot: "header"
-  }, [_c('span', [_vm._v("有效代理数")]), _vm._v(" "), _c('span', {
-    staticClass: "showlowertip",
-    staticStyle: {
-      "background-color": "#fff",
-      "color": "#000",
-      "position": "relative",
-      "border-radius": "8px",
-      "padding": "0 4px",
-      "margin-left": "5px",
-      "cursor": "pointer"
-    }
-  }, [_vm._v("?  "), _c('span', {
-    staticClass: "showlowertipspan hide"
-  }, [_vm._v("即产生数据的下级代理数，包含所有层级。")])])])], 2), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "boss_account",
-      "label": "上级账号",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "boss_name",
-      "label": "上级名称",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "relation_link",
-      "label": "代理关系",
-      "min-width": "330"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('relation', {
-          attrs: {
-            "rela": scope.row.relation_link
-          },
-          on: {
-            "getsearch": _vm.searchRela
-          }
-        })]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "level",
-      "label": "层级",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm",
-      "label": "会员累积产生积分",
-      "min-width": "130"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm_money",
-      "label": "会员积分可兑换额度",
-      "min-width": "130"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "win",
-      "label": "会员输赢数",
-      "min-width": "90",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.win >= 0) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e(), _vm._v(" "), (scope.row.win < 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "profit",
-      "label": "会员收益",
-      "min-width": "80",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.profit >= 0) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e(), _vm._v(" "), (scope.row.profit < 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "240"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 1),
-      expression: "tabag == 1"
-    }],
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('member-wincomp', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 2),
-      expression: "tabag == 2"
-    }],
-    attrs: {
-      "agents_id": _vm.current_agents_id,
-      "win": _vm.user,
-      "pagination": _vm.userpagination
-    },
-    on: {
-      "getusers": _vm.getuserag
-    }
-  })], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1287 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理账号"
-    },
-    model: {
-      value: (_vm.filters.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "agents_account", $$v)
-      },
-      expression: "filters.agents_account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "会员ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "会员ID"
-    },
-    model: {
-      value: (_vm.filters.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
-      },
-      expression: "filters.uid"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "250px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "200px",
-      "margin-left": "50px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchTs
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.exportExcel()
-      }
-    }
-  }, [_vm._v("导出报表")]), _vm._v(" "), _c('iframe', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "name": "baseExport"
-    }
-  }), _vm._v(" "), _c('form', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "id": "baseForm",
-      "name": "baseForm",
-      "method": "post",
-      "action": "",
-      "target": "baseExport"
-    }
-  }, [_c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "uid"
-    },
-    domProps: {
-      "value": _vm.searchParam.uid
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "agents_account"
-    },
-    domProps: {
-      "value": _vm.searchParam.agents_account
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "begin_time"
-    },
-    domProps: {
-      "value": _vm.searchParam.begin_time
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "end_time"
-    },
-    domProps: {
-      "value": _vm.searchParam.end_time
-    }
-  })])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.type == 0),
-      expression: "type == 0"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.dc,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "110"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "nickname",
-      "label": "会员昵称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_zx_xm_dan",
-      "label": "庄闲单边洗码",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_sb_xm",
-      "label": "三宝洗码",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_lucky_xm",
-      "label": "幸运六洗码",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "all_xm",
-      "label": "总洗码",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "200"
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.type == 1),
-      expression: "type == 1"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.dc,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "110"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          staticStyle: {
-            "text-decoration": "underline",
-            "cursor": "pointer"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.getLowerList(scope.row)
-            }
-          }
-        }, [_vm._v(_vm._s(scope.row.agents_name))])]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuang_bets",
-      "label": "龙下注额",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xian_bets",
-      "label": "虎下注额",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuang_xian_bets",
-      "label": "龙虎下注额",
-      "min-width": "90",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "he_bets",
-      "label": "和下注额",
-      "min-width": "90",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuang_losewin",
-      "label": "龙输赢数",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xian_losewin",
-      "label": "虎输赢数",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "he_losewin",
-      "label": "和输赢数",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "total_losewin",
-      "label": "总输赢数",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuang_xm",
-      "label": "龙洗码量(单/双)",
-      "min-width": "135",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_vm._v("\n                " + _vm._s(scope.row.zhuang_xm) + " / " + _vm._s(scope.row.shuang_zhuang_xm) + "\n            ")]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xian_xm",
-      "label": "虎洗码量(单/双)",
-      "min-width": "135",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_vm._v("\n                " + _vm._s(scope.row.xian_xm) + " / " + _vm._s(scope.row.shuang_xian_xm) + "\n            ")]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xian_xm",
-      "label": "龙虎总洗码量（单/双）",
-      "min-width": "155",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_vm._v("\n                " + _vm._s(scope.row.total_zx_xm) + " / " + _vm._s(scope.row.shuang_total_zx_xm) + "\n            ")]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "he_xm",
-      "label": "和洗码量",
-      "min-width": "80",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_vm._v("\n                " + _vm._s(scope.row.he_xm) + "\n            ")]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1288 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      "width": "400px"
-    }
-  }, [_c('x-grid', {
-    attrs: {
-      "options": _vm.option
-    }
-  })], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1289 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchScoreLog
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.logs,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "title",
-      "label": "红包名称",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "counts",
-      "label": "红包个数",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "红包金额",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "note",
-      "label": "留言",
-      "min-width": "200"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "150"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "min-width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return (!scope.row.countt) ? [_c('a', {
-          staticStyle: {
-            "color": "rgb(32, 160, 255)"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.getDetail(scope.row)
-            }
-          }
-        }, [_vm._v("查看详情")])] : undefined
-      }
-    }], null, true)
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.currentHb.title + '-红包明细',
-      "visible": _vm.hbdetailVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.hbdetailVisible = $event
-      }
-    }
-  }, [_c('el-table', {
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "max-height": "400",
-      "size": "mini",
-      "border": "",
-      "data": _vm.details,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "身份",
-      "min-width": "80"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.ai == 1) ? _c('span', [_vm._v("虚拟")]) : _vm._e(), _vm._v(" "), (scope.row.tourist == 1) ? _c('span', [_vm._v("游客")]) : _vm._e(), _vm._v(" "), (scope.row.ai == 0 && scope.row.tourist != 1) ? _c('span', [_vm._v("会员")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "领取金额",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "uptime",
-      "label": "领取时间",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "手气",
-      "min-width": "60"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.lucky == 0) ? _c('span') : _vm._e(), _vm._v(" "), (scope.row.lucky == 1) ? _c('span', [_vm._v("手气最佳")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 2) ? _c('span', [_vm._v("豹子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 3) ? _c('span', [_vm._v("顺子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 4) ? _c('span', [_vm._v("手气最差")]) : _vm._e()]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.hbdetailVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1290 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理账号"
-    },
-    model: {
-      value: (_vm.filters.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "agents_account", $$v)
-      },
-      expression: "filters.agents_account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "会员ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "会员ID"
-    },
-    model: {
-      value: (_vm.filters.username),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "username", $$v)
-      },
-      expression: "filters.username"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "房间ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "房间ID"
-    },
-    model: {
-      value: (_vm.filters.room_id),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "room_id", $$v)
-      },
-      expression: "filters.room_id"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "靴号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "靴号"
-    },
-    model: {
-      value: (_vm.filters.boots_number),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "boots_number", $$v)
-      },
-      expression: "filters.boots_number"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "局数"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "局数"
-    },
-    model: {
-      value: (_vm.filters.ju),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "ju", $$v)
-      },
-      expression: "filters.ju"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "200px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "200px",
-      "margin-left": "100px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchBet
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "4px",
-      "margin": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n            当页输赢: " + _vm._s(_vm.current_total_win) + "\n            ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n            当页积分: " + _vm._s(_vm.current_total_jifen) + "\n            ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n            总输赢: " + _vm._s(_vm.total_win) + "\n            ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n            总积分: " + _vm._s(_vm.total_jifen) + "\n            ")])], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
-    staticClass: "lowList"
-  }, [_c('span', [_c('a', {
-    on: {
-      "click": function($event) {
-        return _vm.getLowerList()
-      }
-    }
-  }, [_vm._v(_vm._s(_vm.plugin.getSessionItem("user", "name")))])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
-    return _c('span', {
-      key: index
-    }, [_vm._v(" > "), _c('a', {
-      on: {
-        "click": function($event) {
-          return _vm.getLowerList(item)
-        }
-      }
-    }, [_vm._v(_vm._s(item.name))])])
-  })], 2) : _vm._e(), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.bets,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "nickname",
-      "label": "会员名称",
-      "min-width": "130"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "ju",
-      "label": "局数",
-      "min-width": "150"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return (!scope.row.countt) ? [_c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])] : undefined
-      }
-    }], null, true)
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "odds_text",
-      "label": "下注类别",
-      "min-width": "250"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "game_result_text",
-      "label": "开牌结果",
-      "min-width": "130"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_before",
-      "label": "下注前余分",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "win",
-      "label": "输赢",
-      "min-width": "60"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.win >= 0) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e(), _vm._v(" "), (scope.row.win < 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_after",
-      "label": "结算后余分",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm",
-      "label": "积分",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "ip",
-      "label": "IP",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "120"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1291 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('el-row', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.showWindowsLoading),
-      expression: "showWindowsLoading"
-    }],
-    staticClass: "container showWindowsLoading",
-    attrs: {
-      "element-loading-text": "正在处理，请稍等",
-      "element-loading-spinner": "el-icon-loading",
-      "element-loading-background": "rgba(0, 0, 0, 0.7)"
-    }
-  }, [_c('el-col', {
-    staticClass: "header",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-col', {
-    staticClass: "logo",
-    class: _vm.collapsed ? 'logo-collapse-width' : 'logo-width',
-    attrs: {
-      "span": 8
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.gotoboard($event)
-      }
-    }
-  }, [_vm._v("\n\t\t\t\t" + _vm._s(_vm.collapsed ? '' : _vm.sysName) + "\n\t\t\t")]), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 6
-    }
-  }, [_c('div', {
-    staticClass: "teamTile"
-  }, [_vm._v("\n\t\t\t\t\t" + _vm._s(_vm.teamTitle)), _c('span', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (this.use_end_time_notify_show),
-      expression: "this.use_end_time_notify_show"
-    }]
-  }, [_vm._v("(软件使用截至日期：" + _vm._s(_vm.useEndTime) + ")")])])]), _vm._v(" "), _c('el-col', {
-    staticClass: "userinfo",
-    attrs: {
-      "span": 14
-    }
-  }, [_c('span', {
-    staticStyle: {
-      "font-size": "16px",
-      "font-weight": "500"
-    }
-  }, [_vm._v("当前登录账号：" + _vm._s(_vm.sysUserAccount))]), _vm._v("    \n\t\t\t\t"), _c('span', {
-    staticStyle: {
-      "cursor": "pointer",
-      "font-size": "16px",
-      "font-weight": "500",
-      "color": "#009688"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.myInfo(1)
-      }
-    }
-  }, [_vm._v("个人信息")]), _vm._v("    \n\t\t\t\t"), _c('span', {
-    staticStyle: {
-      "cursor": "pointer",
-      "font-size": "16px",
-      "font-weight": "500",
-      "color": "#E6A23C"
-    },
-    on: {
-      "click": _vm.logout
-    }
-  }, [_vm._v("退出登录")]), _vm._v("    \n\n\t\t\t")])], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "个人信息",
-      "visible": _vm.myInfoVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.myInfoVisible = $event
-      }
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "mini"
-    }
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "width": "200px"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理名称:"
-    }
-  }, [_vm._v("\n                                    " + _vm._s(_vm.agentsInfo.name) + "\n                                ")])], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "200px",
-      "colspan": "2"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "登录账号:"
-    }
-  }, [_vm._v("\n                                    " + _vm._s(_vm.agentsInfo.account) + "\n                                ")])], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "width": "200px"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px",
-      "font-size": "18px",
-      "font-weight": "500"
-    },
-    attrs: {
-      "label-width": "100",
-      "label": "微信扫码登录二维码:"
-    }
-  })], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "3"
-    }
-  }, [_c('QRCanvas', {
-    staticClass: "qrcanvas",
-    attrs: {
-      "id": "qrcode1",
-      "options": _vm.qrcode1
-    }
-  })], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "200px"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px",
-      "font-size": "18px",
-      "font-weight": "500"
-    },
-    attrs: {
-      "label-width": "100",
-      "label": "清缓存二维码:"
-    }
-  })], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "3"
-    }
-  }, [_c('QRCanvas', {
-    staticClass: "qrcanvas",
-    attrs: {
-      "id": "qrcode3",
-      "options": _vm.qrcode3
-    }
-  })], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "width": "200px"
-    }
-  }, [_c('el-form-item', {
-    staticClass: "qrcanvas",
-    attrs: {
-      "label-width": "100",
-      "label": "账号密码登录二维码:"
-    }
-  })], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "3"
-    }
-  }, [_c('QRCanvas', {
-    staticStyle: {
-      "margin-left": "10px",
-      "margin-top": "10px",
-      "width": "200px",
-      "height": "200px"
-    },
-    attrs: {
-      "id": "qrcode2",
-      "options": _vm.qrcode2
-    }
-  })], 1)])])])], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.myInfoVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)]), _vm._v(" "), (_vm.settimeout200) ? _c('el-col', {
-    staticClass: "main",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-aside', {
-    class: _vm.collapsed ? 'menu-collapsed' : 'menu-expanded'
-  }, [_c('el-menu', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.collapsed),
-      expression: "!collapsed"
-    }],
-    staticClass: "el-menu-vertical-demo",
-    attrs: {
-      "default-active": _vm.$route.path,
-      "unique-opened": "",
-      "router": ""
-    },
-    on: {
-      "open": _vm.handleopen,
-      "close": _vm.handleclose,
-      "select": _vm.handleselect
-    }
-  }, [_vm._l((_vm.$router.options.routes), function(item, index) {
-    return (!_vm.Auth(item.hidden)) ? [_vm._l((item.children), function(child) {
-      return (!_vm.Auth(child.hidden)) ? _c('el-menu-item', {
-        key: child.path,
-        attrs: {
-          "index": child.path
-        }
-      }, [_c('span', {
-        on: {
-          "click": function($event) {
-            return _vm.addTab(child.name, child.path)
-          }
-        }
-      }, [_vm._v(_vm._s(child.name))])]) : _vm._e()
-    }), _vm._v(" "), (item.leaf && item.children.length > 0) ? _c('el-menu-item', {
-      attrs: {
-        "index": item.children[0].path
-      }
-    }, [_c('i', {
-      class: item.iconCls
-    }), _vm._v(_vm._s(item.children[0].name))]) : _vm._e()] : _vm._e()
-  })], 2), _vm._v(" "), _c('ul', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.collapsed),
-      expression: "collapsed"
-    }],
-    ref: "menuCollapsed",
-    staticClass: "el-menu el-menu-vertical-demo collapsed"
-  }, _vm._l((_vm.$router.options.routes), function(item, index) {
-    return (!_vm.Auth(item.hidden)) ? _c('li', {
-      staticClass: "el-submenu item"
-    }, [(!item.leaf) ? [_c('div', {
-      staticClass: "el-submenu__title",
-      on: {
-        "mouseover": function($event) {
-          return _vm.showMenu(index, true)
-        },
-        "mouseout": function($event) {
-          return _vm.showMenu(index, false)
-        }
-      }
-    }, [_c('i', {
-      class: item.iconCls
-    })]), _vm._v(" "), _c('ul', {
-      staticClass: "el-menu submenu",
-      class: 'submenu-hook-' + index,
-      on: {
-        "mouseover": function($event) {
-          return _vm.showMenu(index, true)
-        },
-        "mouseout": function($event) {
-          return _vm.showMenu(index, false)
-        }
-      }
-    }, _vm._l((item.children), function(child) {
-      return (!_vm.Auth(child.hidden)) ? _c('li', {
-        key: child.path,
-        staticClass: "el-menu-item",
-        class: _vm.$route.path == child.path ? 'is-active' : '',
-        staticStyle: {
-          "padding-left": "40px"
-        },
-        on: {
-          "click": function($event) {
-            return _vm.$router.push(child.path)
-          }
-        }
-      }, [_vm._v(_vm._s(child.name))]) : _vm._e()
-    }), 0)] : [_c('li', {
-      staticClass: "el-submenu"
-    }, [_c('div', {
-      staticClass: "el-submenu__title el-menu-item",
-      class: _vm.$route.path == item.children[0].path ? 'is-active' : '',
-      staticStyle: {
-        "padding-left": "1px",
-        "height": "40px",
-        "line-height": "40px",
-        "padding": "0 20px"
-      },
-      on: {
-        "click": function($event) {
-          return _vm.$router.push(item.children[0].path)
-        }
-      }
-    }, [_c('i', {
-      class: item.iconCls
-    })])])]], 2) : _vm._e()
-  }), 0)], 1), _vm._v(" "), (_vm.chatVisible) ? _c('el-dialog', {
-    staticClass: "imchat",
-    attrs: {
-      "title": "聊天",
-      "visible": _vm.chatVisible,
-      "close-on-click-modal": false,
-      "width": "800px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.chatVisible = $event
-      }
-    }
-  }, [_c('el-tabs', {
-    on: {
-      "tab-click": _vm.handleClickTab
-    },
-    model: {
-      value: (_vm.activeName),
-      callback: function($$v) {
-        _vm.activeName = $$v
-      },
-      expression: "activeName"
-    }
-  }, _vm._l((_vm.imInfo), function(item, index) {
-    return _c('el-tab-pane', {
-      key: index,
-      staticStyle: {
-        "height": "500px"
-      },
-      attrs: {
-        "label": item.row.name,
-        "name": item.row.playid
-      }
-    }, [_c('iframe', {
-      attrs: {
-        "src": item.src,
-        "width": "100%",
-        "height": "100%",
-        "frameborder": "no",
-        "border": "0",
-        "marginwidth": "0",
-        "marginheight": "0",
-        "scrolling": "no",
-        "allowtransparency": "yes"
-      }
-    })])
-  }), 1)], 1) : _vm._e(), _vm._v(" "), _c('section', {
-    staticClass: "content-container"
-  }, [_c('div', {
-    staticClass: "grid-content bg-purple-light",
-    staticStyle: {
-      "height": "100%",
-      "position": "relative"
-    }
-  }, [_c('el-col', {
-    staticClass: "breadcrumb-container",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-tabs', {
-    attrs: {
-      "type": "card",
-      "closable": ""
-    },
-    on: {
-      "tab-remove": _vm.removeTab,
-      "tab-click": _vm.handleClick
-    },
-    model: {
-      value: (_vm.editableTabsValue),
-      callback: function($$v) {
-        _vm.editableTabsValue = $$v
-      },
-      expression: "editableTabsValue"
-    }
-  }, _vm._l((_vm.editableTabs), function(item) {
-    return _c('el-tab-pane', {
-      key: item.name,
-      attrs: {
-        "label": item.title,
-        "name": item.name
-      }
-    }, [_c('a', [_vm._v(_vm._s(item.path))])])
-  }), 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "content-wrapper",
-    staticStyle: {
-      "position": "absolute",
-      "top": "40px",
-      "bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('transition', {
-    attrs: {
-      "name": "fade",
-      "mode": "out-in"
-    }
-  }, [_c('router-view')], 1)], 1)], 1)])], 1) : _vm._e()], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1292 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.handleAdd
-    }
-  }, [_vm._v("新增角色")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.users,
-      "highlight-current-row": ""
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "type": "index",
-      "label": "ID",
-      "width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "角色名",
-      "width": "",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "sex",
-      "label": "角色等级",
-      "width": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "age",
-      "label": "会员列表",
-      "width": "",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "birth",
-      "label": "描述",
-      "width": "",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "width": "150"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('el-button', {
-          attrs: {
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleEdit(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
-          attrs: {
-            "type": "danger",
-            "size": "small"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleDel(scope.$index, scope.row)
-            }
-          }
-        }, [_vm._v("删除")])]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "prev, pager, next",
-      "page-size": 20,
-      "total": _vm.total
-    },
-    on: {
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.addRole ? '添加角色' : '编辑角色',
-      "close-on-click-modal": false
-    },
-    model: {
-      value: (_vm.addFormVisible),
-      callback: function($$v) {
-        _vm.addFormVisible = $$v
-      },
-      expression: "addFormVisible"
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "model": _vm.addForm,
-      "label-width": "80px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "角色名称",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.name),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "name", $$v)
-      },
-      expression: "addForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "角色等级",
-      "prop": "name",
-      "rules": [{
-          required: true,
-          message: '角色等级不能为空'
-        },
-        {
-          type: 'number',
-          message: '角色等级必须为数字值'
-        }
-      ]
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "age",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.age),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "age", _vm._n($$v))
-      },
-      expression: "addForm.age"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "备注",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea"
-    },
-    model: {
-      value: (_vm.addForm.name),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "name", $$v)
-      },
-      expression: "addForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "角色权限"
-    }
-  }, _vm._l((_vm.isIndeterminate), function(item, index) {
-    return _c('div', [_c('el-checkbox', {
-      attrs: {
-        "indeterminate": _vm.isIndeterminate[index]
-      },
-      on: {
-        "change": function($event) {
-          return _vm.handleCheckAllChange(index, _vm.checkAll[index])
-        }
-      },
-      model: {
-        value: (_vm.checkAll[index]),
-        callback: function($$v) {
-          _vm.$set(_vm.checkAll, index, $$v)
-        },
-        expression: "checkAll[index]"
-      }
-    }, [_vm._v(_vm._s(_vm.rolepowerTitle[index]))]), _vm._v(" "), _c('el-checkbox-group', {
-      staticStyle: {
-        "border-bottom": "1px solid #ccc"
-      },
-      on: {
-        "change": function($event) {
-          return _vm.handleCheckedCitiesChange(index, _vm.rolepower[index])
-        }
-      },
-      model: {
-        value: (_vm.rolepower[index]),
-        callback: function($$v) {
-          _vm.$set(_vm.rolepower, index, $$v)
-        },
-        expression: "rolepower[index]"
-      }
-    }, _vm._l((_vm.powers[index]), function(power) {
-      return _c('el-checkbox', {
-        key: power,
-        attrs: {
-          "label": power
-        }
-      }, [_vm._v(_vm._s(power))])
-    }), 1)], 1)
-  }), 0)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1293 */
+/* 1280 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -35774,7 +32121,1118 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1294 */
+/* 1281 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "新密码"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "新密码"
+    },
+    model: {
+      value: (_vm.filters.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "uid", $$v)
+      },
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "确认新密码"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "确认新密码"
+    },
+    model: {
+      value: (_vm.filters.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "uid", $$v)
+      },
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    }
+  }, [_vm._v("确定")])], 1)], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1282 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.relaFix)
+    },
+    on: {
+      "click": _vm.dosearch
+    }
+  })
+},staticRenderFns: []}
+
+/***/ }),
+/* 1283 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.logs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "domain",
+      "label": "群名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "account",
+      "label": "总代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agent_score",
+      "label": "总代理余分",
+      "min-width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "min-width": "100"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleFen(scope.row, 1)
+            }
+          }
+        }, [_vm._v("上分")])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.fenFilters.user.name + '-' + (_vm.fenFilters.type == 1 ? '上分' : '下分'),
+      "visible": _vm.fenVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.fenVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    staticClass: "demo-form-inline",
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "max-height": "500",
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理名称"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.fenFilters.yufen.name),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters.yufen, "name", $$v)
+      },
+      expression: "fenFilters.yufen.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.fenFilters.yufen.account),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters.yufen, "account", $$v)
+      },
+      expression: "fenFilters.yufen.account"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "当前额度"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.fenFilters.yufen.agent_score),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters.yufen, "agent_score", $$v)
+      },
+      expression: "fenFilters.yufen.agent_score"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": _vm.fenFilters.type == 1 ? '增加额度' : '减少额度'
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.money2Fen),
+      callback: function($$v) {
+        _vm.money2Fen = $$v
+      },
+      expression: "money2Fen"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.onSubmitFen(_vm.fenFilters.type)
+      }
+    }
+  }, [_vm._v("提交")]), _vm._v(" "), _c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.fenVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1284 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "app"
+    }
+  }, [_c('transition', {
+    attrs: {
+      "name": "fade",
+      "mode": "out-in"
+    }
+  }, [_c('router-view')], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1285 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "会员ID"
+    },
+    model: {
+      value: (_vm.filters.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "uid", $$v)
+      },
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "数据类型"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.dataType),
+      callback: function($$v) {
+        _vm.dataType = $$v
+      },
+      expression: "dataType"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部分类",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "增加积分",
+      "value": "1"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "提取积分",
+      "value": "2"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("查询")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.users,
+      "highlight-current-row": ""
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "label": "ID",
+      "width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员ID",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sex",
+      "label": "昵称",
+      "width": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "age",
+      "label": "下注金额",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "birth",
+      "label": "兑换比例",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "产生的积分",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "牌局ID",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "时间",
+      "min-width": "100",
+      "sortable": ""
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "prev, pager, next",
+      "page-size": 20,
+      "total": _vm.total
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1286 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "会员ID"
+    },
+    model: {
+      value: (_vm.filters.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "uid", $$v)
+      },
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "牌局ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "牌局ID"
+    },
+    model: {
+      value: (_vm.filters.username),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "username", $$v)
+      },
+      expression: "filters.username"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "数据类型"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.dataType),
+      callback: function($$v) {
+        _vm.dataType = $$v
+      },
+      expression: "dataType"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部分类",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "庄注",
+      "value": "1"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "闲注",
+      "value": "2"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "和注",
+      "value": "3"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "庄对",
+      "value": "4"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "闲对",
+      "value": "5"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "上分",
+      "value": "11"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "下分",
+      "value": "12"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "下分删除",
+      "value": "13"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "手动上分",
+      "value": "20"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "手动下分",
+      "value": "21"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "码粮结算",
+      "value": "100"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "取消下注",
+      "value": "110"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "牌局结算",
+      "value": "111"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "重新结算",
+      "value": "121"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "领取红包",
+      "value": "122"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("查询")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.score,
+      "highlight-current-row": ""
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "id",
+      "label": "ID",
+      "width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "昵称",
+      "width": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "操作前余分",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_change",
+      "label": "变化的分",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_after",
+      "label": "操作后的分",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "type",
+      "label": "类型",
+      "min-width": "100",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.type == 1) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("庄注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 2) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("闲注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 3) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("和注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 4) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("庄对")]) : _vm._e(), _vm._v(" "), (scope.row.type == 5) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("闲对")]) : _vm._e(), _vm._v(" "), (scope.row.type == 11) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 12) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("下分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 13) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("下分删除")]) : _vm._e(), _vm._v(" "), (scope.row.type == 20) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("手动上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 21) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("手动下分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 100) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("码粮结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 110) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("取消下注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 111) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("牌局结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 121) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("重新结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 122) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("领取红包")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "card_game_id",
+      "label": "牌局ID",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "time",
+      "label": "时间",
+      "width": "",
+      "sortable": ""
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [10, 20, 30, 40],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1287 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "代理账号"
+    },
+    model: {
+      value: (_vm.filters.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "agents_account", $$v)
+      },
+      expression: "filters.agents_account"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchTs
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
+    staticClass: "lowList"
+  }, [_c('span', [_c('a', {
+    on: {
+      "click": function($event) {
+        return _vm.getLowerList()
+      }
+    }
+  }, [_vm._v("首页")])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
+    return _c('span', {
+      key: index
+    }, [_vm._v(" > "), _c('a', {
+      on: {
+        "click": function($event) {
+          return _vm.getLowerList(item)
+        }
+      }
+    }, [_vm._v(_vm._s(item.name))])])
+  })], 2) : _vm._e(), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.dc,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "110"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          staticStyle: {
+            "text-decoration": "underline",
+            "cursor": "pointer"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.getLowerList(scope.row)
+            }
+          }
+        }, [_vm._v(_vm._s(scope.row.agents_name))])]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_losewin",
+      "label": "会员输赢数",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zhuang_losewin",
+      "label": "对冲后庄输赢数",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xian_losewin",
+      "label": "对冲后闲输赢数",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sb_losewin",
+      "label": "四宝输赢数",
+      "min-width": "90",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_losewin",
+      "label": "对冲后龙输赢数",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_losewin",
+      "label": "对冲后虎输赢数",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_losewin",
+      "label": "对冲后输赢总数",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zts",
+      "label": "退水总额",
+      "min-width": "100",
+      "sortable": ""
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1288 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -36079,3247 +33537,617 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1295 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "large",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "会员ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "会员ID"
-    },
-    model: {
-      value: (_vm.filters.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
-      },
-      expression: "filters.uid"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理账号"
-    },
-    model: {
-      value: (_vm.filters.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "agents_account", $$v)
-      },
-      expression: "filters.agents_account"
-    }
-  })], 1), _vm._v(" "), _c('span', [_vm._v("选择桌子: ")]), _vm._v(" "), _c('el-select', {
-    attrs: {
-      "placeholder": "请选择桌子"
-    },
-    on: {
-      "change": _vm.changeGroup
-    },
-    model: {
-      value: (_vm.currentGroup.groupid),
-      callback: function($$v) {
-        _vm.$set(_vm.currentGroup, "groupid", $$v)
-      },
-      expression: "currentGroup.groupid"
-    }
-  }, _vm._l((_vm.rooms), function(room, index) {
-    return (room.game_type != -1 && room.xstate != 0) ? _c('el-option', {
-      key: index,
-      attrs: {
-        "label": room.groupname,
-        "value": room.groupid
-      }
-    }) : _vm._e()
-  }), 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "200px",
-      "margin-left": "10px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "200px",
-      "margin-left": "100px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchWin
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.exportExcel()
-      }
-    }
-  }, [_vm._v("导出报表")]), _vm._v(" "), _c('iframe', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "name": "baseExport"
-    }
-  }), _vm._v(" "), _c('form', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "id": "baseForm",
-      "name": "baseForm",
-      "method": "post",
-      "action": "",
-      "target": "baseExport"
-    }
-  }, [_c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "uid"
-    },
-    domProps: {
-      "value": _vm.searchParam.uid
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "level"
-    },
-    domProps: {
-      "value": _vm.searchParam.level
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "begin_time"
-    },
-    domProps: {
-      "value": _vm.searchParam.begin_time
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "end_time"
-    },
-    domProps: {
-      "value": _vm.searchParam.end_time
-    }
-  })])], 1)], 1)], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
-    staticClass: "lowList"
-  }, [_c('span', [_c('a', {
-    on: {
-      "click": function($event) {
-        return _vm.getLowerList()
-      }
-    }
-  }, [_vm._v(_vm._s(_vm.plugin.getSessionItem("user", "name")))])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
-    return _c('span', {
-      key: index
-    }, [_vm._v(" > "), _c('a', {
-      on: {
-        "click": function($event) {
-          return _vm.getLowerList(item)
-        }
-      }
-    }, [_vm._v(_vm._s(item.name))])])
-  })], 2) : _vm._e(), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.win,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "40"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称",
-      "min-width": "130"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.usertype == 1) ? _c('a', {
-          staticStyle: {
-            "text-decoration": "underline",
-            "cursor": "pointer"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.getLowerListClom(scope.row)
-            }
-          }
-        }, [_vm._v(_vm._s(scope.row.name))]) : _vm._e(), _vm._v(" "), (scope.row.usertype == 2) ? _c('a', [_vm._v(_vm._s(scope.row.name))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "会员余分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm",
-      "label": "累计产生积分",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm_money",
-      "label": "积分已兑换额度",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "win",
-      "label": "输赢数",
-      "min-width": "80",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.win >= 0) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e(), _vm._v(" "), (scope.row.win < 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_zx_losewin",
-      "label": "庄闲输赢",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_sb_losewin",
-      "label": "四宝输赢",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "profit",
-      "label": "会员收益",
-      "min-width": "80",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.profit >= 0) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e(), _vm._v(" "), (scope.row.profit < 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "240"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1296 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.logs,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "id",
-      "label": "ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "domain",
-      "label": "域名",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "min-width": "100"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          staticStyle: {
-            "color": "red",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleDelete(scope.row)
-            }
-          }
-        }, [_vm._v("禁用")])]
-      }
-    }])
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1297 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.user,
-      "highlight-current-row": ""
-    },
-    on: {
-      "row-click": _vm.clicked
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "50"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "username",
-      "label": "会员账号",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "relation_link",
-      "label": "代理关系",
-      "min-width": "330"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "余额",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm_rate",
-      "label": "积分比例",
-      "min-width": "90",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral",
-      "label": "剩余积分",
-      "min-width": "90",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "status",
-      "label": "状态",
-      "min-width": "30"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.status == 0) ? _c('a', {
-          staticStyle: {
-            "color": "#00c853"
-          }
-        }, [_vm._v("启用")]) : _vm._e(), _vm._v(" "), (scope.row.status == 1) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v("停用")]) : _vm._e(), _vm._v(" "), (scope.row.no_say == 1) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v("禁言")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "min-width": "360"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return (!scope.row.countt) ? [_c('div', [_c('input', {
-          attrs: {
-            "type": "hidden"
-          },
-          domProps: {
-            "value": scope.row.uid
-          }
-        }), _vm._v(" "), _c('a', {
-          staticStyle: {
-            "color": "#20a0ff",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleMemberDetail(scope.row)
-            }
-          }
-        }, [_vm._v("详情")]), _vm._v(" "), (_vm.agent_type == 3 || scope.row.agents_account == _vm.auth_account) ? _c('el-divider', {
-          attrs: {
-            "direction": "vertical"
-          }
-        }) : _vm._e(), _vm._v(" "), (_vm.agent_type == 3 || scope.row.agents_account == _vm.auth_account) ? _c('a', {
-          staticStyle: {
-            "color": "#20a0ff",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleFen(scope.row, 1)
-            }
-          }
-        }, [_vm._v("上分")]) : _vm._e(), _vm._v(" "), (scope.row.playid) ? _c('el-divider', {
-          attrs: {
-            "direction": "vertical"
-          }
-        }) : _vm._e(), _vm._v(" "), (scope.row.playid) ? _c('a', {
-          staticStyle: {
-            "color": "#20a0ff",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.readerChat(scope.row)
-            }
-          }
-        }, [_vm._v("聊天")]) : _vm._e()], 1)] : undefined
-      }
-    }], null, true)
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('iframe', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "id": "iframeForm",
-      "name": "iframeForm"
-    }
-  }), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "编辑会员",
-      "visible": _vm.editFormVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.editFormVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "editForm",
-    attrs: {
-      "size": "mini",
-      "model": _vm.editForm,
-      "label-width": "80px",
-      "rules": _vm.editFormRules,
-      "labelWidth": "100px"
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员头像"
-    }
-  }, [_c('input', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "type": "file",
-      "name": "filename",
-      "id": "filename"
-    },
-    on: {
-      "change": function($event) {
-        return _vm.uploadfile()
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    on: {
-      "click": function($event) {
-        return _vm.triggerUpload()
-      }
-    }
-  }, [_c('el-avatar', {
-    attrs: {
-      "src": _vm.editForm.head
-    }
-  })], 1)])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员昵称",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.name),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "name", $$v)
-      },
-      expression: "editForm.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理账号",
-      "prop": "agent_id"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": ""
-    },
-    model: {
-      value: (_vm.editForm.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "agents_account", $$v)
-      },
-      expression: "editForm.agents_account"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理名称",
-      "prop": "agent_name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": ""
-    },
-    model: {
-      value: (_vm.editForm.agents_name),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "agents_name", $$v)
-      },
-      expression: "editForm.agents_name"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "colspan": "4"
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "mini",
-      "inline": true
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "手机"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    model: {
-      value: (_vm.editForm.phone),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "phone", $$v)
-      },
-      expression: "editForm.phone"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "微信"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    model: {
-      value: (_vm.editForm.wxchat),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "wxchat", $$v)
-      },
-      expression: "editForm.wxchat"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "QQ"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    model: {
-      value: (_vm.editForm.qq),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "qq", $$v)
-      },
-      expression: "editForm.qq"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "银行卡号"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "180px"
-    },
-    model: {
-      value: (_vm.editForm.bankcard),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "bankcard", $$v)
-      },
-      expression: "editForm.bankcard"
-    }
-  })], 1)], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "积分比例",
-      "prop": "xm_rate"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.xm_rate),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "xm_rate", $$v)
-      },
-      expression: "editForm.xm_rate"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "3"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "操作"
-    }
-  }, [_c('el-checkbox', {
-    on: {
-      "change": _vm.changeStatus
-    },
-    model: {
-      value: (_vm.editForm.status == 1),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "status == 1", $$v)
-      },
-      expression: "editForm.status == 1"
-    }
-  }, [_vm._v("停用")]), _vm._v(" "), _c('el-checkbox', {
-    on: {
-      "change": _vm.changeNosay
-    },
-    model: {
-      value: (_vm.editForm.no_say == 1),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "no_say == 1", $$v)
-      },
-      expression: "editForm.no_say == 1"
-    }
-  }, [_vm._v("禁言")])], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "colspan": "4"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "备注"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea"
-    },
-    model: {
-      value: (_vm.editForm.user_desc),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "user_desc", $$v)
-      },
-      expression: "editForm.user_desc"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.editFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.editLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.editUserSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.fenFilters.user.name + '-' + (_vm.fenFilters.type == 1 ? '上分' : '下分'),
-      "visible": _vm.fenVisible,
-      "close-on-click-modal": false,
-      "width": "800px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.fenVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    staticClass: "demo-form-inline",
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员名称"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.fenFilters.yufen.name),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters.yufen, "name", $$v)
-      },
-      expression: "fenFilters.yufen.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.fenFilters.user.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters.user, "uid", $$v)
-      },
-      expression: "fenFilters.user.uid"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理余分"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.fenFilters.yufen.agent_score),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters.yufen, "agent_score", $$v)
-      },
-      expression: "fenFilters.yufen.agent_score"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "当前额度"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.fenFilters.yufen.score),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters.yufen, "score", $$v)
-      },
-      expression: "fenFilters.yufen.score"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": _vm.fenFilters.type == 1 ? '增加额度' : '减少额度'
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "autocomplete": "off",
-      "placeholder": _vm.fenFilters.type == 1 ? '增加额度' : '减少额度'
-    },
-    model: {
-      value: (_vm.fenFilters.value),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters, "value", $$v)
-      },
-      expression: "fenFilters.value"
-    }
-  }), _vm._v(" "), _c('input', {
-    staticStyle: {
-      "display": "none"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.onSubmitFen(_vm.fenFilters.type)
-      }
-    }
-  }, [_vm._v("提交")]), _vm._v(" "), _c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.fenVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.jifenFilters.user.name + '-' + (_vm.jifenFilters.type == 1 ? '上积分' : '下积分'),
-      "visible": _vm.jifenVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.jifenVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    staticClass: "demo-form-inline",
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员名称"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.jifenFilters.user.name),
-      callback: function($$v) {
-        _vm.$set(_vm.jifenFilters.user, "name", $$v)
-      },
-      expression: "jifenFilters.user.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.jifenFilters.user.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.jifenFilters.user, "uid", $$v)
-      },
-      expression: "jifenFilters.user.uid"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员积分比例"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.jifenFilters.user.xm_rate),
-      callback: function($$v) {
-        _vm.$set(_vm.jifenFilters.user, "xm_rate", $$v)
-      },
-      expression: "jifenFilters.user.xm_rate"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "结算类型",
-      "prop": "jslx"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": "0"
-    },
-    model: {
-      value: (_vm.jifenFilters.jslx),
-      callback: function($$v) {
-        _vm.$set(_vm.jifenFilters, "jslx", $$v)
-      },
-      expression: "jifenFilters.jslx"
-    }
-  }, [_vm._v("正常结算")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": "1"
-    },
-    model: {
-      value: (_vm.jifenFilters.jslx),
-      callback: function($$v) {
-        _vm.$set(_vm.jifenFilters, "jslx", $$v)
-      },
-      expression: "jifenFilters.jslx"
-    }
-  }, [_vm._v("提前结算")])], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "剩余积分"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.jifenFilters.yufen.integral),
-      callback: function($$v) {
-        _vm.$set(_vm.jifenFilters.yufen, "integral", $$v)
-      },
-      expression: "jifenFilters.yufen.integral"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": _vm.jifenFilters.type == 1 ? '增加积分' : '减少积分'
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "autocomplete": "off",
-      "placeholder": _vm.jifenFilters.type == 1 ? '增加积分' : '减少积分'
-    },
-    model: {
-      value: (_vm.jifenFilters.value),
-      callback: function($$v) {
-        _vm.$set(_vm.jifenFilters, "value", $$v)
-      },
-      expression: "jifenFilters.value"
-    }
-  }), _vm._v(" "), _c('input', {
-    staticStyle: {
-      "display": "none"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.onSubmitjiFen(_vm.jifenFilters.type)
-      }
-    }
-  }, [_vm._v("提交")]), _vm._v(" "), _c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.jifenVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.currentAgent.agents_name + '添加会员',
-      "visible": _vm.addFormVisible,
-      "close-on-click-modal": false,
-      "width": "1200px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.addFormVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "size": "mini",
-      "model": _vm.addForm,
-      "label-width": "80px",
-      "labelWidth": "100px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "头像",
-      "prop": "head"
-    }
-  }, [_c('input', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "type": "file",
-      "name": "filename",
-      "id": "uploadfileAdd"
-    },
-    on: {
-      "change": function($event) {
-        return _vm.uploadfileAdd()
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    on: {
-      "click": function($event) {
-        return _vm.triggerUploadAdd()
-      }
-    }
-  }, [_c('el-avatar', {
-    attrs: {
-      "src": _vm.addForm.head
-    }
-  })], 1)])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员昵称",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.name),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "name", $$v)
-      },
-      expression: "addForm.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "会员账号",
-      "prop": "username"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.username),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "username", $$v)
-      },
-      expression: "addForm.username"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "初始密码",
-      "prop": "password"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.password),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "password", $$v)
-      },
-      expression: "addForm.password"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "积分比例",
-      "prop": "xm_rate"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.xm_rate),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "xm_rate", $$v)
-      },
-      expression: "addForm.xm_rate"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理账号",
-      "prop": "agent_id"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": ""
-    },
-    model: {
-      value: (_vm.addForm.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "agents_account", $$v)
-      },
-      expression: "addForm.agents_account"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "colspan": "4"
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "mini",
-      "inline": true
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "手机"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    model: {
-      value: (_vm.addForm.phone),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "phone", $$v)
-      },
-      expression: "addForm.phone"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "微信"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    model: {
-      value: (_vm.addForm.wxchat),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "wxchat", $$v)
-      },
-      expression: "addForm.wxchat"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "QQ"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "150px"
-    },
-    model: {
-      value: (_vm.addForm.qq),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "qq", $$v)
-      },
-      expression: "addForm.qq"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "银行卡号"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "180px"
-    },
-    model: {
-      value: (_vm.addForm.bankcard),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "bankcard", $$v)
-      },
-      expression: "addForm.bankcard"
-    }
-  })], 1)], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "colspan": "4"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "备注"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea"
-    },
-    model: {
-      value: (_vm.addForm.user_desc),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "user_desc", $$v)
-      },
-      expression: "addForm.user_desc"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.addUserSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.currentAgent.agents_name + '添加机器人',
-      "visible": _vm.addFormRobotVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.addFormRobotVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "addFormRobot",
-    attrs: {
-      "size": "mini",
-      "model": _vm.addFormRobot,
-      "label-width": "80px",
-      "labelWidth": "100px",
-      "rules": _vm.addFormRobotRules
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "头像",
-      "prop": "head"
-    }
-  }, [_c('input', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "type": "file",
-      "name": "filename",
-      "id": "uploadfileRobot"
-    },
-    on: {
-      "change": function($event) {
-        return _vm.uploadfileRobot()
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    on: {
-      "click": function($event) {
-        return _vm.triggerUploadRobot()
-      }
-    }
-  }, [_c('el-avatar', {
-    attrs: {
-      "src": _vm.addFormRobot.head
-    }
-  })], 1)])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "昵称",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addFormRobot.name),
-      callback: function($$v) {
-        _vm.$set(_vm.addFormRobot, "name", $$v)
-      },
-      expression: "addFormRobot.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "余分",
-      "prop": "score"
-    }
-  }, [_c('el-input-number', {
-    attrs: {
-      "size": "medium"
-    },
-    model: {
-      value: (_vm.addFormRobot.score),
-      callback: function($$v) {
-        _vm.$set(_vm.addFormRobot, "score", $$v)
-      },
-      expression: "addFormRobot.score"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormRobotVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.robotLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.addRobotSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.upPwd.name + '重置密码',
-      "visible": _vm.upPwdVis,
-      "close-on-click-modal": false,
-      "width": "500px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.upPwdVis = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "upPwdForm",
-    attrs: {
-      "size": "mini",
-      "model": _vm.upPwd,
-      "label-width": "80px",
-      "labelWidth": "100px",
-      "rules": _vm.upPwdFormRules
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "新密码",
-      "prop": "password"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "size": "medium"
-    },
-    model: {
-      value: (_vm.upPwd.password),
-      callback: function($$v) {
-        _vm.$set(_vm.upPwd, "password", $$v)
-      },
-      expression: "upPwd.password"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.upPwdVis = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.upPwdLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.upPwdSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.currentUser.name + '-会员详情',
-      "visible": _vm.memberDetailVis,
-      "close-on-click-modal": false,
-      "width": "1400px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.memberDetailVis = $event
-      }
-    }
-  }, [_c('div', {
-    staticClass: "detailtop"
-  }, [_c('div', {
-    staticClass: "imgcontent",
-    domProps: {
-      "innerHTML": _vm._s(_vm.readerName())
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "info"
-  }, [_c('div', {
-    staticClass: "top"
-  }, [_vm._v(_vm._s(_vm.currentUser.name) + " "), _c('span', {
-    staticStyle: {
-      "font-size": "18px"
-    }
-  }, [_vm._v("ID:" + _vm._s(_vm.currentUser.uid) + " 余额:" + _vm._s(_vm.currentUser.score))])]), _vm._v(" "), _c('div', {
-    staticClass: "bottom",
-    staticStyle: {
-      "font-size": "18px"
-    }
-  }, [_vm._v("积分比例:" + _vm._s(_vm.currentUser.xm_rate) + " 积分:" + _vm._s(_vm.currentUser.integral))])])]), _vm._v(" "), _c('div', {
-    staticClass: "tabag"
-  }, [_c('span', {
-    staticClass: "ag",
-    class: {
-      'current': _vm.tabag == 1
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeTab(1)
-      }
-    }
-  }, [_vm._v("流水明细")]), _vm._v(" "), _c('span', {
-    staticClass: "user",
-    class: {
-      'current': _vm.tabag == 2
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeTab(2)
-      }
-    }
-  }, [_vm._v("上下分明细")]), _vm._v(" "), _c('span', {
-    staticClass: "user",
-    class: {
-      'current': _vm.tabag == 3
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeTab(3)
-      }
-    }
-  }, [_vm._v("下注记录")]), _vm._v(" "), _c('span', {
-    staticClass: "user",
-    class: {
-      'current': _vm.tabag == 4
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeTab(4)
-      }
-    }
-  }, [_vm._v("日积分")]), _vm._v(" "), _c('span', {
-    staticClass: "user",
-    class: {
-      'current': _vm.tabag == 5
-    },
-    on: {
-      "click": function($event) {
-        return _vm.changeTab(5)
-      }
-    }
-  }, [_vm._v("红包领取记录")])]), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 1),
-      expression: "tabag == 1"
-    }],
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.liushuiFilters
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.liushuiFilters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.liushuiFilters, "begin_time", $$v)
-      },
-      expression: "liushuiFilters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.liushuiFilters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.liushuiFilters, "end_time", $$v)
-      },
-      expression: "liushuiFilters.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchLiushui
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchLiushuiQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchLiushuiQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchLiushuiQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchLiushuiQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchLiushuiQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchLiushuiQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
-    staticStyle: {
-      "font-size": "18px",
-      "line-height": "35px",
-      "color": "#fff"
-    }
-  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 2),
-      expression: "tabag == 2"
-    }],
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.tabFilters
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.tabFilters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.tabFilters, "begin_time", $$v)
-      },
-      expression: "tabFilters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.tabFilters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.tabFilters, "end_time", $$v)
-      },
-      expression: "tabFilters.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchtabFilters
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFiltersQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFiltersQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFiltersQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFiltersQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFiltersQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFiltersQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
-    staticStyle: {
-      "font-size": "18px",
-      "line-height": "35px",
-      "color": "#fff"
-    }
-  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 3),
-      expression: "tabag == 3"
-    }],
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.tabFilters1
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.tabFilters1.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.tabFilters1, "begin_time", $$v)
-      },
-      expression: "tabFilters1.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.tabFilters1.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.tabFilters1, "end_time", $$v)
-      },
-      expression: "tabFilters1.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchtabFilters1
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters1Quickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters1Quickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters1Quickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters1Quickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters1Quickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters1Quickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
-    staticStyle: {
-      "font-size": "18px",
-      "line-height": "35px",
-      "color": "#fff"
-    }
-  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 4),
-      expression: "tabag == 4"
-    }],
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.tabFilters2
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.tabFilters2.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.tabFilters2, "begin_time", $$v)
-      },
-      expression: "tabFilters2.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.tabFilters2.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.tabFilters2, "end_time", $$v)
-      },
-      expression: "tabFilters2.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchtabFilters2
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters2Quickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters2Quickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters2Quickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters2Quickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters2Quickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters2Quickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
-    staticStyle: {
-      "font-size": "18px",
-      "line-height": "35px",
-      "color": "#fff"
-    }
-  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 5),
-      expression: "tabag == 5"
-    }],
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.tabFilters3
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.tabFilters3.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.tabFilters3, "begin_time", $$v)
-      },
-      expression: "tabFilters3.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.tabFilters3.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.tabFilters3, "end_time", $$v)
-      },
-      expression: "tabFilters3.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchtabFilters3
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters3Quickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters3Quickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters3Quickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters3Quickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters3Quickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchtabFilters3Quickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
-    staticStyle: {
-      "font-size": "18px",
-      "line-height": "35px",
-      "color": "#fff"
-    }
-  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "height": "400px",
-      "overflow-y": "auto",
-      "clear": "both"
-    }
-  }, [_c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 1),
-      expression: "tabag == 1"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.liushuiLoading),
-      expression: "liushuiLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "max-height": "300",
-      "size": "mini",
-      "border": "",
-      "data": _vm.liushui,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "变动前",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_change",
-      "label": "金额",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_after",
-      "label": "变动后",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "type",
-      "label": "类型",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "note",
-      "label": "备注",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "time",
-      "label": "时间",
-      "min-width": "120"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 1),
-      expression: "tabag == 1"
-    }],
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.liushuiPagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.liushuiPagination.size,
-      "total": _vm.liushuiPagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChangeLiushui,
-      "current-change": _vm.handleCurrentChangeLiushui
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 2),
-      expression: "tabag == 2"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.udfenLoading),
-      expression: "udfenLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "max-height": "400",
-      "size": "mini",
-      "border": "",
-      "data": _vm.udfen,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "变动前",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_change",
-      "label": "金额",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_after",
-      "label": "变动后",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "type",
-      "label": "类型",
-      "min-width": "60"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.type == 1) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("庄注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 2) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("闲注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 3) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("和注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 4) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("庄对")]) : _vm._e(), _vm._v(" "), (scope.row.type == 5) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("闲对")]) : _vm._e(), _vm._v(" "), (scope.row.type == 11) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 12) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("下分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 13) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("下分删除")]) : _vm._e(), _vm._v(" "), (scope.row.type == 20) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("手动上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 21) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("手动下分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 100) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("码粮结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 110) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("取消下注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 111) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("牌局结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 121) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("重新结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 122) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("领取红包")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "note",
-      "label": "备注",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "time",
-      "label": "操作时间",
-      "min-width": "120",
-      "sortable": ""
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 2),
-      expression: "tabag == 2"
-    }],
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.udfenPagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.udfenPagination.size,
-      "total": _vm.udfenPagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChangeUdfen,
-      "current-change": _vm.handleCurrentChangeUdfen
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 3),
-      expression: "tabag == 3"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.bets,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "nickname",
-      "label": "会员名称",
-      "min-width": "130",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.usertype == 1) ? _c('a', {
-          staticStyle: {
-            "text-decoration": "underline",
-            "cursor": "pointer"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.getLowerListClom(scope.row)
-            }
-          }
-        }, [_vm._v(_vm._s(scope.row.nickname))]) : _vm._e(), _vm._v(" "), (scope.row.usertype == 2) ? _c('a', [_vm._v(_vm._s(scope.row.nickname))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "usertype",
-      "label": "身份",
-      "min-width": "30"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.usertype == 1) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v("代理")]) : _vm._e(), _vm._v(" "), (scope.row.usertype == 2) ? _c('a', [_vm._v("会员")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "ju",
-      "label": "局数",
-      "min-width": "150"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return (!scope.row.countt) ? [_c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])] : undefined
-      }
-    }], null, true)
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "odds_text",
-      "label": "下注类别",
-      "min-width": "250",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "game_result_text",
-      "label": "开牌结果",
-      "min-width": "130",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "win",
-      "label": "输赢",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm",
-      "label": "积分",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "relation_link",
-      "label": "代理关系",
-      "min-width": "330"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('relation', {
-          attrs: {
-            "rela": scope.row.relation_link
-          },
-          on: {
-            "getsearch": _vm.searchRela
-          }
-        })]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "level",
-      "label": "层级",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "120",
-      "sortable": ""
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 3),
-      expression: "tabag == 3"
-    }],
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.paginationbets.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.paginationbets.size,
-      "total": _vm.paginationbets.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChangebets,
-      "current-change": _vm.handleCurrentChangebets
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 4),
-      expression: "tabag == 4"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.jifens,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral",
-      "label": "每日积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_exchange",
-      "label": "已提积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_total",
-      "label": "剩余积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm_rate",
-      "label": "积分比例",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "date",
-      "label": "时间",
-      "min-width": "80"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 4),
-      expression: "tabag == 4"
-    }],
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.paginationjifens.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.paginationjifens.size,
-      "total": _vm.paginationjifens.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChangejifens,
-      "current-change": _vm.handleCurrentChangejifens
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 5),
-      expression: "tabag == 5"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.Hbs,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "领取金额",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "uptime",
-      "label": "领取时间",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "手气",
-      "min-width": "60"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.lucky == 0) ? _c('span') : _vm._e(), _vm._v(" "), (scope.row.lucky == 1) ? _c('span', [_vm._v("手气最佳")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 2) ? _c('span', [_vm._v("豹子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 3) ? _c('span', [_vm._v("顺子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 4) ? _c('span', [_vm._v("手气最差")]) : _vm._e()]
-      }
-    }])
-  })], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 5),
-      expression: "tabag == 5"
-    }],
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.paginationHb.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.paginationHb.size,
-      "total": _vm.paginationHb.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChangeHbs,
-      "current-change": _vm.handleCurrentChangeHbs
-    }
-  })], 1)], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.token.name + ' - 临时登录地址',
-      "visible": _vm.tokenVis,
-      "close-on-click-modal": false,
-      "width": "800px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.tokenVis = $event
-      }
-    }
-  }, [_c('div', [_vm._v("提示：临时登录地址只能使用一次即失效,再次使用请重新获取")]), _vm._v(" "), _c('div', [_vm._v("链接:")]), _vm._v(" "), _c('div', [_vm._v(_vm._s(_vm.token.tokenurl))]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm.tokenVis = false
-      }
-    }
-  }, [_vm._v("确定")])], 1)])], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1298 */
+/* 1289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      "background": "url('../../static/myimg/loginbg.jpg') 0% 0% / contain",
-      "position": "absolute",
-      "inset": "0px"
-    }
-  }, [_c('el-form', {
-    ref: "ruleForm2",
-    staticClass: "demo-ruleForm login-container",
+  return _c('table', {
+    staticClass: "el-table__body",
     attrs: {
-      "model": _vm.ruleForm2,
-      "rules": _vm.rules2,
-      "label-position": "left",
-      "label-width": "0px"
-    }
-  }, [_c('h3', {
-    class: _vm.quntitlesize <= 40 ? 'title58' : 'title38'
-  }, [_c('img', {
-    attrs: {
-      "width": "350",
-      "src": __webpack_require__(1229)
-    }
-  }), _vm._v("\n      " + _vm._s(this.quntitle) + "\n    ")]), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "prop": "account"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "text",
-      "prefix-icon": "el-icon-mobile-phone",
-      "auto-complete": "off",
-      "placeholder": "账号"
-    },
-    model: {
-      value: (_vm.ruleForm2.account),
-      callback: function($$v) {
-        _vm.$set(_vm.ruleForm2, "account", $$v)
-      },
-      expression: "ruleForm2.account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "prop": "checkPass"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "password",
-      "prefix-icon": "el-icon-lock",
-      "auto-complete": "off",
-      "placeholder": "密码"
-    },
-    model: {
-      value: (_vm.ruleForm2.checkPass),
-      callback: function($$v) {
-        _vm.$set(_vm.ruleForm2, "checkPass", $$v)
-      },
-      expression: "ruleForm2.checkPass"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
+      "id": _vm.options.id,
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "1",
       "width": "100%"
     }
-  }, [_c('el-button', {
-    staticStyle: {
-      "width": "100%",
-      "background-color": "#009688",
-      "border-color": "#009688"
-    },
-    attrs: {
-      "type": "primary",
-      "loading": _vm.logining
-    },
-    on: {
-      "click": function($event) {
-        return _vm.handleSubmit2()
-      }
-    }
-  }, [_vm._v("登录")])], 1)], 1)], 1)
+  }, _vm._l((_vm.options.wh[1]), function(h, hindex) {
+    return _c('tr', {
+      key: hindex,
+      staticClass: "el-table__row"
+    }, _vm._l((_vm.options.wh[0]), function(w, windex) {
+      return _c('td', {
+        key: windex,
+        style: ({
+          height: _vm.theight,
+          'vertical-align': 'middle'
+        })
+      }, [(_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 1 && _vm.gametype == 0) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(536),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 2 && _vm.gametype == 0) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(535),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 1 && _vm.gametype == 1) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(533),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 2 && _vm.gametype == 1) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(532),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 1 && _vm.gametype == 2) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1228),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 2 && _vm.gametype == 2) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1227),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 1 && _vm.gametype == 3) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1218),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 2 && _vm.gametype == 3) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1225),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 3) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1220),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 4 && _vm.gametype == 0) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1226),
+          "width": "100%"
+        },
+        on: {
+          "mouseleave": function($event) {
+            return _vm.hidepoker()
+          },
+          "mousemove": function($event) {
+            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
+          }
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).blue1 == 1 && _vm.gametype == 0) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1217),
+          "width": "30%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).red1 == 1 && _vm.gametype == 0) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1223),
+          "width": "30%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).blue0) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(105),
+          "width": "100%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).red0) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(107),
+          "width": "100%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).blue2) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px",
+          "max-width": "40%"
+        },
+        attrs: {
+          "src": __webpack_require__(106)
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).red2) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px",
+          "max-width": "40%"
+        },
+        attrs: {
+          "src": __webpack_require__(108)
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).num != 0 && _vm.readerData(windex * _vm.options.wh[1] + hindex).num != undefined) ? _c('span', {
+        staticClass: "num",
+        staticStyle: {
+          "color": "green",
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px",
+          "font-size": "12px",
+          "width": "100%",
+          "height": "100%",
+          "text-align": "center",
+          "font-weight": "bolder"
+        }
+      }, [_c('img', {
+        staticStyle: {
+          "width": "100%",
+          "height": "100%",
+          "position": "absolute",
+          "top": "0",
+          "left": "0"
+        },
+        attrs: {
+          "src": __webpack_require__(1222)
+        }
+      })]) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).heg) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(1221),
+          "width": "60%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d1 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(105),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d1 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(107),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d2 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(105),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d2 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(107),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d3 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(105),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d3 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(107),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d4 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(105),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d4 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(107),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e1 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(106),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e1 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(108),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e2 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(106),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e2 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(108),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e3 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(106),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e3 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(108),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e4 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(106),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e4 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(108),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f1 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(175),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f1 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(177),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f2 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(175),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f2 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(177),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f3 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(175),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f3 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(177),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f4 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(175),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f4 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(177),
+          "width": "50%",
+          "height": "50%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).g1 == '2') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(105),
+          "width": "100%",
+          "height": "100%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).g1 == '1') ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px"
+        },
+        attrs: {
+          "src": __webpack_require__(107),
+          "width": "100%",
+          "height": "100%"
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).blue3) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "bottom": "0px",
+          "right": "0px",
+          "max-width": "40%"
+        },
+        attrs: {
+          "src": __webpack_require__(106)
+        }
+      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).red3) ? _c('img', {
+        staticStyle: {
+          "position": "absolute",
+          "top": "0px",
+          "left": "0px",
+          "max-width": "40%"
+        },
+        attrs: {
+          "src": __webpack_require__(108)
+        }
+      }) : _vm._e()])
+    }), 0)
+  }), 0)
 },staticRenderFns: []}
 
 /***/ }),
-/* 1299 */
+/* 1290 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -39348,21 +34176,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.$set(_vm.filters, "uid", $$v)
       },
       expression: "filters.uid"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "牌局ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "牌局ID"
-    },
-    model: {
-      value: (_vm.filters.card_game_id),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "card_game_id", $$v)
-      },
-      expression: "filters.card_game_id"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
@@ -39403,7 +34216,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "filters.end_time"
     }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "200px",
+      "margin-left": "100px"
+    },
+    attrs: {
+      "label": "数据类型"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.filters.dataType),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "dataType", $$v)
+      },
+      expression: "filters.dataType"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "上分",
+      "value": "11"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "下分",
+      "value": "12"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "码粮结算",
+      "value": "100"
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-form', {
     attrs: {
       "size": "small",
       "inline": true
@@ -39507,13 +34359,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "id",
-      "label": "流水ID",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "uid",
+      "prop": "account",
       "label": "会员ID",
       "min-width": "60"
     }
@@ -39521,13 +34367,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "name",
       "label": "会员名称",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "card_game_id",
-      "label": "牌局ID",
-      "min-width": "60"
+      "min-width": "130"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -39566,11 +34406,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "note",
       "label": "操作内容",
-      "min-width": "130"
+      "min-width": "100"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "time",
+      "prop": "mktime",
       "label": "操作时间",
       "min-width": "120"
     }
@@ -39598,7 +34438,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1300 */
+/* 1291 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -39611,1386 +34451,89 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "span": 24
     }
   }, [_c('el-form', {
+    ref: "changePwdForm",
     attrs: {
       "size": "small",
-      "inline": true,
-      "model": _vm.filters
+      "label-width": "120px",
+      "model": _vm.filters,
+      "rules": _vm.formRules
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "会员ID"
+      "label": "原密码",
+      "prop": "oldpassword"
     }
   }, [_c('el-input', {
-    attrs: {
-      "placeholder": "会员ID"
-    },
-    model: {
-      value: (_vm.filters.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
-      },
-      expression: "filters.uid"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理账号"
-    },
-    model: {
-      value: (_vm.filters.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "agents_account", $$v)
-      },
-      expression: "filters.agents_account"
-    }
-  })], 1), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-form-item', {
-    attrs: {
-      "label": "数据类型"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.filters.dataType),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "dataType", $$v)
-      },
-      expression: "filters.dataType"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "会员",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "游客",
-      "value": "2"
-    }
-  })], 1)], 1) : _vm._e(), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "width": "260px"
+      "width": "200px"
     },
     attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
+      "type": "password",
+      "placeholder": "原密码"
     },
     model: {
-      value: (_vm.filters.begin_time),
+      value: (_vm.filters.oldpassword),
       callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
+        _vm.$set(_vm.filters, "oldpassword", $$v)
       },
-      expression: "filters.begin_time"
+      expression: "filters.oldpassword"
+    }
+  })], 1), _c('br'), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "新密码",
+      "prop": "newpassword1"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    },
+    attrs: {
+      "type": "password",
+      "placeholder": "新密码"
+    },
+    model: {
+      value: (_vm.filters.newpassword1),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "newpassword1", $$v)
+      },
+      expression: "filters.newpassword1"
+    }
+  })], 1), _c('br'), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "确认新密码",
+      "prop": "newpassword2"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    },
+    attrs: {
+      "type": "password",
+      "placeholder": "确认新密码"
+    },
+    model: {
+      value: (_vm.filters.newpassword2),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "newpassword2", $$v)
+      },
+      expression: "filters.newpassword2"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "width": "260px",
-      "margin-left": "20px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchScoreLog
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.exportExcel()
-      }
-    }
-  }, [_vm._v("导出报表")]), _vm._v(" "), _c('iframe', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "name": "baseExport"
-    }
-  }), _vm._v(" "), _c('form', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "id": "baseForm",
-      "name": "baseForm",
-      "method": "post",
-      "action": "",
-      "target": "baseExport"
-    }
-  }, [_c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "uid"
-    },
-    domProps: {
-      "value": _vm.searchParam.uid
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "dataType"
-    },
-    domProps: {
-      "value": _vm.searchParam.dataType
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "agents_account"
-    },
-    domProps: {
-      "value": _vm.searchParam.agents_account
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "begin_time"
-    },
-    domProps: {
-      "value": _vm.searchParam.begin_time
-    }
-  }), _vm._v(" "), _c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "end_time"
-    },
-    domProps: {
-      "value": _vm.searchParam.end_time
-    }
-  })])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "4px"
-    },
-    attrs: {
-      "span": 24
+      "margin-top": "20px"
     }
   }, [_c('el-button', {
     attrs: {
-      "type": "greenButton",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n        累计产生积分: " + _vm._s(_vm.integral_all) + "\n        ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "greenButton",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n        累计已提积分: " + _vm._s(_vm.integral_exchange) + "\n        ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "greenButton",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n        总剩余积分: " + _vm._s(_vm.user_integral) + "\n        ")])], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.log,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral",
-      "label": "每日积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_exchange",
-      "label": "已提积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_total",
-      "label": "剩余积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm_rate",
-      "label": "积分比例",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "date",
-      "label": "时间",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "min-width": "200"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return (!scope.row.countt) ? [_c('a', {
-          staticStyle: {
-            "color": "#20a0ff",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleDetail(scope.row)
-            }
-          }
-        }, [_vm._v("查看每日积分")])] : undefined
-      }
-    }], null, true)
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
+      "type": "primary"
     },
     on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
+      "click": _vm.changePwd
     }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.detailFilters.user.name + '-每日积分详情',
-      "visible": _vm.DetailVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.DetailVisible = $event
-      }
-    }
-  }, [_c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.detailLoading),
-      expression: "detailLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.detaillogs,
-      "highlight-current-row": "",
-      "max-height": "650"
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral",
-      "label": "每日积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_exchange",
-      "label": "已提积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_total",
-      "label": "剩余积分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm_rate",
-      "label": "积分比例",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "date",
-      "label": "时间",
-      "min-width": "80"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.detailPagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.detailPagination.size,
-      "total": _vm.detailPagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChangeDetail,
-      "current-change": _vm.handleCurrentChangeDetail
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.DetailVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)], 1)], 1)
+  }, [_vm._v("修改")])], 1)], 1)], 1)], 1)
 },staticRenderFns: []}
 
 /***/ }),
-/* 1301 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理账号"
-    },
-    model: {
-      value: (_vm.filters.account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "account", $$v)
-      },
-      expression: "filters.account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "代理名称"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理名称"
-    },
-    model: {
-      value: (_vm.filters.name),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "name", $$v)
-      },
-      expression: "filters.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "查询类型"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.filters.search_type),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "search_type", $$v)
-      },
-      expression: "filters.search_type"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "模糊查询",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "精准查询",
-      "value": "2"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchAgent
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.handleAdd
-    }
-  }, [_vm._v("新增代理")])], 1) : _vm._e()], 1)], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
-    staticClass: "lowList"
-  }, [_c('span', [_c('a', {
-    on: {
-      "click": function($event) {
-        return _vm.getLowerList()
-      }
-    }
-  }, [(_vm.auth_type != 1) ? _c('span', [_vm._v(_vm._s(_vm.plugin.getSessionItem("user", "name")))]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('span', [_vm._v("总代理")]) : _vm._e()])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
-    return _c('span', {
-      key: index
-    }, [_vm._v(" > "), _c('a', {
-      on: {
-        "click": function($event) {
-          return _vm.getLowerList(item)
-        }
-      }
-    }, [_vm._v(_vm._s(item.name))])])
-  })], 2) : _vm._e(), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 1),
-      expression: "tabag == 1"
-    }, {
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.agentList,
-      "highlight-current-row": ""
-    },
-    on: {
-      "row-click": _vm.clicked
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "account",
-      "label": "账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "名称",
-      "min-width": "130"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('input', {
-          directives: [{
-            name: "model",
-            rawName: "v-model",
-            value: (scope.row.agents_id),
-            expression: "scope.row.agents_id"
-          }],
-          attrs: {
-            "type": "hidden"
-          },
-          domProps: {
-            "value": (scope.row.agents_id)
-          },
-          on: {
-            "input": function($event) {
-              if ($event.target.composing) { return; }
-              _vm.$set(scope.row, "agents_id", $event.target.value)
-            }
-          }
-        }), _vm._v(" "), _c('a', [_vm._v(_vm._s(scope.row.name))])]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "boss_account",
-      "label": "上线账号",
-      "min-width": "110",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "boss_name",
-      "label": "上线名称",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "relation_link",
-      "label": "代理关系",
-      "min-width": "330"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('relation', {
-          attrs: {
-            "rela": scope.row.relation_link
-          },
-          on: {
-            "getsearch": _vm.searchRela
-          }
-        })]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_desc",
-      "label": "备注",
-      "min-width": "80",
-      "show-overflow-tooltip": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "status",
-      "label": "状态",
-      "min-width": "80"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('div', {
-          staticClass: "cell"
-        }, [(scope.row.status == 0) ? _c('a', {
-          staticClass: "qiyong"
-        }, [_vm._v("启用")]) : _vm._e(), _vm._v(" "), (scope.row.status == 1) ? _c('a', {
-          staticClass: "jinyong"
-        }, [_vm._v("禁用")]) : _vm._e()])]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "开户时间",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "min-width": "330"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return (scope.row.account != '合计' && !scope.row.countt) ? [(scope.row.account != _vm.auth_account) ? [(scope.row.status == 1 && (_vm.auth_type == 1 || scope.row.boss_account == _vm.auth_account)) ? _c('a', {
-          staticClass: "qiyong",
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleForbidden(scope.row, 0)
-            }
-          }
-        }, [_vm._v("启用")]) : _vm._e(), _vm._v(" "), (scope.row.status == 0 && (_vm.auth_type == 1 || scope.row.boss_account == _vm.auth_account)) ? _c('a', {
-          staticClass: "jinyong",
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleForbidden(scope.row, 1)
-            }
-          }
-        }, [_vm._v("禁用")]) : _vm._e()] : _vm._e(), _vm._v(" "), ((_vm.auth_type == 1 || scope.row.boss_account == _vm.auth_account)) ? _c('a', {
-          staticClass: "bianji",
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleEdit(scope.row)
-            }
-          }
-        }, [_vm._v("编辑")]) : _vm._e()] : undefined
-      }
-    }], null, true)
-  }) : _vm._e()], 1), _vm._v(" "), _c('el-col', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.tabag == 1),
-      expression: "tabag == 1"
-    }],
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.currentAgent.agents_name + '新增代理',
-      "visible": _vm.addFormVisible,
-      "close-on-click-modal": false,
-      "width": "1200px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.addFormVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "addForm",
-    attrs: {
-      "size": "mini",
-      "model": _vm.addForm,
-      "label-width": "80px",
-      "rules": _vm.addFormRules
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理名称",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.addForm.name),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "name", $$v)
-      },
-      expression: "addForm.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "登录账号",
-      "prop": "account"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addForm.account),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "account", $$v)
-      },
-      expression: "addForm.account"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "上级账号",
-      "prop": "boss_account"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addForm.boss_account),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "boss_account", $$v)
-      },
-      expression: "addForm.boss_account"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "初始密码",
-      "prop": "password1"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addForm.password1),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "password1", $$v)
-      },
-      expression: "addForm.password1"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "确认密码",
-      "prop": "password2"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.addForm.password2),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "password2", $$v)
-      },
-      expression: "addForm.password2"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td')]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "colspan": "4"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "备注",
-      "prop": "agents_desc"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea"
-    },
-    model: {
-      value: (_vm.addForm.agents_desc),
-      callback: function($$v) {
-        _vm.$set(_vm.addForm, "agents_desc", $$v)
-      },
-      expression: "addForm.agents_desc"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.addFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "编辑代理",
-      "visible": _vm.editFormVisible,
-      "close-on-click-modal": false,
-      "width": "1200px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.editFormVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "editForm",
-    attrs: {
-      "size": "mini",
-      "model": _vm.editForm,
-      "label-width": "80px",
-      "rules": _vm.editFormRules
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理名称",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.editForm.name),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "name", $$v)
-      },
-      expression: "editForm.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "登录账号",
-      "prop": "account"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "disabled": true,
-      "readonly": ""
-    },
-    model: {
-      value: (_vm.editForm.account),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "account", $$v)
-      },
-      expression: "editForm.account"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "上级账号",
-      "prop": "boss_account"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.editForm.boss_account),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "boss_account", $$v)
-      },
-      expression: "editForm.boss_account"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "修改密码",
-      "prop": "password1"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.editForm.password),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "password", $$v)
-      },
-      expression: "editForm.password"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "colspan": "4"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "备注",
-      "prop": "agents_desc"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea"
-    },
-    model: {
-      value: (_vm.editForm.agents_desc),
-      callback: function($$v) {
-        _vm.$set(_vm.editForm, "agents_desc", $$v)
-      },
-      expression: "editForm.agents_desc"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.editFormVisible = false
-      }
-    }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.editLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.editSubmit($event)
-      }
-    }
-  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.fenFilters.user.name + '-' + (_vm.fenFilters.type == 1 ? '上分' : '下分'),
-      "visible": _vm.fenVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.fenVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    staticClass: "demo-form-inline",
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "max-height": "500",
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理名称"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.fenFilters.yufen.name),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters.yufen, "name", $$v)
-      },
-      expression: "fenFilters.yufen.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.fenFilters.yufen.account),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters.yufen, "account", $$v)
-      },
-      expression: "fenFilters.yufen.account"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "当前额度"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.fenFilters.yufen.agent_score),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters.yufen, "agent_score", $$v)
-      },
-      expression: "fenFilters.yufen.agent_score"
-    }
-  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "上级额度"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "readonly": "",
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.fenFilters.yufen.boss_score),
-      callback: function($$v) {
-        _vm.$set(_vm.fenFilters.yufen, "boss_score", $$v)
-      },
-      expression: "fenFilters.yufen.boss_score"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": _vm.fenFilters.type == 1 ? '增加额度' : '减少额度'
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.money2Fen),
-      callback: function($$v) {
-        _vm.money2Fen = $$v
-      },
-      expression: "money2Fen"
-    }
-  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.onSubmitFen(_vm.fenFilters.type)
-      }
-    }
-  }, [_vm._v("提交")]), _vm._v(" "), _c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.fenVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.udfenFilters.user.name + '-余分明细',
-      "visible": _vm.udfenVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.udfenVisible = $event
-      }
-    }
-  }, [_c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.udfenLoading),
-      expression: "udfenLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "max-height": 500,
-      "size": "mini",
-      "border": "",
-      "data": _vm.udfen,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "130"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "变动前",
-      "min-width": "70",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_change",
-      "label": "金额",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_after",
-      "label": "变动后",
-      "min-width": "60",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "note",
-      "label": "备注",
-      "min-width": "140"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "time",
-      "label": "操作时间",
-      "min-width": "120",
-      "sortable": ""
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.udfenPagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.udfenPagination.size,
-      "total": _vm.udfenPagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChangeUdfen,
-      "current-change": _vm.handleCurrentChangeUdfen
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.udfenVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1302 */
+/* 1292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -41180,8 +34723,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.paiControll.roomInfo.room_info.room_id),
-      expression: "paiControll.roomInfo.room_info.room_id"
+      value: (this.paiControll.roomInfo.room_info.room_id),
+      expression: "this.paiControll.roomInfo.room_info.room_id"
     }],
     staticStyle: {
       "width": "34px",
@@ -41195,20 +34738,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text"
     },
     domProps: {
-      "value": (_vm.paiControll.roomInfo.room_info.room_id)
+      "value": (this.paiControll.roomInfo.room_info.room_id)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.$set(_vm.paiControll.roomInfo.room_info, "room_id", $event.target.value)
+        _vm.$set(this.paiControll.roomInfo.room_info, "room_id", $event.target.value)
       }
     }
   }), _vm._v(" "), _c('span', [_vm._v("靴号")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.paiControll.roomInfo.room_info.boots_number),
-      expression: "paiControll.roomInfo.room_info.boots_number"
+      value: (this.paiControll.roomInfo.room_info.boots_number),
+      expression: "this.paiControll.roomInfo.room_info.boots_number"
     }],
     staticStyle: {
       "width": "44px",
@@ -41222,12 +34765,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text"
     },
     domProps: {
-      "value": (_vm.paiControll.roomInfo.room_info.boots_number)
+      "value": (this.paiControll.roomInfo.room_info.boots_number)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.$set(_vm.paiControll.roomInfo.room_info, "boots_number", $event.target.value)
+        _vm.$set(this.paiControll.roomInfo.room_info, "boots_number", $event.target.value)
       }
     }
   }), _vm._v(" "), _c('span', [_vm._v("局")]), _vm._v(" "), _c('input', {
@@ -45205,7 +38748,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1303 */
+/* 1293 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -45213,9 +38756,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "toolbar toptoolbar",
     staticStyle: {
       "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
     }
   }, [_c('el-form', {
     attrs: {
@@ -45225,22 +38765,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "代理账号"
+      "label": "会员ID"
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": "代理账号"
+      "placeholder": "会员ID"
     },
     model: {
-      value: (_vm.filters.agents_account),
+      value: (_vm.filters.uid),
       callback: function($$v) {
-        _vm.$set(_vm.filters, "agents_account", $$v)
+        _vm.$set(_vm.filters, "uid", $$v)
       },
-      expression: "filters.agents_account"
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "牌局ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "牌局ID"
+    },
+    model: {
+      value: (_vm.filters.card_game_id),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "card_game_id", $$v)
+      },
+      expression: "filters.card_game_id"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "width": "260px"
+      "width": "200px"
     },
     attrs: {
       "label": "开始时间"
@@ -45259,7 +38814,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "width": "260px"
+      "width": "200px",
+      "margin-left": "100px"
     },
     attrs: {
       "label": "结束时间"
@@ -45276,12 +38832,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "filters.end_time"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
-      "click": _vm.searchTs
+      "click": _vm.searchScoreLog
     }
   }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
@@ -45345,7 +38906,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return _vm.getLowerList()
       }
     }
-  }, [_vm._v("首页")])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
+  }, [_vm._v(_vm._s(_vm.plugin.getSessionItem("user", "name")))])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
     return _c('span', {
       key: index
     }, [_vm._v(" > "), _c('a', {
@@ -45370,1159 +38931,76 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "row-class-name": _vm.plugin.tableRowClassName,
       "size": "mini",
       "border": "",
-      "data": _vm.dc,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "110"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          staticStyle: {
-            "text-decoration": "underline",
-            "cursor": "pointer"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.getLowerList(scope.row)
-            }
-          }
-        }, [_vm._v(_vm._s(scope.row.agents_name))])]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "user_losewin",
-      "label": "会员输赢数",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zhuang_losewin",
-      "label": "对冲后庄输赢数",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xian_losewin",
-      "label": "对冲后闲输赢数",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "sb_losewin",
-      "label": "四宝输赢数",
-      "min-width": "90",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_losewin",
-      "label": "对冲后龙输赢数",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_losewin",
-      "label": "对冲后虎输赢数",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_losewin",
-      "label": "对冲后输赢总数",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zts",
-      "label": "退水总额",
-      "min-width": "100",
-      "sortable": ""
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1304 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "用户ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "用户ID"
-    },
-    model: {
-      value: (_vm.filters.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
-      },
-      expression: "filters.uid"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理账号"
-    },
-    model: {
-      value: (_vm.filters.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "agents_account", $$v)
-      },
-      expression: "filters.agents_account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px",
-      "margin-left": "35px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchScoreLog
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "4px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n        结算积分总数量: " + _vm._s(_vm.exchange_integral_all) + "\n        ")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "effect": "dark"
-    }
-  }, [_vm._v("\n        上分总额度: " + _vm._s(_vm.exchange_score) + "\n        ")]), _vm._v(" "), (_vm.agent_type == 3) ? _c('el-button', {
-    staticStyle: {
-      "cursor": "pointer"
-    },
-    attrs: {
-      "type": "danger",
-      "effect": "dark"
-    },
-    on: {
-      "click": _vm.guiling
-    }
-  }, [_vm._v("\n        一键结算\n        ")]) : _vm._e()], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.log,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员昵称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理昵称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_exchange",
-      "label": "结算积分",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral_rate",
-      "label": "积分比例",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "exchange_score",
-      "label": "上分额度",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "80"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": _vm.detailFilters.user.name + '-详情',
-      "visible": _vm.DetailVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.DetailVisible = $event
-      }
-    }
-  }, [_c('el-col', {
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.detailFilters
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.detailFilters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.detailFilters, "begin_time", $$v)
-      },
-      expression: "detailFilters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.detailFilters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.detailFilters, "end_time", $$v)
-      },
-      expression: "detailFilters.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchDetail
-    }
-  }, [_vm._v("查询")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.detailLoading),
-      expression: "detailLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "max-height": "300",
-      "size": "mini",
-      "border": "",
-      "data": _vm.detaillogs,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "流水",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "integral",
-      "label": "积分",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "card_game_id",
-      "label": "牌局ID",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "type",
-      "label": "类型",
-      "min-width": "100"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.type == 1) ? _c('a', {
-          staticStyle: {
-            "color": "blue"
-          }
-        }, [_vm._v("增加")]) : _vm._e(), _vm._v(" "), (scope.row.type == 2) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v("减少")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "100"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.detailPagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.detailPagination.size,
-      "total": _vm.detailPagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChangeDetail,
-      "current-change": _vm.handleCurrentChangeDetail
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.DetailVisible = false
-      }
-    }
-  }, [_vm._v("关闭")])], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1305 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.win,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "40"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员名称",
-      "min-width": "130"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "代理账号",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "代理名称",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "usertype",
-      "label": "身份",
-      "min-width": "30"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.usertype == 1) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v("代理")]) : _vm._e(), _vm._v(" "), (scope.row.usertype == 2) ? _c('a', [_vm._v("会员")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "relation_link",
-      "label": "代理关系",
-      "min-width": "260"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "会员余分",
-      "min-width": "80",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm",
-      "label": "累计产生积分",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xm_money",
-      "label": "积分已兑换额度",
-      "min-width": "120",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "win",
-      "label": "输赢数",
-      "min-width": "70",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.win >= 0) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e(), _vm._v(" "), (scope.row.win < 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "profit",
-      "label": "会员收益",
-      "min-width": "80",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.profit >= 0) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e(), _vm._v(" "), (scope.row.profit < 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "240"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1306 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "会员ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "会员ID"
-    },
-    model: {
-      value: (_vm.filters.uid),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
-      },
-      expression: "filters.uid"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "date",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.getUsers
-    }
-  }, [_vm._v("查询")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.getUsers
-    }
-  }, [_vm._v("导出报表")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.users,
-      "highlight-current-row": ""
-    },
-    on: {
-      "selection-change": _vm.selsChange
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "type": "index",
-      "label": "ID",
-      "width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "会员ID",
-      "width": "",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "sex",
-      "label": "用户名",
-      "width": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "age",
-      "label": "庄注",
-      "width": "",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "birth",
-      "label": "和注",
-      "width": "",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "闲注",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "庄对",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "闲对",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "幸运六",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "输赢",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "积分",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "时间",
-      "min-width": "100",
-      "sortable": ""
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "prev, pager, next",
-      "page-size": 20,
-      "total": _vm.total
-    },
-    on: {
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1307 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('div', {
-    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition",
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "mini"
-    }
-  }, [_c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "0",
-      "width": "100%"
-    }
-  }, [_c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "代理名称:"
-    }
-  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.name) + "\n                            ")])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "登录账号:"
-    }
-  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.account) + "\n                            ")])], 1), _vm._v(" "), _c('td')]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label": "洗码类型:"
-    }
-  }, [(_vm.agentsInfo.xm_type == 1) ? _c('a', [_vm._v("单边洗码")]) : _vm._e(), _vm._v(" "), (_vm.agentsInfo.xm_type == 2) ? _c('a', [_vm._v("双边洗码")]) : _vm._e()])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label-width": "100",
-      "label": "庄闲洗码率:"
-    }
-  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.xm_rate) + "%\n                            ")])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label-width": "100",
-      "label": "庄闲占成率:"
-    }
-  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.share_rate) + "%\n                            ")])], 1)]), _vm._v(" "), _c('tr', {
-    staticClass: "el-table__row"
-  }, [_c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label-width": "100",
-      "label": "四宝洗码率:"
-    }
-  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.sb_xm_rate) + "%\n                            ")])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
-    staticStyle: {
-      "margin": "0px 5px"
-    },
-    attrs: {
-      "label-width": "100",
-      "label": "四宝占成率:"
-    }
-  }, [_vm._v("\n                                 " + _vm._s(_vm.agentsInfo.sb_share_rate) + "%                                   \n                            ")])], 1)])])])], 1)])
-},staticRenderFns: []}
-
-/***/ }),
-/* 1308 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "操作人账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "操作人账号"
-    },
-    model: {
-      value: (_vm.filters.deal_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "deal_account", $$v)
-      },
-      expression: "filters.deal_account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "被操作人账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "被操作人账号"
-    },
-    model: {
-      value: (_vm.filters.be_deal_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "be_deal_account", $$v)
-      },
-      expression: "filters.be_deal_account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "类型"
-    }
-  }, [_c('el-select', {
-    staticStyle: {
-      "width": "135px"
-    },
-    attrs: {
-      "placeholder": "全部"
-    },
-    model: {
-      value: (_vm.filters.type),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "type", $$v)
-      },
-      expression: "filters.type"
-    }
-  }, _vm._l((_vm.options), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }), 1)], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "margin-left": "15px"
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchLog
-    }
-  }, [_vm._v("查询")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
       "data": _vm.logs,
       "highlight-current-row": ""
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "deal_account",
-      "label": "操作人账号",
-      "min-width": "80"
+      "prop": "id",
+      "label": "流水ID",
+      "min-width": "60"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "be_deal_account",
-      "label": "被操作人账号",
-      "min-width": "100",
-      "sortable": ""
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "60"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "type",
-      "label": "类型",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "note",
-      "label": "日志",
-      "min-width": "240"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "ip",
-      "label": "IP",
+      "prop": "name",
+      "label": "会员名称",
       "min-width": "100"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "mktime",
-      "label": "时间",
+      "prop": "card_game_id",
+      "label": "牌局ID",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "调整前余分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_change",
+      "label": "调整金额",
+      "min-width": "90",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.score_change >= 0) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.score_change))]) : _vm._e(), _vm._v(" "), (scope.row.score_change < 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.score_change))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_after",
+      "label": "调整后余分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "note",
+      "label": "操作内容",
+      "min-width": "130"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "time",
+      "label": "操作时间",
       "min-width": "120"
     }
   })], 1), _vm._v(" "), _c('el-col', {
@@ -46549,12 +39027,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1309 */
+/* 1294 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('section', [_c('el-col', {
-    staticClass: "toolbar",
+    staticClass: "toolbar toptoolbar",
     staticStyle: {
       "padding-bottom": "0px"
     },
@@ -46563,169 +39041,273 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form', {
     attrs: {
+      "size": "small",
       "inline": true,
       "model": _vm.filters
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "会员ID"
+      "label": "代理账号"
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": "会员ID"
+      "placeholder": "代理账号"
     },
     model: {
-      value: (_vm.filters.uid),
+      value: (_vm.filters.account),
       callback: function($$v) {
-        _vm.$set(_vm.filters, "uid", $$v)
+        _vm.$set(_vm.filters, "account", $$v)
       },
-      expression: "filters.uid"
+      expression: "filters.account"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
     attrs: {
-      "label": "开始时间"
+      "label": "代理名称"
     }
-  }, [_c('el-date-picker', {
+  }, [_c('el-input', {
     attrs: {
-      "type": "date",
-      "placeholder": "开始时间"
+      "placeholder": "代理名称"
     },
     model: {
-      value: (_vm.filters.begin_time),
+      value: (_vm.filters.name),
       callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
+        _vm.$set(_vm.filters, "name", $$v)
       },
-      expression: "filters.begin_time"
+      expression: "filters.name"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
     attrs: {
-      "label": "结束时间"
+      "label": "查询类型"
     }
-  }, [_c('el-date-picker', {
+  }, [_c('el-select', {
     attrs: {
-      "type": "date",
-      "placeholder": "结束时间"
+      "placeholder": "请选择"
     },
     model: {
-      value: (_vm.filters.end_time),
+      value: (_vm.filters.search_type),
       callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
+        _vm.$set(_vm.filters, "search_type", $$v)
       },
-      expression: "filters.end_time"
+      expression: "filters.search_type"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  }, [_c('el-option', {
+    attrs: {
+      "label": "模糊查询",
+      "value": "1"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "精准查询",
+      "value": "2"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
-      "click": _vm.getUsers
+      "click": _vm.searchAgent
     }
-  }, [_vm._v("查询")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("查询")])], 1), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
-      "click": _vm.getUsers
+      "click": _vm.handleAdd
     }
-  }, [_vm._v("导出报表")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("新增代理")])], 1) : _vm._e()], 1)], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
+    staticClass: "lowList"
+  }, [_c('span', [_c('a', {
+    on: {
+      "click": function($event) {
+        return _vm.getLowerList()
+      }
+    }
+  }, [(_vm.auth_type != 1) ? _c('span', [_vm._v(_vm._s(_vm.plugin.getSessionItem("user", "name")))]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('span', [_vm._v("总代理")]) : _vm._e()])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
+    return _c('span', {
+      key: index
+    }, [_vm._v(" > "), _c('a', {
+      on: {
+        "click": function($event) {
+          return _vm.getLowerList(item)
+        }
+      }
+    }, [_vm._v(_vm._s(item.name))])])
+  })], 2) : _vm._e(), _vm._v(" "), _c('el-table', {
     directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 1),
+      expression: "tabag == 1"
+    }, {
       name: "loading",
       rawName: "v-loading",
       value: (_vm.listLoading),
       expression: "listLoading"
     }],
+    staticClass: "tableStyle",
     staticStyle: {
       "width": "100%"
     },
     attrs: {
-      "data": _vm.users,
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.agentList,
       "highlight-current-row": ""
     },
     on: {
-      "selection-change": _vm.selsChange
+      "row-click": _vm.clicked
     }
   }, [_c('el-table-column', {
     attrs: {
-      "type": "index",
-      "label": "ID",
-      "width": "80"
+      "prop": "account",
+      "label": "账号",
+      "min-width": "80"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "name",
-      "label": "会员ID",
-      "width": "",
+      "label": "名称",
+      "min-width": "130"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('input', {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: (scope.row.agents_id),
+            expression: "scope.row.agents_id"
+          }],
+          attrs: {
+            "type": "hidden"
+          },
+          domProps: {
+            "value": (scope.row.agents_id)
+          },
+          on: {
+            "input": function($event) {
+              if ($event.target.composing) { return; }
+              _vm.$set(scope.row, "agents_id", $event.target.value)
+            }
+          }
+        }), _vm._v(" "), _c('a', [_vm._v(_vm._s(scope.row.name))])]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "boss_account",
+      "label": "上线账号",
+      "min-width": "110",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "sex",
-      "label": "用户名",
-      "width": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "age",
-      "label": "庄注",
-      "width": "",
+      "prop": "boss_name",
+      "label": "上线名称",
+      "min-width": "120",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "birth",
-      "label": "和注",
-      "width": "",
-      "sortable": ""
+      "prop": "relation_link",
+      "label": "代理关系",
+      "min-width": "330"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('relation', {
+          attrs: {
+            "rela": scope.row.relation_link
+          },
+          on: {
+            "getsearch": _vm.searchRela
+          }
+        })]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_desc",
+      "label": "备注",
+      "min-width": "80",
+      "show-overflow-tooltip": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "addr",
-      "label": "闲注",
-      "min-width": "100",
-      "sortable": ""
-    }
+      "prop": "status",
+      "label": "状态",
+      "min-width": "80"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('div', {
+          staticClass: "cell"
+        }, [(scope.row.status == 0) ? _c('a', {
+          staticClass: "qiyong"
+        }, [_vm._v("启用")]) : _vm._e(), _vm._v(" "), (scope.row.status == 1) ? _c('a', {
+          staticClass: "jinyong"
+        }, [_vm._v("禁用")]) : _vm._e()])]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "addr",
-      "label": "庄对",
-      "min-width": "100",
+      "prop": "mktime",
+      "label": "开户时间",
+      "min-width": "120",
       "sortable": ""
     }
-  }), _vm._v(" "), _c('el-table-column', {
+  }), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-table-column', {
     attrs: {
-      "prop": "addr",
-      "label": "闲对",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "幸运六",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "输赢",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "积分",
-      "min-width": "100",
-      "sortable": ""
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
+      "label": "操作",
+      "min-width": "330"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return (scope.row.account != '合计' && !scope.row.countt) ? [(scope.row.account != _vm.auth_account) ? [(scope.row.status == 1 && (_vm.auth_type == 1 || scope.row.boss_account == _vm.auth_account)) ? _c('a', {
+          staticClass: "qiyong",
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleForbidden(scope.row, 0)
+            }
+          }
+        }, [_vm._v("启用")]) : _vm._e(), _vm._v(" "), (scope.row.status == 0 && (_vm.auth_type == 1 || scope.row.boss_account == _vm.auth_account)) ? _c('a', {
+          staticClass: "jinyong",
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleForbidden(scope.row, 1)
+            }
+          }
+        }, [_vm._v("禁用")]) : _vm._e()] : _vm._e(), _vm._v(" "), ((_vm.auth_type == 1 || scope.row.boss_account == _vm.auth_account)) ? _c('a', {
+          staticClass: "bianji",
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleEdit(scope.row)
+            }
+          }
+        }, [_vm._v("编辑")]) : _vm._e()] : undefined
+      }
+    }], null, true)
+  }) : _vm._e()], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 1),
+      expression: "tabag == 1"
+    }],
     staticClass: "toolbar",
     attrs: {
       "span": 24
@@ -46735,81 +39317,337 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "float": "right"
     },
     attrs: {
-      "layout": "prev, pager, next",
-      "page-size": 20,
-      "total": _vm.total
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
     },
     on: {
+      "size-change": _vm.handleSizeChange,
       "current-change": _vm.handleCurrentChange
     }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1310 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.logs,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "domain",
-      "label": "群名称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "account",
-      "label": "总代理账号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agent_score",
-      "label": "总代理余分",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "min-width": "100"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          staticStyle: {
-            "color": "#20a0ff",
-            "cursor": "pointer"
-          },
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.handleFen(scope.row, 1)
-            }
-          }
-        }, [_vm._v("上分")])]
-      }
-    }])
   })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.currentAgent.agents_name + '新增代理',
+      "visible": _vm.addFormVisible,
+      "close-on-click-modal": false,
+      "width": "1200px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.addFormVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "size": "mini",
+      "model": _vm.addForm,
+      "label-width": "80px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理名称",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.name),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "name", $$v)
+      },
+      expression: "addForm.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "登录账号",
+      "prop": "account"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.addForm.account),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "account", $$v)
+      },
+      expression: "addForm.account"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "上级账号",
+      "prop": "boss_account"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.addForm.boss_account),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "boss_account", $$v)
+      },
+      expression: "addForm.boss_account"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "初始密码",
+      "prop": "password1"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.addForm.password1),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "password1", $$v)
+      },
+      expression: "addForm.password1"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "确认密码",
+      "prop": "password2"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.addForm.password2),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "password2", $$v)
+      },
+      expression: "addForm.password2"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td')]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "colspan": "4"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "备注",
+      "prop": "agents_desc"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea"
+    },
+    model: {
+      value: (_vm.addForm.agents_desc),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "agents_desc", $$v)
+      },
+      expression: "addForm.agents_desc"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "编辑代理",
+      "visible": _vm.editFormVisible,
+      "close-on-click-modal": false,
+      "width": "1200px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.editFormVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "editForm",
+    attrs: {
+      "size": "mini",
+      "model": _vm.editForm,
+      "label-width": "80px",
+      "rules": _vm.editFormRules
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理名称",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.name),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "name", $$v)
+      },
+      expression: "editForm.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "登录账号",
+      "prop": "account"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "disabled": true,
+      "readonly": ""
+    },
+    model: {
+      value: (_vm.editForm.account),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "account", $$v)
+      },
+      expression: "editForm.account"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "上级账号",
+      "prop": "boss_account"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.editForm.boss_account),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "boss_account", $$v)
+      },
+      expression: "editForm.boss_account"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "2"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "修改密码",
+      "prop": "password1"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.editForm.password),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "password", $$v)
+      },
+      expression: "editForm.password"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "colspan": "4"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "备注",
+      "prop": "agents_desc"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea"
+    },
+    model: {
+      value: (_vm.editForm.agents_desc),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "agents_desc", $$v)
+      },
+      expression: "editForm.agents_desc"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.editFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.editLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.editSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
       "title": _vm.fenFilters.user.name + '-' + (_vm.fenFilters.type == 1 ? '上分' : '下分'),
       "visible": _vm.fenVisible,
@@ -46905,6 +39743,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "margin": "0px 5px"
     },
     attrs: {
+      "label": "上级额度"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.fenFilters.yufen.boss_score),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters.yufen, "boss_score", $$v)
+      },
+      expression: "fenFilters.yufen.boss_score"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "colspan": "2"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
       "label": _vm.fenFilters.type == 1 ? '增加额度' : '减少额度'
     }
   }, [_c('el-input', {
@@ -46936,481 +39799,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.fenVisible = false
       }
     }
-  }, [_vm._v("关闭")])], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1311 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
+  }, [_vm._v("关闭")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true,
-      "model": _vm.filters
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "被操作代理账号"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "代理账号"
-    },
-    model: {
-      value: (_vm.filters.agents_account),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "agents_account", $$v)
-      },
-      expression: "filters.agents_account"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "260px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "数据类型"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.filters.dataType),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "dataType", $$v)
-      },
-      expression: "filters.dataType"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "上分",
-      "value": "11"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "下分",
-      "value": "12"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "用户类型"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.filters.userType),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "userType", $$v)
-      },
-      expression: "filters.userType"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "会员",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "代理",
-      "value": "2"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
+      "title": _vm.udfenFilters.user.name + '-余分明细',
+      "visible": _vm.udfenVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
     },
     on: {
-      "click": _vm.searchScoreLog
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
+      "update:visible": function($event) {
+        _vm.udfenVisible = $event
       }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.logs,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "agents_name",
-      "label": "被操作代理名称",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "agents_account",
-      "label": "被操作代理账号",
-      "min-width": "90"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "调整前余分",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_change",
-      "label": "调整金额",
-      "min-width": "90",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.score_change >= 0) ? _c('a', {
-          staticStyle: {
-            "color": "#FF9900"
-          }
-        }, [_vm._v(_vm._s(scope.row.score_change))]) : _vm._e(), _vm._v(" "), (scope.row.score_change < 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          }
-        }, [_vm._v(_vm._s(scope.row.score_change))]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score_after",
-      "label": "调整后余分",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "relation_link",
-      "label": "代理关系",
-      "min-width": "330"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "level",
-      "label": "层级",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "note",
-      "label": "操作内容",
-      "min-width": "200"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "do_agents_account",
-      "label": "操作人",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "操作时间",
-      "min-width": "120"
-    }
-  })], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-pagination', {
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
-      "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
-    },
-    on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1312 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [(!_vm.active) ? _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.openHongbaiqun
-    }
-  }, [_vm._v("开启红包群")])], 1) : _vm._e(), _vm._v(" "), (_vm.active) ? _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.openHongbaiqun
-    }
-  }, [_vm._v("修改红包群")])], 1) : _vm._e(), _vm._v(" "), (_vm.active) ? _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.closeHongbaiqun
-    }
-  }, [_vm._v("关闭红包群")])], 1) : _vm._e(), _vm._v(" "), (_vm.active) ? _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.setHongbao
-    }
-  }, [_vm._v("发红包")])], 1) : _vm._e()], 1)], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "position": "absolute",
-      "top": "60px",
-      "left": "0",
-      "right": "0",
-      "bottom": "0"
-    }
-  }, [_c('div', {
-    staticStyle: {
-      "position": "absolute",
-      "top": "0px",
-      "left": "0",
-      "width": "400px",
-      "bottom": "0"
-    }
-  }, [_c('div', {
-    staticClass: "chat",
-    attrs: {
-      "id": "chatcontentmain"
-    }
-  }, [_c('div', {
-    attrs: {
-      "id": "messagepannel"
-    }
-  }, _vm._l((_vm.chatMsg), function(chat, index) {
-    return _c('div', {
-      key: 'hongbao' + index
-    }, [(chat.error_order == 8) ? _c('div', {
-      staticClass: "hongbaonotice"
-    }, [_c('span', [_c('img', {
-      staticStyle: {
-        "width": "15px"
-      },
-      attrs: {
-        "src": __webpack_require__(176)
-      }
-    }), _vm._v(_vm._s(chat.message) + "\n                  ")])]) : _vm._e(), _vm._v(" "), (chat.error_order != 8) ? _c('div', {
-      staticClass: "chatItem"
-    }, [_c('div', {
-      staticClass: "headimage",
-      domProps: {
-        "innerHTML": _vm._s(_vm.readerHeader(chat))
-      }
-    }), _vm._v(" "), _c('div', {
-      staticClass: "context"
-    }, [_c('div', {
-      staticClass: "nameandtime",
-      domProps: {
-        "innerHTML": _vm._s(_vm.readerNameAndTime(chat))
-      }
-    }), _vm._v(" "), (chat.error_order == 3) ? _c('div', {
-      staticClass: "text",
-      domProps: {
-        "innerHTML": _vm._s(_vm.chatMessage(chat))
-      }
-    }) : _vm._e(), _vm._v(" "), (chat.error_order == 6) ? _c('div', {
-      staticClass: "text hongbao"
-    }, [_c('div', {
-      staticClass: "hongbaotop"
-    }, [_c('img', {
-      staticStyle: {
-        "width": "45px",
-        "margin-top": "12px",
-        "margin-left": "12px"
-      },
-      attrs: {
-        "src": __webpack_require__(176)
-      }
-    }), _vm._v(" "), _c('div', {
-      staticClass: "hongbaotit"
-    }, [_vm._v(_vm._s(JSON.parse(chat.message).title))]), _vm._v(" "), _c('div', {
-      staticClass: "hongbaostatus"
-    }, [_vm._v(_vm._s(JSON.parse(chat.message).note))])]), _vm._v(" "), _c('div', {
-      staticClass: "hongbaoouttom"
-    }, [_vm._v("\n                                     福利红包\n                                 ")])]) : _vm._e()])]) : _vm._e()])
-  }), 0)]), _vm._v(" "), _c('div', {
-    staticClass: "inputMsg"
-  }, [_c('div', {
-    staticClass: "msgtool"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(534)
-    },
-    on: {
-      "click": function($event) {
-        return _vm.triggerUploadImage()
-      }
-    }
-  }), _vm._v(" "), _c('input', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "type": "file",
-      "name": "filenameImage",
-      "id": "uploadfileImage"
-    }
-  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('button', {
-    staticClass: "sengMsg",
-    on: {
-      "click": function($event) {
-        return _vm.doSendMessage()
-      }
-    }
-  }, [_vm._v("发送")])])]), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "margin-left": "400px",
-      "height": "100%",
-      "overflow-y": "auto"
     }
   }, [_c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
+      value: (_vm.udfenLoading),
+      expression: "udfenLoading"
     }],
     staticClass: "tableStyle",
     staticStyle: {
@@ -47418,1613 +39824,57 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "row-class-name": _vm.plugin.tableRowClassName,
+      "max-height": 500,
       "size": "mini",
       "border": "",
-      "data": _vm.resUsers,
+      "data": _vm.udfen,
       "highlight-current-row": ""
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "100"
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "60"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "username",
-      "label": "会员名称",
-      "min-width": "80"
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "130"
     }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "sf",
-      "label": "身份",
-      "min-width": "80"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.ai == 1) ? _c('span', [_vm._v("虚拟")]) : _vm._e(), _vm._v(" "), (scope.row.tourist == 1) ? _c('span', [_vm._v("游客")]) : _vm._e(), _vm._v(" "), (scope.row.ai == 0 && scope.row.tourist != 1) ? _c('span', [_vm._v("会员")]) : _vm._e()]
-      }
-    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "score",
-      "label": "红包金额",
-      "min-width": "100",
+      "label": "变动前",
+      "min-width": "70",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "lucky",
-      "label": "手气",
-      "min-width": "100",
+      "prop": "score_change",
+      "label": "金额",
+      "min-width": "60",
       "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.lucky == 0) ? _c('span') : _vm._e(), _vm._v(" "), (scope.row.lucky == 1) ? _c('span', [_vm._v("手气最佳")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 2) ? _c('span', [_vm._v("豹子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 3) ? _c('span', [_vm._v("顺子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 4) ? _c('span', [_vm._v("手气最差")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "120"
-    }
-  })], 1)], 1)]), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "红包群设置",
-      "visible": _vm.hongbaoQunVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.hongbaoQunVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "settingForm",
-    attrs: {
-      "size": "mini",
-      "model": _vm.settingForm,
-      "label-width": "100px",
-      "labelWidth": "100px",
-      "rules": _vm.settingFormRules
-    }
-  }, [_c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "红包群名称",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "红包群名称"
-    },
-    model: {
-      value: (_vm.settingForm.name),
-      callback: function($$v) {
-        _vm.$set(_vm.settingForm, "name", $$v)
-      },
-      expression: "settingForm.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "红包群头像",
-      "prop": "head"
-    }
-  }, [_c('input', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "type": "file",
-      "name": "filename",
-      "id": "uploadfileAdd"
-    },
-    on: {
-      "change": function($event) {
-        return _vm.uploadfileAdd()
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "float": "left"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.triggerUploadAdd()
-      }
-    }
-  }, [_c('el-avatar', {
-    attrs: {
-      "src": _vm.settingForm.head
-    }
-  })], 1)]), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "管理员名称",
-      "prop": "hb_agents_name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "管理员名称"
-    },
-    model: {
-      value: (_vm.settingForm.hb_agents_name),
-      callback: function($$v) {
-        _vm.$set(_vm.settingForm, "hb_agents_name", $$v)
-      },
-      expression: "settingForm.hb_agents_name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "管理员头像",
-      "prop": "hb_agents_head"
-    }
-  }, [_c('input', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "type": "file",
-      "name": "filenamegl",
-      "id": "uploadfileAddgl"
-    },
-    on: {
-      "change": function($event) {
-        return _vm.uploadfileAddgl()
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "float": "left"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.triggerUploadAddgl()
-      }
-    }
-  }, [_c('el-avatar', {
-    attrs: {
-      "src": _vm.settingForm.hb_agents_head
-    }
-  })], 1)]), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "群禁言",
-      "prop": "no_say"
-    }
-  }, [
-    [_c('el-radio', {
-      attrs: {
-        "label": "0"
-      },
-      model: {
-        value: (_vm.settingForm.no_say),
-        callback: function($$v) {
-          _vm.$set(_vm.settingForm, "no_say", $$v)
-        },
-        expression: "settingForm.no_say"
-      }
-    }, [_vm._v("正常")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": "1"
-      },
-      model: {
-        value: (_vm.settingForm.no_say),
-        callback: function($$v) {
-          _vm.$set(_vm.settingForm, "no_say", $$v)
-        },
-        expression: "settingForm.no_say"
-      }
-    }, [_vm._v("禁言")])]
-  ], 2), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "成员",
-      "prop": "members"
-    }
-  }, [_c('div', {
-    staticClass: "chooseMember"
-  }, [_c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.has_hb),
-      expression: "!has_hb"
-    }],
-    staticClass: "chooseQuickly"
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "float": "left"
-    },
-    attrs: {
-      "label-width": "68px",
-      "label": "快速选择"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.settingForm.jifen),
-      callback: function($$v) {
-        _vm.$set(_vm.settingForm, "jifen", $$v)
-      },
-      expression: "settingForm.jifen"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "日积分3个以上",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "月积分300个以上",
-      "value": "2"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-checkbox', {
-    staticStyle: {
-      "margin": "0px 10px"
-    },
-    model: {
-      value: (_vm.settingForm.filterYk),
-      callback: function($$v) {
-        _vm.$set(_vm.settingForm, "filterYk", $$v)
-      },
-      expression: "settingForm.filterYk"
-    }
-  }, [_vm._v("过滤游客")]), _vm._v(" "), _c('el-checkbox', {
-    staticStyle: {
-      "margin": "0px 10px"
-    },
-    model: {
-      value: (_vm.settingForm.filterRobot),
-      callback: function($$v) {
-        _vm.$set(_vm.settingForm, "filterRobot", $$v)
-      },
-      expression: "settingForm.filterRobot"
-    }
-  }, [_vm._v("过滤机器人")]), _vm._v(" "), _c('el-button', {
-    staticStyle: {
-      "margin-left": "10px"
-    },
-    attrs: {
-      "type": "primary"
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.surequickchoose($event)
-      }
-    }
-  }, [_vm._v("确定")])], 1), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.has_hb),
-      expression: "!has_hb"
-    }],
-    staticClass: "chooseQuickly"
-  }, [_vm._v("\n              用户ID "), _c('el-input', {
-    staticStyle: {
-      "width": "100px"
-    },
-    attrs: {
-      "min": 0,
-      "label": "输入ID"
-    },
-    model: {
-      value: (_vm.settingForm.searchId),
-      callback: function($$v) {
-        _vm.$set(_vm.settingForm, "searchId", $$v)
-      },
-      expression: "settingForm.searchId"
-    }
-  }), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.surequickchooseId($event)
-      }
-    }
-  }, [_vm._v("确定")]), _vm._v("\n                  已选择" + _vm._s(_vm.settingForm.users.length) + "人\n            ")], 1), _vm._v(" "), _c('div', {
-    staticClass: "memberCon",
-    staticStyle: {
-      "margin-top": "5px"
-    }
-  }, [(_vm.settingForm.users.length) ? _c('el-table', {
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.settingForm.users,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "uid",
-      "label": "用户ID",
-      "min-width": "60"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "name",
-      "label": "昵称",
-      "min-width": "60"
+      "prop": "score_after",
+      "label": "变动后",
+      "min-width": "60",
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "d_integral",
-      "label": "日积分",
-      "min-width": "80"
+      "prop": "note",
+      "label": "备注",
+      "min-width": "140"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "y_integral",
-      "label": "月积分",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "min-width": "120"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [_c('a', {
-          directives: [{
-            name: "show",
-            rawName: "v-show",
-            value: (!_vm.has_hb),
-            expression: "!has_hb"
-          }],
-          staticStyle: {
-            "color": "#00c853"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.removeUserItem(scope.row.uid)
-            }
-          }
-        }, [_vm._v("移除")]), _vm._v(" "), (scope.row.noSay == 0) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          },
-          on: {
-            "click": function($event) {
-              scope.row.noSay = 1
-            }
-          }
-        }, [_vm._v("禁言")]) : _vm._e(), _vm._v(" "), (scope.row.noSay == 1) ? _c('a', {
-          staticStyle: {
-            "color": "red"
-          },
-          on: {
-            "click": function($event) {
-              scope.row.noSay = 0
-            }
-          }
-        }, [_vm._v("取消禁言")]) : _vm._e()]
-      }
-    }], null, false, 2092057575)
-  })], 1) : _vm._e()], 1)])])], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.hongbaoQunVisible = false;
-        _vm.locked = false;
-      }
-    }
-  }, [_vm._v("关闭")]), _vm._v(" "), (!_vm.active) ? _c('el-button', {
-    attrs: {
-      "type": "success"
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.openHongbaiqunsure($event)
-      }
-    }
-  }, [_vm._v("开启")]) : _vm._e(), _vm._v(" "), (_vm.active) ? _c('el-button', {
-    attrs: {
-      "type": "success"
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.openHongbaiqunsure($event)
-      }
-    }
-  }, [_vm._v("修改")]) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "红包设置",
-      "visible": _vm.hongbaoVisible,
-      "close-on-click-modal": false,
-      "width": "1000px"
-    },
-    on: {
-      "update:visible": function($event) {
-        _vm.hongbaoVisible = $event
-      }
-    }
-  }, [_c('el-form', {
-    ref: "settingFormHb",
-    attrs: {
-      "size": "mini",
-      "model": _vm.settingFormHb,
-      "label-width": "120px",
-      "labelWidth": "120px",
-      "rules": _vm.settingFormHbRules
-    }
-  }, [_c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "红包名称",
-      "prop": "title"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "红包名称"
-    },
-    model: {
-      value: (_vm.settingFormHb.title),
-      callback: function($$v) {
-        _vm.$set(_vm.settingFormHb, "title", $$v)
-      },
-      expression: "settingFormHb.title"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "红包留言",
-      "prop": "note"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "红包留言"
-    },
-    model: {
-      value: (_vm.settingFormHb.note),
-      callback: function($$v) {
-        _vm.$set(_vm.settingFormHb, "note", $$v)
-      },
-      expression: "settingFormHb.note"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "总金额",
-      "prop": "score"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "总金额"
-    },
-    model: {
-      value: (_vm.settingFormHb.score),
-      callback: function($$v) {
-        _vm.$set(_vm.settingFormHb, "score", $$v)
-      },
-      expression: "settingFormHb.score"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "红包个数",
-      "prop": "counts"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "红包个数"
-    },
-    model: {
-      value: (_vm.settingFormHb.counts),
-      callback: function($$v) {
-        _vm.$set(_vm.settingFormHb, "counts", $$v)
-      },
-      expression: "settingFormHb.counts"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "是否出现豹子",
-      "prop": "has_baozi"
-    }
-  }, [
-    [_c('el-radio', {
-      attrs: {
-        "label": "0"
-      },
-      model: {
-        value: (_vm.settingFormHb.has_baozi),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "has_baozi", $$v)
-        },
-        expression: "settingFormHb.has_baozi"
-      }
-    }, [_vm._v("不出现")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": "-1"
-      },
-      model: {
-        value: (_vm.settingFormHb.has_baozi),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "has_baozi", $$v)
-        },
-        expression: "settingFormHb.has_baozi"
-      }
-    }, [_vm._v("出现")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": "-2"
-      },
-      model: {
-        value: (_vm.settingFormHb.has_baozi),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "has_baozi", $$v)
-        },
-        expression: "settingFormHb.has_baozi"
-      }
-    }, [_vm._v("指定ID")]), _vm._v(" "), _c('el-input', {
-      staticStyle: {
-        "width": "100px",
-        "display": "inline-block"
-      },
-      attrs: {
-        "disabled": _vm.settingFormHb.has_baozi == -2 ? false : true,
-        "size": "mini",
-        "placeholder": "请输入ID"
-      },
-      model: {
-        value: (_vm.has_baozi),
-        callback: function($$v) {
-          _vm.has_baozi = $$v
-        },
-        expression: "has_baozi"
-      }
-    })]
-  ], 2), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "是否出现顺子",
-      "prop": "has_shunzi"
-    }
-  }, [
-    [_c('el-radio', {
-      attrs: {
-        "label": "0"
-      },
-      model: {
-        value: (_vm.settingFormHb.has_shunzi),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "has_shunzi", $$v)
-        },
-        expression: "settingFormHb.has_shunzi"
-      }
-    }, [_vm._v("不出现")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": "-1"
-      },
-      model: {
-        value: (_vm.settingFormHb.has_shunzi),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "has_shunzi", $$v)
-        },
-        expression: "settingFormHb.has_shunzi"
-      }
-    }, [_vm._v("出现")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": "-2"
-      },
-      model: {
-        value: (_vm.settingFormHb.has_shunzi),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "has_shunzi", $$v)
-        },
-        expression: "settingFormHb.has_shunzi"
-      }
-    }, [_vm._v("指定ID")]), _vm._v(" "), _c('el-input', {
-      staticStyle: {
-        "width": "100px",
-        "display": "inline-block"
-      },
-      attrs: {
-        "disabled": _vm.settingFormHb.has_shunzi == -2 ? false : true,
-        "size": "mini",
-        "placeholder": "请输入ID"
-      },
-      model: {
-        value: (_vm.has_shunzi),
-        callback: function($$v) {
-          _vm.has_shunzi = $$v
-        },
-        expression: "has_shunzi"
-      }
-    })]
-  ], 2), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "手气最佳",
-      "prop": "max_lucky"
-    }
-  }, [
-    [_c('el-radio', {
-      attrs: {
-        "label": "0"
-      },
-      model: {
-        value: (_vm.settingFormHb.max_lucky),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "max_lucky", $$v)
-        },
-        expression: "settingFormHb.max_lucky"
-      }
-    }, [_vm._v("不指定")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": "-2"
-      },
-      model: {
-        value: (_vm.settingFormHb.max_lucky),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "max_lucky", $$v)
-        },
-        expression: "settingFormHb.max_lucky"
-      }
-    }, [_vm._v("指定ID")]), _vm._v(" "), _c('el-input', {
-      staticStyle: {
-        "width": "100px",
-        "display": "inline-block"
-      },
-      attrs: {
-        "disabled": _vm.settingFormHb.max_lucky == -2 ? false : true,
-        "size": "mini",
-        "placeholder": "请输入ID"
-      },
-      model: {
-        value: (_vm.max_lucky),
-        callback: function($$v) {
-          _vm.max_lucky = $$v
-        },
-        expression: "max_lucky"
-      }
-    })]
-  ], 2), _vm._v(" "), _c('el-form-item', {
-    staticClass: "marginbot15",
-    attrs: {
-      "label": "手气最差",
-      "prop": "min_lucky"
-    }
-  }, [
-    [_c('el-radio', {
-      attrs: {
-        "label": "0"
-      },
-      model: {
-        value: (_vm.settingFormHb.min_lucky),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "min_lucky", $$v)
-        },
-        expression: "settingFormHb.min_lucky"
-      }
-    }, [_vm._v("不指定")]), _vm._v(" "), _c('el-radio', {
-      attrs: {
-        "label": "-2"
-      },
-      model: {
-        value: (_vm.settingFormHb.min_lucky),
-        callback: function($$v) {
-          _vm.$set(_vm.settingFormHb, "min_lucky", $$v)
-        },
-        expression: "settingFormHb.min_lucky"
-      }
-    }, [_vm._v("指定ID")]), _vm._v(" "), _c('el-input', {
-      staticStyle: {
-        "width": "100px",
-        "display": "inline-block"
-      },
-      attrs: {
-        "disabled": _vm.settingFormHb.min_lucky == -2 ? false : true,
-        "size": "mini",
-        "placeholder": "请输入ID"
-      },
-      model: {
-        value: (_vm.min_lucky),
-        callback: function($$v) {
-          _vm.min_lucky = $$v
-        },
-        expression: "min_lucky"
-      }
-    })]
-  ], 2)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.hongbaoVisible = false;
-        _vm.locked = false;
-      }
-    }
-  }, [_vm._v("关闭")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "success"
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.setHongbaosure($event)
-      }
-    }
-  }, [_vm._v("发送")])], 1)], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "input"
-  }, [_c('input', {
-    attrs: {
-      "id": "msginput",
-      "type": "text",
-      "placeholder": "请输入消息..."
-    }
-  })])
-}]}
-
-/***/ }),
-/* 1313 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('table', {
-    staticClass: "el-table__body",
-    attrs: {
-      "id": _vm.options.id,
-      "cellspacing": "0",
-      "cellpadding": "0",
-      "border": "1",
-      "width": "100%"
-    }
-  }, _vm._l((_vm.options.wh[1]), function(h, hindex) {
-    return _c('tr', {
-      key: hindex,
-      staticClass: "el-table__row"
-    }, _vm._l((_vm.options.wh[0]), function(w, windex) {
-      return _c('td', {
-        key: windex,
-        style: ({
-          height: _vm.theight,
-          'vertical-align': 'middle'
-        })
-      }, [(_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 1 && _vm.gametype == 0) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(536),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 2 && _vm.gametype == 0) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(535),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 1 && _vm.gametype == 1) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(533),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 2 && _vm.gametype == 1) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(532),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 1 && _vm.gametype == 2) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1228),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 2 && _vm.gametype == 2) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1227),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 1 && _vm.gametype == 3) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1218),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 2 && _vm.gametype == 3) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1225),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 3) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1220),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).type == 4 && _vm.gametype == 0) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1226),
-          "width": "100%"
-        },
-        on: {
-          "mouseleave": function($event) {
-            return _vm.hidepoker()
-          },
-          "mousemove": function($event) {
-            _vm.showpoker(_vm.readerData(windex * _vm.options.wh[1] + hindex).data)
-          }
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).blue1 == 1 && _vm.gametype == 0) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1217),
-          "width": "30%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).red1 == 1 && _vm.gametype == 0) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1223),
-          "width": "30%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).blue0) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(105),
-          "width": "100%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).red0) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(107),
-          "width": "100%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).blue2) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px",
-          "max-width": "40%"
-        },
-        attrs: {
-          "src": __webpack_require__(106)
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).red2) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px",
-          "max-width": "40%"
-        },
-        attrs: {
-          "src": __webpack_require__(108)
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).num != 0 && _vm.readerData(windex * _vm.options.wh[1] + hindex).num != undefined) ? _c('span', {
-        staticClass: "num",
-        staticStyle: {
-          "color": "green",
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px",
-          "font-size": "12px",
-          "width": "100%",
-          "height": "100%",
-          "text-align": "center",
-          "font-weight": "bolder"
-        }
-      }, [_c('img', {
-        staticStyle: {
-          "width": "100%",
-          "height": "100%",
-          "position": "absolute",
-          "top": "0",
-          "left": "0"
-        },
-        attrs: {
-          "src": __webpack_require__(1222)
-        }
-      })]) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).heg) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(1221),
-          "width": "60%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d1 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(105),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d1 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(107),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d2 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(105),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d2 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(107),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d3 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(105),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d3 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(107),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d4 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(105),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).d4 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(107),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e1 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(106),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e1 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(108),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e2 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(106),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e2 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(108),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e3 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(106),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e3 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(108),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e4 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(106),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).e4 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(108),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f1 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(175),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f1 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(177),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f2 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(175),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f2 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(177),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f3 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(175),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f3 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(177),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f4 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(175),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).f4 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(177),
-          "width": "50%",
-          "height": "50%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).g1 == '2') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(105),
-          "width": "100%",
-          "height": "100%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).g1 == '1') ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px"
-        },
-        attrs: {
-          "src": __webpack_require__(107),
-          "width": "100%",
-          "height": "100%"
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).blue3) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "bottom": "0px",
-          "right": "0px",
-          "max-width": "40%"
-        },
-        attrs: {
-          "src": __webpack_require__(106)
-        }
-      }) : _vm._e(), _vm._v(" "), (_vm.readerData(windex * _vm.options.wh[1] + hindex).red3) ? _c('img', {
-        staticStyle: {
-          "position": "absolute",
-          "top": "0px",
-          "left": "0px",
-          "max-width": "40%"
-        },
-        attrs: {
-          "src": __webpack_require__(108)
-        }
-      }) : _vm._e()])
-    }), 0)
-  }), 0)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1314 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "width": "250px"
-    },
-    attrs: {
-      "label": "开始时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "开始时间"
-    },
-    model: {
-      value: (_vm.filters.begin_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "begin_time", $$v)
-      },
-      expression: "filters.begin_time"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "width": "200px",
-      "margin-left": "50px"
-    },
-    attrs: {
-      "label": "结束时间"
-    }
-  }, [_c('el-date-picker', {
-    attrs: {
-      "type": "datetime",
-      "placeholder": "结束时间"
-    },
-    model: {
-      value: (_vm.filters.end_time),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "end_time", $$v)
-      },
-      expression: "filters.end_time"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.searchShare
-    }
-  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(5)
-      }
-    }
-  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(6)
-      }
-    }
-  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(1)
-      }
-    }
-  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(2)
-      }
-    }
-  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(3)
-      }
-    }
-  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.searchWinQuickly(4)
-      }
-    }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "size": "mini",
-      "border": "",
-      "data": _vm.log,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "mktime",
-      "label": "时间",
-      "min-width": "120"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "zxyk",
-      "label": "庄闲盈亏",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), (_vm.currentGroupType == 0) ? _c('el-table-column', {
-    attrs: {
-      "prop": "zxxm",
-      "label": "庄闲洗码",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 1) ? _c('el-table-column', {
-    attrs: {
-      "prop": "zxxm",
-      "label": "龙虎洗码",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 2) ? _c('el-table-column', {
-    attrs: {
-      "prop": "zxxm",
-      "label": "龙凤洗码",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 0) ? _c('el-table-column', {
-    attrs: {
-      "prop": "sbyk",
-      "label": "三宝盈亏",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 1) ? _c('el-table-column', {
-    attrs: {
-      "prop": "sbyk",
-      "label": "四宝盈亏",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 2) ? _c('el-table-column', {
-    attrs: {
-      "prop": "sbyk",
-      "label": "五宝盈亏",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 0) ? _c('el-table-column', {
-    attrs: {
-      "prop": "sbxm",
-      "label": "三宝洗码",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 1) ? _c('el-table-column', {
-    attrs: {
-      "prop": "sbxm",
-      "label": "四宝洗码",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 2) ? _c('el-table-column', {
-    attrs: {
-      "prop": "sbxm",
-      "label": "五宝洗码",
-      "min-width": "60"
-    }
-  }) : _vm._e(), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "luckysix_yk",
-      "label": "幸运六盈亏",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "luckysix_xm",
-      "label": "幸运六洗码",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "khyk",
-      "label": "客户盈亏",
-      "min-width": "60"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "tmyk",
-      "label": "台面盈亏",
-      "min-width": "60"
+      "prop": "time",
+      "label": "操作时间",
+      "min-width": "120",
+      "sortable": ""
     }
   })], 1), _vm._v(" "), _c('el-col', {
     staticClass: "toolbar",
@@ -49037,64 +39887,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.pagination.current,
+      "current-page": _vm.udfenPagination.current,
       "page-sizes": [50, 100, 300],
-      "page-size": _vm.pagination.size,
-      "total": _vm.pagination.total
+      "page-size": _vm.udfenPagination.size,
+      "total": _vm.udfenPagination.total
     },
     on: {
-      "size-change": _vm.handleSizeChange,
-      "current-change": _vm.handleCurrentChange
+      "size-change": _vm.handleSizeChangeUdfen,
+      "current-change": _vm.handleCurrentChangeUdfen
     }
-  })], 1)], 1)
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.udfenVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)], 1)], 1)
 },staticRenderFns: []}
 
 /***/ }),
-/* 1315 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "win-ul"
-  }, [_vm._l((_vm.win), function(item, index) {
-    return (_vm.gametype != 3) ? _c('li', {
-      key: index,
-      staticClass: "win-li"
-    }, [_c('div', {
-      staticClass: "top lii"
-    }, [_c('div', {
-      staticClass: "dian"
-    }, [_vm._v(_vm._s(item.l_msg))]), _vm._v(" "), (item.zhuang_win == 1) ? _c('div', {
-      staticClass: "win"
-    }, [_vm._v("WIN")]) : _vm._e()]), _vm._v(" "), _c('div', {
-      staticClass: "bottom lii"
-    }, [_c('div', {
-      staticClass: "dian"
-    }, [_vm._v(_vm._s(item.f_msg))]), _vm._v(" "), (item.zhuang_win == 2) ? _c('div', {
-      staticClass: "win"
-    }, [_vm._v("WIN")]) : _vm._e()])]) : _vm._e()
-  }), _vm._v(" "), _vm._l((_vm.win), function(item, index) {
-    return (_vm.gametype == 3) ? _c('li', {
-      key: index,
-      staticClass: "win-li"
-    }, [_c('div', {
-      staticClass: "top lii"
-    }, [_c('div', {
-      staticClass: "dian"
-    }, [_vm._v(_vm._s(item.f_msg))]), _vm._v(" "), (item.zhuang_win == 2) ? _c('div', {
-      staticClass: "win"
-    }, [_vm._v("WIN")]) : _vm._e()]), _vm._v(" "), _c('div', {
-      staticClass: "bottom lii"
-    }, [_c('div', {
-      staticClass: "dian"
-    }, [_vm._v(_vm._s(item.l_msg))]), _vm._v(" "), (item.zhuang_win == 1) ? _c('div', {
-      staticClass: "win"
-    }, [_vm._v("WIN")]) : _vm._e()])]) : _vm._e()
-  })], 2)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1316 */
+/* 1295 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -49113,21 +39931,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "model": _vm.filters
     }
   }, [_c('el-form-item', {
-    attrs: {
-      "label": "会员ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "会员ID"
-    },
-    model: {
-      value: (_vm.filters.userId),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "userId", $$v)
-      },
-      expression: "filters.userId"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "代理账号"
     }
@@ -49143,6 +39946,89 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "filters.agents_account"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "层级"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "125px"
+    },
+    attrs: {
+      "placeholder": "请输入层级数字"
+    },
+    on: {
+      "change": function($event) {
+        return _vm.levelChange(_vm.filters)
+      }
+    },
+    model: {
+      value: (_vm.filters.level),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "level", $$v)
+      },
+      expression: "filters.level"
+    }
+  })], 1), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-form-item', {
+    attrs: {
+      "label": "代理身份"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.filters.dep),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "dep", $$v)
+      },
+      expression: "filters.dep"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "普通代理",
+      "value": "1"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "业务部门",
+      "value": "2"
+    }
+  })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-form-item', {
+    attrs: {
+      "label": "在职状态"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.filters.active),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "active", $$v)
+      },
+      expression: "filters.active"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "离职",
+      "value": "1"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "在职",
+      "value": "2"
+    }
+  })], 1)], 1) : _vm._e(), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
       "width": "260px"
     },
@@ -49163,8 +40049,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "width": "260px",
-      "margin-left": "35px"
+      "width": "260px"
     },
     attrs: {
       "label": "结束时间"
@@ -49181,17 +40066,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "filters.end_time"
     }
-  })], 1)], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('el-form-item', [_c('el-button', {
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
-      "click": _vm.searchShare
+      "click": _vm.searchWin
     }
   }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
@@ -49247,42 +40127,111 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return _vm.searchWinQuickly(4)
       }
     }
-  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar toptoolbar",
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.exportExcel()
+      }
+    }
+  }, [_vm._v("导出报表")]), _vm._v(" "), _c('iframe', {
     staticStyle: {
-      "padding-bottom": "0px"
+      "display": "none"
     },
     attrs: {
-      "span": 24
+      "name": "baseExport"
     }
-  }, [_c('el-form', {
-    attrs: {
-      "size": "small",
-      "inline": true
-    }
-  }, [_c('el-form-item', [_c('el-button', {
+  }), _vm._v(" "), _c('form', {
     staticStyle: {
-      "font-size": "13px",
-      "font-weight": "700"
+      "display": "none"
     },
     attrs: {
-      "type": "success"
+      "id": "baseForm",
+      "name": "baseForm",
+      "method": "post",
+      "action": "",
+      "target": "baseExport"
     }
-  }, [_vm._v("庄闲占成总输赢：" + _vm._s(_vm.zx_share_total))])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    staticStyle: {
-      "font-size": "13px",
-      "font-weight": "700",
-      "margin-left": "80px"
-    },
+  }, [_c('input', {
     attrs: {
-      "type": "warning"
+      "type": "hidden",
+      "name": "agents_account"
+    },
+    domProps: {
+      "value": _vm.searchParam.agents_account
     }
-  }, [_vm._v("四宝占成总输赢：" + _vm._s(_vm.sb_share_total))])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "level"
+    },
+    domProps: {
+      "value": _vm.searchParam.level
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "begin_time"
+    },
+    domProps: {
+      "value": _vm.searchParam.begin_time
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "end_time"
+    },
+    domProps: {
+      "value": _vm.searchParam.end_time
+    }
+  })])], 1)], 1)], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
+    staticClass: "lowList"
+  }, [_c('span', [_c('a', {
+    on: {
+      "click": function($event) {
+        return _vm.getLowerList()
+      }
+    }
+  }, [(_vm.auth_type != 1) ? _c('span', [_vm._v(_vm._s(_vm.plugin.getSessionItem("user", "name")))]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('span', [_vm._v("总代理")]) : _vm._e()])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
+    return _c('span', {
+      key: index
+    }, [_vm._v(" > "), _c('a', {
+      on: {
+        "click": function($event) {
+          return _vm.getLowerList(item)
+        }
+      }
+    }, [_vm._v(_vm._s(item.name))])])
+  })], 2) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "tabag"
+  }, [_c('span', {
+    staticClass: "ag",
+    class: {
+      'current': _vm.tabag == 1
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeTab(1)
+      }
+    }
+  }, [_vm._v("直属代理")]), _vm._v(" "), _c('span', {
+    staticClass: "user",
+    class: {
+      'current': _vm.tabag == 2
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeTab(2)
+      }
+    }
+  }, [_vm._v("直属会员")])]), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.type == -1),
-      expression: "type == -1"
+      value: (_vm.tabag == 1),
+      expression: "tabag == 1"
     }, {
       name: "loading",
       rawName: "v-loading",
@@ -49296,78 +40245,192 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "row-class-name": _vm.plugin.tableRowClassName,
       "size": "mini",
-      "empty-text": "-",
       "border": "",
-      "data": _vm.share,
+      "data": _vm.win,
       "highlight-current-row": ""
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "uid",
-      "label": "会员ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "nickname",
-      "label": "会员昵称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
       "prop": "agents_account",
       "label": "代理账号",
-      "min-width": "80"
+      "min-width": "80",
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "agents_name",
       "label": "代理名称",
-      "min-width": "130"
+      "min-width": "80",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('input', {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: (scope.row.agents_id),
+            expression: "scope.row.agents_id"
+          }],
+          attrs: {
+            "type": "hidden"
+          },
+          domProps: {
+            "value": (scope.row.agents_id)
+          },
+          on: {
+            "input": function($event) {
+              if ($event.target.composing) { return; }
+              _vm.$set(scope.row, "agents_id", $event.target.value)
+            }
+          }
+        }), _vm._v(" "), _c('a', {
+          staticStyle: {
+            "text-decoration": "underline",
+            "cursor": "pointer"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.getLowerList(scope.row)
+            }
+          }
+        }, [_vm._v(_vm._s(scope.row.agents_name))])]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "lower_total",
+      "label": "有效代理数",
+      "min-width": "90"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('span', [_vm._v(_vm._s(scope.row.lower_total))])]
+      }
+    }])
+  }, [_c('template', {
+    slot: "header"
+  }, [_c('span', [_vm._v("有效代理数")]), _vm._v(" "), _c('span', {
+    staticClass: "showlowertip",
+    staticStyle: {
+      "background-color": "#fff",
+      "color": "#000",
+      "position": "relative",
+      "border-radius": "8px",
+      "padding": "0 4px",
+      "margin-left": "5px",
+      "cursor": "pointer"
+    }
+  }, [_vm._v("?  "), _c('span', {
+    staticClass: "showlowertipspan hide"
+  }, [_vm._v("即产生数据的下级代理数，包含所有层级。")])])])], 2), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "boss_account",
+      "label": "上级账号",
+      "min-width": "100",
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "room_boots_ju",
-      "label": "靴局",
-      "min-width": "70"
+      "prop": "boss_name",
+      "label": "上级名称",
+      "min-width": "100",
+      "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "odds_text",
-      "label": "下注",
-      "min-width": "150"
-    }
+      "prop": "relation_link",
+      "label": "代理关系",
+      "min-width": "330"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('relation', {
+          attrs: {
+            "rela": scope.row.relation_link
+          },
+          on: {
+            "getsearch": _vm.searchRela
+          }
+        })]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "agents_share_rate",
-      "label": "占成",
+      "prop": "level",
+      "label": "层级",
       "min-width": "60"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "game_result_text",
-      "label": "开牌结果",
-      "min-width": "100"
+      "prop": "xm",
+      "label": "会员累积产生积分",
+      "min-width": "130"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "win_lose",
-      "label": "用户输赢",
-      "min-width": "70"
+      "prop": "xm_money",
+      "label": "会员积分可兑换额度",
+      "min-width": "130"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "win_lose_share",
-      "label": "占成输赢",
-      "min-width": "70"
-    }
+      "prop": "win",
+      "label": "会员输赢数",
+      "min-width": "90",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.win >= 0) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e(), _vm._v(" "), (scope.row.win < 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "profit",
+      "label": "会员收益",
+      "min-width": "80",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.profit >= 0) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e(), _vm._v(" "), (scope.row.profit < 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e()]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "mktime",
       "label": "时间",
-      "min-width": "100"
+      "min-width": "240"
     }
   })], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 1),
+      expression: "tabag == 1"
+    }],
     staticClass: "toolbar",
     attrs: {
       "span": 24
@@ -49378,33 +40441,96 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "layout": "total, sizes, prev, pager, next, jumper",
-      "current-page": _vm.paginationShare.current,
+      "current-page": _vm.pagination.current,
       "page-sizes": [50, 100, 300],
-      "page-size": _vm.paginationShare.size,
-      "total": _vm.paginationShare.total
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
     },
     on: {
-      "size-change": _vm.handleSizeChangeShare,
-      "current-change": _vm.handleCurrentChangeShare
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
     }
+  })], 1), _vm._v(" "), _c('member-wincomp', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 2),
+      expression: "tabag == 2"
+    }],
+    attrs: {
+      "agents_id": _vm.current_agents_id,
+      "win": _vm.user,
+      "pagination": _vm.userpagination
+    },
+    on: {
+      "getusers": _vm.getuserag
+    }
+  })], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1296 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.logs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "id",
+      "label": "ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "domain",
+      "label": "域名",
+      "min-width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "min-width": "100"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          staticStyle: {
+            "color": "red",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleDelete(scope.row)
+            }
+          }
+        }, [_vm._v("禁用")])]
+      }
+    }])
   })], 1)], 1)
 },staticRenderFns: []}
 
 /***/ }),
-/* 1317 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": _vm.id,
-      "type": "text/plain"
-    }
-  })
-},staticRenderFns: []}
-
-/***/ }),
-/* 1318 */
+/* 1297 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -52377,7 +43503,2992 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1319 */
+/* 1298 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "被操作代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "代理账号"
+    },
+    model: {
+      value: (_vm.filters.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "agents_account", $$v)
+      },
+      expression: "filters.agents_account"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "数据类型"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.filters.dataType),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "dataType", $$v)
+      },
+      expression: "filters.dataType"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "上分",
+      "value": "11"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "下分",
+      "value": "12"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "用户类型"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.filters.userType),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "userType", $$v)
+      },
+      expression: "filters.userType"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "会员",
+      "value": "1"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "代理",
+      "value": "2"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchScoreLog
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.logs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "被操作代理名称",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "被操作代理账号",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "调整前余分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_change",
+      "label": "调整金额",
+      "min-width": "90",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.score_change >= 0) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.score_change))]) : _vm._e(), _vm._v(" "), (scope.row.score_change < 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.score_change))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_after",
+      "label": "调整后余分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "relation_link",
+      "label": "代理关系",
+      "min-width": "330"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "level",
+      "label": "层级",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "note",
+      "label": "操作内容",
+      "min-width": "200"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "do_agents_account",
+      "label": "操作人",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "操作时间",
+      "min-width": "120"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1299 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.user,
+      "highlight-current-row": ""
+    },
+    on: {
+      "row-click": _vm.clicked
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "50"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "username",
+      "label": "会员账号",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "relation_link",
+      "label": "代理关系",
+      "min-width": "330"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "余额",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm_rate",
+      "label": "积分比例",
+      "min-width": "90",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral",
+      "label": "剩余积分",
+      "min-width": "90",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "status",
+      "label": "状态",
+      "min-width": "30"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.status == 0) ? _c('a', {
+          staticStyle: {
+            "color": "#00c853"
+          }
+        }, [_vm._v("启用")]) : _vm._e(), _vm._v(" "), (scope.row.status == 1) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v("停用")]) : _vm._e(), _vm._v(" "), (scope.row.no_say == 1) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v("禁言")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "min-width": "360"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return (!scope.row.countt) ? [_c('div', [_c('input', {
+          attrs: {
+            "type": "hidden"
+          },
+          domProps: {
+            "value": scope.row.uid
+          }
+        }), _vm._v(" "), _c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleMemberDetail(scope.row)
+            }
+          }
+        }, [_vm._v("详情")]), _vm._v(" "), (_vm.agent_type == 3 || scope.row.agents_account == _vm.auth_account) ? _c('el-divider', {
+          attrs: {
+            "direction": "vertical"
+          }
+        }) : _vm._e(), _vm._v(" "), (_vm.agent_type == 3 || scope.row.agents_account == _vm.auth_account) ? _c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleFen(scope.row, 1)
+            }
+          }
+        }, [_vm._v("上分")]) : _vm._e(), _vm._v(" "), (scope.row.playid) ? _c('el-divider', {
+          attrs: {
+            "direction": "vertical"
+          }
+        }) : _vm._e(), _vm._v(" "), (scope.row.playid) ? _c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.readerChat(scope.row)
+            }
+          }
+        }, [_vm._v("聊天")]) : _vm._e()], 1)] : undefined
+      }
+    }], null, true)
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('iframe', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "id": "iframeForm",
+      "name": "iframeForm"
+    }
+  }), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "编辑会员",
+      "visible": _vm.editFormVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.editFormVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "editForm",
+    attrs: {
+      "size": "mini",
+      "model": _vm.editForm,
+      "label-width": "80px",
+      "rules": _vm.editFormRules,
+      "labelWidth": "100px"
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员头像"
+    }
+  }, [_c('input', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "type": "file",
+      "name": "filename",
+      "id": "filename"
+    },
+    on: {
+      "change": function($event) {
+        return _vm.uploadfile()
+      }
+    }
+  }), _vm._v(" "), _c('div', {
+    on: {
+      "click": function($event) {
+        return _vm.triggerUpload()
+      }
+    }
+  }, [_c('el-avatar', {
+    attrs: {
+      "src": _vm.editForm.head
+    }
+  })], 1)])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员昵称",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.name),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "name", $$v)
+      },
+      expression: "editForm.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理账号",
+      "prop": "agent_id"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": ""
+    },
+    model: {
+      value: (_vm.editForm.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "agents_account", $$v)
+      },
+      expression: "editForm.agents_account"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理名称",
+      "prop": "agent_name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": ""
+    },
+    model: {
+      value: (_vm.editForm.agents_name),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "agents_name", $$v)
+      },
+      expression: "editForm.agents_name"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "colspan": "4"
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "mini",
+      "inline": true
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "手机"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    model: {
+      value: (_vm.editForm.phone),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "phone", $$v)
+      },
+      expression: "editForm.phone"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "微信"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    model: {
+      value: (_vm.editForm.wxchat),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "wxchat", $$v)
+      },
+      expression: "editForm.wxchat"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "QQ"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    model: {
+      value: (_vm.editForm.qq),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "qq", $$v)
+      },
+      expression: "editForm.qq"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "银行卡号"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "180px"
+    },
+    model: {
+      value: (_vm.editForm.bankcard),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "bankcard", $$v)
+      },
+      expression: "editForm.bankcard"
+    }
+  })], 1)], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "积分比例",
+      "prop": "xm_rate"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.editForm.xm_rate),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "xm_rate", $$v)
+      },
+      expression: "editForm.xm_rate"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "3"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "操作"
+    }
+  }, [_c('el-checkbox', {
+    on: {
+      "change": _vm.changeStatus
+    },
+    model: {
+      value: (_vm.editForm.status == 1),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "status == 1", $$v)
+      },
+      expression: "editForm.status == 1"
+    }
+  }, [_vm._v("停用")]), _vm._v(" "), _c('el-checkbox', {
+    on: {
+      "change": _vm.changeNosay
+    },
+    model: {
+      value: (_vm.editForm.no_say == 1),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "no_say == 1", $$v)
+      },
+      expression: "editForm.no_say == 1"
+    }
+  }, [_vm._v("禁言")])], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "colspan": "4"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "备注"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea"
+    },
+    model: {
+      value: (_vm.editForm.user_desc),
+      callback: function($$v) {
+        _vm.$set(_vm.editForm, "user_desc", $$v)
+      },
+      expression: "editForm.user_desc"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.editFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.editLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.editUserSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.fenFilters.user.name + '-' + (_vm.fenFilters.type == 1 ? '上分' : '下分'),
+      "visible": _vm.fenVisible,
+      "close-on-click-modal": false,
+      "width": "800px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.fenVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    staticClass: "demo-form-inline",
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员名称"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.fenFilters.yufen.name),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters.yufen, "name", $$v)
+      },
+      expression: "fenFilters.yufen.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.fenFilters.user.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters.user, "uid", $$v)
+      },
+      expression: "fenFilters.user.uid"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理余分"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.fenFilters.yufen.agent_score),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters.yufen, "agent_score", $$v)
+      },
+      expression: "fenFilters.yufen.agent_score"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "当前额度"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.fenFilters.yufen.score),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters.yufen, "score", $$v)
+      },
+      expression: "fenFilters.yufen.score"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "2"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": _vm.fenFilters.type == 1 ? '增加额度' : '减少额度'
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "autocomplete": "off",
+      "placeholder": _vm.fenFilters.type == 1 ? '增加额度' : '减少额度'
+    },
+    model: {
+      value: (_vm.fenFilters.value),
+      callback: function($$v) {
+        _vm.$set(_vm.fenFilters, "value", $$v)
+      },
+      expression: "fenFilters.value"
+    }
+  }), _vm._v(" "), _c('input', {
+    staticStyle: {
+      "display": "none"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.onSubmitFen(_vm.fenFilters.type)
+      }
+    }
+  }, [_vm._v("提交")]), _vm._v(" "), _c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.fenVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.jifenFilters.user.name + '-' + (_vm.jifenFilters.type == 1 ? '上积分' : '下积分'),
+      "visible": _vm.jifenVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.jifenVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    staticClass: "demo-form-inline",
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员名称"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.jifenFilters.user.name),
+      callback: function($$v) {
+        _vm.$set(_vm.jifenFilters.user, "name", $$v)
+      },
+      expression: "jifenFilters.user.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.jifenFilters.user.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.jifenFilters.user, "uid", $$v)
+      },
+      expression: "jifenFilters.user.uid"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员积分比例"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.jifenFilters.user.xm_rate),
+      callback: function($$v) {
+        _vm.$set(_vm.jifenFilters.user, "xm_rate", $$v)
+      },
+      expression: "jifenFilters.user.xm_rate"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "结算类型",
+      "prop": "jslx"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "0"
+    },
+    model: {
+      value: (_vm.jifenFilters.jslx),
+      callback: function($$v) {
+        _vm.$set(_vm.jifenFilters, "jslx", $$v)
+      },
+      expression: "jifenFilters.jslx"
+    }
+  }, [_vm._v("正常结算")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "1"
+    },
+    model: {
+      value: (_vm.jifenFilters.jslx),
+      callback: function($$v) {
+        _vm.$set(_vm.jifenFilters, "jslx", $$v)
+      },
+      expression: "jifenFilters.jslx"
+    }
+  }, [_vm._v("提前结算")])], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "剩余积分"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": "",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.jifenFilters.yufen.integral),
+      callback: function($$v) {
+        _vm.$set(_vm.jifenFilters.yufen, "integral", $$v)
+      },
+      expression: "jifenFilters.yufen.integral"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": _vm.jifenFilters.type == 1 ? '增加积分' : '减少积分'
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "autocomplete": "off",
+      "placeholder": _vm.jifenFilters.type == 1 ? '增加积分' : '减少积分'
+    },
+    model: {
+      value: (_vm.jifenFilters.value),
+      callback: function($$v) {
+        _vm.$set(_vm.jifenFilters, "value", $$v)
+      },
+      expression: "jifenFilters.value"
+    }
+  }), _vm._v(" "), _c('input', {
+    staticStyle: {
+      "display": "none"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.onSubmitjiFen(_vm.jifenFilters.type)
+      }
+    }
+  }, [_vm._v("提交")]), _vm._v(" "), _c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.jifenVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.currentAgent.agents_name + '添加会员',
+      "visible": _vm.addFormVisible,
+      "close-on-click-modal": false,
+      "width": "1200px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.addFormVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "size": "mini",
+      "model": _vm.addForm,
+      "label-width": "80px",
+      "labelWidth": "100px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "头像",
+      "prop": "head"
+    }
+  }, [_c('input', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "type": "file",
+      "name": "filename",
+      "id": "uploadfileAdd"
+    },
+    on: {
+      "change": function($event) {
+        return _vm.uploadfileAdd()
+      }
+    }
+  }), _vm._v(" "), _c('div', {
+    on: {
+      "click": function($event) {
+        return _vm.triggerUploadAdd()
+      }
+    }
+  }, [_c('el-avatar', {
+    attrs: {
+      "src": _vm.addForm.head
+    }
+  })], 1)])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员昵称",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.name),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "name", $$v)
+      },
+      expression: "addForm.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "会员账号",
+      "prop": "username"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.username),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "username", $$v)
+      },
+      expression: "addForm.username"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "初始密码",
+      "prop": "password"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.password),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "password", $$v)
+      },
+      expression: "addForm.password"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "积分比例",
+      "prop": "xm_rate"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.xm_rate),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "xm_rate", $$v)
+      },
+      expression: "addForm.xm_rate"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理账号",
+      "prop": "agent_id"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "readonly": ""
+    },
+    model: {
+      value: (_vm.addForm.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "agents_account", $$v)
+      },
+      expression: "addForm.agents_account"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "colspan": "4"
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "mini",
+      "inline": true
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "手机"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    model: {
+      value: (_vm.addForm.phone),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "phone", $$v)
+      },
+      expression: "addForm.phone"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "微信"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    model: {
+      value: (_vm.addForm.wxchat),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "wxchat", $$v)
+      },
+      expression: "addForm.wxchat"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "QQ"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "150px"
+    },
+    model: {
+      value: (_vm.addForm.qq),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "qq", $$v)
+      },
+      expression: "addForm.qq"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "银行卡号"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "180px"
+    },
+    model: {
+      value: (_vm.addForm.bankcard),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "bankcard", $$v)
+      },
+      expression: "addForm.bankcard"
+    }
+  })], 1)], 1)], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "colspan": "4"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "备注"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea"
+    },
+    model: {
+      value: (_vm.addForm.user_desc),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "user_desc", $$v)
+      },
+      expression: "addForm.user_desc"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.addUserSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.currentAgent.agents_name + '添加机器人',
+      "visible": _vm.addFormRobotVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.addFormRobotVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "addFormRobot",
+    attrs: {
+      "size": "mini",
+      "model": _vm.addFormRobot,
+      "label-width": "80px",
+      "labelWidth": "100px",
+      "rules": _vm.addFormRobotRules
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "头像",
+      "prop": "head"
+    }
+  }, [_c('input', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "type": "file",
+      "name": "filename",
+      "id": "uploadfileRobot"
+    },
+    on: {
+      "change": function($event) {
+        return _vm.uploadfileRobot()
+      }
+    }
+  }), _vm._v(" "), _c('div', {
+    on: {
+      "click": function($event) {
+        return _vm.triggerUploadRobot()
+      }
+    }
+  }, [_c('el-avatar', {
+    attrs: {
+      "src": _vm.addFormRobot.head
+    }
+  })], 1)])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "昵称",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addFormRobot.name),
+      callback: function($$v) {
+        _vm.$set(_vm.addFormRobot, "name", $$v)
+      },
+      expression: "addFormRobot.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "余分",
+      "prop": "score"
+    }
+  }, [_c('el-input-number', {
+    attrs: {
+      "size": "medium"
+    },
+    model: {
+      value: (_vm.addFormRobot.score),
+      callback: function($$v) {
+        _vm.$set(_vm.addFormRobot, "score", $$v)
+      },
+      expression: "addFormRobot.score"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormRobotVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.robotLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.addRobotSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.upPwd.name + '重置密码',
+      "visible": _vm.upPwdVis,
+      "close-on-click-modal": false,
+      "width": "500px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.upPwdVis = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "upPwdForm",
+    attrs: {
+      "size": "mini",
+      "model": _vm.upPwd,
+      "label-width": "80px",
+      "labelWidth": "100px",
+      "rules": _vm.upPwdFormRules
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "新密码",
+      "prop": "password"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "size": "medium"
+    },
+    model: {
+      value: (_vm.upPwd.password),
+      callback: function($$v) {
+        _vm.$set(_vm.upPwd, "password", $$v)
+      },
+      expression: "upPwd.password"
+    }
+  })], 1)], 1)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.upPwdVis = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.upPwdLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.upPwdSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.currentUser.name + '-会员详情',
+      "visible": _vm.memberDetailVis,
+      "close-on-click-modal": false,
+      "width": "1400px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.memberDetailVis = $event
+      }
+    }
+  }, [_c('div', {
+    staticClass: "detailtop"
+  }, [_c('div', {
+    staticClass: "imgcontent",
+    domProps: {
+      "innerHTML": _vm._s(_vm.readerName())
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "info"
+  }, [_c('div', {
+    staticClass: "top"
+  }, [_vm._v(_vm._s(_vm.currentUser.name) + " "), _c('span', {
+    staticStyle: {
+      "font-size": "18px"
+    }
+  }, [_vm._v("ID:" + _vm._s(_vm.currentUser.uid) + " 余额:" + _vm._s(_vm.currentUser.score))])]), _vm._v(" "), _c('div', {
+    staticClass: "bottom",
+    staticStyle: {
+      "font-size": "18px"
+    }
+  }, [_vm._v("积分比例:" + _vm._s(_vm.currentUser.xm_rate) + " 积分:" + _vm._s(_vm.currentUser.integral))])])]), _vm._v(" "), _c('div', {
+    staticClass: "tabag"
+  }, [_c('span', {
+    staticClass: "ag",
+    class: {
+      'current': _vm.tabag == 1
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeTab(1)
+      }
+    }
+  }, [_vm._v("流水明细")]), _vm._v(" "), _c('span', {
+    staticClass: "user",
+    class: {
+      'current': _vm.tabag == 2
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeTab(2)
+      }
+    }
+  }, [_vm._v("上下分明细")]), _vm._v(" "), _c('span', {
+    staticClass: "user",
+    class: {
+      'current': _vm.tabag == 3
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeTab(3)
+      }
+    }
+  }, [_vm._v("下注记录")]), _vm._v(" "), _c('span', {
+    staticClass: "user",
+    class: {
+      'current': _vm.tabag == 4
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeTab(4)
+      }
+    }
+  }, [_vm._v("日积分")]), _vm._v(" "), _c('span', {
+    staticClass: "user",
+    class: {
+      'current': _vm.tabag == 5
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeTab(5)
+      }
+    }
+  }, [_vm._v("红包领取记录")])]), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 1),
+      expression: "tabag == 1"
+    }],
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.liushuiFilters
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.liushuiFilters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.liushuiFilters, "begin_time", $$v)
+      },
+      expression: "liushuiFilters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.liushuiFilters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.liushuiFilters, "end_time", $$v)
+      },
+      expression: "liushuiFilters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchLiushui
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchLiushuiQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchLiushuiQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchLiushuiQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchLiushuiQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchLiushuiQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchLiushuiQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-size": "18px",
+      "line-height": "35px",
+      "color": "#fff"
+    }
+  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 2),
+      expression: "tabag == 2"
+    }],
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.tabFilters
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.tabFilters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.tabFilters, "begin_time", $$v)
+      },
+      expression: "tabFilters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.tabFilters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.tabFilters, "end_time", $$v)
+      },
+      expression: "tabFilters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchtabFilters
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFiltersQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFiltersQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFiltersQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFiltersQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFiltersQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFiltersQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-size": "18px",
+      "line-height": "35px",
+      "color": "#fff"
+    }
+  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 3),
+      expression: "tabag == 3"
+    }],
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.tabFilters1
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.tabFilters1.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.tabFilters1, "begin_time", $$v)
+      },
+      expression: "tabFilters1.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.tabFilters1.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.tabFilters1, "end_time", $$v)
+      },
+      expression: "tabFilters1.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchtabFilters1
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters1Quickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters1Quickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters1Quickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters1Quickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters1Quickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters1Quickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-size": "18px",
+      "line-height": "35px",
+      "color": "#fff"
+    }
+  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 4),
+      expression: "tabag == 4"
+    }],
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.tabFilters2
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.tabFilters2.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.tabFilters2, "begin_time", $$v)
+      },
+      expression: "tabFilters2.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.tabFilters2.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.tabFilters2, "end_time", $$v)
+      },
+      expression: "tabFilters2.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchtabFilters2
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters2Quickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters2Quickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters2Quickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters2Quickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters2Quickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters2Quickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-size": "18px",
+      "line-height": "35px",
+      "color": "#fff"
+    }
+  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 5),
+      expression: "tabag == 5"
+    }],
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.tabFilters3
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.tabFilters3.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.tabFilters3, "begin_time", $$v)
+      },
+      expression: "tabFilters3.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.tabFilters3.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.tabFilters3, "end_time", $$v)
+      },
+      expression: "tabFilters3.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchtabFilters3
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters3Quickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters3Quickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters3Quickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters3Quickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters3Quickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchtabFilters3Quickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "font-size": "18px",
+      "line-height": "35px",
+      "color": "#fff"
+    }
+  }, [_vm._v("(请输入时间查询)")])], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "height": "400px",
+      "overflow-y": "auto",
+      "clear": "both"
+    }
+  }, [_c('el-table', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 1),
+      expression: "tabag == 1"
+    }, {
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.liushuiLoading),
+      expression: "liushuiLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "max-height": "300",
+      "size": "mini",
+      "border": "",
+      "data": _vm.liushui,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "变动前",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_change",
+      "label": "金额",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_after",
+      "label": "变动后",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "type",
+      "label": "类型",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "note",
+      "label": "备注",
+      "min-width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "time",
+      "label": "时间",
+      "min-width": "120"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 1),
+      expression: "tabag == 1"
+    }],
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.liushuiPagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.liushuiPagination.size,
+      "total": _vm.liushuiPagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangeLiushui,
+      "current-change": _vm.handleCurrentChangeLiushui
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 2),
+      expression: "tabag == 2"
+    }, {
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.udfenLoading),
+      expression: "udfenLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "max-height": "400",
+      "size": "mini",
+      "border": "",
+      "data": _vm.udfen,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "变动前",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_change",
+      "label": "金额",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score_after",
+      "label": "变动后",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "type",
+      "label": "类型",
+      "min-width": "60"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.type == 1) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("庄注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 2) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("闲注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 3) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("和注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 4) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("庄对")]) : _vm._e(), _vm._v(" "), (scope.row.type == 5) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("闲对")]) : _vm._e(), _vm._v(" "), (scope.row.type == 11) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 12) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("下分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 13) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("下分删除")]) : _vm._e(), _vm._v(" "), (scope.row.type == 20) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("手动上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 21) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("手动下分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 100) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("码粮结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 110) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("取消下注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 111) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("牌局结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 121) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("重新结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 122) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("领取红包")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "note",
+      "label": "备注",
+      "min-width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "time",
+      "label": "操作时间",
+      "min-width": "120",
+      "sortable": ""
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 2),
+      expression: "tabag == 2"
+    }],
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.udfenPagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.udfenPagination.size,
+      "total": _vm.udfenPagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangeUdfen,
+      "current-change": _vm.handleCurrentChangeUdfen
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 3),
+      expression: "tabag == 3"
+    }, {
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.bets,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "nickname",
+      "label": "会员名称",
+      "min-width": "130",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.usertype == 1) ? _c('a', {
+          staticStyle: {
+            "text-decoration": "underline",
+            "cursor": "pointer"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.getLowerListClom(scope.row)
+            }
+          }
+        }, [_vm._v(_vm._s(scope.row.nickname))]) : _vm._e(), _vm._v(" "), (scope.row.usertype == 2) ? _c('a', [_vm._v(_vm._s(scope.row.nickname))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "usertype",
+      "label": "身份",
+      "min-width": "30"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.usertype == 1) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v("代理")]) : _vm._e(), _vm._v(" "), (scope.row.usertype == 2) ? _c('a', [_vm._v("会员")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "ju",
+      "label": "局数",
+      "min-width": "150"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return (!scope.row.countt) ? [_c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])] : undefined
+      }
+    }], null, true)
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "odds_text",
+      "label": "下注类别",
+      "min-width": "250",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "game_result_text",
+      "label": "开牌结果",
+      "min-width": "130",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "win",
+      "label": "输赢",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm",
+      "label": "积分",
+      "min-width": "60",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "relation_link",
+      "label": "代理关系",
+      "min-width": "330"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('relation', {
+          attrs: {
+            "rela": scope.row.relation_link
+          },
+          on: {
+            "getsearch": _vm.searchRela
+          }
+        })]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "level",
+      "label": "层级",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "120",
+      "sortable": ""
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 3),
+      expression: "tabag == 3"
+    }],
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.paginationbets.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.paginationbets.size,
+      "total": _vm.paginationbets.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangebets,
+      "current-change": _vm.handleCurrentChangebets
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 4),
+      expression: "tabag == 4"
+    }, {
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.jifens,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral",
+      "label": "每日积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_exchange",
+      "label": "已提积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_total",
+      "label": "剩余积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm_rate",
+      "label": "积分比例",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "date",
+      "label": "时间",
+      "min-width": "80"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 4),
+      expression: "tabag == 4"
+    }],
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.paginationjifens.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.paginationjifens.size,
+      "total": _vm.paginationjifens.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangejifens,
+      "current-change": _vm.handleCurrentChangejifens
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 5),
+      expression: "tabag == 5"
+    }, {
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.Hbs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "领取金额",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "uptime",
+      "label": "领取时间",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "手气",
+      "min-width": "60"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.lucky == 0) ? _c('span') : _vm._e(), _vm._v(" "), (scope.row.lucky == 1) ? _c('span', [_vm._v("手气最佳")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 2) ? _c('span', [_vm._v("豹子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 3) ? _c('span', [_vm._v("顺子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 4) ? _c('span', [_vm._v("手气最差")]) : _vm._e()]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.tabag == 5),
+      expression: "tabag == 5"
+    }],
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.paginationHb.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.paginationHb.size,
+      "total": _vm.paginationHb.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangeHbs,
+      "current-change": _vm.handleCurrentChangeHbs
+    }
+  })], 1)], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.token.name + ' - 临时登录地址',
+      "visible": _vm.tokenVis,
+      "close-on-click-modal": false,
+      "width": "800px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.tokenVis = $event
+      }
+    }
+  }, [_c('div', [_vm._v("提示：临时登录地址只能使用一次即失效,再次使用请重新获取")]), _vm._v(" "), _c('div', [_vm._v("链接:")]), _vm._v(" "), _c('div', [_vm._v(_vm._s(_vm.token.tokenurl))]), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm.tokenVis = false
+      }
+    }
+  }, [_vm._v("确定")])], 1)])], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1300 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -52612,12 +46723,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "ip",
-      "label": "IP",
-      "min-width": "100"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
       "prop": "mktime",
       "label": "时间",
       "min-width": "120"
@@ -52646,7 +46751,5530 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1320 */
+/* 1301 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "会员ID"
+    },
+    model: {
+      value: (_vm.filters.userId),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "userId", $$v)
+      },
+      expression: "filters.userId"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "代理账号"
+    },
+    model: {
+      value: (_vm.filters.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "agents_account", $$v)
+      },
+      expression: "filters.agents_account"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px",
+      "margin-left": "35px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchShare
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    staticStyle: {
+      "font-size": "13px",
+      "font-weight": "700"
+    },
+    attrs: {
+      "type": "success"
+    }
+  }, [_vm._v("庄闲占成总输赢：" + _vm._s(_vm.zx_share_total))])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    staticStyle: {
+      "font-size": "13px",
+      "font-weight": "700",
+      "margin-left": "80px"
+    },
+    attrs: {
+      "type": "warning"
+    }
+  }, [_vm._v("四宝占成总输赢：" + _vm._s(_vm.sb_share_total))])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.type == -1),
+      expression: "type == -1"
+    }, {
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "empty-text": "-",
+      "border": "",
+      "data": _vm.share,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "nickname",
+      "label": "会员昵称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "130"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "room_boots_ju",
+      "label": "靴局",
+      "min-width": "70"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "odds_text",
+      "label": "下注",
+      "min-width": "150"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_share_rate",
+      "label": "占成",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "game_result_text",
+      "label": "开牌结果",
+      "min-width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "win_lose",
+      "label": "用户输赢",
+      "min-width": "70"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "win_lose_share",
+      "label": "占成输赢",
+      "min-width": "70"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "100"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.paginationShare.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.paginationShare.size,
+      "total": _vm.paginationShare.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangeShare,
+      "current-change": _vm.handleCurrentChangeShare
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1302 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('div', {
+    staticClass: "page-container"
+  }, [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%",
+      "margin-top": "10px"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "border": "",
+      "size": "mini",
+      "data": _vm.logs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "groupid",
+      "label": "房间ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "groupname",
+      "label": "房间名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mark",
+      "label": "台号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "game_type",
+      "label": "类型",
+      "min-width": "80"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.game_type == -1) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("大厅")]) : _vm._e(), _vm._v(" "), (scope.row.game_type == 0) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("百家乐")]) : _vm._e(), _vm._v(" "), (scope.row.game_type == 1) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("龙虎")]) : _vm._e(), _vm._v(" "), (scope.row.game_type == 2) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("炸金花")]) : _vm._e(), _vm._v(" "), (scope.row.game_type == 3) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("牛牛")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xstate",
+      "label": "状态",
+      "min-width": "80"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.xstate == 1) ? _c('a', {
+          staticClass: "qiyong",
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("正常")]) : _vm._e(), _vm._v(" "), (scope.row.xstate == 0) ? _c('a', {
+          staticClass: "jinyong",
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("休场")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "min-width": "100"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.xstate == 0) ? _c('a', {
+          staticClass: "xiangqing",
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.operaRoom(scope.row, 1)
+            }
+          }
+        }, [_vm._v("取消休场")]) : _vm._e(), _vm._v(" "), (scope.row.xstate == 1) ? _c('a', {
+          staticClass: "xiangqing",
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.operaRoom(scope.row, 0)
+            }
+          }
+        }, [_vm._v("休场")]) : _vm._e()]
+      }
+    }])
+  })], 1)], 1)])
+},staticRenderFns: []}
+
+/***/ }),
+/* 1303 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "200px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "200px",
+      "margin-left": "100px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchShare
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.goShare(0)
+      }
+    }
+  }, [_vm._v("今日报表")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.goShare(1)
+      }
+    }
+  }, [_vm._v("历史报表")])], 1), _vm._v(" "), (_vm.agent_type == 3) ? _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "warning"
+    },
+    on: {
+      "click": _vm.guiling
+    }
+  }, [_vm._v("归零")])], 1) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.logs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "begin_date",
+      "label": "开始时间",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "end_date",
+      "label": "结束时间",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "upfen_total",
+      "label": "上分总额",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "dowfen_total",
+      "label": "下分总额",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_exchange_total",
+      "label": "积分兑换总额"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_win_lose",
+      "label": "用户输赢数",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_original_score",
+      "label": "用户初始分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_integral",
+      "label": "用户剩余积分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_score_total",
+      "label": "会员余分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "all_score_total",
+      "label": "总余分",
+      "min-width": "80"
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1304 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [(!_vm.active) ? _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.openHongbaiqun
+    }
+  }, [_vm._v("开启红包群")])], 1) : _vm._e(), _vm._v(" "), (_vm.active) ? _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.openHongbaiqun
+    }
+  }, [_vm._v("修改红包群")])], 1) : _vm._e(), _vm._v(" "), (_vm.active) ? _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.closeHongbaiqun
+    }
+  }, [_vm._v("关闭红包群")])], 1) : _vm._e(), _vm._v(" "), (_vm.active) ? _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.setHongbao
+    }
+  }, [_vm._v("发红包")])], 1) : _vm._e()], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "position": "absolute",
+      "top": "60px",
+      "left": "0",
+      "right": "0",
+      "bottom": "0"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      "position": "absolute",
+      "top": "0px",
+      "left": "0",
+      "width": "400px",
+      "bottom": "0"
+    }
+  }, [_c('div', {
+    staticClass: "chat",
+    attrs: {
+      "id": "chatcontentmain"
+    }
+  }, [_c('div', {
+    attrs: {
+      "id": "messagepannel"
+    }
+  }, _vm._l((_vm.chatMsg), function(chat, index) {
+    return _c('div', {
+      key: 'hongbao' + index
+    }, [(chat.error_order == 8) ? _c('div', {
+      staticClass: "hongbaonotice"
+    }, [_c('span', [_c('img', {
+      staticStyle: {
+        "width": "15px"
+      },
+      attrs: {
+        "src": __webpack_require__(176)
+      }
+    }), _vm._v(_vm._s(chat.message) + "\n                  ")])]) : _vm._e(), _vm._v(" "), (chat.error_order != 8) ? _c('div', {
+      staticClass: "chatItem"
+    }, [_c('div', {
+      staticClass: "headimage",
+      domProps: {
+        "innerHTML": _vm._s(_vm.readerHeader(chat))
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "context"
+    }, [_c('div', {
+      staticClass: "nameandtime",
+      domProps: {
+        "innerHTML": _vm._s(_vm.readerNameAndTime(chat))
+      }
+    }), _vm._v(" "), (chat.error_order == 3) ? _c('div', {
+      staticClass: "text",
+      domProps: {
+        "innerHTML": _vm._s(_vm.chatMessage(chat))
+      }
+    }) : _vm._e(), _vm._v(" "), (chat.error_order == 6) ? _c('div', {
+      staticClass: "text hongbao"
+    }, [_c('div', {
+      staticClass: "hongbaotop"
+    }, [_c('img', {
+      staticStyle: {
+        "width": "45px",
+        "margin-top": "12px",
+        "margin-left": "12px"
+      },
+      attrs: {
+        "src": __webpack_require__(176)
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "hongbaotit"
+    }, [_vm._v(_vm._s(JSON.parse(chat.message).title))]), _vm._v(" "), _c('div', {
+      staticClass: "hongbaostatus"
+    }, [_vm._v(_vm._s(JSON.parse(chat.message).note))])]), _vm._v(" "), _c('div', {
+      staticClass: "hongbaoouttom"
+    }, [_vm._v("\n                                     福利红包\n                                 ")])]) : _vm._e()])]) : _vm._e()])
+  }), 0)]), _vm._v(" "), _c('div', {
+    staticClass: "inputMsg"
+  }, [_c('div', {
+    staticClass: "msgtool"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(534)
+    },
+    on: {
+      "click": function($event) {
+        return _vm.triggerUploadImage()
+      }
+    }
+  }), _vm._v(" "), _c('input', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "type": "file",
+      "name": "filenameImage",
+      "id": "uploadfileImage"
+    }
+  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('button', {
+    staticClass: "sengMsg",
+    on: {
+      "click": function($event) {
+        return _vm.doSendMessage()
+      }
+    }
+  }, [_vm._v("发送")])])]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-left": "400px",
+      "height": "100%",
+      "overflow-y": "auto"
+    }
+  }, [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.resUsers,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "username",
+      "label": "会员名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sf",
+      "label": "身份",
+      "min-width": "80"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.ai == 1) ? _c('span', [_vm._v("虚拟")]) : _vm._e(), _vm._v(" "), (scope.row.tourist == 1) ? _c('span', [_vm._v("游客")]) : _vm._e(), _vm._v(" "), (scope.row.ai == 0 && scope.row.tourist != 1) ? _c('span', [_vm._v("会员")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "红包金额",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "lucky",
+      "label": "手气",
+      "min-width": "100",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.lucky == 0) ? _c('span') : _vm._e(), _vm._v(" "), (scope.row.lucky == 1) ? _c('span', [_vm._v("手气最佳")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 2) ? _c('span', [_vm._v("豹子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 3) ? _c('span', [_vm._v("顺子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 4) ? _c('span', [_vm._v("手气最差")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "120"
+    }
+  })], 1)], 1)]), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "红包群设置",
+      "visible": _vm.hongbaoQunVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.hongbaoQunVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "settingForm",
+    attrs: {
+      "size": "mini",
+      "model": _vm.settingForm,
+      "label-width": "100px",
+      "labelWidth": "100px",
+      "rules": _vm.settingFormRules
+    }
+  }, [_c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "红包群名称",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "红包群名称"
+    },
+    model: {
+      value: (_vm.settingForm.name),
+      callback: function($$v) {
+        _vm.$set(_vm.settingForm, "name", $$v)
+      },
+      expression: "settingForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "红包群头像",
+      "prop": "head"
+    }
+  }, [_c('input', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "type": "file",
+      "name": "filename",
+      "id": "uploadfileAdd"
+    },
+    on: {
+      "change": function($event) {
+        return _vm.uploadfileAdd()
+      }
+    }
+  }), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "float": "left"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.triggerUploadAdd()
+      }
+    }
+  }, [_c('el-avatar', {
+    attrs: {
+      "src": _vm.settingForm.head
+    }
+  })], 1)]), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "管理员名称",
+      "prop": "hb_agents_name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "管理员名称"
+    },
+    model: {
+      value: (_vm.settingForm.hb_agents_name),
+      callback: function($$v) {
+        _vm.$set(_vm.settingForm, "hb_agents_name", $$v)
+      },
+      expression: "settingForm.hb_agents_name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "管理员头像",
+      "prop": "hb_agents_head"
+    }
+  }, [_c('input', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "type": "file",
+      "name": "filenamegl",
+      "id": "uploadfileAddgl"
+    },
+    on: {
+      "change": function($event) {
+        return _vm.uploadfileAddgl()
+      }
+    }
+  }), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "float": "left"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.triggerUploadAddgl()
+      }
+    }
+  }, [_c('el-avatar', {
+    attrs: {
+      "src": _vm.settingForm.hb_agents_head
+    }
+  })], 1)]), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "群禁言",
+      "prop": "no_say"
+    }
+  }, [
+    [_c('el-radio', {
+      attrs: {
+        "label": "0"
+      },
+      model: {
+        value: (_vm.settingForm.no_say),
+        callback: function($$v) {
+          _vm.$set(_vm.settingForm, "no_say", $$v)
+        },
+        expression: "settingForm.no_say"
+      }
+    }, [_vm._v("正常")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": "1"
+      },
+      model: {
+        value: (_vm.settingForm.no_say),
+        callback: function($$v) {
+          _vm.$set(_vm.settingForm, "no_say", $$v)
+        },
+        expression: "settingForm.no_say"
+      }
+    }, [_vm._v("禁言")])]
+  ], 2), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "成员",
+      "prop": "members"
+    }
+  }, [_c('div', {
+    staticClass: "chooseMember"
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.has_hb),
+      expression: "!has_hb"
+    }],
+    staticClass: "chooseQuickly"
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
+    attrs: {
+      "label-width": "68px",
+      "label": "快速选择"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.settingForm.jifen),
+      callback: function($$v) {
+        _vm.$set(_vm.settingForm, "jifen", $$v)
+      },
+      expression: "settingForm.jifen"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "日积分3个以上",
+      "value": "1"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "月积分300个以上",
+      "value": "2"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-checkbox', {
+    staticStyle: {
+      "margin": "0px 10px"
+    },
+    model: {
+      value: (_vm.settingForm.filterYk),
+      callback: function($$v) {
+        _vm.$set(_vm.settingForm, "filterYk", $$v)
+      },
+      expression: "settingForm.filterYk"
+    }
+  }, [_vm._v("过滤游客")]), _vm._v(" "), _c('el-checkbox', {
+    staticStyle: {
+      "margin": "0px 10px"
+    },
+    model: {
+      value: (_vm.settingForm.filterRobot),
+      callback: function($$v) {
+        _vm.$set(_vm.settingForm, "filterRobot", $$v)
+      },
+      expression: "settingForm.filterRobot"
+    }
+  }, [_vm._v("过滤机器人")]), _vm._v(" "), _c('el-button', {
+    staticStyle: {
+      "margin-left": "10px"
+    },
+    attrs: {
+      "type": "primary"
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.surequickchoose($event)
+      }
+    }
+  }, [_vm._v("确定")])], 1), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.has_hb),
+      expression: "!has_hb"
+    }],
+    staticClass: "chooseQuickly"
+  }, [_vm._v("\n              用户ID "), _c('el-input', {
+    staticStyle: {
+      "width": "100px"
+    },
+    attrs: {
+      "min": 0,
+      "label": "输入ID"
+    },
+    model: {
+      value: (_vm.settingForm.searchId),
+      callback: function($$v) {
+        _vm.$set(_vm.settingForm, "searchId", $$v)
+      },
+      expression: "settingForm.searchId"
+    }
+  }), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.surequickchooseId($event)
+      }
+    }
+  }, [_vm._v("确定")]), _vm._v("\n                  已选择" + _vm._s(_vm.settingForm.users.length) + "人\n            ")], 1), _vm._v(" "), _c('div', {
+    staticClass: "memberCon",
+    staticStyle: {
+      "margin-top": "5px"
+    }
+  }, [(_vm.settingForm.users.length) ? _c('el-table', {
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.settingForm.users,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "用户ID",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "昵称",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "d_integral",
+      "label": "日积分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "y_integral",
+      "label": "月积分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "min-width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          directives: [{
+            name: "show",
+            rawName: "v-show",
+            value: (!_vm.has_hb),
+            expression: "!has_hb"
+          }],
+          staticStyle: {
+            "color": "#00c853"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.removeUserItem(scope.row.uid)
+            }
+          }
+        }, [_vm._v("移除")]), _vm._v(" "), (scope.row.noSay == 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          },
+          on: {
+            "click": function($event) {
+              scope.row.noSay = 1
+            }
+          }
+        }, [_vm._v("禁言")]) : _vm._e(), _vm._v(" "), (scope.row.noSay == 1) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          },
+          on: {
+            "click": function($event) {
+              scope.row.noSay = 0
+            }
+          }
+        }, [_vm._v("取消禁言")]) : _vm._e()]
+      }
+    }], null, false, 2092057575)
+  })], 1) : _vm._e()], 1)])])], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.hongbaoQunVisible = false;
+        _vm.locked = false;
+      }
+    }
+  }, [_vm._v("关闭")]), _vm._v(" "), (!_vm.active) ? _c('el-button', {
+    attrs: {
+      "type": "success"
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.openHongbaiqunsure($event)
+      }
+    }
+  }, [_vm._v("开启")]) : _vm._e(), _vm._v(" "), (_vm.active) ? _c('el-button', {
+    attrs: {
+      "type": "success"
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.openHongbaiqunsure($event)
+      }
+    }
+  }, [_vm._v("修改")]) : _vm._e()], 1)], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "红包设置",
+      "visible": _vm.hongbaoVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.hongbaoVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "settingFormHb",
+    attrs: {
+      "size": "mini",
+      "model": _vm.settingFormHb,
+      "label-width": "120px",
+      "labelWidth": "120px",
+      "rules": _vm.settingFormHbRules
+    }
+  }, [_c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "红包名称",
+      "prop": "title"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "红包名称"
+    },
+    model: {
+      value: (_vm.settingFormHb.title),
+      callback: function($$v) {
+        _vm.$set(_vm.settingFormHb, "title", $$v)
+      },
+      expression: "settingFormHb.title"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "红包留言",
+      "prop": "note"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "红包留言"
+    },
+    model: {
+      value: (_vm.settingFormHb.note),
+      callback: function($$v) {
+        _vm.$set(_vm.settingFormHb, "note", $$v)
+      },
+      expression: "settingFormHb.note"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "总金额",
+      "prop": "score"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "总金额"
+    },
+    model: {
+      value: (_vm.settingFormHb.score),
+      callback: function($$v) {
+        _vm.$set(_vm.settingFormHb, "score", $$v)
+      },
+      expression: "settingFormHb.score"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "红包个数",
+      "prop": "counts"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "红包个数"
+    },
+    model: {
+      value: (_vm.settingFormHb.counts),
+      callback: function($$v) {
+        _vm.$set(_vm.settingFormHb, "counts", $$v)
+      },
+      expression: "settingFormHb.counts"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "是否出现豹子",
+      "prop": "has_baozi"
+    }
+  }, [
+    [_c('el-radio', {
+      attrs: {
+        "label": "0"
+      },
+      model: {
+        value: (_vm.settingFormHb.has_baozi),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "has_baozi", $$v)
+        },
+        expression: "settingFormHb.has_baozi"
+      }
+    }, [_vm._v("不出现")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": "-1"
+      },
+      model: {
+        value: (_vm.settingFormHb.has_baozi),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "has_baozi", $$v)
+        },
+        expression: "settingFormHb.has_baozi"
+      }
+    }, [_vm._v("出现")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": "-2"
+      },
+      model: {
+        value: (_vm.settingFormHb.has_baozi),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "has_baozi", $$v)
+        },
+        expression: "settingFormHb.has_baozi"
+      }
+    }, [_vm._v("指定ID")]), _vm._v(" "), _c('el-input', {
+      staticStyle: {
+        "width": "100px",
+        "display": "inline-block"
+      },
+      attrs: {
+        "disabled": _vm.settingFormHb.has_baozi == -2 ? false : true,
+        "size": "mini",
+        "placeholder": "请输入ID"
+      },
+      model: {
+        value: (_vm.has_baozi),
+        callback: function($$v) {
+          _vm.has_baozi = $$v
+        },
+        expression: "has_baozi"
+      }
+    })]
+  ], 2), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "是否出现顺子",
+      "prop": "has_shunzi"
+    }
+  }, [
+    [_c('el-radio', {
+      attrs: {
+        "label": "0"
+      },
+      model: {
+        value: (_vm.settingFormHb.has_shunzi),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "has_shunzi", $$v)
+        },
+        expression: "settingFormHb.has_shunzi"
+      }
+    }, [_vm._v("不出现")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": "-1"
+      },
+      model: {
+        value: (_vm.settingFormHb.has_shunzi),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "has_shunzi", $$v)
+        },
+        expression: "settingFormHb.has_shunzi"
+      }
+    }, [_vm._v("出现")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": "-2"
+      },
+      model: {
+        value: (_vm.settingFormHb.has_shunzi),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "has_shunzi", $$v)
+        },
+        expression: "settingFormHb.has_shunzi"
+      }
+    }, [_vm._v("指定ID")]), _vm._v(" "), _c('el-input', {
+      staticStyle: {
+        "width": "100px",
+        "display": "inline-block"
+      },
+      attrs: {
+        "disabled": _vm.settingFormHb.has_shunzi == -2 ? false : true,
+        "size": "mini",
+        "placeholder": "请输入ID"
+      },
+      model: {
+        value: (_vm.has_shunzi),
+        callback: function($$v) {
+          _vm.has_shunzi = $$v
+        },
+        expression: "has_shunzi"
+      }
+    })]
+  ], 2), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "手气最佳",
+      "prop": "max_lucky"
+    }
+  }, [
+    [_c('el-radio', {
+      attrs: {
+        "label": "0"
+      },
+      model: {
+        value: (_vm.settingFormHb.max_lucky),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "max_lucky", $$v)
+        },
+        expression: "settingFormHb.max_lucky"
+      }
+    }, [_vm._v("不指定")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": "-2"
+      },
+      model: {
+        value: (_vm.settingFormHb.max_lucky),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "max_lucky", $$v)
+        },
+        expression: "settingFormHb.max_lucky"
+      }
+    }, [_vm._v("指定ID")]), _vm._v(" "), _c('el-input', {
+      staticStyle: {
+        "width": "100px",
+        "display": "inline-block"
+      },
+      attrs: {
+        "disabled": _vm.settingFormHb.max_lucky == -2 ? false : true,
+        "size": "mini",
+        "placeholder": "请输入ID"
+      },
+      model: {
+        value: (_vm.max_lucky),
+        callback: function($$v) {
+          _vm.max_lucky = $$v
+        },
+        expression: "max_lucky"
+      }
+    })]
+  ], 2), _vm._v(" "), _c('el-form-item', {
+    staticClass: "marginbot15",
+    attrs: {
+      "label": "手气最差",
+      "prop": "min_lucky"
+    }
+  }, [
+    [_c('el-radio', {
+      attrs: {
+        "label": "0"
+      },
+      model: {
+        value: (_vm.settingFormHb.min_lucky),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "min_lucky", $$v)
+        },
+        expression: "settingFormHb.min_lucky"
+      }
+    }, [_vm._v("不指定")]), _vm._v(" "), _c('el-radio', {
+      attrs: {
+        "label": "-2"
+      },
+      model: {
+        value: (_vm.settingFormHb.min_lucky),
+        callback: function($$v) {
+          _vm.$set(_vm.settingFormHb, "min_lucky", $$v)
+        },
+        expression: "settingFormHb.min_lucky"
+      }
+    }, [_vm._v("指定ID")]), _vm._v(" "), _c('el-input', {
+      staticStyle: {
+        "width": "100px",
+        "display": "inline-block"
+      },
+      attrs: {
+        "disabled": _vm.settingFormHb.min_lucky == -2 ? false : true,
+        "size": "mini",
+        "placeholder": "请输入ID"
+      },
+      model: {
+        value: (_vm.min_lucky),
+        callback: function($$v) {
+          _vm.min_lucky = $$v
+        },
+        expression: "min_lucky"
+      }
+    })]
+  ], 2)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.hongbaoVisible = false;
+        _vm.locked = false;
+      }
+    }
+  }, [_vm._v("关闭")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "success"
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.setHongbaosure($event)
+      }
+    }
+  }, [_vm._v("发送")])], 1)], 1)], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "input"
+  }, [_c('input', {
+    attrs: {
+      "id": "msginput",
+      "type": "text",
+      "placeholder": "请输入消息..."
+    }
+  })])
+}]}
+
+/***/ }),
+/* 1305 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "桌子ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "桌子ID"
+    },
+    model: {
+      value: (_vm.filters.room_id),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "room_id", $$v)
+      },
+      expression: "filters.room_id"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "靴号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "靴号"
+    },
+    model: {
+      value: (_vm.filters.boots_number),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "boots_number", $$v)
+      },
+      expression: "filters.boots_number"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "局数"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "局数"
+    },
+    model: {
+      value: (_vm.filters.ju),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "ju", $$v)
+      },
+      expression: "filters.ju"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px",
+      "margin-left": "50px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchGame
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "4px",
+      "margin": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n            客户总输赢: " + _vm._s(_vm.total_khyk) + "\n            ")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n            庄闲占成总输赢: " + _vm._s(_vm.total_zxyk_zc) + "\n            ")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n            推码总数: " + _vm._s(_vm.total_tm) + "\n            ")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n             推码盈亏总数: " + _vm._s(_vm.total_tmyk) + "\n            ")])], 1), _vm._v(" "), (_vm.type == 0) ? _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.gamelist,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "card_game_id",
+      "label": "牌局ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "room_id",
+      "label": "桌子ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "局数",
+      "min-width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v(_vm._s(scope.row.mark) + "-" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])]
+      }
+    }], null, false, 1954120005)
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "game_result",
+      "label": "开牌结果",
+      "min-width": "140"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.state == 2) ? _c('a', {
+          staticStyle: {
+            "color": "black"
+          }
+        }, [_vm._v(_vm._s(scope.row.game_result))]) : _vm._e(), _vm._v(" "), (scope.row.state < 2) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.game_result))]) : _vm._e(), _vm._v(" "), (scope.row.state == 3) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.game_result))]) : _vm._e()]
+      }
+    }], null, false, 3201769917)
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "khyk",
+      "label": "客户总盈亏",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zxyk_zc",
+      "label": "庄闲占成盈亏",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "tm",
+      "label": "推码",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "tmyk",
+      "label": "推码盈亏",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sb_total",
+      "label": "四宝总额",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sbyk",
+      "label": "四宝盈亏",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "220"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(_vm.auth_type == 1) ? _c('a', {
+          staticClass: "qiyong",
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.editGame(scope.row)
+            }
+          }
+        }, [_vm._v("修改")]) : _vm._e(), _vm._v(" "), _c('a', {
+          staticClass: "xiangqing",
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleChat(scope.row)
+            }
+          }
+        }, [_vm._v("聊天记录")])]
+      }
+    }], null, false, 3062318633)
+  })], 1) : _vm._e(), _vm._v(" "), (_vm.type == 1) ? _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.gamelist,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "label": "局数",
+      "min-width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])]
+      }
+    }], null, false, 2254433884)
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "game_result",
+      "label": "开牌结果",
+      "min-width": "140"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zhuang_dian",
+      "label": "龙家点",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xian_dian",
+      "label": "虎家点",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "player",
+      "label": "龙家牌型",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "banker",
+      "label": "虎家牌型",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(_vm.auth_type == 1) ? _c('a', {
+          staticStyle: {
+            "color": "green",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.editGame(scope.row)
+            }
+          }
+        }, [_vm._v("修改")]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('a', {
+          staticStyle: {
+            "color": "red",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.deleteGame(scope.row)
+            }
+          }
+        }, [_vm._v("删除")]) : _vm._e(), _vm._v(" "), _c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleChat(scope.row)
+            }
+          }
+        }, [_vm._v("聊天记录")])]
+      }
+    }], null, false, 3074835106)
+  })], 1) : _vm._e(), _vm._v(" "), (_vm.type == 2) ? _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.gamelist,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "label": "局数",
+      "min-width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])]
+      }
+    }], null, false, 2254433884)
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "game_result",
+      "label": "开牌结果",
+      "min-width": "140"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zhuang_dian",
+      "label": "龙家点",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xian_dian",
+      "label": "凤家点",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "player",
+      "label": "龙家牌型",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "banker",
+      "label": "凤家牌型",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(_vm.auth_type == 1) ? _c('a', {
+          staticStyle: {
+            "color": "green",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.editGame(scope.row)
+            }
+          }
+        }, [_vm._v("修改")]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('a', {
+          staticStyle: {
+            "color": "red",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.deleteGame(scope.row)
+            }
+          }
+        }, [_vm._v("删除")]) : _vm._e(), _vm._v(" "), _c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleChat(scope.row)
+            }
+          }
+        }, [_vm._v("聊天记录")])]
+      }
+    }], null, false, 3074835106)
+  })], 1) : _vm._e(), _vm._v(" "), (_vm.type == 3) ? _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.gamelist,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "label": "局数",
+      "min-width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v(_vm._s(scope.row.room_id) + "桌" + _vm._s(scope.row.boots_number) + "-" + _vm._s(scope.row.ju) + "局")])]
+      }
+    }], null, false, 2254433884)
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "game_result",
+      "label": "开牌结果",
+      "min-width": "140"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zhuang_dian",
+      "label": "红牛点",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xian_dian",
+      "label": "黑牛点",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "player",
+      "label": "红牛牌型",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "banker",
+      "label": "黑牛牌型",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(_vm.auth_type == 1) ? _c('a', {
+          staticStyle: {
+            "color": "green",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.editGame(scope.row)
+            }
+          }
+        }, [_vm._v("修改")]) : _vm._e(), _vm._v(" "), (_vm.auth_type == 1) ? _c('a', {
+          staticStyle: {
+            "color": "red",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.deleteGame(scope.row)
+            }
+          }
+        }, [_vm._v("删除")]) : _vm._e(), _vm._v(" "), _c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleChat(scope.row)
+            }
+          }
+        }, [_vm._v("聊天记录")])]
+      }
+    }], null, false, 3074835106)
+  })], 1) : _vm._e(), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.chatTitle,
+      "visible": _vm.chatVisible,
+      "close-on-click-modal": false,
+      "width": "1200px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.chatVisible = $event
+      }
+    }
+  }, [_c('div', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.chatlistLoading),
+      expression: "chatlistLoading"
+    }],
+    staticStyle: {
+      "height": "500px",
+      "border": "1px solid #ccc",
+      "padding": "10px",
+      "border-radius": "10px",
+      "overflow-y": "scroll"
+    }
+  }, [(!_vm.gameChat.length) ? _c('div', {
+    staticClass: "noChat"
+  }, [_vm._v("无聊天记录")]) : _vm._e(), _vm._v(" "), _vm._l((_vm.gameChat), function(item, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "chat-item"
+    }, [(item.msgtype == 0 || item.msgtype == 5) ? _c('div', [(!item.fromuser.headimage) ? _c('div', {
+      staticClass: "touxaing",
+      style: ({
+        'background-color': _vm.transColor(item.fromuser.nickname)
+      })
+    }, [_vm._v(_vm._s(_vm._f("transTx")(item.fromuser.nickname)))]) : _vm._e(), _vm._v(" "), (item.fromuser.headimage) ? _c('div', {
+      staticClass: "touxaing"
+    }, [_c('img', {
+      attrs: {
+        "src": item.fromuser.headimage,
+        "width": "40px",
+        "height": "40px"
+      }
+    })]) : _vm._e(), _vm._v(" "), _c('div', {
+      staticClass: "msgcon"
+    }, [_c('p', {
+      staticClass: "info"
+    }, [_vm._v(_vm._s(item.fromuser.nickname) + " " + _vm._s(item.createtime))]), _vm._v(" "), _c('div', {
+      staticClass: "msgText"
+    }, [_vm._v(_vm._s(item.msg))])])]) : _vm._e(), _vm._v(" "), (item.msgtype == 1) ? _c('div', [(!item.fromuser.headimage) ? _c('div', {
+      staticClass: "touxaing",
+      style: ({
+        'background-color': _vm.transColor(item.fromuser.nickname)
+      })
+    }, [_vm._v(_vm._s(_vm._f("transTx")(item.fromuser.nickname)))]) : _vm._e(), _vm._v(" "), (item.fromuser.headimage) ? _c('div', {
+      staticClass: "touxaing"
+    }, [_c('img', {
+      attrs: {
+        "src": item.fromuser.headimage,
+        "width": "40px",
+        "height": "40px"
+      }
+    })]) : _vm._e(), _vm._v(" "), _c('div', {
+      staticClass: "msgcon"
+    }, [_c('p', {
+      staticClass: "info"
+    }, [_vm._v(_vm._s(item.fromuser.nickname) + " " + _vm._s(item.createtime))]), _vm._v(" "), _c('div', {
+      staticClass: "msgText"
+    }, [_c('img', {
+      staticStyle: {
+        "width": "200px!important"
+      },
+      attrs: {
+        "src": item.msg
+      }
+    })])])]) : _vm._e(), _vm._v(" "), (item.msgtype == 2) ? _c('div', [(!item.fromuser.headimage) ? _c('div', {
+      staticClass: "touxaing",
+      style: ({
+        'background-color': _vm.transColor(item.fromuser.nickname)
+      })
+    }, [_vm._v(_vm._s(_vm._f("transTx")(item.fromuser.nickname)))]) : _vm._e(), _vm._v(" "), (item.fromuser.headimage) ? _c('div', {
+      staticClass: "touxaing"
+    }, [_c('img', {
+      attrs: {
+        "src": item.fromuser.headimage,
+        "width": "40px",
+        "height": "40px"
+      }
+    })]) : _vm._e(), _vm._v(" "), _c('div', {
+      staticClass: "msgcon"
+    }, [_c('p', {
+      staticClass: "info"
+    }, [_vm._v(_vm._s(item.fromuser.nickname) + " " + _vm._s(item.createtime))]), _vm._v(" "), _c('div', {
+      staticClass: "msgText",
+      staticStyle: {
+        "color": "red",
+        "font-weight": "bold",
+        "font-size": "22px"
+      }
+    }, [_vm._v(_vm._s(item.msg))])])]) : _vm._e(), _vm._v(" "), (item.msgtype == 3) ? _c('div', [_c('div', {
+      staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition"
+    }, [(_vm.type == 0) ? _c('table', {
+      staticClass: "el-table__body tzb",
+      attrs: {
+        "cellspacing": "0",
+        "cellpadding": "0",
+        "border": "0",
+        "width": "100%"
+      }
+    }, [_c('tr', {
+      staticClass: "el-table__row"
+    }, [_c('td', {
+      attrs: {
+        "colspan": "7"
+      }
+    }, [_vm._v("投注表")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("昵称")]), _vm._v(" "), _c('td', [_vm._v("闲")]), _vm._v(" "), _c('td', [_vm._v("庄")]), _vm._v(" "), _c('td', [_vm._v("闲对")]), _vm._v(" "), _c('td', [_vm._v("庄对")]), _vm._v(" "), _c('td', [_vm._v("和")]), _vm._v(" "), _c('td', [_vm._v("幸运6")])]), _vm._v(" "), _vm._l((_vm.parseStrJson(item.msg)), function(tz) {
+      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name || '总计'))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.x))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.z))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.xd))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.zd))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.h))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.xy))])])
+    })], 2) : _vm._e(), _vm._v(" "), (_vm.type == 1) ? _c('table', {
+      staticClass: "el-table__body tzb",
+      attrs: {
+        "cellspacing": "0",
+        "cellpadding": "0",
+        "border": "0",
+        "width": "100%"
+      }
+    }, [_c('tr', {
+      staticClass: "el-table__row"
+    }, [_c('td', {
+      attrs: {
+        "colspan": "4"
+      }
+    }, [_vm._v("投注表")])]), _vm._v(" "), _c('tr', [_c('td', {
+      staticClass: "odds_nickname",
+      attrs: {
+        "width": "22%"
+      }
+    }, [_vm._v("昵称")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_z",
+      attrs: {
+        "width": "10%"
+      }
+    }, [_vm._v("龙")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_x",
+      attrs: {
+        "width": "10%"
+      }
+    }, [_vm._v("虎")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_h",
+      attrs: {
+        "width": "10%"
+      }
+    }, [_vm._v("和")])]), _vm._v(" "), _vm._l((_vm.parseStrJson(item.msg)), function(tz) {
+      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name || '总计'))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_z",
+        attrs: {
+          "width": "10%"
+        }
+      }, [_vm._v(_vm._s(tz.z))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_x",
+        attrs: {
+          "width": "10%"
+        }
+      }, [_vm._v(_vm._s(tz.x))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_h",
+        attrs: {
+          "width": "10%"
+        }
+      }, [_vm._v(_vm._s(tz.h))])])
+    })], 2) : _vm._e(), _vm._v(" "), (_vm.type == 2) ? _c('table', {
+      staticClass: "el-table__body tzb",
+      attrs: {
+        "cellspacing": "0",
+        "cellpadding": "0",
+        "border": "0",
+        "width": "100%"
+      }
+    }, [_c('tr', {
+      staticClass: "el-table__row"
+    }, [_c('td', {
+      attrs: {
+        "colspan": "8"
+      }
+    }, [_vm._v("投注表")])]), _vm._v(" "), _c('tr', [_c('td', {
+      staticClass: "odds_nickname",
+      attrs: {
+        "width": "22%"
+      }
+    }, [_vm._v("昵称")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_z",
+      attrs: {
+        "width": "9%"
+      }
+    }, [_vm._v("龙")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_x",
+      attrs: {
+        "width": "9%"
+      }
+    }, [_vm._v("凤")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_d8",
+      attrs: {
+        "width": "16%"
+      }
+    }, [_vm._v("幸运一击")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_xd",
+      attrs: {
+        "width": "10%"
+      }
+    }, [_vm._v("顺子")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_zd",
+      attrs: {
+        "width": "10%"
+      }
+    }, [_vm._v("同花")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_ths",
+      attrs: {
+        "width": "16%"
+      }
+    }, [_vm._v("同花顺")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_xy",
+      attrs: {
+        "width": "10%"
+      }
+    }, [_vm._v("豹子")])]), _vm._v(" "), _vm._l((_vm.parseStrJson(item.msg)), function(tz) {
+      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name || '总计'))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_z",
+        attrs: {
+          "width": "9%"
+        }
+      }, [_vm._v(_vm._s(tz.z))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_x",
+        attrs: {
+          "width": "9%"
+        }
+      }, [_vm._v(_vm._s(tz.x))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_zd",
+        attrs: {
+          "width": "16%"
+        }
+      }, [_vm._v(_vm._s(tz.d8))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_zd",
+        attrs: {
+          "width": "10%"
+        }
+      }, [_vm._v(_vm._s(tz.zd))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_xd",
+        attrs: {
+          "width": "10%"
+        }
+      }, [_vm._v(_vm._s(tz.xd))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_zd",
+        attrs: {
+          "width": "16%"
+        }
+      }, [_vm._v(_vm._s(tz.ths))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_xy",
+        attrs: {
+          "width": "10%"
+        }
+      }, [_vm._v(_vm._s(tz.xy))])])
+    })], 2) : _vm._e(), _vm._v(" "), (_vm.type == 3) ? _c('table', {
+      staticClass: "el-table__body tzb",
+      attrs: {
+        "cellspacing": "0",
+        "cellpadding": "0",
+        "border": "0",
+        "width": "100%"
+      }
+    }, [_c('tr', {
+      staticClass: "el-table__row"
+    }, [_c('td', {
+      attrs: {
+        "colspan": "2"
+      }
+    }, [_vm._v("投注表")])]), _vm._v(" "), _c('tr', [_c('td', {
+      staticClass: "odds_nickname",
+      attrs: {
+        "width": "22%"
+      }
+    }, [_vm._v("昵称")]), _vm._v(" "), _c('td', {
+      staticClass: "odds_nickname",
+      attrs: {
+        "width": "80%"
+      }
+    }, [_vm._v("下注明细")])]), _vm._v(" "), _vm._l((_vm.parseStrJson(item.msg)), function(tz) {
+      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name || '总计'))]), _vm._v(" "), _c('td', {
+        staticClass: "odds_nickname",
+        attrs: {
+          "width": "80%"
+        }
+      }, [_vm._v(_vm._s(_vm.readerTZbiao(tz)))])])
+    })], 2) : _vm._e()])]) : _vm._e(), _vm._v(" "), (item.msgtype == 4) ? _c('div', [(!item.fromuser.headimage) ? _c('div', {
+      staticClass: "touxaing",
+      style: ({
+        'background-color': _vm.transColor(item.fromuser.nickname)
+      })
+    }, [_vm._v(_vm._s(_vm._f("transTx")(item.fromuser.nickname)))]) : _vm._e(), _vm._v(" "), (item.fromuser.headimage) ? _c('div', {
+      staticClass: "touxaing"
+    }, [_c('img', {
+      attrs: {
+        "src": item.fromuser.headimage,
+        "width": "40px",
+        "height": "40px"
+      }
+    })]) : _vm._e(), _vm._v(" "), _c('div', {
+      staticClass: "msgcon"
+    }, [_c('p', {
+      staticClass: "info"
+    }, [_vm._v(_vm._s(item.fromuser.nickname) + " " + _vm._s(item.createtime))]), _vm._v(" "), _c('div', {
+      staticClass: "msgText",
+      domProps: {
+        "innerHTML": _vm._s(_vm.strToRes(item))
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition",
+      staticStyle: {
+        "margin-top": "5px"
+      }
+    }, [_c('table', {
+      staticClass: "el-table__body tzb",
+      attrs: {
+        "cellspacing": "0",
+        "cellpadding": "0",
+        "border": "0",
+        "width": "100%"
+      }
+    }, [_c('tr', {
+      staticClass: "el-table__row"
+    }, [_c('td', {
+      attrs: {
+        "colspan": "4"
+      }
+    }, [_vm._v("余分表")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("昵称")]), _vm._v(" "), _c('td', [_vm._v("本局得分")]), _vm._v(" "), _c('td', [_vm._v("剩余分")]), _vm._v(" "), _c('td', [_vm._v("初始分")])]), _vm._v(" "), _vm._l((_vm.parseStrJsonData(item.msg)), function(tz) {
+      return _c('tr', [_c('td', [_vm._v(_vm._s(tz.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.win))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.score))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(tz.score_old))])])
+    })], 2)])]) : _vm._e()])
+  })], 2), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.chatVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)]), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.editFlag ? '修改牌局' : '新增牌局',
+      "visible": _vm.addVisible,
+      "close-on-click-modal": false,
+      "width": "1200px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.addVisible = $event
+      }
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "size": "mini",
+      "model": _vm.addForm,
+      "label-width": "50px",
+      "labelWidth": "50px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "10px 0px"
+    },
+    attrs: {
+      "label": "桌号",
+      "prop": "room_id"
+    }
+  }, [(!_vm.editFlag) ? _c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.addForm.room_id),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "room_id", $$v)
+      },
+      expression: "addForm.room_id"
+    }
+  }, _vm._l((_vm.rooms), function(item, index) {
+    return (item.game_type != -1) ? _c('el-option', {
+      key: index,
+      attrs: {
+        "label": item.mark,
+        "value": item.groupid
+      }
+    }) : _vm._e()
+  }), 1) : _vm._e(), _vm._v(" "), (_vm.editFlag) ? _c('el-select', {
+    attrs: {
+      "disabled": "",
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.addForm.room_id),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "room_id", $$v)
+      },
+      expression: "addForm.room_id"
+    }
+  }, _vm._l((_vm.rooms), function(item, index) {
+    return _c('el-option', {
+      key: index,
+      attrs: {
+        "label": item.mark,
+        "value": item.groupid
+      }
+    })
+  }), 1) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "margin": "10px 0px"
+    },
+    attrs: {
+      "label": "靴号",
+      "prop": "boots_number"
+    }
+  }, [(!_vm.editFlag) ? _c('el-input', {
+    attrs: {
+      "placeholder": "靴号"
+    },
+    model: {
+      value: (_vm.addForm.boots_number),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "boots_number", $$v)
+      },
+      expression: "addForm.boots_number"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.editFlag) ? _c('el-input', {
+    attrs: {
+      "disabled": "",
+      "placeholder": "靴号"
+    },
+    model: {
+      value: (_vm.addForm.boots_number),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "boots_number", $$v)
+      },
+      expression: "addForm.boots_number"
+    }
+  }) : _vm._e()], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "margin": "10px 0px"
+    },
+    attrs: {
+      "label": "局号",
+      "prop": "ju"
+    }
+  }, [(!_vm.editFlag) ? _c('el-input', {
+    attrs: {
+      "placeholder": "局号"
+    },
+    model: {
+      value: (_vm.addForm.ju),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "ju", $$v)
+      },
+      expression: "addForm.ju"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.editFlag) ? _c('el-input', {
+    attrs: {
+      "disabled": "",
+      "placeholder": "局号"
+    },
+    model: {
+      value: (_vm.addForm.ju),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "ju", $$v)
+      },
+      expression: "addForm.ju"
+    }
+  }) : _vm._e()], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "margin-top": "15px",
+      "margin-bottom": "15px"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": "101",
+      "border": ""
+    },
+    model: {
+      value: (_vm.radio1),
+      callback: function($$v) {
+        _vm.radio1 = $$v
+      },
+      expression: "radio1"
+    }
+  }, [_vm._v("修改路单")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "100",
+      "border": ""
+    },
+    model: {
+      value: (_vm.radio1),
+      callback: function($$v) {
+        _vm.radio1 = $$v
+      },
+      expression: "radio1"
+    }
+  }, [_vm._v("重新结算")])], 1), _vm._v(" "), _c('el-button-group', [_c('el-button', {
+    attrs: {
+      "type": _vm.addPai.zhuang == 1 ? 'primary' : 'info'
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeAddPai('zhuang', 1)
+      }
+    }
+  }, [_vm._v("庄")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": _vm.addPai.zhuang == 2 ? 'primary' : 'info'
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeAddPai('zhuang', 2)
+      }
+    }
+  }, [_vm._v("闲")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": _vm.addPai.zhuang == 3 ? 'primary' : 'info'
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeAddPai('zhuang', 3)
+      }
+    }
+  }, [_vm._v("和")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": _vm.addPai.zhuang_dui == 1 ? 'primary' : 'info'
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeAddPai('zhuang_dui', 1)
+      }
+    }
+  }, [_vm._v("庄对")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": _vm.addPai.xian_dui == 1 ? 'primary' : 'info'
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeAddPai('xian_dui', 1)
+      }
+    }
+  }, [_vm._v("闲对")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": _vm.addPai.lucky_six == 6 ? 'primary' : 'info'
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeAddPai('lucky_six', 6)
+      }
+    }
+  }, [_vm._v("幸运六12倍")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": _vm.addPai.lucky_six == 7 ? 'primary' : 'info'
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changeAddPai('lucky_six', 7)
+      }
+    }
+  }, [_vm._v("幸运六20倍")])], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1306 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "250px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "200px",
+      "margin-left": "50px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchShare
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.log,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zxyk",
+      "label": "庄闲盈亏",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), (_vm.currentGroupType == 0) ? _c('el-table-column', {
+    attrs: {
+      "prop": "zxxm",
+      "label": "庄闲洗码",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 1) ? _c('el-table-column', {
+    attrs: {
+      "prop": "zxxm",
+      "label": "龙虎洗码",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 2) ? _c('el-table-column', {
+    attrs: {
+      "prop": "zxxm",
+      "label": "龙凤洗码",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 0) ? _c('el-table-column', {
+    attrs: {
+      "prop": "sbyk",
+      "label": "三宝盈亏",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 1) ? _c('el-table-column', {
+    attrs: {
+      "prop": "sbyk",
+      "label": "四宝盈亏",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 2) ? _c('el-table-column', {
+    attrs: {
+      "prop": "sbyk",
+      "label": "五宝盈亏",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 0) ? _c('el-table-column', {
+    attrs: {
+      "prop": "sbxm",
+      "label": "三宝洗码",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 1) ? _c('el-table-column', {
+    attrs: {
+      "prop": "sbxm",
+      "label": "四宝洗码",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentGroupType == 2) ? _c('el-table-column', {
+    attrs: {
+      "prop": "sbxm",
+      "label": "五宝洗码",
+      "min-width": "60"
+    }
+  }) : _vm._e(), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "luckysix_yk",
+      "label": "幸运六盈亏",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "luckysix_xm",
+      "label": "幸运六洗码",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "khyk",
+      "label": "客户盈亏",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "tmyk",
+      "label": "台面盈亏",
+      "min-width": "60"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1307 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "会员ID"
+    },
+    model: {
+      value: (_vm.filters.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "uid", $$v)
+      },
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "代理账号"
+    },
+    model: {
+      value: (_vm.filters.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "agents_account", $$v)
+      },
+      expression: "filters.agents_account"
+    }
+  })], 1), _vm._v(" "), (_vm.auth_type == 1) ? _c('el-form-item', {
+    attrs: {
+      "label": "数据类型"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.filters.dataType),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "dataType", $$v)
+      },
+      expression: "filters.dataType"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "会员",
+      "value": "1"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "游客",
+      "value": "2"
+    }
+  })], 1)], 1) : _vm._e(), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px",
+      "margin-left": "20px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchScoreLog
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.exportExcel()
+      }
+    }
+  }, [_vm._v("导出报表")]), _vm._v(" "), _c('iframe', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "name": "baseExport"
+    }
+  }), _vm._v(" "), _c('form', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "id": "baseForm",
+      "name": "baseForm",
+      "method": "post",
+      "action": "",
+      "target": "baseExport"
+    }
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "uid"
+    },
+    domProps: {
+      "value": _vm.searchParam.uid
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "dataType"
+    },
+    domProps: {
+      "value": _vm.searchParam.dataType
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "agents_account"
+    },
+    domProps: {
+      "value": _vm.searchParam.agents_account
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "begin_time"
+    },
+    domProps: {
+      "value": _vm.searchParam.begin_time
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "end_time"
+    },
+    domProps: {
+      "value": _vm.searchParam.end_time
+    }
+  })])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "4px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "greenButton",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n        累计产生积分: " + _vm._s(_vm.integral_all) + "\n        ")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "greenButton",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n        累计已提积分: " + _vm._s(_vm.integral_exchange) + "\n        ")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "greenButton",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n        总剩余积分: " + _vm._s(_vm.user_integral) + "\n        ")])], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.log,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral",
+      "label": "每日积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_exchange",
+      "label": "已提积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_total",
+      "label": "剩余积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm_rate",
+      "label": "积分比例",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "date",
+      "label": "时间",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "min-width": "200"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return (!scope.row.countt) ? [_c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleDetail(scope.row)
+            }
+          }
+        }, [_vm._v("查看每日积分")])] : undefined
+      }
+    }], null, true)
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.detailFilters.user.name + '-每日积分详情',
+      "visible": _vm.DetailVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.DetailVisible = $event
+      }
+    }
+  }, [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.detailLoading),
+      expression: "detailLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.detaillogs,
+      "highlight-current-row": "",
+      "max-height": "650"
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral",
+      "label": "每日积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_exchange",
+      "label": "已提积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_total",
+      "label": "剩余积分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm_rate",
+      "label": "积分比例",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "date",
+      "label": "时间",
+      "min-width": "80"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.detailPagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.detailPagination.size,
+      "total": _vm.detailPagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangeDetail,
+      "current-change": _vm.handleCurrentChangeDetail
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.DetailVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1308 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "会员ID"
+    },
+    model: {
+      value: (_vm.filters.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "uid", $$v)
+      },
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("查询")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("导出报表")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.users,
+      "highlight-current-row": ""
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "label": "ID",
+      "width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员ID",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sex",
+      "label": "用户名",
+      "width": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "age",
+      "label": "庄注",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "birth",
+      "label": "和注",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "闲注",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "庄对",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "闲对",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "幸运六",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "输赢",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "addr",
+      "label": "积分",
+      "min-width": "100",
+      "sortable": ""
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "prev, pager, next",
+      "page-size": 20,
+      "total": _vm.total
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1309 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "会员ID"
+    },
+    model: {
+      value: (_vm.filters.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "uid", $$v)
+      },
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "date",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "数据类型"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
+    model: {
+      value: (_vm.dataType),
+      callback: function($$v) {
+        _vm.dataType = $$v
+      },
+      expression: "dataType"
+    }
+  }, [_c('el-option', {
+    attrs: {
+      "label": "全部分类",
+      "value": "0"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "积分兑换",
+      "value": "100"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "后台上分",
+      "value": "11"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "后台下分",
+      "value": "12"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("查询")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("导出报表")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.jiesuan(0)
+      }
+    }
+  }, [_vm._v("积分兑换总额：12131")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.jiesuan(1)
+      }
+    }
+  }, [_vm._v("清零")])], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.fens,
+      "highlight-current-row": ""
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "id",
+      "label": "ID",
+      "width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "昵称",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "type",
+      "label": "上下分",
+      "width": "",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.type == 11) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 12) ? _c('a', {
+          attrs: {
+            "size": "small"
+          }
+        }, [_vm._v("下分")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "money_change",
+      "label": "上下分金额",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "money",
+      "label": "余分",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "time",
+      "label": "操作时间",
+      "min-width": "100",
+      "sortable": ""
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [10, 20, 30, 40],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "验证密码",
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.checkPwdVisible),
+      callback: function($$v) {
+        _vm.checkPwdVisible = $$v
+      },
+      expression: "checkPwdVisible"
+    }
+  }, [_c('el-form', {
+    ref: "checkForm",
+    attrs: {
+      "model": _vm.checkPwdForm,
+      "label-width": "120px",
+      "rules": _vm.checkPwdFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "密码",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.checkPwdForm.name),
+      callback: function($$v) {
+        _vm.$set(_vm.checkPwdForm, "name", $$v)
+      },
+      expression: "checkPwdForm.name"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.checkPwdVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("确认")])], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1310 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchScoreLog
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.logs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "title",
+      "label": "红包名称",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "counts",
+      "label": "红包个数",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "红包金额",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "note",
+      "label": "留言",
+      "min-width": "200"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "150"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "min-width": "120"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return (!scope.row.countt) ? [_c('a', {
+          staticStyle: {
+            "color": "rgb(32, 160, 255)"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.getDetail(scope.row)
+            }
+          }
+        }, [_vm._v("查看详情")])] : undefined
+      }
+    }], null, true)
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.currentHb.title + '-红包明细',
+      "visible": _vm.hbdetailVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.hbdetailVisible = $event
+      }
+    }
+  }, [_c('el-table', {
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "max-height": "400",
+      "size": "mini",
+      "border": "",
+      "data": _vm.details,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "身份",
+      "min-width": "80"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.ai == 1) ? _c('span', [_vm._v("虚拟")]) : _vm._e(), _vm._v(" "), (scope.row.tourist == 1) ? _c('span', [_vm._v("游客")]) : _vm._e(), _vm._v(" "), (scope.row.ai == 0 && scope.row.tourist != 1) ? _c('span', [_vm._v("会员")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "领取金额",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "uptime",
+      "label": "领取时间",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "手气",
+      "min-width": "60"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.lucky == 0) ? _c('span') : _vm._e(), _vm._v(" "), (scope.row.lucky == 1) ? _c('span', [_vm._v("手气最佳")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 2) ? _c('span', [_vm._v("豹子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 3) ? _c('span', [_vm._v("顺子")]) : _vm._e(), _vm._v(" "), (scope.row.lucky == 4) ? _c('span', [_vm._v("手气最差")]) : _vm._e()]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.hbdetailVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1311 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.handleAdd
+    }
+  }, [_vm._v("新增角色")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.users,
+      "highlight-current-row": ""
+    },
+    on: {
+      "selection-change": _vm.selsChange
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "index",
+      "label": "ID",
+      "width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "角色名",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "sex",
+      "label": "角色等级",
+      "width": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "age",
+      "label": "会员列表",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "birth",
+      "label": "描述",
+      "width": "",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "width": "150"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("编辑")]), _vm._v(" "), _c('el-button', {
+          attrs: {
+            "type": "danger",
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleDel(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("删除")])]
+      }
+    }])
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "prev, pager, next",
+      "page-size": 20,
+      "total": _vm.total
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.addRole ? '添加角色' : '编辑角色',
+      "close-on-click-modal": false
+    },
+    model: {
+      value: (_vm.addFormVisible),
+      callback: function($$v) {
+        _vm.addFormVisible = $$v
+      },
+      expression: "addFormVisible"
+    }
+  }, [_c('el-form', {
+    ref: "addForm",
+    attrs: {
+      "model": _vm.addForm,
+      "label-width": "80px",
+      "rules": _vm.addFormRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "角色名称",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.name),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "name", $$v)
+      },
+      expression: "addForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "角色等级",
+      "prop": "name",
+      "rules": [{
+          required: true,
+          message: '角色等级不能为空'
+        },
+        {
+          type: 'number',
+          message: '角色等级必须为数字值'
+        }
+      ]
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "age",
+      "auto-complete": "off"
+    },
+    model: {
+      value: (_vm.addForm.age),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "age", _vm._n($$v))
+      },
+      expression: "addForm.age"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "备注",
+      "prop": "name"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "textarea"
+    },
+    model: {
+      value: (_vm.addForm.name),
+      callback: function($$v) {
+        _vm.$set(_vm.addForm, "name", $$v)
+      },
+      expression: "addForm.name"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "角色权限"
+    }
+  }, _vm._l((_vm.isIndeterminate), function(item, index) {
+    return _c('div', [_c('el-checkbox', {
+      attrs: {
+        "indeterminate": _vm.isIndeterminate[index]
+      },
+      on: {
+        "change": function($event) {
+          return _vm.handleCheckAllChange(index, _vm.checkAll[index])
+        }
+      },
+      model: {
+        value: (_vm.checkAll[index]),
+        callback: function($$v) {
+          _vm.$set(_vm.checkAll, index, $$v)
+        },
+        expression: "checkAll[index]"
+      }
+    }, [_vm._v(_vm._s(_vm.rolepowerTitle[index]))]), _vm._v(" "), _c('el-checkbox-group', {
+      staticStyle: {
+        "border-bottom": "1px solid #ccc"
+      },
+      on: {
+        "change": function($event) {
+          return _vm.handleCheckedCitiesChange(index, _vm.rolepower[index])
+        }
+      },
+      model: {
+        value: (_vm.rolepower[index]),
+        callback: function($$v) {
+          _vm.$set(_vm.rolepower, index, $$v)
+        },
+        expression: "rolepower[index]"
+      }
+    }, _vm._l((_vm.powers[index]), function(power) {
+      return _c('el-checkbox', {
+        key: power,
+        attrs: {
+          "label": power
+        }
+      }, [_vm._v(_vm._s(power))])
+    }), 1)], 1)
+  }), 0)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.addFormVisible = false
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary",
+      "loading": _vm.addLoading
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.addSubmit($event)
+      }
+    }
+  }, [_vm._v("提交")])], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1312 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.win,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "40"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称",
+      "min-width": "130"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "usertype",
+      "label": "身份",
+      "min-width": "30"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.usertype == 1) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v("代理")]) : _vm._e(), _vm._v(" "), (scope.row.usertype == 2) ? _c('a', [_vm._v("会员")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "relation_link",
+      "label": "代理关系",
+      "min-width": "260"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "会员余分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm",
+      "label": "累计产生积分",
+      "min-width": "100",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm_money",
+      "label": "积分已兑换额度",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "win",
+      "label": "输赢数",
+      "min-width": "70",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.win >= 0) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e(), _vm._v(" "), (scope.row.win < 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "profit",
+      "label": "会员收益",
+      "min-width": "80",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.profit >= 0) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e(), _vm._v(" "), (scope.row.profit < 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "240"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1313 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": _vm.id,
+      "type": "text/plain"
+    }
+  })
+},staticRenderFns: []}
+
+/***/ }),
+/* 1314 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
+    staticClass: "page-container"
+  }, [_vm._v("404 page not found")])
+},staticRenderFns: []}
+
+/***/ }),
+/* 1315 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "large",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "会员ID"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "会员ID"
+    },
+    model: {
+      value: (_vm.filters.uid),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "uid", $$v)
+      },
+      expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "代理账号"
+    },
+    model: {
+      value: (_vm.filters.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "agents_account", $$v)
+      },
+      expression: "filters.agents_account"
+    }
+  })], 1), _vm._v(" "), _c('span', [_vm._v("选择桌子: ")]), _vm._v(" "), _c('el-select', {
+    attrs: {
+      "placeholder": "请选择桌子"
+    },
+    on: {
+      "change": _vm.changeGroup
+    },
+    model: {
+      value: (_vm.currentGroup.groupid),
+      callback: function($$v) {
+        _vm.$set(_vm.currentGroup, "groupid", $$v)
+      },
+      expression: "currentGroup.groupid"
+    }
+  }, _vm._l((_vm.rooms), function(room, index) {
+    return (room.game_type != -1 && room.xstate != 0) ? _c('el-option', {
+      key: index,
+      attrs: {
+        "label": room.groupname,
+        "value": room.groupid
+      }
+    }) : _vm._e()
+  }), 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "200px",
+      "margin-left": "10px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.filters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "begin_time", $$v)
+      },
+      expression: "filters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "200px",
+      "margin-left": "100px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.filters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "end_time", $$v)
+      },
+      expression: "filters.end_time"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true
+    }
+  }, [_c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchWin
+    }
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.exportExcel()
+      }
+    }
+  }, [_vm._v("导出报表")]), _vm._v(" "), _c('iframe', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "name": "baseExport"
+    }
+  }), _vm._v(" "), _c('form', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "id": "baseForm",
+      "name": "baseForm",
+      "method": "post",
+      "action": "",
+      "target": "baseExport"
+    }
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "uid"
+    },
+    domProps: {
+      "value": _vm.searchParam.uid
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "level"
+    },
+    domProps: {
+      "value": _vm.searchParam.level
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "begin_time"
+    },
+    domProps: {
+      "value": _vm.searchParam.begin_time
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "end_time"
+    },
+    domProps: {
+      "value": _vm.searchParam.end_time
+    }
+  })])], 1)], 1)], 1), _vm._v(" "), (_vm.lowList.length) ? _c('div', {
+    staticClass: "lowList"
+  }, [_c('span', [_c('a', {
+    on: {
+      "click": function($event) {
+        return _vm.getLowerList()
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.plugin.getSessionItem("user", "name")))])]), _vm._v(" "), _vm._l((_vm.lowList), function(item, index) {
+    return _c('span', {
+      key: index
+    }, [_vm._v(" > "), _c('a', {
+      on: {
+        "click": function($event) {
+          return _vm.getLowerList(item)
+        }
+      }
+    }, [_vm._v(_vm._s(item.name))])])
+  })], 2) : _vm._e(), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.win,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "40"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称",
+      "min-width": "130"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.usertype == 1) ? _c('a', {
+          staticStyle: {
+            "text-decoration": "underline",
+            "cursor": "pointer"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.getLowerListClom(scope.row)
+            }
+          }
+        }, [_vm._v(_vm._s(scope.row.name))]) : _vm._e(), _vm._v(" "), (scope.row.usertype == 2) ? _c('a', [_vm._v(_vm._s(scope.row.name))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "120"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "会员余分",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm",
+      "label": "累计产生积分",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xm_money",
+      "label": "积分已兑换额度",
+      "min-width": "120",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "win",
+      "label": "输赢数",
+      "min-width": "80",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.win >= 0) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e(), _vm._v(" "), (scope.row.win < 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.win))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_zx_losewin",
+      "label": "庄闲输赢",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_sb_losewin",
+      "label": "四宝输赢",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "profit",
+      "label": "会员收益",
+      "min-width": "80",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.profit >= 0) ? _c('a', {
+          staticStyle: {
+            "color": "#FF9900"
+          }
+        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e(), _vm._v(" "), (scope.row.profit < 0) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v(_vm._s(scope.row.profit))]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "240"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.pagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.pagination.size,
+      "total": _vm.pagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChange,
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1316 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      "background": "url('../../static/myimg/loginbg.jpg') 0% 0% / contain",
+      "position": "absolute",
+      "inset": "0px"
+    }
+  }, [_c('div', {
+    staticClass: "boxClass"
+  }, [_c('el-form', {
+    ref: "ruleForm2",
+    staticClass: "demo-ruleForm login-container",
+    attrs: {
+      "model": _vm.ruleForm2,
+      "rules": _vm.rules2,
+      "label-position": "left",
+      "label-width": "0px"
+    }
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ruleForm2.account),
+      expression: "ruleForm2.account"
+    }],
+    staticClass: "accountClass",
+    attrs: {
+      "name": "account",
+      "type": "text",
+      "placeholder": "请输入账号",
+      "auto-complete": "off"
+    },
+    domProps: {
+      "value": (_vm.ruleForm2.account)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.$set(_vm.ruleForm2, "account", $event.target.value)
+      }
+    }
+  }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ruleForm2.checkPass),
+      expression: "ruleForm2.checkPass"
+    }],
+    staticClass: "pwdClass",
+    attrs: {
+      "name": "pwd",
+      "type": "password",
+      "placeholder": "请输入密码",
+      "auto-complete": "off"
+    },
+    domProps: {
+      "value": (_vm.ruleForm2.checkPass)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.$set(_vm.ruleForm2, "checkPass", $event.target.value)
+      }
+    }
+  }), _vm._v(" "), _c('button', {
+    staticClass: "buttonClass",
+    on: {
+      "click": function($event) {
+        return _vm.handleSubmit2()
+      }
+    }
+  })])], 1)])
+},staticRenderFns: []}
+
+/***/ }),
+/* 1317 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      "width": "400px"
+    }
+  }, [_c('x-grid', {
+    attrs: {
+      "options": _vm.option
+    }
+  })], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1318 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "mini"
+    }
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理名称:"
+    }
+  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.name) + "\n                            ")])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "登录账号:"
+    }
+  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.account) + "\n                            ")])], 1), _vm._v(" "), _c('td')]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "洗码类型:"
+    }
+  }, [(_vm.agentsInfo.xm_type == 1) ? _c('a', [_vm._v("单边洗码")]) : _vm._e(), _vm._v(" "), (_vm.agentsInfo.xm_type == 2) ? _c('a', [_vm._v("双边洗码")]) : _vm._e()])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label-width": "100",
+      "label": "庄闲洗码率:"
+    }
+  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.xm_rate) + "%\n                            ")])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label-width": "100",
+      "label": "庄闲占成率:"
+    }
+  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.share_rate) + "%\n                            ")])], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label-width": "100",
+      "label": "四宝洗码率:"
+    }
+  }, [_vm._v("\n                                " + _vm._s(_vm.agentsInfo.sb_xm_rate) + "%\n                            ")])], 1), _vm._v(" "), _c('td', [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label-width": "100",
+      "label": "四宝占成率:"
+    }
+  }, [_vm._v("\n                                 " + _vm._s(_vm.agentsInfo.sb_share_rate) + "%                                   \n                            ")])], 1)])])])], 1)])
+},staticRenderFns: []}
+
+/***/ }),
+/* 1319 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -52700,12 +52328,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-option', {
     attrs: {
-      "label": "增加积分",
+      "label": "真分",
       "value": "1"
     }
   }), _vm._v(" "), _c('el-option', {
     attrs: {
-      "label": "提取积分",
+      "label": "假分",
       "value": "2"
     }
   })], 1)], 1), _vm._v(" "), _c('el-form-item', {
@@ -52753,7 +52381,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.getUsers
     }
-  }, [_vm._v("查询")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("查询")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.getUsers
+    }
+  }, [_vm._v("导出报表")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -52792,28 +52427,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "age",
-      "label": "下注金额",
+      "label": "剩余积分",
       "width": "",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "birth",
-      "label": "兑换比例",
+      "label": "每日积分",
       "width": "",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "addr",
-      "label": "产生的积分",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "addr",
-      "label": "牌局ID",
+      "label": "提取积分",
       "min-width": "100",
       "sortable": ""
     }
@@ -52845,102 +52473,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1321 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
-    staticClass: "toolbar toptoolbar",
-    staticStyle: {
-      "padding-bottom": "0px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('el-form', {
-    ref: "changePwdForm",
-    attrs: {
-      "size": "small",
-      "label-width": "120px",
-      "model": _vm.filters,
-      "rules": _vm.formRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "原密码",
-      "prop": "oldpassword"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "200px"
-    },
-    attrs: {
-      "type": "password",
-      "placeholder": "原密码"
-    },
-    model: {
-      value: (_vm.filters.oldpassword),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "oldpassword", $$v)
-      },
-      expression: "filters.oldpassword"
-    }
-  })], 1), _c('br'), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "新密码",
-      "prop": "newpassword1"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "200px"
-    },
-    attrs: {
-      "type": "password",
-      "placeholder": "新密码"
-    },
-    model: {
-      value: (_vm.filters.newpassword1),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "newpassword1", $$v)
-      },
-      expression: "filters.newpassword1"
-    }
-  })], 1), _c('br'), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "确认新密码",
-      "prop": "newpassword2"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "200px"
-    },
-    attrs: {
-      "type": "password",
-      "placeholder": "确认新密码"
-    },
-    model: {
-      value: (_vm.filters.newpassword2),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "newpassword2", $$v)
-      },
-      expression: "filters.newpassword2"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "margin-top": "20px"
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.changePwd
-    }
-  }, [_vm._v("修改")])], 1)], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1322 */
+/* 1320 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -53556,144 +53089,56 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 1323 */
+/* 1321 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('div', {
-    staticClass: "page-container"
-  }, [_c('el-table', {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: (_vm.listLoading),
-      expression: "listLoading"
-    }],
-    staticClass: "tableStyle",
-    staticStyle: {
-      "width": "100%",
-      "margin-top": "10px"
-    },
-    attrs: {
-      "row-class-name": _vm.plugin.tableRowClassName,
-      "border": "",
-      "size": "mini",
-      "data": _vm.logs,
-      "highlight-current-row": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "groupid",
-      "label": "房间ID",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "groupname",
-      "label": "房间名称",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "mark",
-      "label": "台号",
-      "min-width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "game_type",
-      "label": "类型",
-      "min-width": "80"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.game_type == -1) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("大厅")]) : _vm._e(), _vm._v(" "), (scope.row.game_type == 0) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("百家乐")]) : _vm._e(), _vm._v(" "), (scope.row.game_type == 1) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("龙虎")]) : _vm._e(), _vm._v(" "), (scope.row.game_type == 2) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("炸金花")]) : _vm._e(), _vm._v(" "), (scope.row.game_type == 3) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("牛牛")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "xstate",
-      "label": "状态",
-      "min-width": "80"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.xstate == 1) ? _c('a', {
-          staticClass: "qiyong",
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("正常")]) : _vm._e(), _vm._v(" "), (scope.row.xstate == 0) ? _c('a', {
-          staticClass: "jinyong",
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("休场")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作",
-      "min-width": "100"
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.xstate == 0) ? _c('a', {
-          staticClass: "xiangqing",
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.operaRoom(scope.row, 1)
-            }
-          }
-        }, [_vm._v("取消休场")]) : _vm._e(), _vm._v(" "), (scope.row.xstate == 1) ? _c('a', {
-          staticClass: "xiangqing",
-          attrs: {
-            "size": "mini"
-          },
-          on: {
-            "click": function($event) {
-              return _vm.operaRoom(scope.row, 0)
-            }
-          }
-        }, [_vm._v("休场")]) : _vm._e()]
-      }
-    }])
-  })], 1)], 1)])
+  return _c('ul', {
+    staticClass: "win-ul"
+  }, [_vm._l((_vm.win), function(item, index) {
+    return (_vm.gametype != 3) ? _c('li', {
+      key: index,
+      staticClass: "win-li"
+    }, [_c('div', {
+      staticClass: "top lii"
+    }, [_c('div', {
+      staticClass: "dian"
+    }, [_vm._v(_vm._s(item.l_msg))]), _vm._v(" "), (item.zhuang_win == 1) ? _c('div', {
+      staticClass: "win"
+    }, [_vm._v("WIN")]) : _vm._e()]), _vm._v(" "), _c('div', {
+      staticClass: "bottom lii"
+    }, [_c('div', {
+      staticClass: "dian"
+    }, [_vm._v(_vm._s(item.f_msg))]), _vm._v(" "), (item.zhuang_win == 2) ? _c('div', {
+      staticClass: "win"
+    }, [_vm._v("WIN")]) : _vm._e()])]) : _vm._e()
+  }), _vm._v(" "), _vm._l((_vm.win), function(item, index) {
+    return (_vm.gametype == 3) ? _c('li', {
+      key: index,
+      staticClass: "win-li"
+    }, [_c('div', {
+      staticClass: "top lii"
+    }, [_c('div', {
+      staticClass: "dian"
+    }, [_vm._v(_vm._s(item.f_msg))]), _vm._v(" "), (item.zhuang_win == 2) ? _c('div', {
+      staticClass: "win"
+    }, [_vm._v("WIN")]) : _vm._e()]), _vm._v(" "), _c('div', {
+      staticClass: "bottom lii"
+    }, [_c('div', {
+      staticClass: "dian"
+    }, [_vm._v(_vm._s(item.l_msg))]), _vm._v(" "), (item.zhuang_win == 1) ? _c('div', {
+      staticClass: "win"
+    }, [_vm._v("WIN")]) : _vm._e()])]) : _vm._e()
+  })], 2)
 },staticRenderFns: []}
 
 /***/ }),
-/* 1324 */
+/* 1322 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('section', [_c('el-col', {
-    staticClass: "toolbar",
+    staticClass: "toolbar toptoolbar",
     staticStyle: {
       "padding-bottom": "0px"
     },
@@ -53702,16 +53147,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form', {
     attrs: {
+      "size": "small",
       "inline": true,
       "model": _vm.filters
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "会员ID"
+      "label": "用户ID"
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": "会员ID"
+      "placeholder": "用户ID"
     },
     model: {
       value: (_vm.filters.uid),
@@ -53719,6 +53165,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.$set(_vm.filters, "uid", $$v)
       },
       expression: "filters.uid"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "代理账号"
+    },
+    model: {
+      value: (_vm.filters.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "agents_account", $$v)
+      },
+      expression: "filters.agents_account"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
@@ -53729,7 +53190,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-date-picker', {
     attrs: {
-      "type": "date",
+      "type": "datetime",
       "placeholder": "开始时间"
     },
     model: {
@@ -53741,14 +53202,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "width": "260px"
+      "width": "260px",
+      "margin-left": "35px"
     },
     attrs: {
       "label": "结束时间"
     }
   }, [_c('el-date-picker', {
     attrs: {
-      "type": "date",
+      "type": "datetime",
       "placeholder": "结束时间"
     },
     model: {
@@ -53758,156 +53220,169 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "filters.end_time"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
     attrs: {
-      "label": "数据类型"
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
     }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.dataType),
-      callback: function($$v) {
-        _vm.dataType = $$v
-      },
-      expression: "dataType"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部分类",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "积分兑换",
-      "value": "100"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "后台上分",
-      "value": "11"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "后台下分",
-      "value": "12"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  }, [_c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
-      "click": _vm.getUsers
+      "click": _vm.searchScoreLog
     }
-  }, [_vm._v("查询")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
-      "click": _vm.getUsers
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
     }
-  }, [_vm._v("导出报表")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
-    staticClass: "toolbar",
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1)], 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "4px"
+    },
     attrs: {
       "span": 24
     }
   }, [_c('el-button', {
     attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        return _vm.jiesuan(0)
-      }
+      "type": "primary",
+      "effect": "dark"
     }
-  }, [_vm._v("积分兑换总额：12131")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("\n        结算积分总数量: " + _vm._s(_vm.exchange_integral_all) + "\n        ")]), _vm._v(" "), _c('el-button', {
     attrs: {
-      "type": "primary"
+      "type": "primary",
+      "effect": "dark"
+    }
+  }, [_vm._v("\n        上分总额度: " + _vm._s(_vm.exchange_score) + "\n        ")]), _vm._v(" "), (_vm.agent_type == 3) ? _c('el-button', {
+    staticStyle: {
+      "cursor": "pointer"
+    },
+    attrs: {
+      "type": "danger",
+      "effect": "dark"
     },
     on: {
-      "click": function($event) {
-        return _vm.jiesuan(1)
-      }
+      "click": _vm.guiling
     }
-  }, [_vm._v("清零")])], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("\n        一键结算\n        ")]) : _vm._e()], 1), _vm._v(" "), _c('el-table', {
     directives: [{
       name: "loading",
       rawName: "v-loading",
       value: (_vm.listLoading),
       expression: "listLoading"
     }],
+    staticClass: "tableStyle",
     staticStyle: {
       "width": "100%"
     },
     attrs: {
-      "data": _vm.fens,
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.log,
       "highlight-current-row": ""
-    },
-    on: {
-      "selection-change": _vm.selsChange
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "id",
-      "label": "ID",
-      "width": "80"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
       "prop": "uid",
       "label": "会员ID",
-      "width": "",
-      "sortable": ""
+      "min-width": "80"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "name",
-      "label": "昵称",
-      "width": "",
+      "label": "会员昵称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理昵称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_exchange",
+      "label": "结算积分",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral_rate",
+      "label": "积分比例",
+      "min-width": "80",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "type",
-      "label": "上下分",
-      "width": "",
-      "sortable": ""
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(scope) {
-        return [(scope.row.type == 11) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 12) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("下分")]) : _vm._e()]
-      }
-    }])
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "money_change",
-      "label": "上下分金额",
-      "min-width": "100",
+      "prop": "exchange_score",
+      "label": "上分额度",
+      "min-width": "80",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "money",
-      "label": "余分",
-      "min-width": "100",
-      "sortable": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "time",
-      "label": "操作时间",
-      "min-width": "100",
-      "sortable": ""
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "80"
     }
   })], 1), _vm._v(" "), _c('el-col', {
     staticClass: "toolbar",
@@ -53921,7 +53396,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "layout": "total, sizes, prev, pager, next, jumper",
       "current-page": _vm.pagination.current,
-      "page-sizes": [10, 20, 30, 40],
+      "page-sizes": [50, 100, 300],
       "page-size": _vm.pagination.size,
       "total": _vm.pagination.total
     },
@@ -53931,70 +53406,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-dialog', {
     attrs: {
-      "title": "验证密码",
-      "close-on-click-modal": false
+      "title": _vm.detailFilters.user.name + '-详情',
+      "visible": _vm.DetailVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
     },
-    model: {
-      value: (_vm.checkPwdVisible),
-      callback: function($$v) {
-        _vm.checkPwdVisible = $$v
-      },
-      expression: "checkPwdVisible"
-    }
-  }, [_c('el-form', {
-    ref: "checkForm",
-    attrs: {
-      "model": _vm.checkPwdForm,
-      "label-width": "120px",
-      "rules": _vm.checkPwdFormRules
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "密码",
-      "prop": "name"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.checkPwdForm.name),
-      callback: function($$v) {
-        _vm.$set(_vm.checkPwdForm, "name", $$v)
-      },
-      expression: "checkPwdForm.name"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    attrs: {
-      "slot": "footer"
-    },
-    slot: "footer"
-  }, [_c('el-button', {
-    nativeOn: {
-      "click": function($event) {
-        _vm.checkPwdVisible = false
+    on: {
+      "update:visible": function($event) {
+        _vm.DetailVisible = $event
       }
     }
-  }, [_vm._v("取消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary",
-      "loading": _vm.addLoading
-    },
-    nativeOn: {
-      "click": function($event) {
-        return _vm.addSubmit($event)
-      }
-    }
-  }, [_vm._v("确认")])], 1)], 1)], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 1325 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('el-col', {
+  }, [_c('el-col', {
     staticClass: "toolbar",
     staticStyle: {
       "padding-bottom": "0px"
@@ -54004,10 +53426,199 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form', {
     attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.detailFilters
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "开始时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "开始时间"
+    },
+    model: {
+      value: (_vm.detailFilters.begin_time),
+      callback: function($$v) {
+        _vm.$set(_vm.detailFilters, "begin_time", $$v)
+      },
+      expression: "detailFilters.begin_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "width": "260px"
+    },
+    attrs: {
+      "label": "结束时间"
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "datetime",
+      "placeholder": "结束时间"
+    },
+    model: {
+      value: (_vm.detailFilters.end_time),
+      callback: function($$v) {
+        _vm.$set(_vm.detailFilters, "end_time", $$v)
+      },
+      expression: "detailFilters.end_time"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.searchDetail
+    }
+  }, [_vm._v("查询")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.detailLoading),
+      expression: "detailLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "max-height": "300",
+      "size": "mini",
+      "border": "",
+      "data": _vm.detaillogs,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "会员名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "score",
+      "label": "流水",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "integral",
+      "label": "积分",
+      "min-width": "60"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "card_game_id",
+      "label": "牌局ID",
+      "min-width": "100"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "type",
+      "label": "类型",
+      "min-width": "100"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [(scope.row.type == 1) ? _c('a', {
+          staticStyle: {
+            "color": "blue"
+          }
+        }, [_vm._v("增加")]) : _vm._e(), _vm._v(" "), (scope.row.type == 2) ? _c('a', {
+          staticStyle: {
+            "color": "red"
+          }
+        }, [_vm._v("减少")]) : _vm._e()]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "100"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.detailPagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.detailPagination.size,
+      "total": _vm.detailPagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangeDetail,
+      "current-change": _vm.handleCurrentChangeDetail
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.DetailVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1323 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', [_c('el-col', {
+    staticClass: "toolbar toptoolbar",
+    staticStyle: {
+      "padding-bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "small",
       "inline": true,
       "model": _vm.filters
     }
   }, [_c('el-form-item', {
+    attrs: {
+      "label": "代理账号"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "代理账号"
+    },
+    model: {
+      value: (_vm.filters.agents_account),
+      callback: function($$v) {
+        _vm.$set(_vm.filters, "agents_account", $$v)
+      },
+      expression: "filters.agents_account"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "会员ID"
     }
@@ -54023,125 +53634,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "filters.uid"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "牌局ID"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "牌局ID"
-    },
-    model: {
-      value: (_vm.filters.username),
-      callback: function($$v) {
-        _vm.$set(_vm.filters, "username", $$v)
-      },
-      expression: "filters.username"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "数据类型"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.dataType),
-      callback: function($$v) {
-        _vm.dataType = $$v
-      },
-      expression: "dataType"
-    }
-  }, [_c('el-option', {
-    attrs: {
-      "label": "全部分类",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "庄注",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "闲注",
-      "value": "2"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "和注",
-      "value": "3"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "庄对",
-      "value": "4"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "闲对",
-      "value": "5"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "上分",
-      "value": "11"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "下分",
-      "value": "12"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "下分删除",
-      "value": "13"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "手动上分",
-      "value": "20"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "手动下分",
-      "value": "21"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "码粮结算",
-      "value": "100"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "取消下注",
-      "value": "110"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "牌局结算",
-      "value": "111"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "重新结算",
-      "value": "121"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "领取红包",
-      "value": "122"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "width": "260px"
+      "width": "250px"
     },
     attrs: {
       "label": "开始时间"
     }
   }, [_c('el-date-picker', {
     attrs: {
-      "type": "date",
+      "type": "datetime",
       "placeholder": "开始时间"
     },
     model: {
@@ -54153,14 +53654,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "width": "260px"
+      "width": "200px",
+      "margin-left": "50px"
     },
     attrs: {
       "label": "结束时间"
     }
   }, [_c('el-date-picker', {
     attrs: {
-      "type": "date",
+      "type": "datetime",
       "placeholder": "结束时间"
     },
     model: {
@@ -54170,157 +53672,392 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "filters.end_time"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  })], 1)], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "size": "small",
+      "inline": true,
+      "model": _vm.filters
+    }
+  }, [_c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
-      "click": _vm.getUsers
+      "click": _vm.searchTs
     }
-  }, [_vm._v("查询")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("查询")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(5)
+      }
+    }
+  }, [_vm._v("今天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(6)
+      }
+    }
+  }, [_vm._v("昨天")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(1)
+      }
+    }
+  }, [_vm._v("本周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(2)
+      }
+    }
+  }, [_vm._v("上周")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(3)
+      }
+    }
+  }, [_vm._v("本月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.searchWinQuickly(4)
+      }
+    }
+  }, [_vm._v("上月")])], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.exportExcel()
+      }
+    }
+  }, [_vm._v("导出报表")]), _vm._v(" "), _c('iframe', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "name": "baseExport"
+    }
+  }), _vm._v(" "), _c('form', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "id": "baseForm",
+      "name": "baseForm",
+      "method": "post",
+      "action": "",
+      "target": "baseExport"
+    }
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "uid"
+    },
+    domProps: {
+      "value": _vm.searchParam.uid
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "agents_account"
+    },
+    domProps: {
+      "value": _vm.searchParam.agents_account
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "begin_time"
+    },
+    domProps: {
+      "value": _vm.searchParam.begin_time
+    }
+  }), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "end_time"
+    },
+    domProps: {
+      "value": _vm.searchParam.end_time
+    }
+  })])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
     directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.type == 0),
+      expression: "type == 0"
+    }, {
       name: "loading",
       rawName: "v-loading",
       value: (_vm.listLoading),
       expression: "listLoading"
     }],
+    staticClass: "tableStyle",
     staticStyle: {
       "width": "100%"
     },
     attrs: {
-      "data": _vm.score,
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.dc,
       "highlight-current-row": ""
-    },
-    on: {
-      "selection-change": _vm.selsChange
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "id",
-      "label": "ID",
-      "width": "80"
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "110"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "uid",
       "label": "会员ID",
-      "width": "",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "nickname",
+      "label": "会员昵称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_zx_xm_dan",
+      "label": "庄闲单边洗码",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_sb_xm",
+      "label": "三宝洗码",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_lucky_xm",
+      "label": "幸运六洗码",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "all_xm",
+      "label": "总洗码",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "mktime",
+      "label": "时间",
+      "min-width": "200"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作",
+      "min-width": "200"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return (!scope.row.countt) ? [_c('a', {
+          staticStyle: {
+            "color": "#20a0ff",
+            "cursor": "pointer"
+          },
+          attrs: {
+            "size": "mini"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.handleDetail(scope.row)
+            }
+          }
+        }, [_vm._v("查看每日洗码")])] : undefined
+      }
+    }], null, true)
+  })], 1), _vm._v(" "), _c('el-table', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.type == 1),
+      expression: "type == 1"
+    }, {
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.listLoading),
+      expression: "listLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.dc,
+      "highlight-current-row": ""
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "110"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_c('a', {
+          staticStyle: {
+            "text-decoration": "underline",
+            "cursor": "pointer"
+          },
+          on: {
+            "click": function($event) {
+              return _vm.getLowerList(scope.row)
+            }
+          }
+        }, [_vm._v(_vm._s(scope.row.agents_name))])]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zhuang_bets",
+      "label": "龙下注额",
+      "min-width": "80",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "name",
-      "label": "昵称",
-      "width": ""
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "score",
-      "label": "操作前余分",
-      "width": "",
+      "prop": "xian_bets",
+      "label": "虎下注额",
+      "min-width": "80",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "score_change",
-      "label": "变化的分",
-      "min-width": "100",
+      "prop": "zhuang_xian_bets",
+      "label": "龙虎下注额",
+      "min-width": "90",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "score_after",
-      "label": "操作后的分",
-      "min-width": "100",
+      "prop": "he_bets",
+      "label": "和下注额",
+      "min-width": "90",
       "sortable": ""
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "type",
-      "label": "类型",
-      "min-width": "100",
+      "prop": "zhuang_losewin",
+      "label": "龙输赢数",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "xian_losewin",
+      "label": "虎输赢数",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "he_losewin",
+      "label": "和输赢数",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "total_losewin",
+      "label": "总输赢数",
+      "min-width": "80",
+      "sortable": ""
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "zhuang_xm",
+      "label": "龙洗码量(单/双)",
+      "min-width": "135",
       "sortable": ""
     },
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(scope) {
-        return [(scope.row.type == 1) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("庄注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 2) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("闲注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 3) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("和注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 4) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("庄对")]) : _vm._e(), _vm._v(" "), (scope.row.type == 5) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("闲对")]) : _vm._e(), _vm._v(" "), (scope.row.type == 11) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 12) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("下分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 13) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("下分删除")]) : _vm._e(), _vm._v(" "), (scope.row.type == 20) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("手动上分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 21) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("手动下分")]) : _vm._e(), _vm._v(" "), (scope.row.type == 100) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("码粮结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 110) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("取消下注")]) : _vm._e(), _vm._v(" "), (scope.row.type == 111) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("牌局结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 121) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("重新结算")]) : _vm._e(), _vm._v(" "), (scope.row.type == 122) ? _c('a', {
-          attrs: {
-            "size": "small"
-          }
-        }, [_vm._v("领取红包")]) : _vm._e()]
+        return [_vm._v("\n                " + _vm._s(scope.row.zhuang_xm) + " / " + _vm._s(scope.row.shuang_zhuang_xm) + "\n            ")]
       }
     }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "card_game_id",
-      "label": "牌局ID",
-      "min-width": "100",
+      "prop": "xian_xm",
+      "label": "虎洗码量(单/双)",
+      "min-width": "135",
       "sortable": ""
-    }
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_vm._v("\n                " + _vm._s(scope.row.xian_xm) + " / " + _vm._s(scope.row.shuang_xian_xm) + "\n            ")]
+      }
+    }])
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "time",
-      "label": "时间",
-      "width": "",
+      "prop": "xian_xm",
+      "label": "龙虎总洗码量（单/双）",
+      "min-width": "155",
       "sortable": ""
-    }
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_vm._v("\n                " + _vm._s(scope.row.total_zx_xm) + " / " + _vm._s(scope.row.shuang_total_zx_xm) + "\n            ")]
+      }
+    }])
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "he_xm",
+      "label": "和洗码量",
+      "min-width": "80",
+      "sortable": ""
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(scope) {
+        return [_vm._v("\n                " + _vm._s(scope.row.he_xm) + "\n            ")]
+      }
+    }])
   })], 1), _vm._v(" "), _c('el-col', {
     staticClass: "toolbar",
     attrs: {
@@ -54333,7 +54070,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "layout": "total, sizes, prev, pager, next, jumper",
       "current-page": _vm.pagination.current,
-      "page-sizes": [10, 20, 30, 40],
+      "page-sizes": [50, 100, 300],
       "page-size": _vm.pagination.size,
       "total": _vm.pagination.total
     },
@@ -54341,15 +54078,570 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "size-change": _vm.handleSizeChange,
       "current-change": _vm.handleCurrentChange
     }
-  })], 1)], 1)
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": _vm.detailFilters.user.nickname + '-每日洗码详情',
+      "visible": _vm.detailVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.detailVisible = $event
+      }
+    }
+  }, [_c('el-table', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.detailLoading),
+      expression: "detailLoading"
+    }],
+    staticClass: "tableStyle",
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "row-class-name": _vm.plugin.tableRowClassName,
+      "size": "mini",
+      "border": "",
+      "data": _vm.detaillogs,
+      "highlight-current-row": "",
+      "max-height": "650"
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "uid",
+      "label": "会员ID",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "nickname",
+      "label": "会员名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_account",
+      "label": "代理账号",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "agents_name",
+      "label": "代理名称",
+      "min-width": "80"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_zx_xm_dan",
+      "label": "庄闲单边洗码",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_sb_xm",
+      "label": "三宝洗码",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "user_lucky_xm",
+      "label": "幸运六洗码",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "all_xm",
+      "label": "总洗码",
+      "min-width": "90"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "date",
+      "label": "时间",
+      "min-width": "80"
+    }
+  })], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "toolbar",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-pagination', {
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      "layout": "total, sizes, prev, pager, next, jumper",
+      "current-page": _vm.detailPagination.current,
+      "page-sizes": [50, 100, 300],
+      "page-size": _vm.detailPagination.size,
+      "total": _vm.detailPagination.total
+    },
+    on: {
+      "size-change": _vm.handleSizeChangeDetail,
+      "current-change": _vm.handleCurrentChangeDetail
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.detailVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)], 1)], 1)
 },staticRenderFns: []}
 
 /***/ }),
+/* 1324 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('el-row', {
+    directives: [{
+      name: "loading",
+      rawName: "v-loading",
+      value: (_vm.showWindowsLoading),
+      expression: "showWindowsLoading"
+    }],
+    staticClass: "container showWindowsLoading",
+    attrs: {
+      "element-loading-text": "正在处理，请稍等",
+      "element-loading-spinner": "el-icon-loading",
+      "element-loading-background": "rgba(0, 0, 0, 0.7)"
+    }
+  }, [_c('el-col', {
+    staticClass: "header",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-col', {
+    staticClass: "logo",
+    class: _vm.collapsed ? 'logo-collapse-width' : 'logo-width',
+    attrs: {
+      "span": 8
+    },
+    nativeOn: {
+      "click": function($event) {
+        return _vm.gotoboard($event)
+      }
+    }
+  }, [_vm._v("\n\t\t\t\t" + _vm._s(_vm.collapsed ? '' : _vm.sysName) + "\n\t\t\t")]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "span": 6
+    }
+  }, [_c('div', {
+    staticClass: "teamTile"
+  }, [_vm._v("\n\t\t\t\t\t" + _vm._s(_vm.teamTitle)), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (this.use_end_time_notify_show),
+      expression: "this.use_end_time_notify_show"
+    }]
+  }, [_vm._v("(软件使用截至日期：" + _vm._s(_vm.useEndTime) + ")")])])]), _vm._v(" "), _c('el-col', {
+    staticClass: "userinfo",
+    attrs: {
+      "span": 14
+    }
+  }, [_c('span', {
+    staticStyle: {
+      "font-size": "16px",
+      "font-weight": "500"
+    }
+  }, [_vm._v("当前登录账号：" + _vm._s(_vm.sysUserAccount))]), _vm._v("    \n\t\t\t\t"), _c('span', {
+    staticStyle: {
+      "cursor": "pointer",
+      "font-size": "16px",
+      "font-weight": "500",
+      "color": "#009688"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.myInfo(1)
+      }
+    }
+  }, [_vm._v("个人信息")]), _vm._v("    \n\t\t\t\t"), _c('span', {
+    staticStyle: {
+      "cursor": "pointer",
+      "font-size": "16px",
+      "font-weight": "500",
+      "color": "#E6A23C"
+    },
+    on: {
+      "click": _vm.logout
+    }
+  }, [_vm._v("退出登录")]), _vm._v("    \n\n\t\t\t")])], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "个人信息",
+      "visible": _vm.myInfoVisible,
+      "close-on-click-modal": false,
+      "width": "1000px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.myInfoVisible = $event
+      }
+    }
+  }, [_c('div', {
+    staticClass: "el-table el-table--fit el-table--border  el-table--enable-row-transition",
+    staticStyle: {
+      "margin-top": "20px"
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "size": "mini"
+    }
+  }, [_c('table', {
+    staticClass: "el-table__body",
+    attrs: {
+      "cellspacing": "0",
+      "cellpadding": "0",
+      "border": "0",
+      "width": "100%"
+    }
+  }, [_c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "width": "200px"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "代理名称:"
+    }
+  }, [_vm._v("\n                                    " + _vm._s(_vm.agentsInfo.name) + "\n                                ")])], 1), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "200px",
+      "colspan": "2"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px"
+    },
+    attrs: {
+      "label": "登录账号:"
+    }
+  }, [_vm._v("\n                                    " + _vm._s(_vm.agentsInfo.account) + "\n                                ")])], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "width": "200px"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px",
+      "font-size": "18px",
+      "font-weight": "500"
+    },
+    attrs: {
+      "label-width": "100",
+      "label": "微信扫码登录二维码:"
+    }
+  })], 1), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "3"
+    }
+  }, [_c('QRCanvas', {
+    staticClass: "qrcanvas",
+    attrs: {
+      "id": "qrcode1",
+      "options": _vm.qrcode1
+    }
+  })], 1), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "200px"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "margin": "0px 5px",
+      "font-size": "18px",
+      "font-weight": "500"
+    },
+    attrs: {
+      "label-width": "100",
+      "label": "清缓存二维码:"
+    }
+  })], 1), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "3"
+    }
+  }, [_c('QRCanvas', {
+    staticClass: "qrcanvas",
+    attrs: {
+      "id": "qrcode3",
+      "options": _vm.qrcode3
+    }
+  })], 1)]), _vm._v(" "), _c('tr', {
+    staticClass: "el-table__row"
+  }, [_c('td', {
+    attrs: {
+      "width": "200px"
+    }
+  }, [_c('el-form-item', {
+    staticClass: "qrcanvas",
+    attrs: {
+      "label-width": "100",
+      "label": "账号密码登录二维码:"
+    }
+  })], 1), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "3"
+    }
+  }, [_c('QRCanvas', {
+    staticStyle: {
+      "margin-left": "10px",
+      "margin-top": "10px",
+      "width": "200px",
+      "height": "200px"
+    },
+    attrs: {
+      "id": "qrcode2",
+      "options": _vm.qrcode2
+    }
+  })], 1)])])])], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    attrs: {
+      "slot": "footer"
+    },
+    slot: "footer"
+  }, [_c('el-button', {
+    nativeOn: {
+      "click": function($event) {
+        _vm.myInfoVisible = false
+      }
+    }
+  }, [_vm._v("关闭")])], 1)]), _vm._v(" "), (_vm.settimeout200) ? _c('el-col', {
+    staticClass: "main",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-aside', {
+    class: _vm.collapsed ? 'menu-collapsed' : 'menu-expanded'
+  }, [_c('el-menu', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.collapsed),
+      expression: "!collapsed"
+    }],
+    staticClass: "el-menu-vertical-demo",
+    attrs: {
+      "default-active": _vm.$route.path,
+      "unique-opened": "",
+      "router": ""
+    },
+    on: {
+      "open": _vm.handleopen,
+      "close": _vm.handleclose,
+      "select": _vm.handleselect
+    }
+  }, [_vm._l((_vm.$router.options.routes), function(item, index) {
+    return (!_vm.Auth(item.hidden)) ? [_vm._l((item.children), function(child) {
+      return (!_vm.Auth(child.hidden)) ? _c('el-menu-item', {
+        key: child.path,
+        attrs: {
+          "index": child.path
+        }
+      }, [_c('span', {
+        on: {
+          "click": function($event) {
+            return _vm.addTab(child.name, child.path)
+          }
+        }
+      }, [_vm._v(_vm._s(child.name))])]) : _vm._e()
+    }), _vm._v(" "), (item.leaf && item.children.length > 0) ? _c('el-menu-item', {
+      attrs: {
+        "index": item.children[0].path
+      }
+    }, [_c('i', {
+      class: item.iconCls
+    }), _vm._v(_vm._s(item.children[0].name))]) : _vm._e()] : _vm._e()
+  })], 2), _vm._v(" "), _c('ul', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.collapsed),
+      expression: "collapsed"
+    }],
+    ref: "menuCollapsed",
+    staticClass: "el-menu el-menu-vertical-demo collapsed"
+  }, _vm._l((_vm.$router.options.routes), function(item, index) {
+    return (!_vm.Auth(item.hidden)) ? _c('li', {
+      staticClass: "el-submenu item"
+    }, [(!item.leaf) ? [_c('div', {
+      staticClass: "el-submenu__title",
+      on: {
+        "mouseover": function($event) {
+          return _vm.showMenu(index, true)
+        },
+        "mouseout": function($event) {
+          return _vm.showMenu(index, false)
+        }
+      }
+    }, [_c('i', {
+      class: item.iconCls
+    })]), _vm._v(" "), _c('ul', {
+      staticClass: "el-menu submenu",
+      class: 'submenu-hook-' + index,
+      on: {
+        "mouseover": function($event) {
+          return _vm.showMenu(index, true)
+        },
+        "mouseout": function($event) {
+          return _vm.showMenu(index, false)
+        }
+      }
+    }, _vm._l((item.children), function(child) {
+      return (!_vm.Auth(child.hidden)) ? _c('li', {
+        key: child.path,
+        staticClass: "el-menu-item",
+        class: _vm.$route.path == child.path ? 'is-active' : '',
+        staticStyle: {
+          "padding-left": "40px"
+        },
+        on: {
+          "click": function($event) {
+            return _vm.$router.push(child.path)
+          }
+        }
+      }, [_vm._v(_vm._s(child.name))]) : _vm._e()
+    }), 0)] : [_c('li', {
+      staticClass: "el-submenu"
+    }, [_c('div', {
+      staticClass: "el-submenu__title el-menu-item",
+      class: _vm.$route.path == item.children[0].path ? 'is-active' : '',
+      staticStyle: {
+        "padding-left": "1px",
+        "height": "40px",
+        "line-height": "40px",
+        "padding": "0 20px"
+      },
+      on: {
+        "click": function($event) {
+          return _vm.$router.push(item.children[0].path)
+        }
+      }
+    }, [_c('i', {
+      class: item.iconCls
+    })])])]], 2) : _vm._e()
+  }), 0)], 1), _vm._v(" "), (_vm.chatVisible) ? _c('el-dialog', {
+    staticClass: "imchat",
+    attrs: {
+      "title": "聊天",
+      "visible": _vm.chatVisible,
+      "close-on-click-modal": false,
+      "width": "800px"
+    },
+    on: {
+      "update:visible": function($event) {
+        _vm.chatVisible = $event
+      }
+    }
+  }, [_c('el-tabs', {
+    on: {
+      "tab-click": _vm.handleClickTab
+    },
+    model: {
+      value: (_vm.activeName),
+      callback: function($$v) {
+        _vm.activeName = $$v
+      },
+      expression: "activeName"
+    }
+  }, _vm._l((_vm.imInfo), function(item, index) {
+    return _c('el-tab-pane', {
+      key: index,
+      staticStyle: {
+        "height": "500px"
+      },
+      attrs: {
+        "label": item.row.name,
+        "name": item.row.playid
+      }
+    }, [_c('iframe', {
+      attrs: {
+        "src": item.src,
+        "width": "100%",
+        "height": "100%",
+        "frameborder": "no",
+        "border": "0",
+        "marginwidth": "0",
+        "marginheight": "0",
+        "scrolling": "no",
+        "allowtransparency": "yes"
+      }
+    })])
+  }), 1)], 1) : _vm._e(), _vm._v(" "), _c('section', {
+    staticClass: "content-container"
+  }, [_c('div', {
+    staticClass: "grid-content bg-purple-light",
+    staticStyle: {
+      "height": "100%",
+      "position": "relative"
+    }
+  }, [_c('el-col', {
+    staticClass: "breadcrumb-container",
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-tabs', {
+    attrs: {
+      "type": "card",
+      "closable": ""
+    },
+    on: {
+      "tab-remove": _vm.removeTab,
+      "tab-click": _vm.handleClick
+    },
+    model: {
+      value: (_vm.editableTabsValue),
+      callback: function($$v) {
+        _vm.editableTabsValue = $$v
+      },
+      expression: "editableTabsValue"
+    }
+  }, _vm._l((_vm.editableTabs), function(item) {
+    return _c('el-tab-pane', {
+      key: item.name,
+      attrs: {
+        "label": item.title,
+        "name": item.name
+      }
+    }, [_c('a', [_vm._v(_vm._s(item.path))])])
+  }), 1)], 1), _vm._v(" "), _c('el-col', {
+    staticClass: "content-wrapper",
+    staticStyle: {
+      "position": "absolute",
+      "top": "40px",
+      "bottom": "0px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('transition', {
+    attrs: {
+      "name": "fade",
+      "mode": "out-in"
+    }
+  }, [_c('router-view')], 1)], 1)], 1)])], 1) : _vm._e()], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 1325 */,
 /* 1326 */,
 /* 1327 */,
 /* 1328 */,
-/* 1329 */,
-/* 1330 */
+/* 1329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process, __dirname, Buffer) {var require;var require;var require;var __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var Module=typeof Module!=="undefined"?Module:{};"use strict";var LOG_TYPES={NP_TYPE_NONE:0,NP_TYPE_ERROR:1,NP_TYPE_NORMAL:2,NP_TYPE_DEBUG:3};var logType=LOG_TYPES.NP_TYPE_NORMAL;var logTime=function logTime(){var nowDate=new Date;return nowDate.toLocaleDateString()+" "+nowDate.toLocaleTimeString([],{hour12:false})};var NP_LOG=function NP_LOG(){var _console;for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key]}if(logType<LOG_TYPES.NP_TYPE_NORMAL)return;(_console=console).log.apply(_console,[logTime(),"[INFO]"].concat(args))};var NP_ERROR=function NP_ERROR(){var _console2;for(var _len2=arguments.length,args=Array(_len2),_key2=0;_key2<_len2;_key2++){args[_key2]=arguments[_key2]}if(logType<LOG_TYPES.NP_TYPE_ERROR)return;(_console2=console).error.apply(_console2,[logTime(),"[ERROR]"].concat(args))};var NP_DEBUG=function NP_DEBUG(){var _console3;for(var _len3=arguments.length,args=Array(_len3),_key3=0;_key3<_len3;_key3++){args[_key3]=arguments[_key3]}if(logType<LOG_TYPES.NP_TYPE_DEBUG)return;(_console3=console).log.apply(_console3,[logTime(),"[DEBUG]"].concat(args))};Module.print=NP_LOG;Module.printErr=NP_ERROR;"use strict";var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?(function(obj){return typeof obj}):(function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj});require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return require(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,(function(r){var n=e[i][1][r];return o(n||r)}),p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++){o(t[i])}return o}return r})()({1:[(function(require,module,exports){"use strict";exports.byteLength=byteLength;exports.toByteArray=toByteArray;exports.fromByteArray=fromByteArray;var lookup=[];var revLookup=[];var Arr=typeof Uint8Array!=="undefined"?Uint8Array:Array;var code="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";for(var i=0,len=code.length;i<len;++i){lookup[i]=code[i];revLookup[code.charCodeAt(i)]=i}revLookup["-".charCodeAt(0)]=62;revLookup["_".charCodeAt(0)]=63;function getLens(b64){var len=b64.length;if(len%4>0){throw new Error("Invalid string. Length must be a multiple of 4")}var validLen=b64.indexOf("=");if(validLen===-1)validLen=len;var placeHoldersLen=validLen===len?0:4-validLen%4;return[validLen,placeHoldersLen]}function byteLength(b64){var lens=getLens(b64);var validLen=lens[0];var placeHoldersLen=lens[1];return(validLen+placeHoldersLen)*3/4-placeHoldersLen}function _byteLength(b64,validLen,placeHoldersLen){return(validLen+placeHoldersLen)*3/4-placeHoldersLen}function toByteArray(b64){var tmp;var lens=getLens(b64);var validLen=lens[0];var placeHoldersLen=lens[1];var arr=new Arr(_byteLength(b64,validLen,placeHoldersLen));var curByte=0;var len=placeHoldersLen>0?validLen-4:validLen;for(var i=0;i<len;i+=4){tmp=revLookup[b64.charCodeAt(i)]<<18|revLookup[b64.charCodeAt(i+1)]<<12|revLookup[b64.charCodeAt(i+2)]<<6|revLookup[b64.charCodeAt(i+3)];arr[curByte++]=tmp>>16&255;arr[curByte++]=tmp>>8&255;arr[curByte++]=tmp&255}if(placeHoldersLen===2){tmp=revLookup[b64.charCodeAt(i)]<<2|revLookup[b64.charCodeAt(i+1)]>>4;arr[curByte++]=tmp&255}if(placeHoldersLen===1){tmp=revLookup[b64.charCodeAt(i)]<<10|revLookup[b64.charCodeAt(i+1)]<<4|revLookup[b64.charCodeAt(i+2)]>>2;arr[curByte++]=tmp>>8&255;arr[curByte++]=tmp&255}return arr}function tripletToBase64(num){return lookup[num>>18&63]+lookup[num>>12&63]+lookup[num>>6&63]+lookup[num&63]}function encodeChunk(uint8,start,end){var tmp;var output=[];for(var i=start;i<end;i+=3){tmp=(uint8[i]<<16&16711680)+(uint8[i+1]<<8&65280)+(uint8[i+2]&255);output.push(tripletToBase64(tmp))}return output.join("")}function fromByteArray(uint8){var tmp;var len=uint8.length;var extraBytes=len%3;var parts=[];var maxChunkLength=16383;for(var i=0,len2=len-extraBytes;i<len2;i+=maxChunkLength){parts.push(encodeChunk(uint8,i,i+maxChunkLength>len2?len2:i+maxChunkLength))}if(extraBytes===1){tmp=uint8[len-1];parts.push(lookup[tmp>>2]+lookup[tmp<<4&63]+"==")}else if(extraBytes===2){tmp=(uint8[len-2]<<8)+uint8[len-1];parts.push(lookup[tmp>>10]+lookup[tmp>>4&63]+lookup[tmp<<2&63]+"=")}return parts.join("")}}),{}],2:[(function(require,module,exports){}),{}],3:[(function(require,module,exports){"use strict";var base64=require("base64-js");var ieee754=require("ieee754");exports.Buffer=Buffer;exports.SlowBuffer=SlowBuffer;exports.INSPECT_MAX_BYTES=50;var K_MAX_LENGTH=2147483647;exports.kMaxLength=K_MAX_LENGTH;Buffer.TYPED_ARRAY_SUPPORT=typedArraySupport();if(!Buffer.TYPED_ARRAY_SUPPORT&&typeof console!=="undefined"&&typeof console.error==="function"){console.error("This browser lacks typed array (Uint8Array) support which is required by "+"`buffer` v5.x. Use `buffer` v4.x if you require old browser support.")}function typedArraySupport(){try{var arr=new Uint8Array(1);arr.__proto__={__proto__:Uint8Array.prototype,foo:function foo(){return 42}};return arr.foo()===42}catch(e){return false}}Object.defineProperty(Buffer.prototype,"parent",{enumerable:true,get:function get(){if(!Buffer.isBuffer(this))return undefined;return this.buffer}});Object.defineProperty(Buffer.prototype,"offset",{enumerable:true,get:function get(){if(!Buffer.isBuffer(this))return undefined;return this.byteOffset}});function createBuffer(length){if(length>K_MAX_LENGTH){throw new RangeError('The value "'+length+'" is invalid for option "size"')}var buf=new Uint8Array(length);buf.__proto__=Buffer.prototype;return buf}function Buffer(arg,encodingOrOffset,length){if(typeof arg==="number"){if(typeof encodingOrOffset==="string"){throw new TypeError('The "string" argument must be of type string. Received type number')}return allocUnsafe(arg)}return from(arg,encodingOrOffset,length)}if(typeof Symbol!=="undefined"&&Symbol.species!=null&&Buffer[Symbol.species]===Buffer){Object.defineProperty(Buffer,Symbol.species,{value:null,configurable:true,enumerable:false,writable:false})}Buffer.poolSize=8192;function from(value,encodingOrOffset,length){if(typeof value==="string"){return fromString(value,encodingOrOffset)}if(ArrayBuffer.isView(value)){return fromArrayLike(value)}if(value==null){throw TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, "+"or Array-like Object. Received type "+(typeof value==="undefined"?"undefined":_typeof(value)))}if(isInstance(value,ArrayBuffer)||value&&isInstance(value.buffer,ArrayBuffer)){return fromArrayBuffer(value,encodingOrOffset,length)}if(typeof value==="number"){throw new TypeError('The "value" argument must not be of type number. Received type number')}var valueOf=value.valueOf&&value.valueOf();if(valueOf!=null&&valueOf!==value){return Buffer.from(valueOf,encodingOrOffset,length)}var b=fromObject(value);if(b)return b;if(typeof Symbol!=="undefined"&&Symbol.toPrimitive!=null&&typeof value[Symbol.toPrimitive]==="function"){return Buffer.from(value[Symbol.toPrimitive]("string"),encodingOrOffset,length)}throw new TypeError("The first argument must be one of type string, Buffer, ArrayBuffer, Array, "+"or Array-like Object. Received type "+(typeof value==="undefined"?"undefined":_typeof(value)))}Buffer.from=(function(value,encodingOrOffset,length){return from(value,encodingOrOffset,length)});Buffer.prototype.__proto__=Uint8Array.prototype;Buffer.__proto__=Uint8Array;function assertSize(size){if(typeof size!=="number"){throw new TypeError('"size" argument must be of type number')}else if(size<0){throw new RangeError('The value "'+size+'" is invalid for option "size"')}}function alloc(size,fill,encoding){assertSize(size);if(size<=0){return createBuffer(size)}if(fill!==undefined){return typeof encoding==="string"?createBuffer(size).fill(fill,encoding):createBuffer(size).fill(fill)}return createBuffer(size)}Buffer.alloc=(function(size,fill,encoding){return alloc(size,fill,encoding)});function allocUnsafe(size){assertSize(size);return createBuffer(size<0?0:checked(size)|0)}Buffer.allocUnsafe=(function(size){return allocUnsafe(size)});Buffer.allocUnsafeSlow=(function(size){return allocUnsafe(size)});function fromString(string,encoding){if(typeof encoding!=="string"||encoding===""){encoding="utf8"}if(!Buffer.isEncoding(encoding)){throw new TypeError("Unknown encoding: "+encoding)}var length=byteLength(string,encoding)|0;var buf=createBuffer(length);var actual=buf.write(string,encoding);if(actual!==length){buf=buf.slice(0,actual)}return buf}function fromArrayLike(array){var length=array.length<0?0:checked(array.length)|0;var buf=createBuffer(length);for(var i=0;i<length;i+=1){buf[i]=array[i]&255}return buf}function fromArrayBuffer(array,byteOffset,length){if(byteOffset<0||array.byteLength<byteOffset){throw new RangeError('"offset" is outside of buffer bounds')}if(array.byteLength<byteOffset+(length||0)){throw new RangeError('"length" is outside of buffer bounds')}var buf;if(byteOffset===undefined&&length===undefined){buf=new Uint8Array(array)}else if(length===undefined){buf=new Uint8Array(array,byteOffset)}else{buf=new Uint8Array(array,byteOffset,length)}buf.__proto__=Buffer.prototype;return buf}function fromObject(obj){if(Buffer.isBuffer(obj)){var len=checked(obj.length)|0;var buf=createBuffer(len);if(buf.length===0){return buf}obj.copy(buf,0,0,len);return buf}if(obj.length!==undefined){if(typeof obj.length!=="number"||numberIsNaN(obj.length)){return createBuffer(0)}return fromArrayLike(obj)}if(obj.type==="Buffer"&&Array.isArray(obj.data)){return fromArrayLike(obj.data)}}function checked(length){if(length>=K_MAX_LENGTH){throw new RangeError("Attempt to allocate Buffer larger than maximum "+"size: 0x"+K_MAX_LENGTH.toString(16)+" bytes")}return length|0}function SlowBuffer(length){if(+length!=length){length=0}return Buffer.alloc(+length)}Buffer.isBuffer=function isBuffer(b){return b!=null&&b._isBuffer===true&&b!==Buffer.prototype};Buffer.compare=function compare(a,b){if(isInstance(a,Uint8Array))a=Buffer.from(a,a.offset,a.byteLength);if(isInstance(b,Uint8Array))b=Buffer.from(b,b.offset,b.byteLength);if(!Buffer.isBuffer(a)||!Buffer.isBuffer(b)){throw new TypeError('The "buf1", "buf2" arguments must be one of type Buffer or Uint8Array')}if(a===b)return 0;var x=a.length;var y=b.length;for(var i=0,len=Math.min(x,y);i<len;++i){if(a[i]!==b[i]){x=a[i];y=b[i];break}}if(x<y)return-1;if(y<x)return 1;return 0};Buffer.isEncoding=function isEncoding(encoding){switch(String(encoding).toLowerCase()){case"hex":case"utf8":case"utf-8":case"ascii":case"latin1":case"binary":case"base64":case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return true;default:return false}};Buffer.concat=function concat(list,length){if(!Array.isArray(list)){throw new TypeError('"list" argument must be an Array of Buffers')}if(list.length===0){return Buffer.alloc(0)}var i;if(length===undefined){length=0;for(i=0;i<list.length;++i){length+=list[i].length}}var buffer=Buffer.allocUnsafe(length);var pos=0;for(i=0;i<list.length;++i){var buf=list[i];if(isInstance(buf,Uint8Array)){buf=Buffer.from(buf)}if(!Buffer.isBuffer(buf)){throw new TypeError('"list" argument must be an Array of Buffers')}buf.copy(buffer,pos);pos+=buf.length}return buffer};function byteLength(string,encoding){if(Buffer.isBuffer(string)){return string.length}if(ArrayBuffer.isView(string)||isInstance(string,ArrayBuffer)){return string.byteLength}if(typeof string!=="string"){throw new TypeError('The "string" argument must be one of type string, Buffer, or ArrayBuffer. '+"Received type "+(typeof string==="undefined"?"undefined":_typeof(string)))}var len=string.length;var mustMatch=arguments.length>2&&arguments[2]===true;if(!mustMatch&&len===0)return 0;var loweredCase=false;for(;;){switch(encoding){case"ascii":case"latin1":case"binary":return len;case"utf8":case"utf-8":return utf8ToBytes(string).length;case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return len*2;case"hex":return len>>>1;case"base64":return base64ToBytes(string).length;default:if(loweredCase){return mustMatch?-1:utf8ToBytes(string).length}encoding=(""+encoding).toLowerCase();loweredCase=true}}}Buffer.byteLength=byteLength;function slowToString(encoding,start,end){var loweredCase=false;if(start===undefined||start<0){start=0}if(start>this.length){return""}if(end===undefined||end>this.length){end=this.length}if(end<=0){return""}end>>>=0;start>>>=0;if(end<=start){return""}if(!encoding)encoding="utf8";while(true){switch(encoding){case"hex":return hexSlice(this,start,end);case"utf8":case"utf-8":return utf8Slice(this,start,end);case"ascii":return asciiSlice(this,start,end);case"latin1":case"binary":return latin1Slice(this,start,end);case"base64":return base64Slice(this,start,end);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return utf16leSlice(this,start,end);default:if(loweredCase)throw new TypeError("Unknown encoding: "+encoding);encoding=(encoding+"").toLowerCase();loweredCase=true}}}Buffer.prototype._isBuffer=true;function swap(b,n,m){var i=b[n];b[n]=b[m];b[m]=i}Buffer.prototype.swap16=function swap16(){var len=this.length;if(len%2!==0){throw new RangeError("Buffer size must be a multiple of 16-bits")}for(var i=0;i<len;i+=2){swap(this,i,i+1)}return this};Buffer.prototype.swap32=function swap32(){var len=this.length;if(len%4!==0){throw new RangeError("Buffer size must be a multiple of 32-bits")}for(var i=0;i<len;i+=4){swap(this,i,i+3);swap(this,i+1,i+2)}return this};Buffer.prototype.swap64=function swap64(){var len=this.length;if(len%8!==0){throw new RangeError("Buffer size must be a multiple of 64-bits")}for(var i=0;i<len;i+=8){swap(this,i,i+7);swap(this,i+1,i+6);swap(this,i+2,i+5);swap(this,i+3,i+4)}return this};Buffer.prototype.toString=function toString(){var length=this.length;if(length===0)return"";if(arguments.length===0)return utf8Slice(this,0,length);return slowToString.apply(this,arguments)};Buffer.prototype.toLocaleString=Buffer.prototype.toString;Buffer.prototype.equals=function equals(b){if(!Buffer.isBuffer(b))throw new TypeError("Argument must be a Buffer");if(this===b)return true;return Buffer.compare(this,b)===0};Buffer.prototype.inspect=function inspect(){var str="";var max=exports.INSPECT_MAX_BYTES;str=this.toString("hex",0,max).replace(/(.{2})/g,"$1 ").trim();if(this.length>max)str+=" ... ";return"<Buffer "+str+">"};Buffer.prototype.compare=function compare(target,start,end,thisStart,thisEnd){if(isInstance(target,Uint8Array)){target=Buffer.from(target,target.offset,target.byteLength)}if(!Buffer.isBuffer(target)){throw new TypeError('The "target" argument must be one of type Buffer or Uint8Array. '+"Received type "+(typeof target==="undefined"?"undefined":_typeof(target)))}if(start===undefined){start=0}if(end===undefined){end=target?target.length:0}if(thisStart===undefined){thisStart=0}if(thisEnd===undefined){thisEnd=this.length}if(start<0||end>target.length||thisStart<0||thisEnd>this.length){throw new RangeError("out of range index")}if(thisStart>=thisEnd&&start>=end){return 0}if(thisStart>=thisEnd){return-1}if(start>=end){return 1}start>>>=0;end>>>=0;thisStart>>>=0;thisEnd>>>=0;if(this===target)return 0;var x=thisEnd-thisStart;var y=end-start;var len=Math.min(x,y);var thisCopy=this.slice(thisStart,thisEnd);var targetCopy=target.slice(start,end);for(var i=0;i<len;++i){if(thisCopy[i]!==targetCopy[i]){x=thisCopy[i];y=targetCopy[i];break}}if(x<y)return-1;if(y<x)return 1;return 0};function bidirectionalIndexOf(buffer,val,byteOffset,encoding,dir){if(buffer.length===0)return-1;if(typeof byteOffset==="string"){encoding=byteOffset;byteOffset=0}else if(byteOffset>2147483647){byteOffset=2147483647}else if(byteOffset<-2147483648){byteOffset=-2147483648}byteOffset=+byteOffset;if(numberIsNaN(byteOffset)){byteOffset=dir?0:buffer.length-1}if(byteOffset<0)byteOffset=buffer.length+byteOffset;if(byteOffset>=buffer.length){if(dir)return-1;else byteOffset=buffer.length-1}else if(byteOffset<0){if(dir)byteOffset=0;else return-1}if(typeof val==="string"){val=Buffer.from(val,encoding)}if(Buffer.isBuffer(val)){if(val.length===0){return-1}return arrayIndexOf(buffer,val,byteOffset,encoding,dir)}else if(typeof val==="number"){val=val&255;if(typeof Uint8Array.prototype.indexOf==="function"){if(dir){return Uint8Array.prototype.indexOf.call(buffer,val,byteOffset)}else{return Uint8Array.prototype.lastIndexOf.call(buffer,val,byteOffset)}}return arrayIndexOf(buffer,[val],byteOffset,encoding,dir)}throw new TypeError("val must be string, number or Buffer")}function arrayIndexOf(arr,val,byteOffset,encoding,dir){var indexSize=1;var arrLength=arr.length;var valLength=val.length;if(encoding!==undefined){encoding=String(encoding).toLowerCase();if(encoding==="ucs2"||encoding==="ucs-2"||encoding==="utf16le"||encoding==="utf-16le"){if(arr.length<2||val.length<2){return-1}indexSize=2;arrLength/=2;valLength/=2;byteOffset/=2}}function read(buf,i){if(indexSize===1){return buf[i]}else{return buf.readUInt16BE(i*indexSize)}}var i;if(dir){var foundIndex=-1;for(i=byteOffset;i<arrLength;i++){if(read(arr,i)===read(val,foundIndex===-1?0:i-foundIndex)){if(foundIndex===-1)foundIndex=i;if(i-foundIndex+1===valLength)return foundIndex*indexSize}else{if(foundIndex!==-1)i-=i-foundIndex;foundIndex=-1}}}else{if(byteOffset+valLength>arrLength)byteOffset=arrLength-valLength;for(i=byteOffset;i>=0;i--){var found=true;for(var j=0;j<valLength;j++){if(read(arr,i+j)!==read(val,j)){found=false;break}}if(found)return i}}return-1}Buffer.prototype.includes=function includes(val,byteOffset,encoding){return this.indexOf(val,byteOffset,encoding)!==-1};Buffer.prototype.indexOf=function indexOf(val,byteOffset,encoding){return bidirectionalIndexOf(this,val,byteOffset,encoding,true)};Buffer.prototype.lastIndexOf=function lastIndexOf(val,byteOffset,encoding){return bidirectionalIndexOf(this,val,byteOffset,encoding,false)};function hexWrite(buf,string,offset,length){offset=Number(offset)||0;var remaining=buf.length-offset;if(!length){length=remaining}else{length=Number(length);if(length>remaining){length=remaining}}var strLen=string.length;if(length>strLen/2){length=strLen/2}for(var i=0;i<length;++i){var parsed=parseInt(string.substr(i*2,2),16);if(numberIsNaN(parsed))return i;buf[offset+i]=parsed}return i}function utf8Write(buf,string,offset,length){return blitBuffer(utf8ToBytes(string,buf.length-offset),buf,offset,length)}function asciiWrite(buf,string,offset,length){return blitBuffer(asciiToBytes(string),buf,offset,length)}function latin1Write(buf,string,offset,length){return asciiWrite(buf,string,offset,length)}function base64Write(buf,string,offset,length){return blitBuffer(base64ToBytes(string),buf,offset,length)}function ucs2Write(buf,string,offset,length){return blitBuffer(utf16leToBytes(string,buf.length-offset),buf,offset,length)}Buffer.prototype.write=function write(string,offset,length,encoding){if(offset===undefined){encoding="utf8";length=this.length;offset=0}else if(length===undefined&&typeof offset==="string"){encoding=offset;length=this.length;offset=0}else if(isFinite(offset)){offset=offset>>>0;if(isFinite(length)){length=length>>>0;if(encoding===undefined)encoding="utf8"}else{encoding=length;length=undefined}}else{throw new Error("Buffer.write(string, encoding, offset[, length]) is no longer supported")}var remaining=this.length-offset;if(length===undefined||length>remaining)length=remaining;if(string.length>0&&(length<0||offset<0)||offset>this.length){throw new RangeError("Attempt to write outside buffer bounds")}if(!encoding)encoding="utf8";var loweredCase=false;for(;;){switch(encoding){case"hex":return hexWrite(this,string,offset,length);case"utf8":case"utf-8":return utf8Write(this,string,offset,length);case"ascii":return asciiWrite(this,string,offset,length);case"latin1":case"binary":return latin1Write(this,string,offset,length);case"base64":return base64Write(this,string,offset,length);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return ucs2Write(this,string,offset,length);default:if(loweredCase)throw new TypeError("Unknown encoding: "+encoding);encoding=(""+encoding).toLowerCase();loweredCase=true}}};Buffer.prototype.toJSON=function toJSON(){return{type:"Buffer",data:Array.prototype.slice.call(this._arr||this,0)}};function base64Slice(buf,start,end){if(start===0&&end===buf.length){return base64.fromByteArray(buf)}else{return base64.fromByteArray(buf.slice(start,end))}}function utf8Slice(buf,start,end){end=Math.min(buf.length,end);var res=[];var i=start;while(i<end){var firstByte=buf[i];var codePoint=null;var bytesPerSequence=firstByte>239?4:firstByte>223?3:firstByte>191?2:1;if(i+bytesPerSequence<=end){var secondByte,thirdByte,fourthByte,tempCodePoint;switch(bytesPerSequence){case 1:if(firstByte<128){codePoint=firstByte}break;case 2:secondByte=buf[i+1];if((secondByte&192)===128){tempCodePoint=(firstByte&31)<<6|secondByte&63;if(tempCodePoint>127){codePoint=tempCodePoint}}break;case 3:secondByte=buf[i+1];thirdByte=buf[i+2];if((secondByte&192)===128&&(thirdByte&192)===128){tempCodePoint=(firstByte&15)<<12|(secondByte&63)<<6|thirdByte&63;if(tempCodePoint>2047&&(tempCodePoint<55296||tempCodePoint>57343)){codePoint=tempCodePoint}}break;case 4:secondByte=buf[i+1];thirdByte=buf[i+2];fourthByte=buf[i+3];if((secondByte&192)===128&&(thirdByte&192)===128&&(fourthByte&192)===128){tempCodePoint=(firstByte&15)<<18|(secondByte&63)<<12|(thirdByte&63)<<6|fourthByte&63;if(tempCodePoint>65535&&tempCodePoint<1114112){codePoint=tempCodePoint}}}}if(codePoint===null){codePoint=65533;bytesPerSequence=1}else if(codePoint>65535){codePoint-=65536;res.push(codePoint>>>10&1023|55296);codePoint=56320|codePoint&1023}res.push(codePoint);i+=bytesPerSequence}return decodeCodePointsArray(res)}var MAX_ARGUMENTS_LENGTH=4096;function decodeCodePointsArray(codePoints){var len=codePoints.length;if(len<=MAX_ARGUMENTS_LENGTH){return String.fromCharCode.apply(String,codePoints)}var res="";var i=0;while(i<len){res+=String.fromCharCode.apply(String,codePoints.slice(i,i+=MAX_ARGUMENTS_LENGTH))}return res}function asciiSlice(buf,start,end){var ret="";end=Math.min(buf.length,end);for(var i=start;i<end;++i){ret+=String.fromCharCode(buf[i]&127)}return ret}function latin1Slice(buf,start,end){var ret="";end=Math.min(buf.length,end);for(var i=start;i<end;++i){ret+=String.fromCharCode(buf[i])}return ret}function hexSlice(buf,start,end){var len=buf.length;if(!start||start<0)start=0;if(!end||end<0||end>len)end=len;var out="";for(var i=start;i<end;++i){out+=toHex(buf[i])}return out}function utf16leSlice(buf,start,end){var bytes=buf.slice(start,end);var res="";for(var i=0;i<bytes.length;i+=2){res+=String.fromCharCode(bytes[i]+bytes[i+1]*256)}return res}Buffer.prototype.slice=function slice(start,end){var len=this.length;start=~~start;end=end===undefined?len:~~end;if(start<0){start+=len;if(start<0)start=0}else if(start>len){start=len}if(end<0){end+=len;if(end<0)end=0}else if(end>len){end=len}if(end<start)end=start;var newBuf=this.subarray(start,end);newBuf.__proto__=Buffer.prototype;return newBuf};function checkOffset(offset,ext,length){if(offset%1!==0||offset<0)throw new RangeError("offset is not uint");if(offset+ext>length)throw new RangeError("Trying to access beyond buffer length")}Buffer.prototype.readUIntLE=function readUIntLE(offset,byteLength,noAssert){offset=offset>>>0;byteLength=byteLength>>>0;if(!noAssert)checkOffset(offset,byteLength,this.length);var val=this[offset];var mul=1;var i=0;while(++i<byteLength&&(mul*=256)){val+=this[offset+i]*mul}return val};Buffer.prototype.readUIntBE=function readUIntBE(offset,byteLength,noAssert){offset=offset>>>0;byteLength=byteLength>>>0;if(!noAssert){checkOffset(offset,byteLength,this.length)}var val=this[offset+ --byteLength];var mul=1;while(byteLength>0&&(mul*=256)){val+=this[offset+ --byteLength]*mul}return val};Buffer.prototype.readUInt8=function readUInt8(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,1,this.length);return this[offset]};Buffer.prototype.readUInt16LE=function readUInt16LE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,2,this.length);return this[offset]|this[offset+1]<<8};Buffer.prototype.readUInt16BE=function readUInt16BE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,2,this.length);return this[offset]<<8|this[offset+1]};Buffer.prototype.readUInt32LE=function readUInt32LE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,4,this.length);return(this[offset]|this[offset+1]<<8|this[offset+2]<<16)+this[offset+3]*16777216};Buffer.prototype.readUInt32BE=function readUInt32BE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,4,this.length);return this[offset]*16777216+(this[offset+1]<<16|this[offset+2]<<8|this[offset+3])};Buffer.prototype.readIntLE=function readIntLE(offset,byteLength,noAssert){offset=offset>>>0;byteLength=byteLength>>>0;if(!noAssert)checkOffset(offset,byteLength,this.length);var val=this[offset];var mul=1;var i=0;while(++i<byteLength&&(mul*=256)){val+=this[offset+i]*mul}mul*=128;if(val>=mul)val-=Math.pow(2,8*byteLength);return val};Buffer.prototype.readIntBE=function readIntBE(offset,byteLength,noAssert){offset=offset>>>0;byteLength=byteLength>>>0;if(!noAssert)checkOffset(offset,byteLength,this.length);var i=byteLength;var mul=1;var val=this[offset+ --i];while(i>0&&(mul*=256)){val+=this[offset+ --i]*mul}mul*=128;if(val>=mul)val-=Math.pow(2,8*byteLength);return val};Buffer.prototype.readInt8=function readInt8(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,1,this.length);if(!(this[offset]&128))return this[offset];return(255-this[offset]+1)*-1};Buffer.prototype.readInt16LE=function readInt16LE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,2,this.length);var val=this[offset]|this[offset+1]<<8;return val&32768?val|4294901760:val};Buffer.prototype.readInt16BE=function readInt16BE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,2,this.length);var val=this[offset+1]|this[offset]<<8;return val&32768?val|4294901760:val};Buffer.prototype.readInt32LE=function readInt32LE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,4,this.length);return this[offset]|this[offset+1]<<8|this[offset+2]<<16|this[offset+3]<<24};Buffer.prototype.readInt32BE=function readInt32BE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,4,this.length);return this[offset]<<24|this[offset+1]<<16|this[offset+2]<<8|this[offset+3]};Buffer.prototype.readFloatLE=function readFloatLE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,4,this.length);return ieee754.read(this,offset,true,23,4)};Buffer.prototype.readFloatBE=function readFloatBE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,4,this.length);return ieee754.read(this,offset,false,23,4)};Buffer.prototype.readDoubleLE=function readDoubleLE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,8,this.length);return ieee754.read(this,offset,true,52,8)};Buffer.prototype.readDoubleBE=function readDoubleBE(offset,noAssert){offset=offset>>>0;if(!noAssert)checkOffset(offset,8,this.length);return ieee754.read(this,offset,false,52,8)};function checkInt(buf,value,offset,ext,max,min){if(!Buffer.isBuffer(buf))throw new TypeError('"buffer" argument must be a Buffer instance');if(value>max||value<min)throw new RangeError('"value" argument is out of bounds');if(offset+ext>buf.length)throw new RangeError("Index out of range")}Buffer.prototype.writeUIntLE=function writeUIntLE(value,offset,byteLength,noAssert){value=+value;offset=offset>>>0;byteLength=byteLength>>>0;if(!noAssert){var maxBytes=Math.pow(2,8*byteLength)-1;checkInt(this,value,offset,byteLength,maxBytes,0)}var mul=1;var i=0;this[offset]=value&255;while(++i<byteLength&&(mul*=256)){this[offset+i]=value/mul&255}return offset+byteLength};Buffer.prototype.writeUIntBE=function writeUIntBE(value,offset,byteLength,noAssert){value=+value;offset=offset>>>0;byteLength=byteLength>>>0;if(!noAssert){var maxBytes=Math.pow(2,8*byteLength)-1;checkInt(this,value,offset,byteLength,maxBytes,0)}var i=byteLength-1;var mul=1;this[offset+i]=value&255;while(--i>=0&&(mul*=256)){this[offset+i]=value/mul&255}return offset+byteLength};Buffer.prototype.writeUInt8=function writeUInt8(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,1,255,0);this[offset]=value&255;return offset+1};Buffer.prototype.writeUInt16LE=function writeUInt16LE(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,2,65535,0);this[offset]=value&255;this[offset+1]=value>>>8;return offset+2};Buffer.prototype.writeUInt16BE=function writeUInt16BE(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,2,65535,0);this[offset]=value>>>8;this[offset+1]=value&255;return offset+2};Buffer.prototype.writeUInt32LE=function writeUInt32LE(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,4,4294967295,0);this[offset+3]=value>>>24;this[offset+2]=value>>>16;this[offset+1]=value>>>8;this[offset]=value&255;return offset+4};Buffer.prototype.writeUInt32BE=function writeUInt32BE(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,4,4294967295,0);this[offset]=value>>>24;this[offset+1]=value>>>16;this[offset+2]=value>>>8;this[offset+3]=value&255;return offset+4};Buffer.prototype.writeIntLE=function writeIntLE(value,offset,byteLength,noAssert){value=+value;offset=offset>>>0;if(!noAssert){var limit=Math.pow(2,8*byteLength-1);checkInt(this,value,offset,byteLength,limit-1,-limit)}var i=0;var mul=1;var sub=0;this[offset]=value&255;while(++i<byteLength&&(mul*=256)){if(value<0&&sub===0&&this[offset+i-1]!==0){sub=1}this[offset+i]=(value/mul>>0)-sub&255}return offset+byteLength};Buffer.prototype.writeIntBE=function writeIntBE(value,offset,byteLength,noAssert){value=+value;offset=offset>>>0;if(!noAssert){var limit=Math.pow(2,8*byteLength-1);checkInt(this,value,offset,byteLength,limit-1,-limit)}var i=byteLength-1;var mul=1;var sub=0;this[offset+i]=value&255;while(--i>=0&&(mul*=256)){if(value<0&&sub===0&&this[offset+i+1]!==0){sub=1}this[offset+i]=(value/mul>>0)-sub&255}return offset+byteLength};Buffer.prototype.writeInt8=function writeInt8(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,1,127,-128);if(value<0)value=255+value+1;this[offset]=value&255;return offset+1};Buffer.prototype.writeInt16LE=function writeInt16LE(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,2,32767,-32768);this[offset]=value&255;this[offset+1]=value>>>8;return offset+2};Buffer.prototype.writeInt16BE=function writeInt16BE(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,2,32767,-32768);this[offset]=value>>>8;this[offset+1]=value&255;return offset+2};Buffer.prototype.writeInt32LE=function writeInt32LE(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,4,2147483647,-2147483648);this[offset]=value&255;this[offset+1]=value>>>8;this[offset+2]=value>>>16;this[offset+3]=value>>>24;return offset+4};Buffer.prototype.writeInt32BE=function writeInt32BE(value,offset,noAssert){value=+value;offset=offset>>>0;if(!noAssert)checkInt(this,value,offset,4,2147483647,-2147483648);if(value<0)value=4294967295+value+1;this[offset]=value>>>24;this[offset+1]=value>>>16;this[offset+2]=value>>>8;this[offset+3]=value&255;return offset+4};function checkIEEE754(buf,value,offset,ext,max,min){if(offset+ext>buf.length)throw new RangeError("Index out of range");if(offset<0)throw new RangeError("Index out of range")}function writeFloat(buf,value,offset,littleEndian,noAssert){value=+value;offset=offset>>>0;if(!noAssert){checkIEEE754(buf,value,offset,4,3.4028234663852886e+38,-3.4028234663852886e+38)}ieee754.write(buf,value,offset,littleEndian,23,4);return offset+4}Buffer.prototype.writeFloatLE=function writeFloatLE(value,offset,noAssert){return writeFloat(this,value,offset,true,noAssert)};Buffer.prototype.writeFloatBE=function writeFloatBE(value,offset,noAssert){return writeFloat(this,value,offset,false,noAssert)};function writeDouble(buf,value,offset,littleEndian,noAssert){value=+value;offset=offset>>>0;if(!noAssert){checkIEEE754(buf,value,offset,8,1.7976931348623157e+308,-1.7976931348623157e+308)}ieee754.write(buf,value,offset,littleEndian,52,8);return offset+8}Buffer.prototype.writeDoubleLE=function writeDoubleLE(value,offset,noAssert){return writeDouble(this,value,offset,true,noAssert)};Buffer.prototype.writeDoubleBE=function writeDoubleBE(value,offset,noAssert){return writeDouble(this,value,offset,false,noAssert)};Buffer.prototype.copy=function copy(target,targetStart,start,end){if(!Buffer.isBuffer(target))throw new TypeError("argument should be a Buffer");if(!start)start=0;if(!end&&end!==0)end=this.length;if(targetStart>=target.length)targetStart=target.length;if(!targetStart)targetStart=0;if(end>0&&end<start)end=start;if(end===start)return 0;if(target.length===0||this.length===0)return 0;if(targetStart<0){throw new RangeError("targetStart out of bounds")}if(start<0||start>=this.length)throw new RangeError("Index out of range");if(end<0)throw new RangeError("sourceEnd out of bounds");if(end>this.length)end=this.length;if(target.length-targetStart<end-start){end=target.length-targetStart+start}var len=end-start;if(this===target&&typeof Uint8Array.prototype.copyWithin==="function"){this.copyWithin(targetStart,start,end)}else if(this===target&&start<targetStart&&targetStart<end){for(var i=len-1;i>=0;--i){target[i+targetStart]=this[i+start]}}else{Uint8Array.prototype.set.call(target,this.subarray(start,end),targetStart)}return len};Buffer.prototype.fill=function fill(val,start,end,encoding){if(typeof val==="string"){if(typeof start==="string"){encoding=start;start=0;end=this.length}else if(typeof end==="string"){encoding=end;end=this.length}if(encoding!==undefined&&typeof encoding!=="string"){throw new TypeError("encoding must be a string")}if(typeof encoding==="string"&&!Buffer.isEncoding(encoding)){throw new TypeError("Unknown encoding: "+encoding)}if(val.length===1){var code=val.charCodeAt(0);if(encoding==="utf8"&&code<128||encoding==="latin1"){val=code}}}else if(typeof val==="number"){val=val&255}if(start<0||this.length<start||this.length<end){throw new RangeError("Out of range index")}if(end<=start){return this}start=start>>>0;end=end===undefined?this.length:end>>>0;if(!val)val=0;var i;if(typeof val==="number"){for(i=start;i<end;++i){this[i]=val}}else{var bytes=Buffer.isBuffer(val)?val:Buffer.from(val,encoding);var len=bytes.length;if(len===0){throw new TypeError('The value "'+val+'" is invalid for argument "value"')}for(i=0;i<end-start;++i){this[i+start]=bytes[i%len]}}return this};var INVALID_BASE64_RE=/[^+/0-9A-Za-z-_]/g;function base64clean(str){str=str.split("=")[0];str=str.trim().replace(INVALID_BASE64_RE,"");if(str.length<2)return"";while(str.length%4!==0){str=str+"="}return str}function toHex(n){if(n<16)return"0"+n.toString(16);return n.toString(16)}function utf8ToBytes(string,units){units=units||Infinity;var codePoint;var length=string.length;var leadSurrogate=null;var bytes=[];for(var i=0;i<length;++i){codePoint=string.charCodeAt(i);if(codePoint>55295&&codePoint<57344){if(!leadSurrogate){if(codePoint>56319){if((units-=3)>-1)bytes.push(239,191,189);continue}else if(i+1===length){if((units-=3)>-1)bytes.push(239,191,189);continue}leadSurrogate=codePoint;continue}if(codePoint<56320){if((units-=3)>-1)bytes.push(239,191,189);leadSurrogate=codePoint;continue}codePoint=(leadSurrogate-55296<<10|codePoint-56320)+65536}else if(leadSurrogate){if((units-=3)>-1)bytes.push(239,191,189)}leadSurrogate=null;if(codePoint<128){if((units-=1)<0)break;bytes.push(codePoint)}else if(codePoint<2048){if((units-=2)<0)break;bytes.push(codePoint>>6|192,codePoint&63|128)}else if(codePoint<65536){if((units-=3)<0)break;bytes.push(codePoint>>12|224,codePoint>>6&63|128,codePoint&63|128)}else if(codePoint<1114112){if((units-=4)<0)break;bytes.push(codePoint>>18|240,codePoint>>12&63|128,codePoint>>6&63|128,codePoint&63|128)}else{throw new Error("Invalid code point")}}return bytes}function asciiToBytes(str){var byteArray=[];for(var i=0;i<str.length;++i){byteArray.push(str.charCodeAt(i)&255)}return byteArray}function utf16leToBytes(str,units){var c,hi,lo;var byteArray=[];for(var i=0;i<str.length;++i){if((units-=2)<0)break;c=str.charCodeAt(i);hi=c>>8;lo=c%256;byteArray.push(lo);byteArray.push(hi)}return byteArray}function base64ToBytes(str){return base64.toByteArray(base64clean(str))}function blitBuffer(src,dst,offset,length){for(var i=0;i<length;++i){if(i+offset>=dst.length||i>=src.length)break;dst[i+offset]=src[i]}return i}function isInstance(obj,type){return obj instanceof type||obj!=null&&obj.constructor!=null&&obj.constructor.name!=null&&obj.constructor.name===type.name}function numberIsNaN(obj){return obj!==obj}}),{"base64-js":1,"ieee754":6}],4:[(function(require,module,exports){module.exports={"100":"Continue","101":"Switching Protocols","102":"Processing","200":"OK","201":"Created","202":"Accepted","203":"Non-Authoritative Information","204":"No Content","205":"Reset Content","206":"Partial Content","207":"Multi-Status","208":"Already Reported","226":"IM Used","300":"Multiple Choices","301":"Moved Permanently","302":"Found","303":"See Other","304":"Not Modified","305":"Use Proxy","307":"Temporary Redirect","308":"Permanent Redirect","400":"Bad Request","401":"Unauthorized","402":"Payment Required","403":"Forbidden","404":"Not Found","405":"Method Not Allowed","406":"Not Acceptable","407":"Proxy Authentication Required","408":"Request Timeout","409":"Conflict","410":"Gone","411":"Length Required","412":"Precondition Failed","413":"Payload Too Large","414":"URI Too Long","415":"Unsupported Media Type","416":"Range Not Satisfiable","417":"Expectation Failed","418":"I'm a teapot","421":"Misdirected Request","422":"Unprocessable Entity","423":"Locked","424":"Failed Dependency","425":"Unordered Collection","426":"Upgrade Required","428":"Precondition Required","429":"Too Many Requests","431":"Request Header Fields Too Large","451":"Unavailable For Legal Reasons","500":"Internal Server Error","501":"Not Implemented","502":"Bad Gateway","503":"Service Unavailable","504":"Gateway Timeout","505":"HTTP Version Not Supported","506":"Variant Also Negotiates","507":"Insufficient Storage","508":"Loop Detected","509":"Bandwidth Limit Exceeded","510":"Not Extended","511":"Network Authentication Required"}}),{}],5:[(function(require,module,exports){((function(Buffer){function isArray(arg){if(Array.isArray){return Array.isArray(arg)}return objectToString(arg)==="[object Array]"}exports.isArray=isArray;function isBoolean(arg){return typeof arg==="boolean"}exports.isBoolean=isBoolean;function isNull(arg){return arg===null}exports.isNull=isNull;function isNullOrUndefined(arg){return arg==null}exports.isNullOrUndefined=isNullOrUndefined;function isNumber(arg){return typeof arg==="number"}exports.isNumber=isNumber;function isString(arg){return typeof arg==="string"}exports.isString=isString;function isSymbol(arg){return(typeof arg==="undefined"?"undefined":_typeof(arg))==="symbol"}exports.isSymbol=isSymbol;function isUndefined(arg){return arg===void 0}exports.isUndefined=isUndefined;function isRegExp(re){return objectToString(re)==="[object RegExp]"}exports.isRegExp=isRegExp;function isObject(arg){return(typeof arg==="undefined"?"undefined":_typeof(arg))==="object"&&arg!==null}exports.isObject=isObject;function isDate(d){return objectToString(d)==="[object Date]"}exports.isDate=isDate;function isError(e){return objectToString(e)==="[object Error]"||e instanceof Error}exports.isError=isError;function isFunction(arg){return typeof arg==="function"}exports.isFunction=isFunction;function isPrimitive(arg){return arg===null||typeof arg==="boolean"||typeof arg==="number"||typeof arg==="string"||(typeof arg==="undefined"?"undefined":_typeof(arg))==="symbol"||typeof arg==="undefined"}exports.isPrimitive=isPrimitive;exports.isBuffer=Buffer.isBuffer;function objectToString(o){return Object.prototype.toString.call(o)}})).call(this,{"isBuffer":require("../../is-buffer/index.js")})}),{"../../is-buffer/index.js":8}],6:[(function(require,module,exports){exports.read=(function(buffer,offset,isLE,mLen,nBytes){var e,m;var eLen=nBytes*8-mLen-1;var eMax=(1<<eLen)-1;var eBias=eMax>>1;var nBits=-7;var i=isLE?nBytes-1:0;var d=isLE?-1:1;var s=buffer[offset+i];i+=d;e=s&(1<<-nBits)-1;s>>=-nBits;nBits+=eLen;for(;nBits>0;e=e*256+buffer[offset+i],i+=d,nBits-=8){}m=e&(1<<-nBits)-1;e>>=-nBits;nBits+=mLen;for(;nBits>0;m=m*256+buffer[offset+i],i+=d,nBits-=8){}if(e===0){e=1-eBias}else if(e===eMax){return m?NaN:(s?-1:1)*Infinity}else{m=m+Math.pow(2,mLen);e=e-eBias}return(s?-1:1)*m*Math.pow(2,e-mLen)});exports.write=(function(buffer,value,offset,isLE,mLen,nBytes){var e,m,c;var eLen=nBytes*8-mLen-1;var eMax=(1<<eLen)-1;var eBias=eMax>>1;var rt=mLen===23?Math.pow(2,-24)-Math.pow(2,-77):0;var i=isLE?0:nBytes-1;var d=isLE?1:-1;var s=value<0||value===0&&1/value<0?1:0;value=Math.abs(value);if(isNaN(value)||value===Infinity){m=isNaN(value)?1:0;e=eMax}else{e=Math.floor(Math.log(value)/Math.LN2);if(value*(c=Math.pow(2,-e))<1){e--;c*=2}if(e+eBias>=1){value+=rt/c}else{value+=rt*Math.pow(2,1-eBias)}if(value*c>=2){e++;c/=2}if(e+eBias>=eMax){m=0;e=eMax}else if(e+eBias>=1){m=(value*c-1)*Math.pow(2,mLen);e=e+eBias}else{m=value*Math.pow(2,eBias-1)*Math.pow(2,mLen);e=0}}for(;mLen>=8;buffer[offset+i]=m&255,i+=d,m/=256,mLen-=8){}e=e<<mLen|m;eLen+=mLen;for(;eLen>0;buffer[offset+i]=e&255,i+=d,e/=256,eLen-=8){}buffer[offset+i-d]|=s*128})}),{}],7:[(function(require,module,exports){if(typeof Object.create==="function"){module.exports=function inherits(ctor,superCtor){ctor.super_=superCtor;ctor.prototype=Object.create(superCtor.prototype,{constructor:{value:ctor,enumerable:false,writable:true,configurable:true}})}}else{module.exports=function inherits(ctor,superCtor){ctor.super_=superCtor;var TempCtor=function TempCtor(){};TempCtor.prototype=superCtor.prototype;ctor.prototype=new TempCtor;ctor.prototype.constructor=ctor}}}),{}],8:[(function(require,module,exports){module.exports=(function(obj){return obj!=null&&(isBuffer(obj)||isSlowBuffer(obj)||!!obj._isBuffer)});function isBuffer(obj){return!!obj.constructor&&typeof obj.constructor.isBuffer==="function"&&obj.constructor.isBuffer(obj)}function isSlowBuffer(obj){return typeof obj.readFloatLE==="function"&&typeof obj.slice==="function"&&isBuffer(obj.slice(0,0))}}),{}],9:[(function(require,module,exports){var toString={}.toString;module.exports=Array.isArray||(function(arr){return toString.call(arr)=="[object Array]"})}),{}],10:[(function(require,module,exports){((function(process){"use strict";if(!process.version||process.version.indexOf("v0.")===0||process.version.indexOf("v1.")===0&&process.version.indexOf("v1.8.")!==0){module.exports={nextTick:nextTick}}else{module.exports=process}function nextTick(fn,arg1,arg2,arg3){if(typeof fn!=="function"){throw new TypeError('"callback" argument must be a function')}var len=arguments.length;var args,i;switch(len){case 0:case 1:return process.nextTick(fn);case 2:return process.nextTick(function afterTickOne(){fn.call(null,arg1)});case 3:return process.nextTick(function afterTickTwo(){fn.call(null,arg1,arg2)});case 4:return process.nextTick(function afterTickThree(){fn.call(null,arg1,arg2,arg3)});default:args=new Array(len-1);i=0;while(i<args.length){args[i++]=arguments[i]}return process.nextTick(function afterTick(){fn.apply(null,args)})}}})).call(this,require("_process"))}),{"_process":11}],11:[(function(require,module,exports){var process=module.exports={};var cachedSetTimeout;var cachedClearTimeout;function defaultSetTimout(){throw new Error("setTimeout has not been defined")}function defaultClearTimeout(){throw new Error("clearTimeout has not been defined")}((function(){try{if(typeof setTimeout==="function"){cachedSetTimeout=setTimeout}else{cachedSetTimeout=defaultSetTimout}}catch(e){cachedSetTimeout=defaultSetTimout}try{if(typeof clearTimeout==="function"){cachedClearTimeout=clearTimeout}else{cachedClearTimeout=defaultClearTimeout}}catch(e){cachedClearTimeout=defaultClearTimeout}}))();function runTimeout(fun){if(cachedSetTimeout===setTimeout){return setTimeout(fun,0)}if((cachedSetTimeout===defaultSetTimout||!cachedSetTimeout)&&setTimeout){cachedSetTimeout=setTimeout;return setTimeout(fun,0)}try{return cachedSetTimeout(fun,0)}catch(e){try{return cachedSetTimeout.call(null,fun,0)}catch(e){return cachedSetTimeout.call(this,fun,0)}}}function runClearTimeout(marker){if(cachedClearTimeout===clearTimeout){return clearTimeout(marker)}if((cachedClearTimeout===defaultClearTimeout||!cachedClearTimeout)&&clearTimeout){cachedClearTimeout=clearTimeout;return clearTimeout(marker)}try{return cachedClearTimeout(marker)}catch(e){try{return cachedClearTimeout.call(null,marker)}catch(e){return cachedClearTimeout.call(this,marker)}}}var queue=[];var draining=false;var currentQueue;var queueIndex=-1;function cleanUpNextTick(){if(!draining||!currentQueue){return}draining=false;if(currentQueue.length){queue=currentQueue.concat(queue)}else{queueIndex=-1}if(queue.length){drainQueue()}}function drainQueue(){if(draining){return}var timeout=runTimeout(cleanUpNextTick);draining=true;var len=queue.length;while(len){currentQueue=queue;queue=[];while(++queueIndex<len){if(currentQueue){currentQueue[queueIndex].run()}}queueIndex=-1;len=queue.length}currentQueue=null;draining=false;runClearTimeout(timeout)}process.nextTick=(function(fun){var args=new Array(arguments.length-1);if(arguments.length>1){for(var i=1;i<arguments.length;i++){args[i-1]=arguments[i]}}queue.push(new Item(fun,args));if(queue.length===1&&!draining){runTimeout(drainQueue)}});function Item(fun,array){this.fun=fun;this.array=array}Item.prototype.run=(function(){this.fun.apply(null,this.array)});process.title="browser";process.browser=true;process.env={};process.argv=[];process.version="";process.versions={};function noop(){}process.on=noop;process.addListener=noop;process.once=noop;process.off=noop;process.removeListener=noop;process.removeAllListeners=noop;process.emit=noop;process.prependListener=noop;process.prependOnceListener=noop;process.listeners=(function(name){return[]});process.binding=(function(name){throw new Error("process.binding is not supported")});process.cwd=(function(){return"/"});process.chdir=(function(dir){throw new Error("process.chdir is not supported")});process.umask=(function(){return 0})}),{}],12:[(function(require,module,exports){((function(global){((function(root){var freeExports=(typeof exports==="undefined"?"undefined":_typeof(exports))=="object"&&exports&&!exports.nodeType&&exports;var freeModule=(typeof module==="undefined"?"undefined":_typeof(module))=="object"&&module&&!module.nodeType&&module;var freeGlobal=(typeof global==="undefined"?"undefined":_typeof(global))=="object"&&global;if(freeGlobal.global===freeGlobal||freeGlobal.window===freeGlobal||freeGlobal.self===freeGlobal){root=freeGlobal}var punycode,maxInt=2147483647,base=36,tMin=1,tMax=26,skew=38,damp=700,initialBias=72,initialN=128,delimiter="-",regexPunycode=/^xn--/,regexNonASCII=/[^\x20-\x7E]/,regexSeparators=/[\x2E\u3002\uFF0E\uFF61]/g,errors={"overflow":"Overflow: input needs wider integers to process","not-basic":"Illegal input >= 0x80 (not a basic code point)","invalid-input":"Invalid input"},baseMinusTMin=base-tMin,floor=Math.floor,stringFromCharCode=String.fromCharCode,key;function error(type){throw new RangeError(errors[type])}function map(array,fn){var length=array.length;var result=[];while(length--){result[length]=fn(array[length])}return result}function mapDomain(string,fn){var parts=string.split("@");var result="";if(parts.length>1){result=parts[0]+"@";string=parts[1]}string=string.replace(regexSeparators,".");var labels=string.split(".");var encoded=map(labels,fn).join(".");return result+encoded}function ucs2decode(string){var output=[],counter=0,length=string.length,value,extra;while(counter<length){value=string.charCodeAt(counter++);if(value>=55296&&value<=56319&&counter<length){extra=string.charCodeAt(counter++);if((extra&64512)==56320){output.push(((value&1023)<<10)+(extra&1023)+65536)}else{output.push(value);counter--}}else{output.push(value)}}return output}function ucs2encode(array){return map(array,(function(value){var output="";if(value>65535){value-=65536;output+=stringFromCharCode(value>>>10&1023|55296);value=56320|value&1023}output+=stringFromCharCode(value);return output})).join("")}function basicToDigit(codePoint){if(codePoint-48<10){return codePoint-22}if(codePoint-65<26){return codePoint-65}if(codePoint-97<26){return codePoint-97}return base}function digitToBasic(digit,flag){return digit+22+75*(digit<26)-((flag!=0)<<5)}function adapt(delta,numPoints,firstTime){var k=0;delta=firstTime?floor(delta/damp):delta>>1;delta+=floor(delta/numPoints);for(;delta>baseMinusTMin*tMax>>1;k+=base){delta=floor(delta/baseMinusTMin)}return floor(k+(baseMinusTMin+1)*delta/(delta+skew))}function decode(input){var output=[],inputLength=input.length,out,i=0,n=initialN,bias=initialBias,basic,j,index,oldi,w,k,digit,t,baseMinusT;basic=input.lastIndexOf(delimiter);if(basic<0){basic=0}for(j=0;j<basic;++j){if(input.charCodeAt(j)>=128){error("not-basic")}output.push(input.charCodeAt(j))}for(index=basic>0?basic+1:0;index<inputLength;){for(oldi=i,w=1,k=base;;k+=base){if(index>=inputLength){error("invalid-input")}digit=basicToDigit(input.charCodeAt(index++));if(digit>=base||digit>floor((maxInt-i)/w)){error("overflow")}i+=digit*w;t=k<=bias?tMin:k>=bias+tMax?tMax:k-bias;if(digit<t){break}baseMinusT=base-t;if(w>floor(maxInt/baseMinusT)){error("overflow")}w*=baseMinusT}out=output.length+1;bias=adapt(i-oldi,out,oldi==0);if(floor(i/out)>maxInt-n){error("overflow")}n+=floor(i/out);i%=out;output.splice(i++,0,n)}return ucs2encode(output)}function encode(input){var n,delta,handledCPCount,basicLength,bias,j,m,q,k,t,currentValue,output=[],inputLength,handledCPCountPlusOne,baseMinusT,qMinusT;input=ucs2decode(input);inputLength=input.length;n=initialN;delta=0;bias=initialBias;for(j=0;j<inputLength;++j){currentValue=input[j];if(currentValue<128){output.push(stringFromCharCode(currentValue))}}handledCPCount=basicLength=output.length;if(basicLength){output.push(delimiter)}while(handledCPCount<inputLength){for(m=maxInt,j=0;j<inputLength;++j){currentValue=input[j];if(currentValue>=n&&currentValue<m){m=currentValue}}handledCPCountPlusOne=handledCPCount+1;if(m-n>floor((maxInt-delta)/handledCPCountPlusOne)){error("overflow")}delta+=(m-n)*handledCPCountPlusOne;n=m;for(j=0;j<inputLength;++j){currentValue=input[j];if(currentValue<n&&++delta>maxInt){error("overflow")}if(currentValue==n){for(q=delta,k=base;;k+=base){t=k<=bias?tMin:k>=bias+tMax?tMax:k-bias;if(q<t){break}qMinusT=q-t;baseMinusT=base-t;output.push(stringFromCharCode(digitToBasic(t+qMinusT%baseMinusT,0)));q=floor(qMinusT/baseMinusT)}output.push(stringFromCharCode(digitToBasic(q,0)));bias=adapt(delta,handledCPCountPlusOne,handledCPCount==basicLength);delta=0;++handledCPCount}}++delta;++n}return output.join("")}function toUnicode(input){return mapDomain(input,(function(string){return regexPunycode.test(string)?decode(string.slice(4).toLowerCase()):string}))}function toASCII(input){return mapDomain(input,(function(string){return regexNonASCII.test(string)?"xn--"+encode(string):string}))}punycode={"version":"1.4.1","ucs2":{"decode":ucs2decode,"encode":ucs2encode},"decode":decode,"encode":encode,"toASCII":toASCII,"toUnicode":toUnicode};if("function"=="function"&&_typeof(__webpack_require__(538))=="object"&&__webpack_require__(538)){!(__WEBPACK_AMD_DEFINE_RESULT__ = function(){return punycode}.call(exports, __webpack_require__, exports, module),
@@ -54383,25 +54675,25 @@ var Sb=[OU,Iu,tv,Jt,GU,JU,FU,BU,CU,DU,IU,HU,AU,ER,OU,OU];var Tb=[fU];var Ub=[PT]
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(109), __webpack_require__(1208), "/", __webpack_require__(783).Buffer))
 
 /***/ }),
-/* 1331 */
+/* 1330 */
 /***/ (function(module, exports) {
 
 module.exports = ELEMENT;
 
 /***/ }),
-/* 1332 */
+/* 1331 */
 /***/ (function(module, exports) {
 
 module.exports = axios;
 
 /***/ }),
-/* 1333 */
+/* 1332 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 1334 */
+/* 1333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(540);
@@ -54409,4 +54701,4 @@ module.exports = __webpack_require__(541);
 
 
 /***/ })
-],[1334]);
+],[1333]);
