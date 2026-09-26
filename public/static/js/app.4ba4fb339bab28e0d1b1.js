@@ -52231,7 +52231,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticStyle: {
-      "background": "url('../../static/myimg/loginbg.jpg') 0% 0% / contain",
+      "background": "url('../../static/myimg/loginbgbg.jpg') 0% 0% / contain",
       "position": "absolute",
       "inset": "0px"
     }
